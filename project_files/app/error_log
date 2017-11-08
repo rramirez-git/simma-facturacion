@@ -1,0 +1,18 @@
+[14-Nov-2015 04:06:53 UTC] PHP Warning:  DOMDocument::createElement(): unterminated entity reference A Servicios Integrales, S.C. in /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php on line 30
+[14-Nov-2015 04:06:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php:30) in /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php on line 43
+[14-Nov-2015 04:10:42 UTC] PHP Warning:  DOMDocument::createElement(): unterminated entity reference A Servicios Integrales, S.C. in /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php on line 30
+[14-Nov-2015 04:10:43 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php:30) in /home/simmamxc/public_html/controlmanifiestos/project_files/app/make_xml_from_excel.php on line 43
+[11-Dec-2015 18:59:42 UTC] PHP Parse error:  syntax error, unexpected '0' (T_LNUMBER) in /home/simmamxc/public_html/controlmanifiestos/project_files/app/pdf/MyPDFFile.class.php on line 8
+[27-Oct-2016 19:36:38 America/Mexico_City] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel/CachedObjectStorage/Memory.php on line 83
+[27-Oct-2016 19:55:35 America/Mexico_City] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel/Worksheet.php on line 746
+[27-Oct-2016 20:17:54 America/Mexico_City] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[27-Oct-2016 20:51:30 America/Mexico_City] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[27-Oct-2016 21:06:01 America/Mexico_City] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[03-Jul-2017 16:56:02 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[03-Jul-2017 19:04:22 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel.php on line 1108
+[03-Jul-2017 19:18:05 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel.php on line 1065
+[03-Jul-2017 19:37:56 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel.php on line 1065
+[06-Sep-2017 19:56:52 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[06-Sep-2017 21:57:05 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/make_excel_from_xml.php on line 29
+[17-Oct-2017 16:25:47 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel/Writer/Excel2007/StringTable.php on line 65
+[18-Oct-2017 20:32:48 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/servici7/public_html/project_files/app/phpExcel/PHPExcel/Shared/XMLWriter.php on line 122

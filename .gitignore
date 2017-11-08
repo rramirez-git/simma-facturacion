@@ -15,3 +15,12 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+logs/*
+
+project_files/files/download/*
+project_files/files/upload/*
