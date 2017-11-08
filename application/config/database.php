@@ -48,13 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-//$db['default']['username'] = 'rramirez_simma';
-$db['default']['username'] = 'servici7_cm2016';
-//$db['default']['password'] = 'simmamx';
-$db['default']['password'] = 'cm2016SIMMA'; 
-//$db['default']['database'] = 'rramirez_simma';
-$db['default']['database'] = 'servici7_controlmanifiestos';
+$db['default']['hostname'] = 'imagilex.com.mx';
+$db['default']['username'] = 'hexpywbw_simma_dev';
+$db['default']['password'] = 'NU-UR=,ql[WI'; 
+$db['default']['database'] = 'hexpywbw_dev_simma';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
