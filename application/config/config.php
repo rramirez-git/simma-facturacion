@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://qa.miproyecto.imagilex.com.mx/simma';
+$config['base_url']	= 'http://miproyecto.imagilex.com.mx/simma';
 
 /*
 |--------------------------------------------------------------------------
