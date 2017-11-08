@@ -20,6 +20,11 @@ application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess
 
+
+application/config/config.php
+application/config/database.php
+.htaccess
+
 logs/*
 
 project_files/files/download/*
