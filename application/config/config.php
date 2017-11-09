@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://dev.miproyecto.imagilex.com.mx/simma/';
+$config['base_url']	= 'http://local.simma.com/';
 
 /*
 |--------------------------------------------------------------------------
