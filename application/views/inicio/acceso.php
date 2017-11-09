@@ -91,7 +91,7 @@
 		</script>
 		<script type="text/javascript">
     	(function(){
-    		if(location.host.indexOf("dev")>-1)
+    		if( location.host.indexOf( "improyecto.imagilex" ) > -1 || location.host.indexOf("local")>-1 )
     			return true;
     		if(location.host.indexOf("www")>-1)
     			return true;
