@@ -29,3 +29,4 @@ logs/*
 
 project_files/files/download/*
 project_files/files/upload/*
+application/config/database.php
