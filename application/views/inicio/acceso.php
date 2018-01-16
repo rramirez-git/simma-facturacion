@@ -91,13 +91,15 @@
 		</script>
 		<script type="text/javascript">
     	(function(){
-    		if(location.host.indexOf("dev")>-1)
-    			return true;
-    		if(location.host.indexOf("local")>-1)
-    			return true;
-    		if(location.host.indexOf("www")>-1)
-    			return true;
-    		location.href=location.protocol+"//www."+location.host+location.pathname;
+    		if( location.host.indexOf( 'local' ) >-1 || location.host.indexOf( 'imagilex' ) >-1 ) {
+				if( location.host.indexOf("www") > -1 ) {
+					location.href = location.href.replace( 'www.', '' );
+					return false;
+				} else {
+					return true;
+				}
+    		}
+    		location.href = location.protocol + "//www." + location.host + location.pathname;
     	})();
     </script>
 	</body>
