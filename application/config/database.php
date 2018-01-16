@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'imagilex.com.mx';
-$db['default']['username'] = 'hexpywbw_simma_dev';
-$db['default']['password'] = 'NU-Ur=,ql[WI'; 
-$db['default']['database'] = 'hexpywbw_dev_simma';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = ''; 
+$db['default']['database'] = 'simma';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
