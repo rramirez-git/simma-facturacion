@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'hexpywbw_simma_preprod';
-$db['default']['password'] = '=KM^EF.#Av]T'; 
-$db['default']['database'] = 'hexpywbw_preprod_simma';
+$db['default']['username'] = 'root';
+$db['default']['password'] = ''; 
+$db['default']['database'] = 'simma';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
