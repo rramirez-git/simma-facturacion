@@ -15,7 +15,8 @@ class Modsesion extends CI_Model
 	}
 	public function getAcceso($usr,$pwd)
 	{
-		$pwd=$this->encrypt->sha1($pwd);
+		//$pwd=$this->encrypt->sha1($pwd);
+		$pwd=sha1($pwd);
 		$this->db->where(array("usuario"=>$usr,"password"=>$pwd,"activo"=>1));
 		$regs=$this->db->get('usuario');
 		if($regs->num_rows()==0)
