@@ -16,6 +16,10 @@
 				<input type="text" class="form-control" id="frm_sucursal_iniciales" name="frm_sucursal_iniciales" value="<?= $objeto->getIniciales(); ?>" placeholder="Iniciales para manifiestos" maxlength="20" />
 			</div>
 		</div>
+
+		<h5>
+			Facturación
+		</h5>
 		<h5>
 			Dirección
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
