@@ -32,7 +32,7 @@
 		<div class="form-group">
 			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="frm_sucursal_fact_folio_final" name="frm_sucursal_fac_folio_final" value="<?= $objeto->getFac_folio_final(); ?>"  min="0" max="999999999" />
+				<input type="number" class="form-control" id="frm_sucursal_fac_folio_final" name="frm_sucursal_fac_folio_final" value="<?= $objeto->getFac_folio_final(); ?>"  min="0" max="999999999" />
 			</div>
 			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
 			<div class="col-sm-4">
