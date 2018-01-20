@@ -132,5 +132,17 @@ class Modvehiculo extends CI_Model
 		$this->db->where('idvehiculo',$this->idvehiculo);
 		$this->db->delete(array('relrutveh','relsucveh','vehiculo'));
 	}
+	public function hasRuta( $id = 0 ) {
+		if( $this->idvehiculo == "" || $this->idvehiculo == 0 )
+		{
+			if( $id > 0 )
+				$this->idvehiculo = $id;
+			else
+				return false;
+		}
+		$this->db->where( 'idvehiculo', $this->idvehiculo );
+		$this->db->from( 'relrutveh' );
+		return ( $this->db->count_all_results() > 0 );
+	}
 }
-?>
+?>
