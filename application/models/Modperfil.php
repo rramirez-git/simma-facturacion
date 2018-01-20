@@ -36,6 +36,7 @@ class Modperfil extends CI_Model
 		}
 		$this->db->where('idperfil',$this->idperfil);
 		$regs=$this->db->get('perfil');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -43,6 +44,7 @@ class Modperfil extends CI_Model
 		$this->setObservaciones($reg["observaciones"]);
 		$this->db->where('idperfil',$this->idperfil);
 		$regs=$this->db->get('relpersuc');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$regs=$regs->result_array();
@@ -52,6 +54,7 @@ class Modperfil extends CI_Model
 		else $this->setSucursales(array());
 		$this->db->where('idperfil',$this->idperfil);
 		$regs=$this->db->get('relpermperf');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$regs=$regs->result_array();
@@ -77,16 +80,21 @@ class Modperfil extends CI_Model
 		);
 		$this->db->insert('perfil',$data);
 		$this->setIdperfil($this->db->insert_id());
-		foreach($this->sucursales as $reg) if($reg>0)
+		$this->db->reset_query();
+		foreach($this->sucursales as $reg) if($reg>0) {
 			$this->db->insert('relpersuc',array(
 				"idperfil"=>$this->idperfil,
 				"idsucursal"=>$reg
 			));
-		foreach($this->permisos as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		foreach($this->permisos as $reg) if($reg>0) {
 			$this->db->insert('relpermperf',array(
 				"idperfil"=>$this->idperfil,
 				"idpermiso"=>$reg
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -103,26 +111,34 @@ class Modperfil extends CI_Model
 		);
 		$this->db->where('idperfil',$this->idperfil);
 		$this->db->update('perfil',$data);
+		$this->db->reset_query();
 		$this->db->where('idperfil',$this->idperfil);
 		$this->db->delete('relpersuc');
-		foreach($this->sucursales as $reg) if($reg>0)
+		$this->db->reset_query();
+		foreach($this->sucursales as $reg) if($reg>0) {
 			$this->db->insert('relpersuc',array(
 				"idperfil"=>$this->idperfil,
 				"idsucursal"=>$reg
 			));
+			$this->db->reset_query();
+		}
 		$this->db->where('idperfil',$this->idperfil);
 		$this->db->delete('relpermperf');
-		foreach($this->permisos as $reg) if($reg>0)
+		$this->db->reset_query();
+		foreach($this->permisos as $reg) if($reg>0) {
 			$this->db->insert('relpermperf',array(
 				"idperfil"=>$this->idperfil,
 				"idpermiso"=>$reg
 			));
+			$this->db->reset_query();
+		}
 		return true;
 	}
 	public function getAll()
 	{
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('perfil');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -141,6 +157,7 @@ class Modperfil extends CI_Model
 		}
 		$this->db->where('idperfil',$this->idperfil);
 		$this->db->delete(array('relpermperf','relpersuc','relperusu','perfil'));
+		$this->db->reset_query();
 	}
 }
-?>
+?>

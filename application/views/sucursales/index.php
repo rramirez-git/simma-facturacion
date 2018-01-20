@@ -1,3 +1,4 @@
+<!-- Vista sucursales/index -->
 <?= $menumain; ?>
 <div class="container">
 	<div class="btn-toolbar pull-right" role="toolbar">
@@ -64,3 +65,4 @@
 <script type="text/javascript">
 	$(document).ready(function(){$("div.table-responsive table").DataTable();});
 </script>
+<!-- Vista sucursales/index End -->

@@ -44,6 +44,7 @@ class Modrecoleccion extends CI_Model
 		}
 		$this->db->where('idrecoleccion',$this->idrecoleccion);
 		$regs=$this->db->get('recoleccion');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -54,6 +55,7 @@ class Modrecoleccion extends CI_Model
 		$this->setUnidad($reg["unidad"]);
 		$this->db->where('idrecoleccion',$this->idrecoleccion);
 		$regs=$this->db->get('relresrec');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -61,6 +63,7 @@ class Modrecoleccion extends CI_Model
 		}
 		$this->db->where('idrecoleccion',$this->idrecoleccion);
 		$regs=$this->db->get('relmanrec');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -89,14 +92,18 @@ class Modrecoleccion extends CI_Model
 		);
 		$this->db->insert('recoleccion',$data);
 		$this->setIdrecoleccion($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relmanrec',array(
 			'idmanifiesto'=>$this->idmanifiesto,
 			'idrecoleccion'=>$this->idrecoleccion
 		));
+		$this->db->reset_query();
 		$this->db->insert('relresrec',array(
 			'idresiduo'=>$this->idresiduo,
 			'idrecoleccion'=>$this->idrecoleccion
+		
 		));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase()
 	{
@@ -124,12 +131,14 @@ class Modrecoleccion extends CI_Model
 		}
 		$this->db->where('idrecoleccion',$this->idrecoleccion);
 		$this->db->delete(array('relresrec','relmanrec','recoleccion'));
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idmanifiesto)
 	{
 		$this->db->where("idrecoleccion in (select idrecoleccion from relmanrec where idmanifiesto=$idmanifiesto)");
 		$regs=$this->db->get('recoleccion');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -138,9 +147,10 @@ class Modrecoleccion extends CI_Model
 	{
 		$this->db->where("idrecoleccion in (select idrecoleccion from relresrec where idresiduo = $idresiduo) and idrecoleccion in (select idrecoleccion from relmanrec where idmanifiesto =  $idmanifiesto)");
 		$regs=$this->db->get("recoleccion");
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->row_array();
 	}
 }
-?>
+?>

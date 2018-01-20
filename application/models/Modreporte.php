@@ -46,6 +46,7 @@ class Modreporte extends CI_Model
 		}
 		$this->db->where('idreporte',$this->idreporte);
 		$regs=$this->db->get('reporte');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -98,6 +99,7 @@ class Modreporte extends CI_Model
 		);
 		$this->db->insert('reporte',$data);
 		$this->setIdreporte($this->db->insert_id());
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -118,6 +120,7 @@ class Modreporte extends CI_Model
 		);
 		$this->db->where('idreporte',$this->idreporte);
 		$this->db->update('reporte',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function delete($id=0)
@@ -131,6 +134,7 @@ class Modreporte extends CI_Model
 		}
 		$this->db->where('idreporte',$this->idreporte);
 		$this->db->delete(array('reporte'));
+		$this->db->reset_query();
 	}
 	public function getParamsFromInput()
 	{
@@ -209,4 +213,4 @@ class Modreporte extends CI_Model
 		return $this->db->query($this->makeSQL())->result_array();
 	}
 }
-?>
+?>

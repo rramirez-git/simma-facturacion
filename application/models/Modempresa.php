@@ -88,6 +88,7 @@ class Modempresa extends CI_Model
 		}
 		$this->db->where('idempresa',$this->idempresa);
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -156,6 +157,7 @@ class Modempresa extends CI_Model
 		);
 		$this->db->insert('empresa',$data);
 		$this->setIdempresa($this->db->insert_id());
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -187,12 +189,14 @@ class Modempresa extends CI_Model
 		);
 		$this->db->where('idempresa',$this->idempresa);
 		$this->db->update('empresa',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll()
 	{
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -202,6 +206,7 @@ class Modempresa extends CI_Model
 		$this->db->where('coorporativo',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -211,6 +216,7 @@ class Modempresa extends CI_Model
 		$this->db->where('transportista',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -220,6 +226,7 @@ class Modempresa extends CI_Model
 		$this->db->where('destinofinal',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -244,6 +251,7 @@ class Modempresa extends CI_Model
 		}
 		$this->db->where('idempresa',$this->idempresa);
 		$this->db->delete(array('empresa','relempsuc'));
+		$this->db->reset_query();
 	}
 	public function getSucursales()
 	{
@@ -252,6 +260,7 @@ class Modempresa extends CI_Model
 		$this->db->select('idsucursal');
 		$this->db->where('idempresa',$this->idempresa);
 		$regs=$this->db->get('relempsuc');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -260,9 +269,10 @@ class Modempresa extends CI_Model
 	{
 		$this->db->where($campo,$valor);
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>

@@ -1,3 +1,4 @@
+<!-- Vista sucursales/vista -->
 <?= $menumain; ?>
 <?php
 $objruta=new Modruta();
@@ -254,3 +255,4 @@ $objempresa=new Modempresa();
 <script type="text/javascript">
 	$(document).ready(function(){$("div.table-responsive table").DataTable();});
 </script>
+<!-- Vista sucursales/vista End -->

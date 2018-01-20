@@ -1,3 +1,4 @@
+<!-- Vista sucursales/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Sucursales <small><?= $objeto->getIdsucursal()!="" && $objeto->getIdsucursal()!=0?"Actualizar":"Nueva" ; ?> sucursal</small></h3>
@@ -140,3 +141,4 @@
 		},
 	};
 </script>
+<!-- Vista sucursales/formulario End -->
