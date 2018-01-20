@@ -64,6 +64,7 @@ class ModResiduo extends CI_Model
 		}
 		$this->db->where('idresiduo',$this->idresiduo);
 		$regs=$this->db->get('residuo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -80,6 +81,7 @@ class ModResiduo extends CI_Model
 		$this->setTiporesiduo($reg["tiporesiduo"]);
 		$this->db->where('idresiduo',$this->idresiduo);
 		$regs=$this->db->get('relsucres');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -146,6 +148,7 @@ class ModResiduo extends CI_Model
 		);
 		$this->db->where('idresiduo',$this->idresiduo);
 		$this->db->update('residuo',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idsucursal=0)
@@ -154,6 +157,7 @@ class ModResiduo extends CI_Model
 			$this->db->where("idresiduo in (select idresiduo from relsucres where idsucursal = $idsucursal)");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('residuo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -171,6 +175,7 @@ class ModResiduo extends CI_Model
 		}
 		$this->db->where('idresiduo',$this->idresiduo);
 		$this->db->delete(array('relsucres','residuo'));
+		$this->db->reset_query();
 	}
 	public function set($idResiduo,$nombre,$nom052,$c,$r,$e,$t,$i,$b,$reportecoa,$idSucursal,$idtiporesiduo)
 	{
@@ -188,4 +193,4 @@ class ModResiduo extends CI_Model
 		$this->setIdresiduo($idtiporesiduo);
 	}
 }
-?>
+?>

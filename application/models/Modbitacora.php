@@ -49,6 +49,7 @@ class Modbitacora extends CI_Model
 		}
 		$this->db->where('idbitacora',$this->idbitacora);
 		$regs=$this->db->get('bitacora');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -58,15 +59,18 @@ class Modbitacora extends CI_Model
 		$this->setIdentificador($reg["identificador"]);
 		$this->db->where('idbitacora',$this->idbitacora);
 		$regs=$this->db->get('relbitman');
+		$this->db->reset_query();
 		$this->setManifiestos(array());
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 			$this->setManifiestos($reg["idmanifiesto"]);
 		$this->db->where('idbitacora',$this->idbitacora);
 		$regs=$this->db->get('relbitrut');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 			$this->setIdruta($reg["idruta"]);
 		$this->db->where('idbitacora',$this->idbitacora);
 		$regs=$this->db->get('relsucbit');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 			$this->setIdsucursal($reg["idsucursal"]);
 		return true;
@@ -90,20 +94,26 @@ class Modbitacora extends CI_Model
 		);
 		$this->db->insert("bitacora",$data);
 		$this->setIdbitacora($this->db->insert_id());
-		if($this->idruta!="" && $this->idruta>0)
+		$this->db->reset_query();
+		if($this->idruta!="" && $this->idruta>0) {
 			$this->db->insert("relbitrut",array(
 				"idbitacora"=>$this->idbitacora,
 				"idruta"=>$this->idruta
 				));
+			$this->db->reset_query();
+		}
 		$this->db->insert("relsucbit",array(
 			"idbitacora"=>$this->idbitacora,
 			"idsucursal"=>$this->idsucursal
 			));
-		if($this->manifiestos!=false) foreach($this->manifiestos as $man)
+		$this->db->reset_query();
+		if($this->manifiestos!=false) foreach($this->manifiestos as $man) {
 			$this->db->insert("relbitman",array(
 				"idbitacora"=>$this->idbitacora,
 				"idmanifiesto"=>$man
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -121,6 +131,7 @@ class Modbitacora extends CI_Model
 		);
 		$this->db->where("idbitacora",$this->idbitacora);
 		$this->db->update("bitacora",$data);
+		$this->db->reset_query();
 	}
 	public function getAll($idsucursal=0)
 	{
@@ -128,6 +139,7 @@ class Modbitacora extends CI_Model
 			$this->db->where("idbitacora in (select idbitacora from relsucbit where idsucursal=$idsucursal)");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('bitacora');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -146,6 +158,7 @@ class Modbitacora extends CI_Model
 		}
 		$this->db->where('idbitacora',$this->idbitacora);
 		$this->db->delete(array('relsucbit','relbitrut','relbitman','bitacora'));
+		$this->db->reset_query();
 	}
 	public function nextIdentificador($idsucursal)
 	{
@@ -162,9 +175,10 @@ class Modbitacora extends CI_Model
 		$this->db->where("identificador",$identificador);
 		$this->db->order_by('identificador');
 		$regs=$this->db->get('bitacora');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>
