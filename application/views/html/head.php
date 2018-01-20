@@ -1,3 +1,4 @@
+<!-- Vista hmtl/head -->
 <meta http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
@@ -43,8 +44,9 @@
 <script type="text/javascript" src="<?= base_url('project_files/js/dataTables.bootstrap.min.js'); ?>"></script>
 <link href="<?= base_url('project_files/bootstrap/css/dataTables.bootstrap.min.css'); ?>" />
 <!-- App SIMA -->
-<script type="text/javascript" src="<?= base_url('project_files/js/app.js?fecha='.time()); ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?= base_url('project_files/css/basicos.css?fecha='.time()); ?>">       
+<script type="text/javascript" src="<?= base_url( 'project_files/js/app.js' ); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?= base_url( 'project_files/css/basicos.css' ); ?>">       
 <script type="text/javascript">
 	var baseURL='<?= base_url(); ?>';
 </script>
+<!-- Vista hmtl/head End -->

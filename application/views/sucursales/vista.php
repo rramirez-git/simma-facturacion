@@ -1,3 +1,4 @@
+<!-- Vista sucursales/vista -->
 <?= $menumain; ?>
 <?php
 $objruta=new Modruta();
@@ -41,6 +42,69 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_iniales" class="col-sm-2 control-label">Iniciales</label>
 			<div class="col-sm-10">
 				<p class="form-control-static"><?= $objeto->getIniciales(); ?></p>
+			</div>
+		</div>
+		<h5>Facturación</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de serie</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_serie(); ?></p>
+			</div>
+			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_folio_incial(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de folio final</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_folio_final(); ?></p>
+			</div>
+			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_folio_actual(); ?></p>
+			</div>
+		</div>
+		<h5>Notas de Crédito</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de serie</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_serie(); ?></p>
+			</div>
+			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_folio_incial(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_nc_folio_final" class="col-sm-2 control-label">Número de folio final</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_folio_final(); ?></p>
+			</div>
+			<label for="frm_sucursal_nc_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_folio_actual(); ?></p>
+			</div>
+		</div>
+		<h5>Pagos</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de serie</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getPago_serie(); ?></p>
+			</div>
+			<label for="frm_sucursal_pago_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getPago_folio_incial(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_pago_folio_final" class="col-sm-2 control-label">Número de folio final</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getPago_folio_final(); ?></p>
+			</div>
+			<label for="frm_sucursal_pago_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getPago_folio_actual(); ?></p>
 			</div>
 		</div>
 		<h5>Dirección</h5>
@@ -254,3 +318,4 @@ $objempresa=new Modempresa();
 <script type="text/javascript">
 	$(document).ready(function(){$("div.table-responsive table").DataTable();});
 </script>
+<!-- Vista sucursales/vista End -->

@@ -19,6 +19,7 @@ class Modempresa extends CI_Model
 	private $coorporativo;
 	private $transportista;
 	private $destinofinal;
+	private $regimen_fiscal;
 	public function __construct()
 	{
 		parent::__construct();
@@ -40,6 +41,7 @@ class Modempresa extends CI_Model
 		$this->coorporativo=0;
 		$this->transportista=0;
 		$this->destinofinal=0;
+		$this->regimen_fiscal="";
 	}
 	public function getIdempresa() { return $this->idempresa; }
 	public function getRazonsocial() { return $this->razonsocial; }
@@ -59,6 +61,7 @@ class Modempresa extends CI_Model
 	public function getCoorporativo() { return $this->coorporativo; }
 	public function getTransportista() { return $this->transportista; }
 	public function getDestinofinal() { return $this->destinofinal; }
+	public function getRegimenfiscal() { return $this->regimen_fiscal; }
 	public function setIdempresa($valor) { $this->idempresa= intval($valor); }
 	public function setRazonsocial($valor) { $this->razonsocial= "".$valor; }
 	public function setRfc($valor) { $this->rfc= "".$valor; }
@@ -77,6 +80,7 @@ class Modempresa extends CI_Model
 	public function setCoorporativo($valor) { $this->coorporativo= intval($valor); }
 	public function setTransportista($valor) { $this->transportista= intval($valor); }
 	public function setDestinofinal($valor) { $this->destinofinal= intval($valor); }
+	public function setRegimenfiscal($valor) { $this->regimen_fiscal= "".$valor; }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idempresa==""||$this->idempresa==0)
@@ -88,6 +92,7 @@ class Modempresa extends CI_Model
 		}
 		$this->db->where('idempresa',$this->idempresa);
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -109,6 +114,7 @@ class Modempresa extends CI_Model
 		$this->setCoorporativo($reg["coorporativo"]);
 		$this->setTransportista($reg["transportista"]);
 		$this->setDestinofinal($reg["destinofinal"]);
+		$this->setRegimenfiscal($reg["regimen_fiscal"]);
 		return true;
 	}
 	public function getFromInput()
@@ -131,6 +137,7 @@ class Modempresa extends CI_Model
 		$this->setCoorporativo($this->input->post("frm_empresa_coorporativo"));
 		$this->setTransportista($this->input->post("frm_empresa_transportista"));
 		$this->setDestinofinal($this->input->post("frm_empresa_destinofinal"));
+		$this->setRegimenfiscal($this->input->post("frm_empresa_regimen_fiscal"));
 		return true;
 	}
 	public function addToDatabase()
@@ -151,11 +158,13 @@ class Modempresa extends CI_Model
 			"representante"=>$this->representante,
 			"cargorepresentante"=>$this->cargorepresentante,
 			"coorporativo"=>$this->coorporativo,
+			"regimen_fiscal"=>$this->regimen_fiscal,
 			"transportista"=>$this->transportista,
 			"destinofinal"=>$this->destinofinal
 		);
 		$this->db->insert('empresa',$data);
 		$this->setIdempresa($this->db->insert_id());
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -183,16 +192,19 @@ class Modempresa extends CI_Model
 			"cargorepresentante"=>$this->cargorepresentante,
 			"coorporativo"=>$this->coorporativo,
 			"transportista"=>$this->transportista,
+			"regimen_fiscal"=>$this->regimen_fiscal,
 			"destinofinal"=>$this->destinofinal
 		);
 		$this->db->where('idempresa',$this->idempresa);
 		$this->db->update('empresa',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll()
 	{
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -202,6 +214,7 @@ class Modempresa extends CI_Model
 		$this->db->where('coorporativo',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -211,6 +224,7 @@ class Modempresa extends CI_Model
 		$this->db->where('transportista',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -220,6 +234,7 @@ class Modempresa extends CI_Model
 		$this->db->where('destinofinal',1);
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -244,6 +259,7 @@ class Modempresa extends CI_Model
 		}
 		$this->db->where('idempresa',$this->idempresa);
 		$this->db->delete(array('empresa','relempsuc'));
+		$this->db->reset_query();
 	}
 	public function getSucursales()
 	{
@@ -252,6 +268,7 @@ class Modempresa extends CI_Model
 		$this->db->select('idsucursal');
 		$this->db->where('idempresa',$this->idempresa);
 		$regs=$this->db->get('relempsuc');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -260,9 +277,10 @@ class Modempresa extends CI_Model
 	{
 		$this->db->where($campo,$valor);
 		$regs=$this->db->get('empresa');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>

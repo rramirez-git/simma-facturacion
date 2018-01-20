@@ -18,6 +18,18 @@ class Modsucursal extends CI_Model
 	private $numregamb;
 	private $idempresa;
 	private $iniciales;
+	private $fac_serie;
+	private $fac_folio_incial;
+	private $fac_folio_final;
+	private $fac_folio_actual;
+	private $nc_serie;
+	private $nc_folio_incial;
+	private $nc_folio_final;
+	private $nc_folio_actual;
+	private $pago_serie;
+	private $pago_folio_incial;
+	private $pago_folio_final;
+	private $pago_folio_actual;
 	public function __construct()
 	{
 		parent::__construct();
@@ -38,6 +50,18 @@ class Modsucursal extends CI_Model
 		$this->numregamb="";
 		$this->idempresa=0;
 		$this->iniciales="";
+		$this->fac_serie="";
+		$this->fac_folio_incial=0;
+		$this->fac_folio_final=0;
+		$this->fac_folio_actual=0;
+		$this->nc_serie="";
+		$this->nc_folio_incial=0;
+		$this->nc_folio_final=0;
+		$this->nc_folio_actual=0;
+		$this->pago_serie="";
+		$this->pago_folio_incial=0;
+		$this->pago_folio_final=0;
+		$this->pago_folio_actual=0;
 	}
 	public function getIdsucursal() { return $this->idsucursal; }
 	public function getNombre() { return $this->nombre; }
@@ -56,6 +80,18 @@ class Modsucursal extends CI_Model
 	public function getNumregamb() { return $this->numregamb; }
 	public function getIdempresa() { return $this->idempresa; }
 	public function getIniciales() { return $this->iniciales; }
+	public function getFac_serie(){ return $this->fac_serie; }
+	public function getFac_folio_incial(){ return $this->fac_folio_incial; }
+	public function getFac_folio_final(){ return $this->fac_folio_final; }
+	public function getFac_folio_actual(){ return $this->fac_folio_actual; }
+	public function getNc_serie(){ return $this->nc_serie; }
+	public function getNc_folio_incial(){ return $this->nc_folio_incial; }
+	public function getNc_folio_final(){ return $this->nc_folio_final; }
+	public function getNc_folio_actual(){ return $this->nc_folio_actual; }
+	public function getPago_serie(){ return $this->pago_serie; }
+	public function getPago_folio_incial(){ return $this->pago_folio_incial; }
+	public function getPago_folio_final(){ return $this->pago_folio_final; }
+	public function getPago_folio_actual(){ return $this->pago_folio_actual; }
 	public function setIdsucursal($valor) { $this->idsucursal= intval($valor); }
 	public function setNombre($valor) { $this->nombre= "".$valor; }
 	public function setCalle($valor) { $this->calle= "".$valor; }
@@ -73,6 +109,18 @@ class Modsucursal extends CI_Model
 	public function setNumregamb($valor) { $this->numregamb= "".$valor; }
 	public function setIdempresa($valor) { $this->idempresa= intval($valor); }
 	public function setIniciales($valor) { $this->iniciales= "".$valor; }
+	public function setFac_serie($valor) { $this->fac_serie="".$valor; }	
+	public function setFac_folio_incial($valor) { $this->fac_folio_incial="".$valor; }
+	public function setFac_folio_final($valor) { $this->fac_folio_final="".$valor; }	
+	public function setFac_folio_actual($valor) { $this->fac_folio_actual="".$valor; }
+	public function setNc_serie($valor) { $this->nc_serie="".$valor; }
+	public function setNc_folio_incial($valor) { $this->nc_folio_incial="".$valor; }
+	public function setNc_folio_final($valor) { $this->nc_folio_final="".$valor; }
+	public function setNc_folio_actual($valor) { $this->nc_folio_actual="".$valor; }
+	public function setPago_serie($valor) { $this->pago_serie="".$valor; }
+	public function setPago_folio_incial($valor) { $this->pago_folio_incial="".$valor; }	
+	public function setPago_folio_final($valor) { $this->pago_folio_final="".$valor; }
+	public function setPago_folio_actual($valor) { $this->pago_folio_actual="".$valor; }	
 	public function getFromDatabase($id=0)
 	{
 		if($this->idsucursal==""||$this->idsucursal==0)
@@ -84,6 +132,7 @@ class Modsucursal extends CI_Model
 		}
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -103,8 +152,21 @@ class Modsucursal extends CI_Model
 		$this->setCargorepresentante($reg["cargorepresentante"]);
 		$this->setNumregamb($reg["numregamb"]);
 		$this->setIniciales($reg["iniciales"]);
+		$this->setFac_serie($reg["fac_serie"]);
+		$this->setFac_folio_incial($reg["fac_folio_incial"]);
+		$this->setFac_folio_final($reg["fac_folio_final"]);
+		$this->setFac_folio_actual($reg["fac_folio_actual"]);
+		$this->setNc_serie($reg["nc_serie"]);
+		$this->setNc_folio_incial($reg["nc_folio_incial"]);
+		$this->setNc_folio_final($reg["nc_folio_final"]);
+		$this->setNc_folio_actual($reg["nc_folio_actual"]);
+		$this->setPago_serie($reg["pago_serie"]);
+		$this->setPago_folio_incial($reg["pago_folio_incial"]);
+		$this->setPago_folio_final($reg["pago_folio_final"]);
+		$this->setPago_folio_actual($reg["pago_folio_actual"]);
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relempsuc');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -130,6 +192,19 @@ class Modsucursal extends CI_Model
 		$this->setNumregamb($this->input->post("frm_sucursal_numregamb"));
 		$this->setIdempresa($this->input->post("frm_sucursal_idempresa"));
 		$this->setIniciales($this->input->post("frm_sucursal_iniciales"));
+		$this->setFac_serie($this->input->post("frm_sucursal_fac_serie"));
+		$this->setFac_folio_incial($this->input->post("frm_sucursal_fac_folio_incial")); 
+		$this->setFac_folio_final($this->input->post("frm_sucursal_fac_folio_final")); 
+		$this->setFac_folio_actual($this->input->post("frm_sucursal_fac_folio_actual")); 
+		$this->setNc_serie($this->input->post("frm_sucursal_nc_serie")); 
+		$this->setNc_folio_incial($this->input->post("frm_sucursal_nc_folio_incial")); 
+		$this->setNc_folio_final($this->input->post("frm_sucursal_nc_folio_final")); 
+		$this->setNc_folio_actual($this->input->post("frm_sucursal_nc_folio_actual")); 
+		$this->setPago_serie($this->input->post("frm_sucursal_pago_serie")); 
+		$this->setPago_folio_incial($this->input->post("frm_sucursal_pago_folio_incial")); 
+		$this->setPago_folio_final($this->input->post("frm_sucursal_pago_folio_final")); 
+		$this->setPago_folio_actual($this->input->post("frm_sucursal_pago_folio_actual"));  
+
 		return true;
 	}
 	public function addToDatabase()
@@ -149,14 +224,30 @@ class Modsucursal extends CI_Model
 			"representante"=>$this->representante,
 			"cargorepresentante"=>$this->cargorepresentante,
 			"numregamb"=>$this->numregamb,
-			"iniciales"=>$this->iniciales
+			"iniciales"=>$this->iniciales,
+			"fac_serie"=>$this->fac_serie,
+			"fac_folio_incial"=>$this->fac_folio_incial,
+			"fac_folio_final"=>$this->fac_folio_final,
+			"fac_folio_actual"=>$this->fac_folio_actual,
+
+			"nc_serie"=>$this->nc_serie,
+			"nc_folio_incial"=>$this->nc_folio_incial,
+			"nc_folio_final"=>$this->nc_folio_final,
+			"nc_folio_actual"=>$this->nc_folio_actual,
+
+			"pago_serie"=>$this->pago_serie,
+			"pago_folio_incial"=>$this->pago_folio_incial,
+			"pago_folio_final"=>$this->pago_folio_final,
+			"pago_folio_actual"=>$this->pago_folio_actual,
 		);
 		$this->db->insert('sucursal',$data);
 		$this->setIdsucursal($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relempsuc',array(
 			"idsucursal"=>$this->idsucursal,
 			"idempresa"=>$this->idempresa
 			));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -182,10 +273,23 @@ class Modsucursal extends CI_Model
 			"representante"=>$this->representante,
 			"cargorepresentante"=>$this->cargorepresentante,
 			"numregamb"=>$this->numregamb,
-			"iniciales"=>$this->iniciales
+			"iniciales"=>$this->iniciales,
+			"fac_serie"=>$this->fac_serie,
+			"fac_folio_incial"=>$this->fac_folio_incial,
+			"fac_folio_final"=>$this->fac_folio_final,
+			"fac_folio_actual"=>$this->fac_folio_actual,
+			"nc_serie"=>$this->nc_serie,
+			"nc_folio_incial"=>$this->nc_folio_incial,
+			"nc_folio_final"=>$this->nc_folio_final,
+			"nc_folio_actual"=>$this->nc_folio_actual,
+			"pago_serie"=>$this->pago_serie,
+			"pago_folio_incial"=>$this->pago_folio_incial,
+			"pago_folio_final"=>$this->pago_folio_final,
+			"pago_folio_actual"=>$this->pago_folio_actual,
 		);
 		$this->db->where('idsucursal',$this->idsucursal);
 		$this->db->update('sucursal',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idempresa=0)
@@ -194,6 +298,7 @@ class Modsucursal extends CI_Model
 			$this->db->where("idsucursal in (select idsucursal from relempsuc where idempresa=$idempresa)");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -202,6 +307,11 @@ class Modsucursal extends CI_Model
 	{
 		//Elimina la relacion con la empresa pero la deja viva
 		//Elimina la relacion con el grupo pero la deja viva
+		$this->load->model( 'modruta' );
+		$this->load->model( 'modvehiculo' );
+		$this->load->model( 'modoperador' );
+		$this->load->model( 'modcliente' );
+		$this->load->model( 'modresiduo' );
 		if($this->idsucursal==""||$this->idsucursal==0)
 		{
 			if($id>0)
@@ -240,7 +350,8 @@ class Modsucursal extends CI_Model
 			$this->modresiduo->delete();
 		}
 		$this->db->where('idsucursal',$this->idsucursal);
-		$this->db->delete(array('relgruusu','relempsuc','sucursal'));
+		$this->db->delete(array('relgrusuc','relempsuc','sucursal'));
+		$this->db->reset_query();
 	}
 	public function getResiduos()
 	{
@@ -249,6 +360,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idresiduo');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucres');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -260,6 +372,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idcliente');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsuccli');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -271,6 +384,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idvehiculo');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucveh');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -282,6 +396,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idruta');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucrut');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -293,6 +408,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idoperador');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucope');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -301,9 +417,10 @@ class Modsucursal extends CI_Model
 	{
 		$this->db->where("$campo ='$valor' and idsucursal in (select idsucursal from relempsuc where idempresa=$idempresa)");
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>
