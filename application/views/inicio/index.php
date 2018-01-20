@@ -1,3 +1,4 @@
+<!-- Vista inicio/index -->
 <?= $menumain; ?>
 <div class="container">
 	<hr />
@@ -69,8 +70,8 @@
 	</div>
 </div>
 <?php if(count($inds)>0): ?>
-	<script type="text/javascript" src="<?= base_url("project_files/js/chart.js?time=".time()); ?>"></script>
-	<script type="text/javascript" src="<?= base_url("project_files/js/indicador.js?time=".time()); ?>"></script>
+	<script type="text/javascript" src="<?= base_url( "project_files/js/chart.js" ); ?>"></script>
+	<script type="text/javascript" src="<?= base_url( "project_files/js/indicador.js" ); ?>"></script>
 	<script type="text/javascript">
 		var indicadores=<?= json_encode($indicadores)?>;
 		indicadores.reverse();
@@ -79,3 +80,4 @@
 		});
 	</script>
 <?php endif; ?>
+<!-- Vista inicio/index  End-->
