@@ -121,7 +121,8 @@ class Clientes extends CI_Controller
 				"objeto"=>$this->modfacturacion,
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
-				"modoedicion"=>false
+				"modoedicion"=>false,
+				"unidad" => $this->modcatalogo->getCatalogo( 29 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -162,7 +163,8 @@ class Clientes extends CI_Controller
 				"objeto"=>$this->modfacturacion,
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
-				"modoedicion"=>true
+				"modoedicion"=>true,
+				"unidad" => $this->modcatalogo->getCatalogo( 29 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -207,7 +209,8 @@ class Clientes extends CI_Controller
 			"objeto"=>$this->modfacturacion,
 			"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
-			"modoedicion"=>true
+			"modoedicion"=>true,
+			"unidad" => $this->modcatalogo->getCatalogo( 29 )
 		));
 	}
 	public function eliminaFacturacion($idfacturacion)
