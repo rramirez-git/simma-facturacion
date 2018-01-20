@@ -576,13 +576,14 @@ function fnOperador()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp=="")
+					if(resp=="") {
 						location.href=baseURL+'operadores/index/'+idEmpresa+'/'+idSucursal;
-					else
+					} else {
 						$.msg( 'unblock', 10 );
 						setTimeout( function(){ 
 							Alert( resp );
 						}, 500 );
+					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
 					$.msg('unblock',10 );
