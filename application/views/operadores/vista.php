@@ -1,3 +1,4 @@
+<!-- Vista operadores/vista -->
 <?= $menumain; ?>
 <div class="container">
 	<div class="btn-toolbar pull-right" role="toolbar">
@@ -66,3 +67,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista operadores/vista End -->

@@ -110,15 +110,19 @@ class Operadores extends CI_Controller
 		//Elimina la realcion con la sucursal pero la deja viva
 		//Elimina la realcion con la ruta pero la deja viva
 		$this->load->model('modoperador');
-		$this->modoperador->getFromDatabase($id);
-		$this->modoperador->delete($id);
-		$this->modsesion->addLog(
-			"eliminar",
-			$this->modoperador->getIdoperador(),
-			$this->modoperador->getNombre()." ".$this->modoperador->getApaterno()." ".$this->modoperador->getAmaterno()." ",
-			"operador",
-			"relrutope,relsucope"
-		);
+		if( $this->modoperador->hasRuta( $id ) ) {
+			echo "No es posible eliminar al Operador ya que tiene una ruta asociada";
+		} else {
+			$this->modoperador->getFromDatabase($id);
+			$this->modoperador->delete($id);
+			$this->modsesion->addLog(
+				"eliminar",
+				$this->modoperador->getIdoperador(),
+				$this->modoperador->getNombre()." ".$this->modoperador->getApaterno()." ".$this->modoperador->getAmaterno()." ",
+				"operador",
+				"relrutope,relsucope"
+			);
+		}
 	}
 }
 ?>

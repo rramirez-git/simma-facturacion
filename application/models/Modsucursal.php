@@ -132,6 +132,7 @@ class Modsucursal extends CI_Model
 		}
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -165,6 +166,7 @@ class Modsucursal extends CI_Model
 		$this->setPago_folio_actual($reg["pago_folio_actual"]);
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relempsuc');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -240,10 +242,12 @@ class Modsucursal extends CI_Model
 		);
 		$this->db->insert('sucursal',$data);
 		$this->setIdsucursal($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relempsuc',array(
 			"idsucursal"=>$this->idsucursal,
 			"idempresa"=>$this->idempresa
 			));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -285,6 +289,7 @@ class Modsucursal extends CI_Model
 		);
 		$this->db->where('idsucursal',$this->idsucursal);
 		$this->db->update('sucursal',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idempresa=0)
@@ -293,6 +298,7 @@ class Modsucursal extends CI_Model
 			$this->db->where("idsucursal in (select idsucursal from relempsuc where idempresa=$idempresa)");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -301,6 +307,11 @@ class Modsucursal extends CI_Model
 	{
 		//Elimina la relacion con la empresa pero la deja viva
 		//Elimina la relacion con el grupo pero la deja viva
+		$this->load->model( 'modruta' );
+		$this->load->model( 'modvehiculo' );
+		$this->load->model( 'modoperador' );
+		$this->load->model( 'modcliente' );
+		$this->load->model( 'modresiduo' );
 		if($this->idsucursal==""||$this->idsucursal==0)
 		{
 			if($id>0)
@@ -339,7 +350,8 @@ class Modsucursal extends CI_Model
 			$this->modresiduo->delete();
 		}
 		$this->db->where('idsucursal',$this->idsucursal);
-		$this->db->delete(array('relgruusu','relempsuc','sucursal'));
+		$this->db->delete(array('relgrusuc','relempsuc','sucursal'));
+		$this->db->reset_query();
 	}
 	public function getResiduos()
 	{
@@ -348,6 +360,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idresiduo');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucres');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -359,6 +372,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idcliente');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsuccli');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -370,6 +384,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idvehiculo');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucveh');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -381,6 +396,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idruta');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucrut');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -392,6 +408,7 @@ class Modsucursal extends CI_Model
 		$this->db->select('idoperador');
 		$this->db->where('idsucursal',$this->idsucursal);
 		$regs=$this->db->get('relsucope');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -400,6 +417,7 @@ class Modsucursal extends CI_Model
 	{
 		$this->db->where("$campo ='$valor' and idsucursal in (select idsucursal from relempsuc where idempresa=$idempresa)");
 		$regs=$this->db->get('sucursal');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();

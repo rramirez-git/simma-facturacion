@@ -51,6 +51,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('facturacion');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -63,6 +64,7 @@ class Modfacturacion extends CI_Model
 		$this->setUnidad( $reg[ "unidad" ] );
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('relclifac');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -70,6 +72,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('relgenfac');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -101,16 +104,21 @@ class Modfacturacion extends CI_Model
 		);
 		$this->db->insert('facturacion',$data);
 		$this->setIdfacturacion($this->db->insert_id());
-		if($this->getIdcliente()>0 && $this->getIdcliente()!="")
+		$this->db->reset_query();
+		if($this->getIdcliente()>0 && $this->getIdcliente()!="") {
 			$this->db->insert('relclifac',array(
 				"idfacturacion"=>$this->idfacturacion,
 				"idcliente"=>$this->getIdcliente()
 			));
-		if($this->getIdgenerador()>0 && $this->getIdgenerador()!="")
+			$this->db->reset_query();
+		}
+		if($this->getIdgenerador()>0 && $this->getIdgenerador()!="") {
 			$this->db->insert('relgenfac',array(
 				"idfacturacion"=>$this->idfacturacion,
 				"idgenerador"=>$this->getIdgenerador()
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase()
 	{
@@ -126,6 +134,7 @@ class Modfacturacion extends CI_Model
 		);
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$this->db->update('facturacion',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idcliente=0,$idgenerador=0)
@@ -138,6 +147,7 @@ class Modfacturacion extends CI_Model
 		if($whr!="")
 			$this->db->where($whr);
 		$regs=$this->db->get("facturacion");
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 			return $regs->result_array();
 		return false;
@@ -153,6 +163,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$this->db->delete(array('relclifac','relgenfac','facturacion'));
+		$this->db->reset_query();
 	}
 }
 ?>
