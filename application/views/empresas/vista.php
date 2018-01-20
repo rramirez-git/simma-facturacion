@@ -29,8 +29,19 @@
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Registro Federal de Contribuyentes</label>
-			<div class="col-sm-10">
+			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getRfc(); ?></p>
+			</div>
+			<label for="frm_empresa_regimen_fiscal" class="col-sm-2 control-label">Regimen fiscal</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php 
+						if($regimen_fiscal["opciones"]!==false) 
+							foreach($regimen_fiscal["opciones"] as $opc)
+								if($opc["idcatalogodet"]==$objeto->getRegimenfiscal())
+									echo $opc["descripcion"];
+					?>
+				</p>
 			</div>
 		</div>
 		<h5>Dirección</h5>
@@ -124,6 +135,19 @@
 						Empresa de Destino Final
 					</label>
 				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_empresa_regimen_fiscal" class="col-sm-2 control-label">Regimen fiscal</label>
+			<div class="col-sm-10">
+				<p class="form-control-static">
+					<?php 
+						if($regimen_fiscal["opciones"]!==false) 
+							foreach($regimen_fiscal["opciones"] as $opc)
+								if($opc["idcatalogodet"]==$objeto->getRegimenfiscal())
+									echo $opc["descripcion"];
+					?>
+				</p>
 			</div>
 		</div>
 		<?php if($this->modsesion->hasPermisoHijo(7)): ?>

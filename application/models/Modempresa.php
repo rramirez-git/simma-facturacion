@@ -19,6 +19,7 @@ class Modempresa extends CI_Model
 	private $coorporativo;
 	private $transportista;
 	private $destinofinal;
+	private $regimen_fiscal;
 	public function __construct()
 	{
 		parent::__construct();
@@ -40,6 +41,7 @@ class Modempresa extends CI_Model
 		$this->coorporativo=0;
 		$this->transportista=0;
 		$this->destinofinal=0;
+		$this->regimen_fiscal="";
 	}
 	public function getIdempresa() { return $this->idempresa; }
 	public function getRazonsocial() { return $this->razonsocial; }
@@ -59,6 +61,7 @@ class Modempresa extends CI_Model
 	public function getCoorporativo() { return $this->coorporativo; }
 	public function getTransportista() { return $this->transportista; }
 	public function getDestinofinal() { return $this->destinofinal; }
+	public function getRegimenfiscal() { return $this->regimen_fiscal; }
 	public function setIdempresa($valor) { $this->idempresa= intval($valor); }
 	public function setRazonsocial($valor) { $this->razonsocial= "".$valor; }
 	public function setRfc($valor) { $this->rfc= "".$valor; }
@@ -77,6 +80,7 @@ class Modempresa extends CI_Model
 	public function setCoorporativo($valor) { $this->coorporativo= intval($valor); }
 	public function setTransportista($valor) { $this->transportista= intval($valor); }
 	public function setDestinofinal($valor) { $this->destinofinal= intval($valor); }
+	public function setRegimenfiscal($valor) { $this->regimen_fiscal= "".$valor; }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idempresa==""||$this->idempresa==0)
@@ -109,6 +113,7 @@ class Modempresa extends CI_Model
 		$this->setCoorporativo($reg["coorporativo"]);
 		$this->setTransportista($reg["transportista"]);
 		$this->setDestinofinal($reg["destinofinal"]);
+		$this->setRegimenfiscal($reg["regimen_fiscal"]);
 		return true;
 	}
 	public function getFromInput()
@@ -131,6 +136,7 @@ class Modempresa extends CI_Model
 		$this->setCoorporativo($this->input->post("frm_empresa_coorporativo"));
 		$this->setTransportista($this->input->post("frm_empresa_transportista"));
 		$this->setDestinofinal($this->input->post("frm_empresa_destinofinal"));
+		$this->setRegimenfiscal($this->input->post("frm_empresa_regimen_fiscal"));
 		return true;
 	}
 	public function addToDatabase()
@@ -151,6 +157,7 @@ class Modempresa extends CI_Model
 			"representante"=>$this->representante,
 			"cargorepresentante"=>$this->cargorepresentante,
 			"coorporativo"=>$this->coorporativo,
+			"regimen_fiscal"=>$this->regimen_fiscal,
 			"transportista"=>$this->transportista,
 			"destinofinal"=>$this->destinofinal
 		);
@@ -183,6 +190,7 @@ class Modempresa extends CI_Model
 			"cargorepresentante"=>$this->cargorepresentante,
 			"coorporativo"=>$this->coorporativo,
 			"transportista"=>$this->transportista,
+			"regimen_fiscal"=>$this->regimen_fiscal,
 			"destinofinal"=>$this->destinofinal
 		);
 		$this->db->where('idempresa',$this->idempresa);
@@ -265,4 +273,4 @@ class Modempresa extends CI_Model
 		return $regs->result_array();
 	}
 }
-?>
+?>
