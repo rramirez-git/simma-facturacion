@@ -107,15 +107,19 @@ class Vehiculos extends CI_Controller
 	public function eliminar($id)
 	{
 		$this->load->model('modvehiculo');
-		$this->modvehiculo->getFromDatabase($id);
-		$this->modvehiculo->delete($id);
-		$this->modsesion->addLog(
-			"eliminar",
-			$this->modvehiculo->getIdvehiculo(),
-			$this->modvehiculo->getPlaca(),
-			"vehiculo",
-			"relsucveh,relrutveh"
-		);
+		if( $this->modvehiculo->hasRuta( $id ) ) {
+			echo "No es posible eliminar al Vehiculo ya que tiene una ruta asociada";
+		} else {
+			$this->modvehiculo->getFromDatabase($id);
+			$this->modvehiculo->delete($id);
+			$this->modsesion->addLog(
+				"eliminar",
+				$this->modvehiculo->getIdvehiculo(),
+				$this->modvehiculo->getPlaca(),
+				"vehiculo",
+				"relsucveh,relrutveh"
+			);
+		}
 	}
 }
 ?>

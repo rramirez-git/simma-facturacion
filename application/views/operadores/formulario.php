@@ -1,3 +1,4 @@
+<!-- Vista operadores/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Operadores</h3>
@@ -53,3 +54,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista operadores/formulario End -->
