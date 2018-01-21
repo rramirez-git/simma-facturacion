@@ -10,23 +10,28 @@ class Empresas extends CI_Controller
 	public function index()
 	{
 		$this->load->model('modempresa');
+		$this->load->model("modcatalogo");
 		$head=$this->load->view('html/head',array(),true);
 		$menumain=$this->load->view('menu/menumain',array(),true);
 		$empresas=$this->modempresa->getAll();
 		$empresas=($empresas!==false?$empresas:array());
 		$body=$this->load->view('empresas/index',array(
 			"menumain"=>$menumain,
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
 			"empresas"=>$empresas
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
+		$this->load->model("modcatalogo");
 	}
 	public function nuevo()
 	{
 		$this->load->model('modempresa');
+		$this->load->model("modcatalogo");
 		$head=$this->load->view('html/head',array(),true);
 		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body=$this->load->view('empresas/formulario',array(
 			"menumain"=>$menumain,
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
 			"objeto"=>$this->modempresa
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
@@ -49,12 +54,14 @@ class Empresas extends CI_Controller
 	{
 		$this->load->model('modempresa');
 		$this->load->model('modsucursal');
+		$this->load->model("modcatalogo");
 		$this->modempresa->getFromDatabase($id);
 		$head=$this->load->view('html/head',array(),true);
 		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body=$this->load->view('empresas/vista',array(
 			"menumain"=>$menumain,
 			"objeto"=>$this->modempresa,
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
 			"sucursales"=>$this->modsucursal->getAll($id)
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
@@ -83,11 +90,13 @@ class Empresas extends CI_Controller
 	public function actualizar($id)
 	{
 		$this->load->model('modempresa');
+		$this->load->model("modcatalogo");
 		$this->modempresa->getFromDatabase($id);
 		$head=$this->load->view('html/head',array(),true);
 		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body=$this->load->view('empresas/formulario',array(
 			"menumain"=>$menumain,
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
 			"objeto"=>$this->modempresa
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
