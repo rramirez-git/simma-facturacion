@@ -276,6 +276,7 @@ class Modgenerador extends CI_Model
 		}
 		$this->db->where('idgenerador',$this->idgenerador);
 		$regs=$this->db->get('generador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -337,6 +338,7 @@ class Modgenerador extends CI_Model
 		$this->setNombrecorto($reg["nombrecorto"]);
 		$this->db->where('idgenerador',$this->idgenerador);
 		$regs=$this->db->get('relcligen');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -344,6 +346,7 @@ class Modgenerador extends CI_Model
 		}
 		$this->db->where('idgenerador',$this->idgenerador);
 		$regs=$this->db->get('relrutgen');
+		$this->db->reset_query();
 		$this->setRutas(array());
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 		{
@@ -352,6 +355,7 @@ class Modgenerador extends CI_Model
 		$this->setFacturaciones(array());
 		$this->db->where('idgenerador',$this->idgenerador);
 		$regs=$this->db->get('relgenfac');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 		{
 			$this->setFacturaciones($reg["idfacturacion"]);
@@ -360,6 +364,7 @@ class Modgenerador extends CI_Model
 		$this->db->where("idcalendario in (select idcalendario from relgencal where idgenerador={$this->idgenerador})");
 		$this->db->order_by("fecha");
 		$regs=$this->db->get('calendario');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 		{
 			$this->setFechascalendario($reg["fecha"]);
@@ -493,17 +498,20 @@ class Modgenerador extends CI_Model
 			return false;
 		$this->db->insert('generador',$data);
 		$this->setIdgenerador($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relcligen',array(
 			"idcliente"=>$this->idcliente,
 			"idgenerador"=>$this->idgenerador
 		));
+		$this->db->reset_query();
 		foreach($this->rutas as $r)
 		{
-			if($r!==false)
+			if($r!==false) {
 				$this->db->insert("relrutgen",array(
 					"idruta"=>$r,
 					"idgenerador"=>$this->idgenerador
 				));
+			}
 		}
 		if(is_array($this->facturaciones) && count($this->facturaciones)>0) foreach($this->facturaciones as $idfacturacion) if($idfacturacion>0)
 		{
@@ -511,6 +519,7 @@ class Modgenerador extends CI_Model
 				"idgenerador"=>$this->getIdgenerador(),
 				"idfacturacion"=>$idfacturacion
 			));
+			$this->db->reset_query();
 		}
 	}
 	public function updateToDatabase($id=0)
@@ -581,24 +590,30 @@ class Modgenerador extends CI_Model
 		);
 		$this->db->where('idgenerador',$this->idgenerador);
 		$this->db->update('generador',$data);
+		$this->db->reset_query();
 		$this->db->where('idgenerador',$this->idgenerador);
 		$this->db->delete('relrutgen');
+		$this->db->reset_query();
 		foreach($this->rutas as $r)
 		{
-			if($r!==false)
+			if($r!==false) {
 				$this->db->insert("relrutgen",array(
 					"idruta"=>$r,
 					"idgenerador"=>$this->idgenerador
 				));
+				$this->db->reset_query();
+			}
 		}
 		$this->db->where('idgenerador',$this->idgenerador);
 		$this->db->delete("relgenfac");
+		$this->db->reset_query();
 		if(is_array($this->facturaciones) && count($this->facturaciones)>0) foreach($this->facturaciones as $idfacturacion) if($idfacturacion>0)
 		{
 			$this->db->insert("relgenfac",array(
 				"idgenerador"=>$this->getIdgenerador(),
 				"idfacturacion"=>$idfacturacion
 			));
+			$this->db->reset_query();
 		}
 		return true;
 	}
@@ -608,6 +623,7 @@ class Modgenerador extends CI_Model
 			$this->db->where("idgenerador in (select idgenerador from relcligen where idcliente=$idcliente)");
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('generador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -666,6 +682,7 @@ class Modgenerador extends CI_Model
 			$this->db->where($whr);
 			$this->db->order_by('razonsocial');
 			$regs=$this->db->get('generador');
+			$this->db->reset_query();
 			if($regs->num_rows()==0)
 				return false;
 			return $regs->result_array();
@@ -688,9 +705,19 @@ class Modgenerador extends CI_Model
 		{
 			$this->db->where("idfacturacion in (".implode(",",$this->facturaciones).")");
 			$this->db->delete(array("relgenfac","facturacion"));
+			$this->db->reset_query();
 		}
+		$this->db->where( "idcalendario in ( select idcalendario from relgencal where idgenerador = {$this->idgenerador} )" );
+		$cals = $this->db->get( "calendario" );
+		$this->db->reset_query();
 		$this->db->where('idgenerador',$this->idgenerador);
-		$this->db->delete(array('relgenman','relrutgen','relcligen','relgenfac','generador'));
+		$this->db->delete(array( 'relgencal', 'relgenman','relrutgen','relcligen','relgenfac','generador'));
+		$this->db->reset_query();
+		$cals = $cals->result_array();
+		foreach( $cals as $c ) {
+			$this->db->where( "idcalendario", $c[ "idcalendario" ] );
+			$this->db->delete( "calendario" );
+		}
 	}
 	public function nextIdentificador($idcliente=0)
 	{
@@ -707,6 +734,7 @@ class Modgenerador extends CI_Model
 	{
 		$this->db->where("identificador = $identificador and idgenerador in (select idgenerador from relcligen where idcliente = $idcliente)");
 		$regs=$this->db->get('generador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->row_array()["idgenerador"];
@@ -722,10 +750,12 @@ class Modgenerador extends CI_Model
 		}
 		$this->db->insert("calendario",array("fecha"=>$fecha));
 		$idcal=$this->db->insert_id();
+		$this->db->reset_query();
 		$this->db->insert("relgencal",array(
 			"idgenerador"=>$this->idgenerador,
 			"idcalendario"=>$idcal
 		));
+		$this->db->reset_query();
 	}
 	public function eliminaFechasCalendario($id=0)
 	{
@@ -738,10 +768,12 @@ class Modgenerador extends CI_Model
 		}
 		$this->db->where("idgenerador",$this->idgenerador);
 		$regs=$this->db->get("relgencal");
+		$this->db->reset_query();
 		if($regs->num_rows()>0) foreach($regs->result_array() as $reg)
 		{
 			$this->db->where("idcalendario",$reg["idcalendario"]);
 			$this->db->delete(array("relgencal","calendario"));
+			$this->db->reset_query();
 		}
 	}
 	public function getAllFromDate($fecha)
@@ -749,6 +781,7 @@ class Modgenerador extends CI_Model
 		$this->db->where("idgenerador in (select idgenerador from relgencal where idcalendario in (select idcalendario from calendario where fecha='$fecha'))");
 		$this->db->order_by('razonsocial');
 		$regs=$this->db->get('generador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -758,6 +791,7 @@ class Modgenerador extends CI_Model
 		$this->db->where("CONVERT(identificador,UNSIGNED) between $genIni and $genFin and idgenerador in (select idgenerador from relcligen where idcliente = '$idCte')");
 		//$this->db->order_by("CONVERT(identificador,UNSIGNED), razonsocial");
 		$regs=$this->db->get("generador");
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 			return $regs->result_array();
 		return array();
@@ -771,6 +805,7 @@ class Modgenerador extends CI_Model
 		$this->db->where("idcalendario in (select idcalendario from relgencal where idgenerador={$this->idgenerador})");
 		$this->db->order_by("fecha");
 		$regs=$this->db->get('calendario');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) 
 			return $regs->result_array();
 		return array();
@@ -783,4 +818,4 @@ class Modgenerador extends CI_Model
 		return json_encode($data);
 	}
 }
-?>
+?>

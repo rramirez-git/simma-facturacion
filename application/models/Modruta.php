@@ -80,6 +80,7 @@ class Modruta extends CI_Model
 		}
 		$this->db->where('idruta',$this->idruta);
 		$regs=$this->db->get('ruta');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -98,18 +99,21 @@ class Modruta extends CI_Model
 		$this->setServiciodomingo($reg["serviciodomingo"]);
 		$this->db->where('idruta',$this->idruta);
 		$regs=$this->db->get('relsucrut');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
 		$this->setIdsucursal($reg["idsucursal"]);
 		$this->db->where('idruta',$this->idruta);
 		$regs=$this->db->get('relrutope');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
 		$this->setIdoperador($reg["idoperador"]);
 		$this->db->where('idruta',$this->idruta);
 		$regs=$this->db->get('relrutveh');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -155,18 +159,22 @@ class Modruta extends CI_Model
 		);
 		$this->db->insert('ruta',$data);
 		$this->setIdruta($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relsucrut',array(
 			"idsucursal"=>$this->idsucursal,
 			"idruta"=>$this->idruta
 			));
+		$this->db->reset_query();
 		$this->db->insert('relrutope',array(
 			"idruta"=>$this->idruta,
 			"idoperador"=>$this->idoperador
 			));
+		$this->db->reset_query();
 		$this->db->insert('relrutveh',array(
 			"idruta"=>$this->idruta,
 			"idvehiculo"=>$this->idvehiculo
 			));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -193,10 +201,13 @@ class Modruta extends CI_Model
 		);
 		$this->db->where('idruta',$this->idruta);
 		$this->db->update('ruta',$data);
+		$this->db->reset_query();
 		$this->db->where('idruta',$this->idruta);
 		$this->db->update('relrutope',array("idoperador"=>$this->idoperador));
+		$this->db->reset_query();
 		$this->db->where('idruta',$this->idruta);
 		$this->db->update('relrutveh',array("idvehiculo"=>$this->idvehiculo));
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idsucursal=0)
@@ -205,6 +216,7 @@ class Modruta extends CI_Model
 			$this->db->where("idruta in (select idruta from relsucrut where idsucursal=$idsucursal)");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('ruta');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -226,12 +238,14 @@ class Modruta extends CI_Model
 		}
 		$this->db->where('idruta',$this->idruta);
 		$this->db->delete(array('relbitrut','relmanrut','relrutgen','relsucrut','relrutope','relrutveh','ruta'));
+		$this->db->reset_query();
 	}
 	public function getGeneradoresAsociados($idruta)
 	{
 		$this->db->select('idgenerador');
 		$this->db->where('idruta',$idruta);
 		$regs=$this->db->get('relrutgen');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -241,9 +255,10 @@ class Modruta extends CI_Model
 		$this->db->where("nombre = '$dato' or identificador = '$dato' ");
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('ruta');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>

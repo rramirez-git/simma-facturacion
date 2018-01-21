@@ -36,6 +36,7 @@ class Modpermiso extends CI_Model
 		}
 		$this->db->where('idpermiso',$this->idpermiso);
 		$regs=$this->db->get('permiso');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -45,6 +46,7 @@ class Modpermiso extends CI_Model
 		$this->setPermisopadre($reg["permisopadre"]);
 		$this->db->where('permisopadre',$this->idpermiso);
 		$regs=$this->db->get('permiso');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$regs=$regs->result_array();
@@ -72,6 +74,7 @@ class Modpermiso extends CI_Model
 		);
 		$this->db->insert('permiso',$data);
 		$this->setIdpermiso($this->db->insert_id());
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -89,6 +92,7 @@ class Modpermiso extends CI_Model
 		);
 		$this->db->where('idpermiso',$this->idpermiso);
 		$this->db->update('permiso',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($soloPermisosRaiz=true)
@@ -97,6 +101,7 @@ class Modpermiso extends CI_Model
 			$this->db->where('permisopadre',0);
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('permiso');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$regs=$regs->result_array();
@@ -109,6 +114,7 @@ class Modpermiso extends CI_Model
 		$this->db->where('permisopadre',$idPermisoPadre);
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('permiso');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$regs=$regs->result_array();
@@ -153,6 +159,7 @@ class Modpermiso extends CI_Model
 		}
 		$this->db->where('idpermiso',$currentId);
 		$this->db->delete(array('relpermperf','permiso'));
+		$this->db->reset_query();
 	}
 	public function addPermiso($nombre,$descripcion,$permisopadre)
 	{
@@ -162,7 +169,9 @@ class Modpermiso extends CI_Model
 			"permisopadre"=>$permisopadre
 		);
 		$this->db->insert('permiso',$data);
-		return $this->db->insert_id();
+		$id = $this->db->insert_id();
+		$this->db->reset_query();
+		return $id;
 	}
 }
-?>
+?>

@@ -70,24 +70,24 @@ function MuestraCPFrm(cp,colonia,municipio,estado,fnSelecciona)
 		data:	datos
 	});
 	ajx.fail(function(jqXHRObj,mensaje){
-		$.msg('unblock',10,3);
+		$.msg('unblock',10 );
 		setTimeout(function(){
 			Mensaje("Error al cargar formulario: "+mensaje+"<br />"+jqXHRObj.responseText);
 		},500);
 	});
 	ajx.done(function(resp){
-		$.msg('unblock',10,3);
+		$.msg('unblock',10 );
 		setTimeout(function(){
 			MensajeAfter(resp,function(){
 				$("#btnCancelarCP").bind('click',function(){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 				});
 				$("#btnBuscarCP").bind('click',function(){
 					var tmpCp			= $("#frm_cp_cp").val().trim();
 					var tmpColonia		= $("#frm_cp_colonia").val().trim();
 					var tmpMunicipio	= $("#frm_cp_municipio").val().trim();
 					var tmpEstado		= $("#frm_cp_estado").val().trim();
-					$.msg('unblock',10,4);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						MuestraCPFrm(tmpCp,tmpColonia,tmpMunicipio,tmpEstado,fnSelecciona);
 					},500);
@@ -335,7 +335,7 @@ function fnEmpresa()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -345,7 +345,7 @@ function fnEmpresa()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar esta empresa?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -354,13 +354,14 @@ function fnEmpresa()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'empresas';
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -375,7 +376,7 @@ function fnEmpresa()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_empresa_cp"			).attr('value',	cp);
 		$("#frm_empresa_colonia"	).attr('value',	colonia);
 		$("#frm_empresa_municipio"	).attr('value',	municipio);
@@ -426,7 +427,7 @@ function fnSucursal()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_sucursal_cp"		).attr('value',cp);
 		$("#frm_sucursal_colonia"	).attr('value',colonia);
 		$("#frm_sucursal_municipio"	).attr('value',municipio);
@@ -485,7 +486,7 @@ function fnSucursal()
 				else Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500);
@@ -495,7 +496,7 @@ function fnSucursal()
 	this.Eliminar=function(idEmpresa,id)
 	{
 		Confirm("¿Realmente desa eliminar esta sucursal?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -504,13 +505,14 @@ function fnSucursal()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'sucursales/index/'+idEmpresa;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -557,7 +559,7 @@ function fnOperador()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -567,7 +569,7 @@ function fnOperador()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar a este Operador?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -576,13 +578,18 @@ function fnOperador()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp=="")
+					resp = resp.trim();
+					if(resp=="") {
 						location.href=baseURL+'operadores/index/'+idEmpresa+'/'+idSucursal;
-					else
-						Mensaje(resp);
+					} else {
+						$.msg( 'unblock', 10 );
+						setTimeout( function(){ 
+							Alert( resp );
+						}, 500 );
+					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -619,7 +626,7 @@ function fnVehiculo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -629,7 +636,7 @@ function fnVehiculo()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Vehículo?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -638,13 +645,18 @@ function fnVehiculo()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp=="")
+					resp = resp.trim();
+					if( resp == "" ) {
 						location.href=baseURL+'vehiculos/index/'+idEmpresa+'/'+idSucursal;
-					else
-						Mensaje(resp);
+					} else {
+						$.msg( 'unblock', 10 );
+						setTimeout( function() {
+							Alert( resp );
+						}, 500 );
+					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -720,7 +732,7 @@ function fnRuta()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -730,7 +742,7 @@ function fnRuta()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar esta Ruta?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -739,13 +751,14 @@ function fnRuta()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'rutas/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -882,7 +895,7 @@ function fnRuta()
 			}
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			$("#prevalidacion").html(resp);
 			$("#prevalidacion div.form-group").hide();
 			$("#prevalidacion table tr th:last-child").hide();
@@ -935,7 +948,7 @@ function fnCliente()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_cliente_cp"			).attr('value',	cp);
 		$("#frm_cliente_colonia"	).attr('value',	colonia);
 		$("#frm_cliente_municipio"	).attr('value',	municipio);
@@ -943,7 +956,7 @@ function fnCliente()
 	}
 	this.EstableceCPCobranza=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_cliente_cobranzacp"			).attr('value',	cp);
 		$("#frm_cliente_cobranzacolonia"	).attr('value',	colonia);
 		$("#frm_cliente_cobranzamunicipio"	).attr('value',	municipio);
@@ -988,7 +1001,7 @@ function fnCliente()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -998,7 +1011,7 @@ function fnCliente()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Cliente?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1007,13 +1020,14 @@ function fnCliente()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'clientes/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1083,6 +1097,7 @@ function fnCliente()
 		});
 	}
 }
+var tmpIdCte = 0;
 function fnGenerador()
 {
 	this.CopiaDatos=function()
@@ -1163,7 +1178,7 @@ function fnGenerador()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_generador_cp"			).attr('value',	cp);
 		$("#frm_generador_colonia"		).attr('value',	colonia);
 		$("#frm_generador_municipio"	).attr('value',	municipio);
@@ -1171,7 +1186,7 @@ function fnGenerador()
 	}
 	this.EstableceCPCobranza=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10,4);
+		$.msg('unblock',10 );
 		$("#frm_generador_cobranzacp"			).attr('value',	cp);
 		$("#frm_generador_cobranzacolonia"		).attr('value',	colonia);
 		$("#frm_generador_cobranzamunicipio"	).attr('value',	municipio);
@@ -1235,7 +1250,7 @@ function fnGenerador()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -1244,8 +1259,9 @@ function fnGenerador()
 	}
 	this.Eliminar=function(idCliente,id)
 	{
+		tmpIdCte = idCliente;
 		Confirm("¿Realmente desa eliminar este Generador?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10);
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1254,13 +1270,14 @@ function fnGenerador()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
-						location.href=baseURL+'clientes/ver/'+idCliente;
+						location.href=baseURL+'clientes/ver/'+tmpIdCte;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1341,7 +1358,7 @@ function fnResiduo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -1351,7 +1368,7 @@ function fnResiduo()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Residuo?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1360,13 +1377,14 @@ function fnResiduo()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'residuos/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1402,7 +1420,7 @@ function fnManifiesto()
 	}
 	this.CerrarMenuCreacion=function()
 	{
-		$.msg('unblock',10,3);
+		$.msg('unblock',10 );
 	}
 	this.CrearManifiestoCteGen=function()
 	{
@@ -1547,22 +1565,23 @@ function fnManifiesto()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Manifiesto?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
 					method:	"POST",
-					url:	baseURL+'manifiesto/eliminar/'+id,
+					url:	baseURL+'manifiestos/eliminar/'+id,
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'manifiestos/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1662,7 +1681,7 @@ function fnManifiesto()
 			data:	$("#frm_captura_kilos").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				if(resp.trim()=="")
 					Manifiesto.LimpiaFormPrecaptura();
@@ -1901,7 +1920,7 @@ function fnManifiesto()
 				}
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Alert("Error al ejecutar captura de manifiestos: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 				},500);
@@ -1909,7 +1928,7 @@ function fnManifiesto()
 		}
 		else
 		{
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 				setTimeout(function(){
 					Alert("Importado Terminado",function(){location.href=baseURL+'manifiestos';});
 				},500);
@@ -2192,7 +2211,7 @@ function fnPerfil()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2202,7 +2221,7 @@ function fnPerfil()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Perfil?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2211,13 +2230,14 @@ function fnPerfil()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'perfiles';
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2257,7 +2277,7 @@ function fnUsuario()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2267,7 +2287,7 @@ function fnUsuario()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Usuario?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2276,13 +2296,14 @@ function fnUsuario()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'usuarios/index';
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2309,7 +2330,7 @@ function fnUsuario()
 				Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al accesar: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2330,7 +2351,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al accesar: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2353,7 +2374,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al establecer contraseña: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2388,7 +2409,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al establecer contraseña: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2609,14 +2630,14 @@ function fnCalendario()
 				location.href=baseURL+'generadores/ver/'+$("#idgenerador").val();
 			else
 			{
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Alert()(resp,function(){return true;});
 				},500);
 			}
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 			},500);
@@ -2628,7 +2649,7 @@ function fnBitacora()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar esta Bitácora?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2637,13 +2658,14 @@ function fnBitacora()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'bitacoras/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2665,7 +2687,7 @@ function fnReporte()
 			data	: $("#frm_reporte").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			$("#bodyreport").html(resp);
 			$('#btnDescarga').removeClass('disabled');
 			$('#btnDescarga').attr('disabled', '');
@@ -2680,7 +2702,7 @@ function fnReporte()
 				console.log($(resp)[2].nodeValue);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Error al generar reporte: "+mensaje+"<br />"+jqXHRObj.responseText);
 			},500);
@@ -2696,14 +2718,14 @@ function fnReporte()
 			data	: $("#frm_reporte").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			if(resp.length>250)
 				setTimeout(function(){Alert(resp,function(){return true;});},500);
 			else
 				location.href=resp;
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al generar reporte: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return false;});
 			},500);
@@ -2746,7 +2768,7 @@ function fnGrupo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10,3);
+				$.msg('unblock',10 );
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2756,7 +2778,7 @@ function fnGrupo()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Grupo?",function(){
-			$.msg('unblock',10,2);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2765,13 +2787,14 @@ function fnGrupo()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'grupos';
 					else
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10,3);
+					$.msg('unblock',10 );
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2788,7 +2811,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				var elems=$("#frm_grupo_sucursales").val().trim().split(",");
 				$("#frm_grupo_sucursales")[0].value="";
@@ -2800,7 +2823,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al obtener lista de sucursales: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2815,7 +2838,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				var elems=$("#frm_grupo_clientes").val().trim().split(",");
 				$("#frm_grupo_clientes")[0].value="";
@@ -2828,7 +2851,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al obtener lista de clientes: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2843,7 +2866,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				var elems=$("#frm_grupo_generadores").val().trim().split(",");
 				$("#frm_grupo_generadores")[0].value="";
@@ -2855,7 +2878,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10,3);
+			$.msg('unblock',10 );
 			setTimeout(function(){
 				Alert("Error al obtener lista de generadores: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);

@@ -9,6 +9,7 @@ class Modfacturacion extends CI_Model
 	private $kiloexcedido;
 	private $idcliente;
 	private $idgenerador;
+	private $unidad;
 	public function __construct()
 	{
 		$this->idfacturacion=0;
@@ -19,6 +20,7 @@ class Modfacturacion extends CI_Model
 		$this->kiloexcedido="";
 		$this->idcliente=0;
 		$this->idgenerador=0;
+		$this->unidad = 0;
 	}
 	public function getIdfacturacion() { return $this->idfacturacion; }
 	public function getTiposervicio() { return $this->tiposervicio; }
@@ -28,6 +30,7 @@ class Modfacturacion extends CI_Model
 	public function getKiloexcedido() { return $this->kiloexcedido; }
 	public function getIdcliente() { return $this->idcliente; }
 	public function getIdgenerador() { return $this->idgenerador; }
+	public function getUnidad() { return $this->unidad; }
 	public function setIdfacturacion($valor) { $this->idfacturacion= intval($valor); }
 	public function setTiposervicio($valor) { $this->tiposervicio= "".$valor; }
 	public function setTipocobro($valor) { $this->tipocobro= "".$valor; }
@@ -36,6 +39,7 @@ class Modfacturacion extends CI_Model
 	public function setKiloexcedido($valor) { $this->kiloexcedido= "".$valor; }
 	public function setIdcliente($valor) { $this->idcliente= intval($valor); }
 	public function setIdgenerador($valor) { $this->idgenerador= intval($valor); }
+	public function setUnidad( $valor ) { $this->unidad = intval( $valor ); }
     public function getFromDatabase($id=0)
 	{
 		if($this->idfacturacion==""||$this->idfacturacion==0)
@@ -47,6 +51,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('facturacion');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -56,8 +61,10 @@ class Modfacturacion extends CI_Model
 		$this->setPrecio($reg["precio"]);
 		$this->setKilosintegrados($reg["kilosintegrados"]);
 		$this->setKiloexcedido($reg["kiloexcedido"]);
+		$this->setUnidad( $reg[ "unidad" ] );
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('relclifac');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -65,6 +72,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$regs=$this->db->get('relgenfac');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -81,6 +89,7 @@ class Modfacturacion extends CI_Model
 		$this->setKiloexcedido($this->input->post("frm_facturacion_kiloexcedido"));
 		$this->setIdcliente($this->input->post("frm_facturacion_idcliente"));
 		$this->setIdgenerador($this->input->post("frm_facturacion_idgenerador"));
+		$this->setUnidad( $this->input->post( "frm_facturacion_unidad" ) );
 		return true;
 	}
 	public function addToDatabase()
@@ -90,20 +99,26 @@ class Modfacturacion extends CI_Model
 			"tipocobro"=>$this->tipocobro,
 			"precio"=>$this->precio,
 			"kilosintegrados"=>$this->kilosintegrados,
-			"kiloexcedido"=>$this->kiloexcedido
+			"kiloexcedido"=>$this->kiloexcedido,
+			"unidad" => $this->unidad
 		);
 		$this->db->insert('facturacion',$data);
 		$this->setIdfacturacion($this->db->insert_id());
-		if($this->getIdcliente()>0 && $this->getIdcliente()!="")
+		$this->db->reset_query();
+		if($this->getIdcliente()>0 && $this->getIdcliente()!="") {
 			$this->db->insert('relclifac',array(
 				"idfacturacion"=>$this->idfacturacion,
 				"idcliente"=>$this->getIdcliente()
 			));
-		if($this->getIdgenerador()>0 && $this->getIdgenerador()!="")
+			$this->db->reset_query();
+		}
+		if($this->getIdgenerador()>0 && $this->getIdgenerador()!="") {
 			$this->db->insert('relgenfac',array(
 				"idfacturacion"=>$this->idfacturacion,
 				"idgenerador"=>$this->getIdgenerador()
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase()
 	{
@@ -114,10 +129,12 @@ class Modfacturacion extends CI_Model
 			"tipocobro"=>$this->tipocobro,
 			"precio"=>$this->precio,
 			"kilosintegrados"=>$this->kilosintegrados,
-			"kiloexcedido"=>$this->kiloexcedido
+			"kiloexcedido"=>$this->kiloexcedido,
+			"unidad" => $this->unidad
 		);
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$this->db->update('facturacion',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idcliente=0,$idgenerador=0)
@@ -130,6 +147,7 @@ class Modfacturacion extends CI_Model
 		if($whr!="")
 			$this->db->where($whr);
 		$regs=$this->db->get("facturacion");
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 			return $regs->result_array();
 		return false;
@@ -145,6 +163,7 @@ class Modfacturacion extends CI_Model
 		}
 		$this->db->where('idfacturacion',$this->idfacturacion);
 		$this->db->delete(array('relclifac','relgenfac','facturacion'));
+		$this->db->reset_query();
 	}
 }
-?>
+?>

@@ -19,6 +19,7 @@ class Modsesion extends CI_Model
 		$pwd=sha1($pwd);
 		$this->db->where(array("usuario"=>$usr,"password"=>$pwd,"activo"=>1));
 		$regs=$this->db->get('usuario');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->row_array();
@@ -27,6 +28,7 @@ class Modsesion extends CI_Model
 	{
 		$this->db->where(array("usuario"=>$usr,"activo"=>1));
 		$regs=$this->db->get('usuario');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->row_array();
@@ -159,4 +161,4 @@ class Modsesion extends CI_Model
 		return $this->allgens;
 	}
 }
-?>
+?>

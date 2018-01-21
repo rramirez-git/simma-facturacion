@@ -44,6 +44,7 @@ class Modvehiculo extends CI_Model
 		}
 		$this->db->where('idvehiculo',$this->idvehiculo);
 		$regs=$this->db->get('vehiculo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -55,6 +56,7 @@ class Modvehiculo extends CI_Model
 		$this->setAutsemarnat($reg["autsemarnat"]);
 		$this->db->where('idvehiculo',$this->idvehiculo);
 		$regs=$this->db->get('relsucveh');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -83,10 +85,12 @@ class Modvehiculo extends CI_Model
 		);
 		$this->db->insert('vehiculo',$data);
 		$this->setIdvehiculo($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relsucveh',array(
 			"idsucursal"=>$this->idsucursal,
 			"idvehiculo"=>$this->idvehiculo
 			));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -106,6 +110,7 @@ class Modvehiculo extends CI_Model
 		);
 		$this->db->where('idvehiculo',$this->idvehiculo);
 		$this->db->update('vehiculo',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idsucursal=0)
@@ -114,6 +119,7 @@ class Modvehiculo extends CI_Model
 			$this->db->where("idvehiculo in (select idvehiculo from relsucveh where idsucursal=$idsucursal)");
 		$this->db->order_by('placa');
 		$regs=$this->db->get('vehiculo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -131,6 +137,19 @@ class Modvehiculo extends CI_Model
 		}
 		$this->db->where('idvehiculo',$this->idvehiculo);
 		$this->db->delete(array('relrutveh','relsucveh','vehiculo'));
+		$this->db->reset_query();
+	}
+	public function hasRuta( $id = 0 ) {
+		if( $this->idvehiculo == "" || $this->idvehiculo == 0 )
+		{
+			if( $id > 0 )
+				$this->idvehiculo = $id;
+			else
+				return false;
+		}
+		$this->db->where( 'idvehiculo', $this->idvehiculo );
+		$this->db->from( 'relrutveh' );
+		return ( $this->db->count_all_results() > 0 );
 	}
 }
-?>
+?>

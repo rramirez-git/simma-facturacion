@@ -18,7 +18,9 @@ class ModLog extends CI_Model
 			"usuarionombre"=>$usuarionombre
 		);
 		$this->db->insert('log',$data);
-		return $this->db->insert_id();
+		$id = $this->db->insert_id();
+		$this->db->reset_query();
+		return $id;
 	}
 }
-?>
+?>

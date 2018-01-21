@@ -1,3 +1,4 @@
+<!-- Vista vehiculos/vista -->
 <?= $menumain; ?>
 <div class="container">
 	<div class="btn-toolbar pull-right" role="toolbar">
@@ -54,3 +55,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista vehiculos/vista End -->
