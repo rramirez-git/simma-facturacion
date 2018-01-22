@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/validacreacionctegen -->
 <?php
 /*$cliente=new Modcliente();
 $generador=new Modgenerador();
@@ -41,3 +42,4 @@ $ruta=new Modruta();*/
         </div>
 	</div>
 </form>
+<!-- Vista manifiestos/validacreacionctegen End -->

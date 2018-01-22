@@ -1703,8 +1703,8 @@ function fnManifiesto()
 	this.SumaCantidad=function()
 	{
 		var suma=0.0;
-		$("#tblCantidades input").each(function(idx){
-			if(typeof this.id!="undefined" && this.id!="total")
+		$(".tblCantidades input").each(function(idx){
+			if( typeof this.id != "undefined" && this.id != "total" && ! isNaN( parseFloat($(this).val()) ) )
 				suma+=parseFloat($(this).val());
 		});
 		$("#total")[0].value=suma.toFixed(3);

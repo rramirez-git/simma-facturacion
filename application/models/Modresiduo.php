@@ -151,12 +151,18 @@ class ModResiduo extends CI_Model
 		$this->db->reset_query();
 		return true;
 	}
-	public function getAll($idsucursal=0)
+	public function getAll( $idsucursal = 0, $for_captura = false )
 	{
 		if($idsucursal>0)
 			$this->db->where("idresiduo in (select idresiduo from relsucres where idsucursal = $idsucursal)");
-		$this->db->order_by('nombre');
-		$regs=$this->db->get('residuo');
+		if( ! $for_captura ) {
+			$this->db->order_by('nombre');
+		} else {
+			$this->db->order_by( 'tiporesiduo', 'nombre' );
+		}
+		$this->db->from( 'residuo');
+		$this->db->join( 'v_catalogo', 'residuo.tiporesiduo = v_catalogo.idopcion' );
+		$regs=$this->db->get();
 		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;

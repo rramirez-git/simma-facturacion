@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/importarsimmagdl -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Manifiestos <small>SIMMA Guadalajara</small></h3>
@@ -23,3 +24,4 @@
 		<a href="<?= base_url("project_files/files/templates/rep_manifiesto_in_simma_gdl.xlsx?date=".time())?>"> aquí</a>.
 	</div>
 </div>
+<!-- Vista manifiestos/importarsimmagdl End -->
