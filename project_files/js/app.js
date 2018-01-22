@@ -367,7 +367,6 @@ function fnEmpresa()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.DisplayFrmCP=function()
@@ -595,7 +594,6 @@ function fnOperador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -764,7 +762,6 @@ function fnRuta()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.BuscarCteGen=function()
@@ -1033,7 +1030,6 @@ function fnCliente()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.Buscar=function()
@@ -1283,7 +1279,6 @@ function fnGenerador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmAgregarFacturacion=function()
@@ -1390,7 +1385,6 @@ function fnResiduo()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -1587,7 +1581,6 @@ function fnManifiesto()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmCapturaKilos=function(idmanifiesto)
