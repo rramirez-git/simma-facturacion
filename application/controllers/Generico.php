@@ -46,7 +46,8 @@ class Generico extends CI_Controller
 		$this->load->view("facturacion/formulario",array(
 			"objeto"=>$this->modfacturacion,
 			"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
-			"tipocobro"=>$this->modcatalogo->getCatalogo(6)
+			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
+			"unidad" => $this->modcatalogo->getCatalogo( 29 )
 		));
 	}
 }
