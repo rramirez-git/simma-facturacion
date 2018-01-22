@@ -1091,6 +1091,7 @@ function fnCliente()
 		});
 	}
 }
+var tmpIdCte = 0;
 function fnGenerador()
 {
 	this.CopiaDatos=function()
@@ -1252,6 +1253,7 @@ function fnGenerador()
 	}
 	this.Eliminar=function(idCliente,id)
 	{
+		tmpIdCte = idCliente;
 		Confirm("¿Realmente desa eliminar este Generador?",function(){
 			$.msg('unblock',10);
 			setTimeout(function(){
@@ -1263,7 +1265,7 @@ function fnGenerador()
 				});
 				ajx.done(function(resp){
 					if(resp=="")
-						location.href=baseURL+'clientes/ver/'+idCliente;
+						location.href=baseURL+'clientes/ver/'+tmpIdCte;
 					else
 						Mensaje(resp);
 				});
@@ -1560,7 +1562,7 @@ function fnManifiesto()
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
 					method:	"POST",
-					url:	baseURL+'manifiesto/eliminar/'+id,
+					url:	baseURL+'manifiestos/eliminar/'+id,
 					cache:	false
 				});
 				ajx.done(function(resp){

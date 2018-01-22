@@ -56,6 +56,7 @@ class Modusuario extends CI_Model
 		}
 		$this->db->where('idusuario',$this->idusuario);
 		$regs=$this->db->get('usuario');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -69,6 +70,7 @@ class Modusuario extends CI_Model
 		$this->setActivo($reg["activo"]);
 		$this->db->where('idusuario',$this->idusuario);
 		$regs=$this->db->get('relperusu');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$regs=$regs->result_array();
@@ -78,6 +80,7 @@ class Modusuario extends CI_Model
 		else $this->setPerfiles(array());
 		$this->db->where('idusuario',$this->idusuario);
 		$regs=$this->db->get('relgruusu');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$regs=$regs->result_array();
@@ -114,16 +117,21 @@ class Modusuario extends CI_Model
 		);
 		$this->db->insert('usuario',$data);
 		$this->setIdusuario($this->db->insert_id());
-		if(is_array($this->perfiles) && count($this->perfiles)>0) foreach($this->perfiles as $reg) if($reg>0)
+		$this->db->reset_query();
+		if(is_array($this->perfiles) && count($this->perfiles)>0) foreach($this->perfiles as $reg) if($reg>0) {
 			$this->db->insert('relperusu',array(
 				"idperfil"=>$reg,
 				"idusuario"=>$this->idusuario
 			));
-		if(is_array($this->grupos) && count($this->grupos)>0) foreach($this->grupos as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		if(is_array($this->grupos) && count($this->grupos)>0) foreach($this->grupos as $reg) if($reg>0) {
 			$this->db->insert('relgruusu',array(
 				"idgrupo"=>$reg,
 				"idusuario"=>$this->idusuario
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -144,26 +152,34 @@ class Modusuario extends CI_Model
 		);
 		$this->db->where('idusuario',$this->idusuario);
 		$this->db->update('usuario',$data);
+		$this->db->reset_query();
 		$this->db->where('idusuario',$this->idusuario);
 		$this->db->delete('relperusu');
-		if(is_array($this->perfiles) && count($this->perfiles)>0) foreach($this->perfiles as $reg) if($reg>0)
+		$this->db->reset_query();
+		if(is_array($this->perfiles) && count($this->perfiles)>0) foreach($this->perfiles as $reg) if($reg>0) {
 			$this->db->insert('relperusu',array(
 				"idperfil"=>$reg,
 				"idusuario"=>$this->idusuario
 			));
+			$this->db->reset_query();
+		}
 		$this->db->where('idusuario',$this->idusuario);
 		$this->db->delete('relgruusu');
-		if(is_array($this->grupos) && count($this->grupos)>0) foreach($this->grupos as $reg) if($reg>0)
+		$this->db->reset_query();
+		if(is_array($this->grupos) && count($this->grupos)>0) foreach($this->grupos as $reg) if($reg>0) {
 			$this->db->insert('relgruusu',array(
 				"idgrupo"=>$reg,
 				"idusuario"=>$this->idusuario
 			));
+			$this->db->reset_query();
+		}
 		return true;
 	}
 	public function getAll()
 	{
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('usuario');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -180,6 +196,7 @@ class Modusuario extends CI_Model
 		}
 		$this->db->where('idusuario',$this->idusuario);
 		$this->db->delete(array('relgruusu','relperusu','usuario'));
+		$this->db->reset_query();
 	}
 	public function generaPassword()
 	{
@@ -215,6 +232,7 @@ class Modusuario extends CI_Model
 		);
 		$this->db->where('idusuario',$this->idusuario);
 		$this->db->update('usuario',$data);
+		$this->db->reset_query();
 	}
 }
-?>
+?>

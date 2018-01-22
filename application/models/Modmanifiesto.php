@@ -64,6 +64,7 @@ class ModManifiesto extends CI_Model
 		}
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get('manifiesto');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -78,6 +79,7 @@ class ModManifiesto extends CI_Model
 		$this->setNoexterno($reg["noexterno"]);
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get('relgenman');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -85,6 +87,7 @@ class ModManifiesto extends CI_Model
 		}
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get('relmanrut');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -93,6 +96,7 @@ class ModManifiesto extends CI_Model
 		$this->setRecolecciones(array());
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get('relmanrec');
+		$this->db->reset_query();
 		if($regs->num_rows()>0)
 		{
 			$reg=$regs->row_array();
@@ -130,15 +134,19 @@ class ModManifiesto extends CI_Model
 		);
 		$this->db->insert('manifiesto',$data);
 		$this->setIdmanifiesto($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relgenman',array(
 			'idgenerador'=>$this->idgenerador,
 			'idmanifiesto'=>$this->idmanifiesto
 		));
-		if($this->idruta!="" && $this->idruta>0)
+		$this->db->reset_query();
+		if($this->idruta!="" && $this->idruta>0) {
 			$this->db->insert('relmanrut',array(
 				'idruta'=>$this->idruta,
 				'idmanifiesto'=>$this->idmanifiesto
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase()
 	{
@@ -158,10 +166,13 @@ class ModManifiesto extends CI_Model
 		);
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$this->db->update('manifiesto',$data);
+		$this->db->reset_query();
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$this->db->update('relgenman',array('idgenerador'=>$this->idgenerador));
+		$this->db->reset_query();
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$this->db->update('relmanrut',array('idruta'=>$this->idruta));
+		$this->db->reset_query();
 		return true;
 	}
 	public function delete($id=0)
@@ -177,11 +188,13 @@ class ModManifiesto extends CI_Model
 		$regs=$this->getRecoleccionesDatabase();
 		if($regs!==false) foreach($regs as $reg)
 		{
+			$this->load->model( 'modrecoleccion' );
 			$this->modrecoleccion->setIdrecoleccion($reg["idrecoleccion"]);
 			$this->modrecoleccion->delete();
 		}
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$this->db->delete(array('relbitman','relmanrut','relmanrec','relgenman','manifiesto'));
+		$this->db->reset_query();
 		return true;
 	}
 	public function getRecoleccionesDatabase()
@@ -193,6 +206,7 @@ class ModManifiesto extends CI_Model
 		$this->db->select('idrecoleccion');
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get("relmanrec");
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -310,6 +324,7 @@ class ModManifiesto extends CI_Model
 				$this->db->where($whr);
 				$this->db->order_by('identificador');
 				$regs=$this->db->get('manifiesto');
+				$this->db->reset_query();
 				if($regs->num_rows()==0)
 					return false;
 				return $regs->result_array();
@@ -321,9 +336,10 @@ class ModManifiesto extends CI_Model
 		$this->db->where("identificador",$identificador);
 		$this->db->order_by('identificador');
 		$regs=$this->db->get('manifiesto');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
 	}
 }
-?>
+?>
