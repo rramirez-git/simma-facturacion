@@ -80,7 +80,7 @@ class Modempresa extends CI_Model
 	public function setCoorporativo($valor) { $this->coorporativo= intval($valor); }
 	public function setTransportista($valor) { $this->transportista= intval($valor); }
 	public function setDestinofinal($valor) { $this->destinofinal= intval($valor); }
-	public function setRegimenfiscal($valor) { $this->regimen_fiscal= "".$valor; }
+	public function setRegimenfiscal($valor) { $this->regimen_fiscal= intval( $valor ); }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idempresa==""||$this->idempresa==0)
