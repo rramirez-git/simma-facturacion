@@ -354,7 +354,8 @@ function fnEmpresa()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'empresas';
 					else
 						Mensaje(resp);
@@ -503,7 +504,8 @@ function fnSucursal()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'sucursales/index/'+idEmpresa;
 					else
 						Mensaje(resp);
@@ -575,7 +577,8 @@ function fnOperador()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="") {
+					resp = resp.trim();
+					if(resp=="") {
 						location.href=baseURL+'operadores/index/'+idEmpresa+'/'+idSucursal;
 					} else {
 						$.msg( 'unblock', 10 );
@@ -639,8 +642,9 @@ function fnVehiculo()
 					url:	baseURL+'vehiculos/eliminar/'+id,
 					cache:	false
 				});
-				ajx.done( function( resp ){
-					if( resp.trim() == "" ) {
+				ajx.done(function(resp){
+					resp = resp.trim();
+					if( resp == "" ) {
 						location.href=baseURL+'vehiculos/index/'+idEmpresa+'/'+idSucursal;
 					} else {
 						$.msg( 'unblock', 10 );
@@ -745,7 +749,8 @@ function fnRuta()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'rutas/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
@@ -1012,7 +1017,8 @@ function fnCliente()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'clientes/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
@@ -1260,7 +1266,8 @@ function fnGenerador()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'clientes/ver/'+tmpIdCte;
 					else
 						Mensaje(resp);
@@ -1365,7 +1372,8 @@ function fnResiduo()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'residuos/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
@@ -1560,7 +1568,8 @@ function fnManifiesto()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'manifiestos/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
@@ -2214,7 +2223,8 @@ function fnPerfil()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'perfiles';
 					else
 						Mensaje(resp);
@@ -2279,7 +2289,8 @@ function fnUsuario()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'usuarios/index';
 					else
 						Mensaje(resp);
@@ -2640,7 +2651,8 @@ function fnBitacora()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'bitacoras/index/'+idEmpresa+'/'+idSucursal;
 					else
 						Mensaje(resp);
@@ -2768,7 +2780,8 @@ function fnGrupo()
 					cache:	false
 				});
 				ajx.done(function(resp){
-					if(resp.trim()=="")
+					resp = resp.trim();
+					if(resp=="")
 						location.href=baseURL+'grupos';
 					else
 						Mensaje(resp);
