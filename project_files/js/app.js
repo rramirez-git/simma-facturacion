@@ -641,11 +641,15 @@ function fnVehiculo()
 					url:	baseURL+'vehiculos/eliminar/'+id,
 					cache:	false
 				});
-				ajx.done(function(resp){
-					if(resp=="")
+				ajx.done( function( resp ){
+					if( resp == "" ) {
 						location.href=baseURL+'vehiculos/index/'+idEmpresa+'/'+idSucursal;
-					else
-						Mensaje(resp);
+					} else {
+						$.msg( 'unblock', 10 );
+						setTimeout( function() {
+							Alert( resp );
+						}, 500 );
+					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
 					$.msg('unblock',10 );

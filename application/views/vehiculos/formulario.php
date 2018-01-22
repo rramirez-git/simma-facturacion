@@ -1,3 +1,4 @@
+<!-- Vista vehiculos/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Vehículos</h3>
@@ -41,3 +42,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista vehiculos/formulario End -->
