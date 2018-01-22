@@ -52,6 +52,7 @@ class Modgrupo extends CI_Model
 		}
 		$this->db->where('idgrupo',$this->idgrupo);
 		$regs=$this->db->get('grupo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -61,6 +62,7 @@ class Modgrupo extends CI_Model
 		$this->setUsuarios(array());
 		$this->db->where('idgrupo',$this->idgrupo);
 		$regs=$this->db->get('relgruusu');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) 
 			foreach($regs->result_array() as $reg) 
 				if($reg["idusuario"]>0)
@@ -68,6 +70,7 @@ class Modgrupo extends CI_Model
 		$this->setClientes(array());
 		$this->db->where('idgrupo',$this->idgrupo);
 		$regs=$this->db->get('relgrucli');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) 
 			foreach($regs->result_array() as $reg) 
 				if($reg["idcliente"]>0)
@@ -75,6 +78,7 @@ class Modgrupo extends CI_Model
 		$this->setSucursales(array());
 		$this->db->where('idgrupo',$this->idgrupo);
 		$regs=$this->db->get('relgrusuc');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) 
 			foreach($regs->result_array() as $reg) 
 				if($reg["idsucursal"]>0)
@@ -84,6 +88,7 @@ class Modgrupo extends CI_Model
 		{
 			$this->db->where("idsucursal in (".implode(",",$this->sucursales).")");
 			$regs=$this->db->get("relsuccli");
+			$this->db->reset_query();
 			if($regs->num_rows()>0) 
 				foreach($regs->result_array() as $reg)
 					if($reg["idcliente"]>0 && !in_array($reg["idcliente"],$this->clientescompleto))
@@ -92,6 +97,7 @@ class Modgrupo extends CI_Model
 		$this->setGeneradores(array());
 		$this->db->where('idgrupo',$this->idgrupo);
 		$regs=$this->db->get('relgrugen');
+		$this->db->reset_query();
 		if($regs->num_rows()>0) 
 			foreach($regs->result_array() as $reg) 
 				if($reg["idgenerador"]>0)
@@ -101,6 +107,7 @@ class Modgrupo extends CI_Model
 		{
 			$this->db->where("idcliente in (".implode(",",$this->clientescompleto).")");
 			$regs=$this->db->get("relcligen");
+			$this->db->reset_query();
 			if($regs->num_rows()>0)
 				foreach($regs->result_array() as $reg)
 					if($reg["idgenerador"]>0 && !in_array($reg["idgenerador"],$this->generadorescompleto))
@@ -127,21 +134,28 @@ class Modgrupo extends CI_Model
 		);
 		$this->db->insert('grupo',$data);
 		$this->setIdgrupo($this->db->insert_id());
-		if(is_array($this->clientes) && count($this->clientes)>0) foreach($this->clientes as $reg) if($reg>0)
+		$this->db->reset_query();
+		if(is_array($this->clientes) && count($this->clientes)>0) foreach($this->clientes as $reg) if($reg>0) {
 			$this->db->insert('relgrucli',array(
 				"idcliente"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
-		if(is_array($this->sucursales) && count($this->sucursales)>0) foreach($this->sucursales as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		if(is_array($this->sucursales) && count($this->sucursales)>0) foreach($this->sucursales as $reg) if($reg>0) {
 			$this->db->insert('relgrusuc',array(
 				"idsucursal"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
-		if(is_array($this->generadores) && count($this->generadores)>0) foreach($this->generadores as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		if(is_array($this->generadores) && count($this->generadores)>0) foreach($this->generadores as $reg) if($reg>0) {
 			$this->db->insert('relgrugen',array(
 				"idgenerador"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
+			$this->db->reset_query();
+		}
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -158,33 +172,44 @@ class Modgrupo extends CI_Model
 		);
 		$this->db->where('idgrupo',$this->idgrupo);
 		$this->db->update('grupo',$data);
+		$this->db->reset_query();
 		$this->db->where('idgrupo',$this->idgrupo);
 		$this->db->delete('relgrugen');
+		$this->db->reset_query();
 		$this->db->where('idgrupo',$this->idgrupo);
 		$this->db->delete('relgrucli');
+		$this->db->reset_query();
 		$this->db->where('idgrupo',$this->idgrupo);
 		$this->db->delete('relgrusuc');
-		if(is_array($this->clientes) && count($this->clientes)>0) foreach($this->clientes as $reg) if($reg>0)
+		$this->db->reset_query();
+		if(is_array($this->clientes) && count($this->clientes)>0) foreach($this->clientes as $reg) if($reg>0) {
 			$this->db->insert('relgrucli',array(
 				"idcliente"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
-		if(is_array($this->sucursales) && count($this->sucursales)>0) foreach($this->sucursales as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		if(is_array($this->sucursales) && count($this->sucursales)>0) foreach($this->sucursales as $reg) if($reg>0) {
 			$this->db->insert('relgrusuc',array(
 				"idsucursal"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
-		if(is_array($this->generadores) && count($this->generadores)>0) foreach($this->generadores as $reg) if($reg>0)
+			$this->db->reset_query();
+		}
+		if(is_array($this->generadores) && count($this->generadores)>0) foreach($this->generadores as $reg) if($reg>0) {
 			$this->db->insert('relgrugen',array(
 				"idgenerador"=>$reg,
 				"idgrupo"=>$this->idgrupo
 			));
+			$this->db->reset_query();
+		}
 		return true;
 	}
 	public function getAll()
 	{
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('grupo');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -203,6 +228,7 @@ class Modgrupo extends CI_Model
 		}
 		$this->db->where('idgrupo',$this->idgrupo);
 		$this->db->delete(array('relgruusu','relgrusuc','relgrucli','grupo'));
+		$this->db->reset_query();
 	}
 }
-?>
+?>
