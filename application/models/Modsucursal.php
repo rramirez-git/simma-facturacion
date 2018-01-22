@@ -350,7 +350,7 @@ class Modsucursal extends CI_Model
 			$this->modresiduo->delete();
 		}
 		$this->db->where('idsucursal',$this->idsucursal);
-		$this->db->delete(array('relgrusuc','relempsuc','sucursal'));
+		$this->db->delete( array( 'relgrusuc', 'relsucbit', 'relempsuc', 'sucursal' ) );
 		$this->db->reset_query();
 	}
 	public function getResiduos()
