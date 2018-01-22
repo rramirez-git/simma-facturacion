@@ -61,4 +61,38 @@ function ReplaceMonth($cadena)
 	$cadena=str_replace($month,$mes,$cadena);
 	return $cadena;
 }
+function OrdenaResiduosCaptura( $r1, $r2 ) {
+	/**
+	* Cada Manifiesto dado por:
+	* 
+	* array (size=2)
+      'residuo' => 
+        array (size=11)
+          'idresiduo' => string '42' (length=2)
+          'nombre' => string 'Porron de Solventes' (length=19)
+          'nom052' => string 'RI' (length=2)
+          'C' => string '0' (length=1)
+          'R' => string '0' (length=1)
+          'E' => string '0' (length=1)
+          'T' => string '0' (length=1)
+          'I' => string '0' (length=1)
+          'B' => string '0' (length=1)
+          'reportecoa' => string '0' (length=1)
+          'tiporesiduo' => string '99' (length=2)
+          'idcatalogo' => string '14' (length=2)
+          'idopcion' => string '99' (length=2)
+          'catalogo' => string 'Tipo de Residuo' (length=15)
+          'opcion' => string 'RP' (length=2)
+      'recoleccion' => boolean false
+	*/
+	if( $r1[ 'residuo' ][ 'tiporesiduo' ] == $r2[ 'residuo' ][ 'tiporesiduo' ] ) {
+		if( $r1[ 'residuo'][ 'idresiduo' ] == $r2[ 'residuo'][ 'idresiduo' ] ) {
+			return 0;
+		} else {
+			return ( $r1[ 'residuo' ][ 'nombre' ] < $r2[ 'residuo' ][ 'nombre' ] ? -1 : 1 );
+		}
+	} else {
+		return ( $r1[ 'residuo' ][ 'opcion' ] < $r2[ 'residuo' ][ 'opcion' ] ? -1 : 1 );
+	}
+}
 ?>

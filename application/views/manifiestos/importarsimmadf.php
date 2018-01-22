@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/importarsimmadf -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Manifiestos <small>SIMMA Polanco</small></h3>
@@ -23,3 +24,4 @@
 		<a href="<?= base_url("project_files/files/templates/rep_manifiesto_in_simma_df.xlsx?date=".time())?>"> aquí</a>.
 	</div>
 </div>
+<!-- Vista manifiestos/importarsimmadf End -->

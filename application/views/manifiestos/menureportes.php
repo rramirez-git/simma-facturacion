@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/menureportes -->
 <table class="menuCreacion">
 	<tr>
 		<th>
@@ -21,3 +22,4 @@
 		</td>
 	</tr>
 </table>
+<!-- Vista manifiestos/menureportes End -->

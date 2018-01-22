@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/precaptura -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Captura de Manifiestos</h3>
@@ -49,3 +50,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista manifiestos/precaptura End -->

@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/formulariocrearcalendario -->
 <?= $menumain; ?>
 <?php
 $nombreBitacora="Bitácora (".Today().")";
@@ -62,3 +63,4 @@ $nombreBitacora="Bitácora (".Today().")";
 <script type="text/javascript">
 	var hoy="<?= Hoy(); ?>";
 </script>
+<!-- Vista manifiestos/formulariocrearcalendario End -->
