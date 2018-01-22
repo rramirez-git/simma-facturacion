@@ -1092,6 +1092,10 @@ function fnCliente()
 			Mensaje("Error al cargar el menu: "+mensaje+"<br />"+jqXHRObj.responseText);
 		});
 	}
+	this.RellenaBase = function() {
+		var valor = $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].options[ $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].selectedIndex ].innerText.trim();
+		$( "#frm_cliente_cfdi_base" )[ 0 ].value = ( valor.indexOf( '|' ) > -1 ? valor.split( '|' )[ 1 ].trim() : valor );
+	}
 }
 var tmpIdCte = 0;
 function fnGenerador()

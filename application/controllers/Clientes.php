@@ -68,7 +68,17 @@ class Clientes extends CI_Controller
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 			"diascredito"=>$this->modcatalogo->getCatalogo(7),
 			"estatuscliente"=>$this->modcatalogo->getCatalogo(13),
-			"facturaciones"=>""
+			"facturaciones"=>"",
+			"categorias" => $this->modcatalogo->getCatalogo( 28 ),
+			"formaspago" => $this->modcatalogo->getCatalogo( 18 ),
+			"monedas" => $this->modcatalogo->getCatalogo( 21 ),
+			"metodospago" => $this->modcatalogo->getCatalogo( 20 ),
+			"usoscfdi" => $this->modcatalogo->getCatalogo( 27 ),
+			"clavesproducto" => $this->modcatalogo->getCatalogo( 16 ),
+			"clavesunidad" => $this->modcatalogo->getCatalogo( 17 ),
+			"impuestos" => $this->modcatalogo->getCatalogo( 19 ),
+			"tiposfactor" => $this->modcatalogo->getCatalogo( 25 ),
+			"tasas" => $this->modcatalogo->getCatalogo( 24 )
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 	}
@@ -137,7 +147,17 @@ class Clientes extends CI_Controller
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 			"diascredito"=>$this->modcatalogo->getCatalogo(7),
 			"estatuscliente"=>$this->modcatalogo->getCatalogo(13),
-			"facturaciones"=>$facturaciones
+			"facturaciones"=>$facturaciones,
+			"categorias" => $this->modcatalogo->getCatalogo( 28 ),
+			"formaspago" => $this->modcatalogo->getCatalogo( 18 ),
+			"monedas" => $this->modcatalogo->getCatalogo( 21 ),
+			"metodospago" => $this->modcatalogo->getCatalogo( 20 ),
+			"usoscfdi" => $this->modcatalogo->getCatalogo( 27 ),
+			"clavesproducto" => $this->modcatalogo->getCatalogo( 16 ),
+			"clavesunidad" => $this->modcatalogo->getCatalogo( 17 ),
+			"impuestos" => $this->modcatalogo->getCatalogo( 19 ),
+			"tiposfactor" => $this->modcatalogo->getCatalogo( 25 ),
+			"tasas" => $this->modcatalogo->getCatalogo( 24 )
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 		$this->modsesion->addLog(
@@ -178,7 +198,17 @@ class Clientes extends CI_Controller
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 			"diascredito"=>$this->modcatalogo->getCatalogo(7),
 			"estatuscliente"=>$this->modcatalogo->getCatalogo(13),
-			"facturaciones"=>$facturaciones
+			"facturaciones"=>$facturaciones,
+			"categorias" => $this->modcatalogo->getCatalogo( 28 ),
+			"formaspago" => $this->modcatalogo->getCatalogo( 18 ),
+			"monedas" => $this->modcatalogo->getCatalogo( 21 ),
+			"metodospago" => $this->modcatalogo->getCatalogo( 20 ),
+			"usoscfdi" => $this->modcatalogo->getCatalogo( 27 ),
+			"clavesproducto" => $this->modcatalogo->getCatalogo( 16 ),
+			"clavesunidad" => $this->modcatalogo->getCatalogo( 17 ),
+			"impuestos" => $this->modcatalogo->getCatalogo( 19 ),
+			"tiposfactor" => $this->modcatalogo->getCatalogo( 25 ),
+			"tasas" => $this->modcatalogo->getCatalogo( 24 )
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 	}

@@ -1,3 +1,4 @@
+<!-- Vista cliente/vista -->
 <?= $menumain; ?>
 <div class="container">
 	<div class="btn-toolbar pull-right" role="toolbar">
@@ -350,6 +351,133 @@
 				<p class="form-control-static"><?= $objeto->getCobranzaestado(); ?></p>
 			</div>
 		</div>
+		<h5>Facturación Electrónica</h5>
+		<div class="form-group">
+			<label for="frm_cliente_categoria" class="col-sm-2 control-label">Categoria</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $categorias !== false ) foreach( $categorias[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCategoria() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_moneda" class="col-sm-2 control-label">Moneda</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_moneda() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cfdi_formapago" class="col-sm-2 control-label">Forma de Pago</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $formaspago !== false ) foreach( $formaspago[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_formapago() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_metodopago" class="col-sm-2 control-label">Método de Pago</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $metodospago !== false ) foreach( $metodospago[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_metodopago() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cfdi_usocfdi" class="col-sm-2 control-label">Uso del CFDi</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_usocfdi() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_claveprodserv" class="col-sm-2 control-label">Producto</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $clavesproducto !== false ) foreach( $clavesproducto[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveprodserv() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cfdi_claveunidad" class="col-sm-2 control-label">Clave Unidad</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveunidad() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_unidad" class="col-sm-2 control-label">Unidad</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getCfdi_unidad(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cfdi_impuesto" class="col-sm-2 control-label">Impuesto</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $impuestos !== false ) foreach( $impuestos[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_Impuesto() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_tipofactor" class="col-sm-2 control-label">Tipo Factor</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $tiposfactor !== false ) foreach( $tiposfactor[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tipofactor() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cfdi_tasaocuota" class="col-sm-2 control-label">Impuesto Tasa o Cuota</label>
+			<div class="col-sm-4">
+				<p class="form-control-static">
+					<?php if( $tasas !== false ) foreach( $tasas[ "opciones" ] as $opc): ?>
+						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tasaocuota() ? $opc[ "descripcion" ] : '' ); ?>
+					<?php endforeach; ?>
+				</p>
+			</div>
+			<label for="frm_cliente_cfdi_base" class="col-sm-2 control-label">Impuesto Base</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getCfdi_base(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_banco" class="col-sm-2 control-label">Banco</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getBanco(); ?></p>
+			</div>
+			<label for="frm_cliente_rfcbanco" class="col-sm-2 control-label">RFC</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getRfcbanco(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_cuenta" class="col-sm-2 control-label">Cuenta</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getCuenta(); ?></p>
+			</div>
+			<label for="frm_cliente_clabe" class="col-sm-2 control-label">CLABE</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getClabe(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_cliente_correo" class="col-sm-2 control-label">Correo</label>
+			<div class="col-sm-10">
+				<p class="form-control-static"><?= $objeto->getCorreo(); ?></p>
+			</div>
+		</div>
 	</form>
 	<?php if($this->modsesion->hasPermisoHijo(66)):?>
 	<hr />
@@ -421,3 +549,4 @@
 <script type="text/javascript">
 	$(document).ready(function(){$("div.table-responsive table").DataTable();});
 </script>
+<!-- Vista cliente/vista End -->
