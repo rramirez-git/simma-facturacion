@@ -1,3 +1,4 @@
+<!-- Vista menu/menumain -->
 <?php
 if(!isset($justCloseWindow)) $justCloseWindow=false
 ?>
@@ -130,3 +131,4 @@ if(!isset($justCloseWindow)) $justCloseWindow=false
 		</div>
 	</div>
 </div>
+<!-- Vista menu/menumain End -->

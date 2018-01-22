@@ -146,5 +146,17 @@ class Modoperador extends CI_Model
 		$this->db->where('idoperador',$this->idoperador);
 		$this->db->delete(array('relrutope','relsucope','operador'));
 	}
+	public function hasRuta( $id = 0 ) {
+		if( $this->idoperador == "" || $this->idoperador == 0 )
+		{
+			if( $id > 0 )
+				$this->idoperador=$id;
+			else
+				return false;
+		}
+		$this->db->where( 'idoperador', $this->idoperador );
+		$this->db->from( 'relrutope' );
+		return ( $this->db->count_all_results() > 0 );
+	}
 }
-?>
+?>
