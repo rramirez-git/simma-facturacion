@@ -1,3 +1,4 @@
+<!-- Vista empresas/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Empresas <small><?= $objeto->getIdempresa()!="" && $objeto->getIdempresa()!=0?"Actualizar":"Nueva"; ?> empresa</small></h3>
@@ -138,3 +139,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista empresas/formulario End -->
