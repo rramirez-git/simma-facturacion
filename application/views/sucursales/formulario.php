@@ -1,3 +1,4 @@
+<!-- Vista sucursales/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Sucursales <small><?= $objeto->getIdsucursal()!="" && $objeto->getIdsucursal()!=0?"Actualizar":"Nueva" ; ?> sucursal</small></h3>
@@ -14,6 +15,76 @@
 			<label for="frm_sucursal_iniciales" class="col-sm-2 control-label">Iniciales</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_iniciales" name="frm_sucursal_iniciales" value="<?= $objeto->getIniciales(); ?>" placeholder="Iniciales para manifiestos" maxlength="20" />
+			</div>
+		</div>
+		<h5>
+			Facturación
+		</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de serie</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="frm_sucursal_fac_serie" name="frm_sucursal_fac_serie" value="<?= $objeto->getFac_serie(); ?>" placeholder="Número de serie Facturación" maxlength="25" />
+			</div>
+			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_fac_folio_incial" name="frm_sucursal_fac_folio_incial" value="<?= $objeto->getFac_folio_incial(); ?>"  min="0" max="999999999" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_fac_folio_final" name="frm_sucursal_fac_folio_final" value="<?= $objeto->getFac_folio_final(); ?>"  min="0" max="999999999" />
+			</div>
+			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_fac_folio_actual" name="frm_sucursal_fac_folio_actual" value="<?= $objeto->getFac_folio_actual(); ?>"  min="0" max="999999999" />
+			</div>
+		</div>
+
+		<h5>
+			Notas de credito
+		</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de Serie</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="frm_sucursal_nc_serie" name="frm_sucursal_nc_serie" value="<?= $objeto->getNc_serie(); ?>" placeholder="Número de Serie Notas de credito" maxlength="25" />
+			</div>
+			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_nc_folio_incial" name="frm_sucursal_nc_folio_incial" value="<?= $objeto->getNc_folio_incial(); ?>"  min="0" max="999999999" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_nc_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_nc_folio_final" name="frm_sucursal_nc_folio_final" value="<?= $objeto->getNc_folio_final(); ?>"  min="0" max="999999999" />
+			</div>
+			<label for="frm_sucursal_nc_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_nc_folio_actual" name="frm_sucursal_nc_folio_actual" value="<?= $objeto->getNc_folio_actual(); ?>"  min="0" max="999999999" />
+			</div>
+		</div>
+		<h5>
+			Pagos
+		</h5>
+		<div class="form-group">
+			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de Serie</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="frm_sucursal_pago_serie" name="frm_sucursal_pago_serie" value="<?= $objeto->getPago_serie(); ?>" placeholder="Número de Serie Pagos" maxlength="25" />
+			</div>
+			<label for="frm_sucursal_pago_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_pago_folio_incial" name="frm_sucursal_pago_folio_incial" value="<?= $objeto->getPago_folio_incial(); ?>"  min="0" max="999999999" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_pago_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_pago_folio_final" name="frm_sucursal_pago_folio_final" value="<?= $objeto->getPago_folio_final(); ?>"  min="0" max="999999999" />
+			</div>
+			<label for="frm_sucursal_pago_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="frm_sucursal_pago_folio_actual" name="frm_sucursal_pago_folio_actual" value="<?= $objeto->getPago_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
 		</div>
 		<h5>
@@ -140,3 +211,4 @@
 		},
 	};
 </script>
+<!-- Vista sucursales/formulario End -->

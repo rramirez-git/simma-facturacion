@@ -52,6 +52,7 @@ class Modoperador extends CI_Model
 		}
 		$this->db->where('idoperador',$this->idoperador);
 		$regs=$this->db->get('operador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -65,6 +66,7 @@ class Modoperador extends CI_Model
 		$this->setEmail($reg["email"]);
 		$this->db->where('idoperador',$this->idoperador);
 		$regs=$this->db->get('relsucope');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -97,10 +99,12 @@ class Modoperador extends CI_Model
 		);
 		$this->db->insert('operador',$data);
 		$this->setIdoperador($this->db->insert_id());
+		$this->db->reset_query();
 		$this->db->insert('relsucope',array(
 			"idsucursal"=>$this->idsucursal,
 			"idoperador"=>$this->idoperador
 			));
+		$this->db->reset_query();
 	}
 	public function updateToDatabase($id=0)
 	{
@@ -122,6 +126,7 @@ class Modoperador extends CI_Model
 		);
 		$this->db->where('idoperador',$this->idoperador);
 		$this->db->update('operador',$data);
+		$this->db->reset_query();
 		return true;
 	}
 	public function getAll($idsucursal=0)
@@ -130,6 +135,7 @@ class Modoperador extends CI_Model
 			$this->db->where("idoperador in (select idoperador from relsucope where idsucursal=$idsucursal)");
 		$this->db->order_by('nombre asc,apaterno asc,amaterno asc');
 		$regs=$this->db->get('operador');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		return $regs->result_array();
@@ -145,6 +151,19 @@ class Modoperador extends CI_Model
 		}
 		$this->db->where('idoperador',$this->idoperador);
 		$this->db->delete(array('relrutope','relsucope','operador'));
+		$this->db->reset_query();
+	}
+	public function hasRuta( $id = 0 ) {
+		if( $this->idoperador == "" || $this->idoperador == 0 )
+		{
+			if( $id > 0 )
+				$this->idoperador=$id;
+			else
+				return false;
+		}
+		$this->db->where( 'idoperador', $this->idoperador );
+		$this->db->from( 'relrutope' );
+		return ( $this->db->count_all_results() > 0 );
 	}
 }
-?>
+?>

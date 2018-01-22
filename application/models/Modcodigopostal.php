@@ -40,6 +40,7 @@ class Modcodigopostal extends CI_Model
 			$whr.=($whr!=""?" and ":"")."estado like '%$estado%'";
 		$this->db->where($whr);
 		$regs=$this->db->get('codigospostales');
+		$this->db->reset_query();
 		if($regs->num_rows()==0)
 			return false;
 		$reg=$regs->row_array();
@@ -66,4 +67,4 @@ class Modcodigopostal extends CI_Model
 		);
 	}
 }
-?>
+?>

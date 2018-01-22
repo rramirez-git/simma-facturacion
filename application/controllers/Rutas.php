@@ -288,18 +288,22 @@ class Rutas extends CI_Controller
 			$this->db->select("COUNT(*) AS n");
 			$this->db->where(array("idgenerador"=>$gen,"idruta"=>$id));
 			$total=$this->db->get("relrutgen");
+			$this->db->reset_query();
 			$total=intval($total->result_array()[0]["n"]);
-			if($total==0)
+			if($total==0) {
 				$this->db->insert("relrutgen",array(
 					"idgenerador"=>$gen,
 					"idruta"=>$id
 				));
+				$this->db->reset_query();
+			}
 		}
 	}
 	public function delgeneradores($id,$data)
 	{
 		$this->db->where("idruta = $id and idgenerador in ($data)");
 		$this->db->delete("relrutgen");
+		$this->db->reset_query();
 	}
 	public function getdatagenerador($identificadorCte,$identificadorGen)
 	{
