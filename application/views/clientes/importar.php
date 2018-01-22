@@ -1,3 +1,4 @@
+<!-- Vista cliente/importar -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Clientes <small>Desde Excel</small></h3>
@@ -23,3 +24,4 @@
 		<a href="<?= base_url("project_files/files/templates/clientes.xlsx?date=".time())?>"> aquí</a>.
 	</div>
 </div>
+<!-- Vista cliente/importar End -->

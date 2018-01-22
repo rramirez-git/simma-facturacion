@@ -1,3 +1,4 @@
+<!-- Vista cliente/clanedario_dispplay -->
 <?php
 $fecha=$fec_inicial;
 do
@@ -18,3 +19,4 @@ do
 }
 while(MonthYear($fecha)!=NextMonthYear($fec_final));
 ?>
+<!-- Vista cliente/calendario_display End -->
