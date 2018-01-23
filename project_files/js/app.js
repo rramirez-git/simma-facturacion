@@ -367,7 +367,6 @@ function fnEmpresa()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.DisplayFrmCP=function()
@@ -595,7 +594,6 @@ function fnOperador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -764,7 +762,6 @@ function fnRuta()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.BuscarCteGen=function()
@@ -1033,7 +1030,6 @@ function fnCliente()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.Buscar=function()
@@ -1095,6 +1091,10 @@ function fnCliente()
 		ajx.fail(function(jqXHRObj,mensaje){
 			Mensaje("Error al cargar el menu: "+mensaje+"<br />"+jqXHRObj.responseText);
 		});
+	}
+	this.RellenaBase = function() {
+		var valor = $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].options[ $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].selectedIndex ].innerText.trim();
+		$( "#frm_cliente_cfdi_base" )[ 0 ].value = ( valor.indexOf( '|' ) > -1 ? valor.split( '|' )[ 1 ].trim() : valor );
 	}
 }
 var tmpIdCte = 0;
@@ -1283,7 +1283,6 @@ function fnGenerador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmAgregarFacturacion=function()
@@ -1390,7 +1389,6 @@ function fnResiduo()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -1587,7 +1585,6 @@ function fnManifiesto()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmCapturaKilos=function(idmanifiesto)
@@ -1710,8 +1707,8 @@ function fnManifiesto()
 	this.SumaCantidad=function()
 	{
 		var suma=0.0;
-		$("#tblCantidades input").each(function(idx){
-			if(typeof this.id!="undefined" && this.id!="total")
+		$(".tblCantidades input").each(function(idx){
+			if( typeof this.id != "undefined" && this.id != "total" && ! isNaN( parseFloat($(this).val()) ) )
 				suma+=parseFloat($(this).val());
 		});
 		$("#total")[0].value=suma.toFixed(3);

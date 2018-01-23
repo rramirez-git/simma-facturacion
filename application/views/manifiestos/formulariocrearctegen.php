@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/formulariocrearctegen -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Manifiestos <small>Creación por Cliente / Generador</small></h3>
@@ -51,3 +52,4 @@
 	</form>
 	<div id="prevalidacion"></div>
 </div>
+<!-- Vista manifiestos/formulariocrearctegen End -->

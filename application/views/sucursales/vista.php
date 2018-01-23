@@ -46,65 +46,65 @@ $objempresa=new Modempresa();
 		</div>
 		<h5>Facturación</h5>
 		<div class="form-group">
-			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de serie</label>
+			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de Serie</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getFac_serie(); ?></p>
 			</div>
-			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_folio_incial(); ?></p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de folio final</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_folio_final(); ?></p>
-			</div>
-			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
+			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getFac_folio_actual(); ?></p>
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_folio_incial(); ?></p>
+			</div>
+			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getFac_folio_final(); ?></p>
+			</div>
+		</div>
 		<h5>Notas de Crédito</h5>
 		<div class="form-group">
-			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de serie</label>
+			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de Serie</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getNc_serie(); ?></p>
 			</div>
-			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_folio_incial(); ?></p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_nc_folio_final" class="col-sm-2 control-label">Número de folio final</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_folio_final(); ?></p>
-			</div>
-			<label for="frm_sucursal_nc_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
+			<label for="frm_sucursal_nc_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getNc_folio_actual(); ?></p>
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_folio_incial(); ?></p>
+			</div>
+			<label for="frm_sucursal_nc_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getNc_folio_final(); ?></p>
+			</div>
+		</div>
 		<h5>Pagos</h5>
 		<div class="form-group">
-			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de serie</label>
+			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de Serie</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getPago_serie(); ?></p>
 			</div>
+			<label for="frm_sucursal_pago_folio_actual" class="col-sm-2 control-label">Número de folio Actual</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $objeto->getPago_folio_actual(); ?></p>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="frm_sucursal_pago_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getPago_folio_incial(); ?></p>
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_pago_folio_final" class="col-sm-2 control-label">Número de folio final</label>
+			<label for="frm_sucursal_pago_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $objeto->getPago_folio_final(); ?></p>
-			</div>
-			<label for="frm_sucursal_pago_folio_actual" class="col-sm-2 control-label">Número de folio actual</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getPago_folio_actual(); ?></p>
 			</div>
 		</div>
 		<h5>Dirección</h5>

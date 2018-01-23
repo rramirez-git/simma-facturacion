@@ -1,3 +1,4 @@
+<!-- Vista empresas/formulario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Empresas <small><?= $objeto->getIdempresa()!="" && $objeto->getIdempresa()!=0?"Actualizar":"Nueva"; ?> empresa</small></h3>
@@ -128,22 +129,6 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="frm_empresa_regimen_fiscal" class="col-sm-2 control-label">Regimen Fiscal</label>
-			<div class="col-sm-10">
-				<select class="form-control" id="frm_empresa_regimen_fiscal" name="frm_empresa_regimen_fiscal">
-					<?php 
-						if($regimen_fiscal["opciones"]!==false) 
-							foreach($regimen_fiscal["opciones"] as $opc)
-							{
-								?>
-								<option value="<?= $opc["idcatalogodet"]; ?>" <?= ($opc["idcatalogodet"]==$objeto->getRegimenfiscal()?'selected="selected"':'')?>><?= $opc["descripcion"]; ?></option>
-								<?php
-							}
-					?>
-				</select>
-			</div>
-		</div>
-		<div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
 				<button type="button" class="btn btn-success" onclick="Empresa.Enviar(<?= ($objeto->getIdempresa()!="" && $objeto->getIdempresa()!=0?'false':'true'); ?>)" >Guardar</button>
@@ -154,3 +139,4 @@
 		</div>
 	</form>
 </div>
+<!-- Vista empresas/formulario End -->

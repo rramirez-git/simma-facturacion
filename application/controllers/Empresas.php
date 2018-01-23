@@ -22,7 +22,6 @@ class Empresas extends CI_Controller
 			"empresas"=>$empresas
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
-		$this->load->model("modcatalogo");
 	}
 	public function nuevo()
 	{

@@ -56,6 +56,23 @@ class Modcliente extends CI_Model
 	private $referenciapago;
 	private $metodopago;
 	private $nombrecorto;
+	private $cfdi_formapago;
+	private $cfdi_moneda;
+	private $cfdi_metodopago;
+	private $cfdi_usocfdi;
+	private $cfdi_claveprodserv;
+	private $cfdi_claveunidad;
+	private $cfdi_unidad;
+	private $cfdi_base;
+	private $cfdi_impuesto;
+	private $cfdi_tipofactor;
+	private $cfdi_tasaocuota;
+	private $categoria;
+	private $banco;
+	private $cuenta;
+	private $clabe;
+	private $rfcbanco;
+	private $correo;
 	public function __construct()
 	{
 		parent::__construct();
@@ -114,6 +131,24 @@ class Modcliente extends CI_Model
 		$this->referenciapago="";
 		$this->metodopago="";
 		$this->nombrecorto="";
+		$this->nombrecorto=0;
+		$this->cfdi_formapago=0;
+		$this->cfdi_moneda=0;
+		$this->cfdi_metodopago=0;
+		$this->cfdi_usocfdi=0;
+		$this->cfdi_claveprodserv=0;
+		$this->cfdi_claveunidad=0;
+		$this->cfdi_unidad="";
+		$this->cfdi_base=0;
+		$this->cfdi_impuesto=0;
+		$this->cfdi_tipofactor=0;
+		$this->cfdi_tasaocuota="";
+		$this->categoria=0;
+		$this->banco="";
+		$this->cuenta="";
+		$this->clabe="";
+		$this->rfcbanco="";
+		$this->correo="";
 	}
 	public function getIdcliente() { return $this->idcliente; }
 	public function getIdentificador() { return $this->identificador; }
@@ -170,6 +205,23 @@ class Modcliente extends CI_Model
 	public function getReferenciaPago() { return $this->referenciapago; }
 	public function getMetodoPago() { return $this->metodopago; }
 	public function getNombreCorto() { return $this->nombrecorto; }
+	public function getCfdi_formapago() { return $this->cfdi_formapago; }
+	public function getCfdi_moneda() { return $this->cfdi_moneda; }
+	public function getCfdi_metodopago() { return $this->cfdi_metodopago; }
+	public function getCfdi_usocfdi() { return $this->cfdi_usocfdi; }
+	public function getCfdi_claveprodserv() { return $this->cfdi_claveprodserv; }
+	public function getCfdi_claveunidad() { return $this->cfdi_claveunidad; }
+	public function getCfdi_unidad() { return $this->cfdi_unidad; }
+	public function getCfdi_base() { return $this->cfdi_base; }
+	public function getCfdi_impuesto() { return $this->cfdi_impuesto; }
+	public function getCfdi_tipofactor() { return $this->cfdi_tipofactor; }
+	public function getCfdi_tasaocuota() { return $this->cfdi_tasaocuota; }
+	public function getCategoria() { return $this->categoria; }
+	public function getBanco() { return $this->banco; }
+	public function getCuenta() { return $this->cuenta; }
+	public function getClabe() { return $this->clabe; }
+	public function getRfcbanco() { return $this->rfcbanco; }
+	public function getCorreo() { return $this->correo; }
 	public function setIdcliente($valor) { $this->idcliente= intval($valor); }
 	public function setIdentificador($valor) { $this->identificador= "".$valor; }
 	public function setRazonsocial($valor) { $this->razonsocial= "".$valor; }
@@ -225,6 +277,23 @@ class Modcliente extends CI_Model
 	public function setReferenciaPago( $valor ) { $this->referenciapago = "" . $valor; }
 	public function setMetodoPago( $valor ) { $this->metodopago = "" . $valor; }
 	public function setNombreCorto( $valor ) { $this->nombrecorto = "" . $valor; }
+	public function setCfdi_formapago( $value ) { $this->cfdi_formapago= intval( $value ); }
+	public function setCfdi_moneda( $value ) { $this->cfdi_moneda= intval( $value ); }
+	public function setCfdi_metodopago( $value ) { $this->cfdi_metodopago= intval( $value ); }
+	public function setCfdi_usocfdi( $value ) { $this->cfdi_usocfdi= intval( $value ); }
+	public function setCfdi_claveprodserv( $value ) { $this->cfdi_claveprodserv= intval( $value ); }
+	public function setCfdi_claveunidad( $value ) { $this->cfdi_claveunidad= intval( $value ); }
+	public function setCfdi_unidad( $value ) { $this->cfdi_unidad= "" . $value; }
+	public function setCfdi_base( $value ) { $this->cfdi_base= floatval( $value ); }
+	public function setCfdi_impuesto( $value ) { $this->cfdi_impuesto= intval( $value ); }
+	public function setCfdi_tipofactor( $value ) { $this->cfdi_tipofactor= intval( $value ); }
+	public function setCfdi_tasaocuota( $value ) { $this->cfdi_tasaocuota= "" . $value; }
+	public function setCategoria( $value ) { $this->categoria= intval( $value ); }
+	public function setBanco( $value ) { $this->banco= "" . $value; }
+	public function setCuenta( $value ) { $this->cuenta= "" . $value; }
+	public function setClabe( $value ) { $this->clabe= "" . $value; }
+	public function setRfcbanco( $value ) { $this->rfcbanco= "" . $value; }
+	public function setCorreo( $value ) { $this->correo= "" . $value; }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idcliente==""||$this->idcliente==0)
@@ -293,6 +362,23 @@ class Modcliente extends CI_Model
 		$this->setReferenciaPago( $reg[ "referenciapago" ] );
 		$this->setMetodoPago( $reg[ "metodopago" ] );
 		$this->setNombreCorto( $reg[ "nombrecorto" ] );
+		$this->setCfdi_formapago( $reg[ "cfdi_formapago" ] );
+		$this->setCfdi_moneda( $reg[ "cfdi_moneda" ] );
+		$this->setCfdi_metodopago( $reg[ "cfdi_metodopago" ] );
+		$this->setCfdi_usocfdi( $reg[ "cfdi_usocfdi" ] );
+		$this->setCfdi_claveprodserv( $reg[ "cfdi_claveprodserv" ] );
+		$this->setCfdi_claveunidad( $reg[ "cfdi_claveunidad" ] );
+		$this->setCfdi_unidad( $reg[ "cfdi_unidad" ] );
+		$this->setCfdi_base( $reg[ "cfdi_base" ] );
+		$this->setCfdi_impuesto( $reg[ "cfdi_impuesto" ] );
+		$this->setCfdi_tipofactor( $reg[ "cfdi_tipofactor" ] );
+		$this->setCfdi_tasaocuota( $reg[ "cfdi_tasaocuota" ] );
+		$this->setCategoria( $reg[ "categoria" ] );
+		$this->setBanco( $reg[ "banco" ] );
+		$this->setCuenta( $reg[ "cuenta" ] );
+		$this->setClabe( $reg[ "clabe" ] );
+		$this->setRfcbanco( $reg[ "rfcbanco" ] );
+		$this->setCorreo( $reg[ "correo" ] );
 		$this->db->where('idcliente',$this->idcliente);
 		$regs=$this->db->get('relsuccli');
 		$this->db->reset_query();
@@ -368,6 +454,23 @@ class Modcliente extends CI_Model
 		$this->setReferenciaPago( $this->input->post( "frm_cliente_referenciapago" ) );
 		$this->setMetodoPago( $this->input->post( "frm_cliente_metodopago" ) );
 		$this->setNombreCorto( $this->input->post( "frm_cliente_nombrecorto" ) );
+		$this->setCfdi_formapago( $this->input->post( "frm_cliente_cfdi_formapago" ) );
+		$this->setCfdi_moneda( $this->input->post( "frm_cliente_cfdi_moneda" ) );
+		$this->setCfdi_metodopago( $this->input->post( "frm_cliente_cfdi_metodopago" ) );
+		$this->setCfdi_usocfdi( $this->input->post( "frm_cliente_cfdi_usocfdi" ) );
+		$this->setCfdi_claveprodserv( $this->input->post( "frm_cliente_cfdi_claveprodserv" ) );
+		$this->setCfdi_claveunidad( $this->input->post( "frm_cliente_cfdi_claveunidad" ) );
+		$this->setCfdi_unidad( $this->input->post( "frm_cliente_cfdi_unidad" ) );
+		$this->setCfdi_base( $this->input->post( "frm_cliente_cfdi_base" ) );
+		$this->setCfdi_impuesto( $this->input->post( "frm_cliente_cfdi_impuesto" ) );
+		$this->setCfdi_tipofactor( $this->input->post( "frm_cliente_cfdi_tipofactor" ) );
+		$this->setCfdi_tasaocuota( $this->input->post( "frm_cliente_cfdi_tasaocuota" ) );
+		$this->setCategoria( $this->input->post( "frm_cliente_categoria" ) );
+		$this->setBanco( $this->input->post( "frm_cliente_banco" ) );
+		$this->setCuenta( $this->input->post( "frm_cliente_cuenta" ) );
+		$this->setClabe( $this->input->post( "frm_cliente_clabe" ) );
+		$this->setRfcbanco( $this->input->post( "frm_cliente_rfcbanco" ) );
+		$this->setCorreo( $this->input->post( "frm_cliente_correo" ) );
 		return true;
 	}
 	public function addToDatabase()
@@ -424,7 +527,24 @@ class Modcliente extends CI_Model
 			"referenciabancaria"=>$this->referenciabancaria,
 			"referenciapago"=>$this->referenciapago,
 			"metodopago"=>$this->metodopago,
-			"nombrecorto"=>$this->nombrecorto
+			"nombrecorto"=>$this->nombrecorto,
+			"cfdi_formapago"=>$this->cfdi_formapago,
+			"cfdi_moneda"=>$this->cfdi_moneda,
+			"cfdi_metodopago"=>$this->cfdi_metodopago,
+			"cfdi_usocfdi"=>$this->cfdi_usocfdi,
+			"cfdi_claveprodserv"=>$this->cfdi_claveprodserv,
+			"cfdi_claveunidad"=>$this->cfdi_claveunidad,
+			"cfdi_unidad"=>$this->cfdi_unidad,
+			"cfdi_base"=>$this->cfdi_base,
+			"cfdi_impuesto"=>$this->cfdi_impuesto,
+			"cfdi_tipofactor"=>$this->cfdi_tipofactor,
+			"cfdi_tasaocuota"=>$this->cfdi_tasaocuota,
+			"categoria"=>$this->categoria,
+			"banco"=>$this->banco,
+			"cuenta"=>$this->cuenta,
+			"clabe"=>$this->clabe,
+			"rfcbanco"=>$this->rfcbanco,
+			"correo"=>$this->correo
 		);
 		if($this->identificador==""||$this->razonsocial==""||$this->idsucursal==0)
 			return false;
@@ -501,7 +621,24 @@ class Modcliente extends CI_Model
 			"referenciabancaria"=>$this->referenciabancaria,
 			"referenciapago"=>$this->referenciapago,
 			"metodopago"=>$this->metodopago,
-			"nombrecorto"=>$this->nombrecorto
+			"nombrecorto"=>$this->nombrecorto,
+			"cfdi_formapago"=>$this->cfdi_formapago,
+			"cfdi_moneda"=>$this->cfdi_moneda,
+			"cfdi_metodopago"=>$this->cfdi_metodopago,
+			"cfdi_usocfdi"=>$this->cfdi_usocfdi,
+			"cfdi_claveprodserv"=>$this->cfdi_claveprodserv,
+			"cfdi_claveunidad"=>$this->cfdi_claveunidad,
+			"cfdi_unidad"=>$this->cfdi_unidad,
+			"cfdi_base"=>$this->cfdi_base,
+			"cfdi_impuesto"=>$this->cfdi_impuesto,
+			"cfdi_tipofactor"=>$this->cfdi_tipofactor,
+			"cfdi_tasaocuota"=>$this->cfdi_tasaocuota,
+			"categoria"=>$this->categoria,
+			"banco"=>$this->banco,
+			"cuenta"=>$this->cuenta,
+			"clabe"=>$this->clabe,
+			"rfcbanco"=>$this->rfcbanco,
+			"correo"=>$this->correo
 		);
 		$this->db->where('idcliente',$this->idcliente);
 		$this->db->update('cliente',$data);

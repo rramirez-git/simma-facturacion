@@ -1,3 +1,4 @@
+<!-- Vista cliente/calendario -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Calendarios</h3>
@@ -64,3 +65,4 @@
 		<?php endforeach; ?>
 	<?php endforeach; ?>
 </div>
+<!-- Vista cliente/calendario End -->

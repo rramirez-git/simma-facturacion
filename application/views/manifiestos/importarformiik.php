@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/importarformiik -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Manifiestos <small>Desde Formiik</small></h3>
@@ -23,3 +24,4 @@
 		<a href="<?= base_url("project_files/files/templates/rep_manifiesto_formik_in.xlsx?date=".time())?>"> aquí</a>.
 	</div>
 </div>
+<!-- Vista manifiestos/importarformiik End -->
