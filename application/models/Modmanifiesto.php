@@ -13,6 +13,10 @@ class ModManifiesto extends CI_Model
 	private $recolecciones;
 	private $motivo;
 	private $noexterno;
+	private $facturable;
+	private $tipo_cobro;
+	private $uuid;
+	private $uuid_excedente;
 	public function __construct()
 	{
 		parent::__construct();
@@ -28,6 +32,10 @@ class ModManifiesto extends CI_Model
 		$this->recolecciones=array();
 		$this->motivo="";
 		$this->noexterno="";
+		$this->facturable=0;
+		$this->tipo_cobro=0;
+		$this->uuid="";
+		$this->uuid_excedente="";
 	}
 	public function getIdmanifiesto() { return $this->idmanifiesto; }
 	public function getIdentificador() { return $this->identificador; }
@@ -41,6 +49,10 @@ class ModManifiesto extends CI_Model
 	public function getRecolecciones() { return $this->recolecciones; }
 	public function getMotivo() { return $this->motivo; }
 	public function getNoexterno() { return $this->noexterno; }
+	public function getFacturable() { return $this->facturable; }
+	public function getTipo_cobro() { return $this->tipo_cobro; }
+	public function getUuid() { return $this->uuid; }
+	public function getUuid_excedente() { return $this->uuid_excedente; }
 	public function setIdmanifiesto($valor) { $this->idmanifiesto= intval($valor); }
 	public function setIdentificador($valor) { $this->identificador= "".$valor; }
 	public function setInstruccionesespeciales($valor) { $this->instruccionesespeciales= "".$valor; }
@@ -53,6 +65,10 @@ class ModManifiesto extends CI_Model
 	public function setRecolecciones($valor) { if(is_array($valor)) $this->recolecciones=$valor; else array_push($this->recolecciones,$valor); }
 	public function setMotivo($valor) { $this->motivo= "".$valor; }
 	public function setNoexterno($valor) { $this->noexterno= "".$valor; }
+	public function setFacturable($valor) { $this->facturable= intval( $valor ); }
+	public function setTipo_cobro($valor) { $this->tipo_cobro= intval( $valor ); }
+	public function setUuid($valor) { $this->uuid= "".$valor; }
+	public function setUuid_excedente($valor) { $this->uuid_excedente= "".$valor; }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idmanifiesto==""||$this->idmanifiesto==0)
@@ -77,6 +93,10 @@ class ModManifiesto extends CI_Model
 		$this->setObservacionesdestinofinal($reg["observacionesdestinofinal"]);
 		$this->setMotivo($reg["motivo"]);
 		$this->setNoexterno($reg["noexterno"]);
+		$this->setFacturable($reg["facturable"]);
+		$this->setTipo_cobro($reg["tipo_cobro"]);
+		$this->setUuid($reg["uuid"]);
+		$this->setUuid_excedente($reg["uuid_excedente"]);
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$regs=$this->db->get('relgenman');
 		$this->db->reset_query();
@@ -118,6 +138,10 @@ class ModManifiesto extends CI_Model
 		$this->setRecolecciones(explode(",",$this->input->post("frm_manifiesto_recolecciones")));
 		$this->setMotivo($this->input->post("frm_manifiesto_motivo"));
 		$this->setNoexterno($this->input->post("frm_manifiesto_noexterno"));
+		$this->setFacturable($this->input->post("frm_manifiesto_facturable"));
+		$this->setTipo_cobro($this->input->post("frm_manifiesto_tipo_cobro"));
+		$this->setUuid($this->input->post("frm_manifiesto_uuid"));
+		$this->setUuid_excedente($this->input->post("frm_manifiesto_uuid_excedente"));
 		return true;
 	}
 	public function addToDatabase()
@@ -130,7 +154,11 @@ class ModManifiesto extends CI_Model
 			"fecharecepcion"=>$this->fecharecepcion,
 			"observacionesdestinofinal"=>$this->observacionesdestinofinal,
 			"motivo"=>$this->motivo,
-			"noexterno"=>$this->noexterno
+			"noexterno"=>$this->noexterno,
+			"facturable"=>$this->facturable,
+			"tipo_cobro"=>$this->tipo_cobro,
+			"uuid"=>$this->uuid,
+			"uuid_excedente"=>$this->uuid_excedente
 		);
 		$this->db->insert('manifiesto',$data);
 		$this->setIdmanifiesto($this->db->insert_id());
@@ -162,7 +190,11 @@ class ModManifiesto extends CI_Model
 			"fecharecepcion"=>$this->fecharecepcion,
 			"observacionesdestinofinal"=>$this->observacionesdestinofinal,
 			"motivo"=>$this->motivo,
-			"noexterno"=>$this->noexterno
+			"noexterno"=>$this->noexterno,
+			"facturable"=>$this->facturable,
+			"tipo_cobro"=>$this->tipo_cobro,
+			"uuid"=>$this->uuid,
+			"uuid_excedente"=>$this->uuid_excedente
 		);
 		$this->db->where('idmanifiesto',$this->idmanifiesto);
 		$this->db->update('manifiesto',$data);

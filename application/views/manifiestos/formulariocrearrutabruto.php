@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/formulariocrearrutabruto -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Manifiestos <small>Creación por Ruta (Todos los Generadores Asociados)</small></h3>
@@ -53,3 +54,4 @@
 <script type="text/javascript">
 	var hoy="<?= Hoy(); ?>";
 </script>
+<!-- Vista manifiestos/formulariocrearrutabruto End -->

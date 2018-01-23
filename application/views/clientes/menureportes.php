@@ -1,3 +1,4 @@
+<!-- Vista cliente/menureportes -->
 <table class="menuCreacion">
 	<tr>
 		<th>
@@ -30,3 +31,4 @@
 		</td>
 	</tr>
 </table>
+<!-- Vista cliente/menureportes End -->

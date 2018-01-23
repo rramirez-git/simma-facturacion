@@ -354,6 +354,7 @@ function fnEmpresa()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'empresas';
 					else
@@ -366,7 +367,6 @@ function fnEmpresa()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.DisplayFrmCP=function()
@@ -504,6 +504,7 @@ function fnSucursal()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'sucursales/index/'+idEmpresa;
 					else
@@ -576,6 +577,7 @@ function fnOperador()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="") {
 						location.href=baseURL+'operadores/index/'+idEmpresa+'/'+idSucursal;
 					} else {
@@ -592,7 +594,6 @@ function fnOperador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -641,7 +642,8 @@ function fnVehiculo()
 					url:	baseURL+'vehiculos/eliminar/'+id,
 					cache:	false
 				});
-				ajx.done( function( resp ){
+				ajx.done(function(resp){
+					resp = resp.trim();
 					if( resp == "" ) {
 						location.href=baseURL+'vehiculos/index/'+idEmpresa+'/'+idSucursal;
 					} else {
@@ -747,6 +749,7 @@ function fnRuta()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'rutas/index/'+idEmpresa+'/'+idSucursal;
 					else
@@ -759,7 +762,6 @@ function fnRuta()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.BuscarCteGen=function()
@@ -1015,6 +1017,7 @@ function fnCliente()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'clientes/index/'+idEmpresa+'/'+idSucursal;
 					else
@@ -1027,7 +1030,6 @@ function fnCliente()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.Buscar=function()
@@ -1089,6 +1091,10 @@ function fnCliente()
 		ajx.fail(function(jqXHRObj,mensaje){
 			Mensaje("Error al cargar el menu: "+mensaje+"<br />"+jqXHRObj.responseText);
 		});
+	}
+	this.RellenaBase = function() {
+		var valor = $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].options[ $( "#frm_cliente_cfdi_tasaocuota" )[ 0 ].selectedIndex ].innerText.trim();
+		$( "#frm_cliente_cfdi_base" )[ 0 ].value = ( valor.indexOf( '|' ) > -1 ? valor.split( '|' )[ 1 ].trim() : valor );
 	}
 }
 var tmpIdCte = 0;
@@ -1264,6 +1270,7 @@ function fnGenerador()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'clientes/ver/'+tmpIdCte;
 					else
@@ -1276,7 +1283,6 @@ function fnGenerador()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmAgregarFacturacion=function()
@@ -1370,6 +1376,7 @@ function fnResiduo()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'residuos/index/'+idEmpresa+'/'+idSucursal;
 					else
@@ -1382,7 +1389,6 @@ function fnResiduo()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 }
@@ -1566,6 +1572,7 @@ function fnManifiesto()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'manifiestos/index/'+idEmpresa+'/'+idSucursal;
 					else
@@ -1578,7 +1585,6 @@ function fnManifiesto()
 					},500);
 				});
 			},500);
-			
 		});
 	}
 	this.FrmCapturaKilos=function(idmanifiesto)
@@ -1701,8 +1707,8 @@ function fnManifiesto()
 	this.SumaCantidad=function()
 	{
 		var suma=0.0;
-		$("#tblCantidades input").each(function(idx){
-			if(typeof this.id!="undefined" && this.id!="total")
+		$(".tblCantidades input").each(function(idx){
+			if( typeof this.id != "undefined" && this.id != "total" && ! isNaN( parseFloat($(this).val()) ) )
 				suma+=parseFloat($(this).val());
 		});
 		$("#total")[0].value=suma.toFixed(3);
@@ -2221,6 +2227,7 @@ function fnPerfil()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'perfiles';
 					else
@@ -2286,6 +2293,7 @@ function fnUsuario()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'usuarios/index';
 					else
@@ -2647,6 +2655,7 @@ function fnBitacora()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'bitacoras/index/'+idEmpresa+'/'+idSucursal;
 					else
@@ -2775,6 +2784,7 @@ function fnGrupo()
 					cache:	false
 				});
 				ajx.done(function(resp){
+					resp = resp.trim();
 					if(resp=="")
 						location.href=baseURL+'grupos';
 					else

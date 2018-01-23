@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/impresion -->
 <?php
 if(!isset($idx)) $idx=0;
 
@@ -321,3 +322,4 @@ if($idx==0) echo '<link rel="stylesheet" type="text/css" href="'.base_url("proje
 		window.print();
 	</script>
 <?php endif; ?>
+<!-- Vista manifiestos/impresion End -->

@@ -1,3 +1,4 @@
+<!-- Vista empresas/vista -->
 <?= $menumain; ?>
 <div class="container">
 	<div class="btn-toolbar pull-right" role="toolbar">
@@ -137,19 +138,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_empresa_regimen_fiscal" class="col-sm-2 control-label">Regimen fiscal</label>
-			<div class="col-sm-10">
-				<p class="form-control-static">
-					<?php 
-						if($regimen_fiscal["opciones"]!==false) 
-							foreach($regimen_fiscal["opciones"] as $opc)
-								if($opc["idcatalogodet"]==$objeto->getRegimenfiscal())
-									echo $opc["descripcion"];
-					?>
-				</p>
-			</div>
-		</div>
 		<?php if($this->modsesion->hasPermisoHijo(7)): ?>
 			<h5>Sucursales</h5>
 			<div class="table-responsive">
@@ -188,3 +176,4 @@
 <script type="text/javascript">
 	$(document).ready(function(){$("div.table-responsive table").DataTable();});
 </script>
+<!-- Vista empresas/vista End -->

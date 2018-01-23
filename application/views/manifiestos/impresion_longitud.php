@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/impresion_longitud -->
 <link rel="stylesheet" type="text/css" href="<?= base_url("project_files/css/manifiestoimpresion.css")?>" />
 <div class="manifiestoView">
 	<div class="manifiestoViewScreen">
@@ -281,3 +282,4 @@
 		<div class="manifiesto_space_dest_fecha">1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</div>
 	</div>
 </div>
+<!-- Vista manifiestos/impresion_longitud End -->

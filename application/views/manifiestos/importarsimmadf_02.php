@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/importarsimmadf_02 -->
 <?= $menumain; ?>
 <?php
 	if(!isset($manifiestos)||$manifiestos===false||!is_array($manifiestos)) $manifiestos=array();
@@ -239,3 +240,4 @@
 	var empresa=<?= $idempresa; ?>;
 	var sucursal=<?= $idsucursal; ?>;
 </script>
+<!-- Vista manifiestos/importarsimmadf_02 End -->

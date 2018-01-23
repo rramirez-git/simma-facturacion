@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/vista -->
 <?= $menumain; ?>
 <?php
 /*$manifiesto=new ModManifiesto();
@@ -65,6 +66,45 @@ $total=0.0;
 				<p class="form-control-static"><?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?></p>
 			</div>
 		</div>
+		<h5>Facturacion</h5>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Esquema de Facturación</label>
+			<div class="col-sm-8">
+				<p class="form-control-static"><?php
+				foreach( $tipos_cobro[ 'opciones' ] as $opc ) {
+					if( $opc[ 'idcatalogodet' ] == $tipo_cobro->getTipocobro() ) {
+						echo $opc[ 'descripcion'] . " / ";
+					}
+				}
+				?><?php
+				foreach( $tipos_servicio[ 'opciones' ] as $opc ) {
+					if( $opc[ 'idcatalogodet' ] == $tipo_cobro->getTiposervicio() ) {
+						echo $opc[ 'descripcion'];
+					}
+				}
+				?><?php
+				foreach( $unidades[ 'opciones' ] as $opc ) {
+					if( $opc[ 'idcatalogodet' ] == $tipo_cobro->getUnidad() ) {
+						echo " (" . $opc[ 'descripcion'] . ")";
+					}
+				}
+				?></p>
+			</div>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="1" id="frm_manifiesto_facturable" name="frm_manifiesto_facturable" <?= ($manifiesto->getFacturable()==1?'checked="checked"':''); ?> disabled="disabled" />
+						Facturable
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Factura Asociada</label>
+			<div class="col-sm-10">
+				<p class="form-control-static"><?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?></p>
+			</div>
+		</div>
 		<h5>Transportista</h5>
 		<?php
 		$sucursal->setIdsucursal($ruta->getEmpresatransportista());
@@ -122,6 +162,7 @@ $total=0.0;
 				<thead>
 					<tr>
 						<th>Residuo</th>
+						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
 						<th>Cantidad Total</th>
@@ -131,6 +172,7 @@ $total=0.0;
 				<tfoot>
 					<tr>
 						<th>Residuo</th>
+						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
 						<th>Cantidad Total</th>
@@ -141,6 +183,7 @@ $total=0.0;
 					<?php foreach($recoleccion as $r) if($r["recoleccion"]!==false ):?>
 						<tr>
 							<td><?= $r["residuo"]["nombre"]; ?></td>
+							<td><?php echo $r[ 'residuo' ][ 'opcion' ]; ?></td>
 							<!--<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedorcapacidad"]:""); ?></td>
 							<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedortipo"]:""); ?></td>-->
 							<td class="numero"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:""); ?></td>
@@ -151,6 +194,7 @@ $total=0.0;
 					endif; ?>
 					<tr>
 						<td><strong>Total</strong></td>
+						<td></td>
 						<td class="numero"><strong><?= number_format($total,3); ?></strong></td>
 					</tr>
 				</tbody>
@@ -161,3 +205,4 @@ $total=0.0;
 <script type="text/javascript">
 	var idManifiesto=<?= $manifiesto->getIdmanifiesto(); ?>;
 </script>
+<!-- Vista manifiestos/vista End -->

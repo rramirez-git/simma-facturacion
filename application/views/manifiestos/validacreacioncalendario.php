@@ -1,3 +1,4 @@
+<!-- Vista manifiestos/validacreacioncalendario -->
 <?php
 $cliente=new Modcliente();
 $generador=new Modgenerador();
@@ -81,3 +82,4 @@ $generador=new Modgenerador();
         </div>
 	</div>
 </form>
+<!-- Vista manifiestos/validacreacioncalendario End -->
