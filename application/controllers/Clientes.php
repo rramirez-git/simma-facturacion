@@ -559,9 +559,7 @@ class Clientes extends CI_Controller
 										break;
 								}
 							}
-							var_dump("facturacion de cliente", $fac);
 							$fac->addToDatabase();
-							var_dump("hola mundo");
 							if($fac->getIdfacturacion()==0 || $fac->getIdfacturacion()=="")
 								array_push($errores,"No se almacenaron los elementos de facturacion");
 							else
@@ -782,9 +780,7 @@ class Clientes extends CI_Controller
 										break;
 								}
 							}
-							var_dump("facturacion del generador", $fac);
 							$fac->addToDatabase();
-							var_dump("hola mundo 3");
 							if($fac->getIdfacturacion()==0||$fac->getIdfacturacion()=="")
 								array_push($errores,"No se almacenaron los datos de facturacion");
 							else
