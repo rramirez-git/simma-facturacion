@@ -436,125 +436,126 @@ class Clientes extends CI_Controller
 									    $fac->setKiloexcedido($celda->nodeValue);
 									    break;
 									case 'AI':
-										$objeto->setFacturaxgenerador(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										$fac->setUnidad($this->modcatalogo->getIdOption(29,$celda->nodeValue));
 										break;
 									case 'AJ':
-										$objeto->setOrdencompra(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										$objeto->setFacturaxgenerador(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
 										break;
 									case 'AK':
-										$objeto->setDesglosemanifiestos(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										$objeto->setOrdencompra(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
 										break;
 									case 'AL':
+										$objeto->setDesglosemanifiestos(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										break;
+									case 'AM':
 									    $objeto->setLeyendas($celda->nodeValue);
 									    break;
-									case 'AM':
+									case 'AN':
 										$objeto->setDiascredito($this->modcatalogo->getIdOption(7,$celda->nodeValue));
 										break;
-									case 'AN':
+									case 'AO':
 									    $objeto->setCobranzacontacto($celda->nodeValue);
 									    break;
-									case 'AO':
+									case 'AP':
 									    $objeto->setCobranzaemail($celda->nodeValue);
 									    break;
-									case 'AP':
+									case 'AQ':
 									    $objeto->setCobranzatelefono($celda->nodeValue);
 									    break;
-									case 'AQ':
+									case 'AR':
 									    $objeto->setCobranzaextension($celda->nodeValue);
 									    break;
-									case 'AR':
+									case 'AS':
 									    $objeto->setCobranzatelefono2($celda->nodeValue);
 									    break;
-									case 'AS':
+									case 'AT':
 									    $objeto->setCobranzaextension2($celda->nodeValue);
 									    break;
-									case 'AT':
+									case 'AU':
 									    $objeto->setCobranzaobservaciones($celda->nodeValue);
 									    break;
-									case 'AU':
+									case 'AV':
 									    $objeto->setCobranzacalle($celda->nodeValue);
 									    break;
-									case 'AV':
+									case 'AW':
 									    $objeto->setCobranzanumexterior($celda->nodeValue);
 									    break;
-									case 'AW':
+									case 'AX':
 									    $objeto->setCobranzanuminterior($celda->nodeValue);
 									    break;
-									case 'AX':
+									case 'AY':
 									    $objeto->setCobranzacolonia($celda->nodeValue);
 									    break;
-									case 'AY':
+									case 'AZ':
 									    $objeto->setCobranzamunicipio($celda->nodeValue);
 									    break;
-									case 'AZ':
+									case 'BA':
 									    $objeto->setCobranzaestado($celda->nodeValue);
 									    break;
-									case 'BA':
+									case 'BB':
 									    $objeto->setCobranzacp($celda->nodeValue);
 									    break;
-									case 'BB':
+									case 'BC':
 										$objeto->setReferenciabancaria($celda->nodeValue);
 										break;
-									case 'BC':
+									case 'BD':
 										$objeto->setReferenciaPago( $celda->nodeValue );
 										break;
-									case 'BD':
+									case 'BE':
 										$objeto->setMetodoPago( $celda->nodeValue );
 										break;
-									case 'BE':
+									case 'BF':
 										$objeto->setNombreCorto( $celda->nodeValue );
 										break;
-									case 'BF': //INICIO
+									case 'BG': //INICIO
 										$objeto->setCategoria($this->modcatalogo->getIdOption(28,$celda->nodeValue));
 										break;
-									case 'BG':
+									case 'BH':
 										$objeto->setCfdi_moneda($this->modcatalogo->getIdOption(21,$celda->nodeValue));
 										break;
-									case 'BH':
+									case 'BI':
 										$objeto->setCfdi_formapago($this->modcatalogo->getIdOption(18,$celda->nodeValue));
 										break;
-									case 'BI':
+									case 'BJ':
 										$objeto->setCfdi_metodopago($this->modcatalogo->getIdOption(20,$celda->nodeValue));
 										break;
-									case 'BJ':
+									case 'BK':
 										$objeto->setCfdi_usocfdi($this->modcatalogo->getIdOption(27,$celda->nodeValue));
 										break;
-									case 'BK':
+									case 'BL':
 										$objeto->setCfdi_claveprodserv($this->modcatalogo->getIdOption(16,$celda->nodeValue));
 										break;
-									case 'BL':
+									case 'BM':
 										$objeto->setCfdi_claveunidad($this->modcatalogo->getIdOption(17,$celda->nodeValue));
 										break;
-									case 'BM':
+									case 'BN':
 										$objeto->setCfdi_unidad($celda->nodeValue);
 										break;
-									case 'BN':
+									case 'BO':
 										$objeto->setCfdi_impuesto($this->modcatalogo->getIdOption(19,$celda->nodeValue));
 										break;
-									case 'BO':
+									case 'BP':
 										$objeto->setCfdi_tipofactor($this->modcatalogo->getIdOption(25,$celda->nodeValue));
 										break;
-									case 'BP':
+									case 'BQ':
 										$objeto->setCfdi_tasaocuota($this->modcatalogo->getIdOption(24,$celda->nodeValue));
 										break;
-										//numero decimal
-									case 'BQ':
+									case 'BR':
 										$objeto->setCfdi_base($celda->nodeValue);
 										break;
-										//numero decimal
-									case 'BR':
+									case 'BS':
 										$objeto->setBanco($celda->nodeValue);
 										break;
-									case 'BS':
+									case 'BT':
 										$objeto->setRfcbanco($celda->nodeValue);
 										break;
-									case 'BT':
+									case 'BU':
 										$objeto->setCuenta($celda->nodeValue);
 										break;
-									case 'BU':
+									case 'BV':
 										$objeto->setClabe($celda->nodeValue);
 										break;
-									case 'BV':
+									case 'BW':
 										$objeto->setCorreo($celda->nodeValue);
 										break;
 								}
@@ -725,57 +726,60 @@ class Clientes extends CI_Controller
 									    $fac->setKiloexcedido($celda->nodeValue);
 									    break;
 									case 'AM':
-										$objeto->setOrdencompra(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										$fac->setUnidad($this->modcatalogo->getIdOption(29,$celda->nodeValue));
 										break;
 									case 'AN':
+										$objeto->setOrdencompra(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
+										break;
+									case 'AO':
 										$objeto->setDesglosemanifiestos(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
 									    break;
-									case 'AO':
+									case 'AP':
 									    $objeto->setLeyendas($celda->nodeValue);
 									    break;
-									case 'AP':
+									case 'AQ':
 									    $objeto->setCobranzacontacto($celda->nodeValue);
 									    break;
-									case 'AQ':
+									case 'AR':
 									    $objeto->setCobranzaemail($celda->nodeValue);
 									    break;
-									case 'AR':
+									case 'AS':
 									    $objeto->setCobranzatelefono($celda->nodeValue);
 									    break;
-									case 'AS':
+									case 'AT':
 									    $objeto->setCobranzaextension($celda->nodeValue);
 									    break;
-									case 'AT':
+									case 'AU':
 									    $objeto->setCobranzatelefono2($celda->nodeValue);
 									    break;
-									case 'AU':
+									case 'AV':
 									    $objeto->setRepresentanteextension2($celda->nodeValue);
 									    break;
-									case 'AV':
+									case 'AW':
 									    $objeto->setCobranzaobservaciones($celda->nodeValue);
 									    break;
-									case 'AW':
+									case 'AX':
 									    $objeto->setCobranzacalle($celda->nodeValue);
 									    break;
-									case 'AX':
+									case 'AY':
 									    $objeto->setCobranzanumexterior($celda->nodeValue);
 									    break;
-									case 'AY':
+									case 'AZ':
 									    $objeto->setCobranzanuminterior($celda->nodeValue);
 									    break;
-									case 'AZ':
+									case 'BA':
 									    $objeto->setCobranzacolonia($celda->nodeValue);
 									    break;
-									case 'BA':
+									case 'BB':
 									    $objeto->setCobranzamunicipio($celda->nodeValue);
 									    break;
-									case 'BB':
+									case 'BC':
 									    $objeto->setCobranzaestado($celda->nodeValue);
 									    break;
-									case 'BC':
+									case 'BD':
 									    $objeto->setCobranzacp($celda->nodeValue);
 									    break;
-									case 'BD':
+									case 'BE':
 										$objeto->setGiro($celda->nodeValue);
 										break;
 								}
