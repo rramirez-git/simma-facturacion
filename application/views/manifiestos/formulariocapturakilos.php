@@ -8,7 +8,6 @@ $total=0.0;
 		<div class="col-sm-8">
 			<input type="text" class="form-control" id="frm_noexterno" name="frm_noexterno" value="<?= $noexterno; ?>" />
 		</div>
-	</div>
 	<div class="row">
 		<?php
 		$tipo_residuo_cat = "";
@@ -70,5 +69,8 @@ $total=0.0;
 			</select>
 		</div>
 	</div>
+	</div>
+	<input type="hidden" class="form-control" id="frm_manifiesto_fecha_captura" name="frm_manifiesto_fecha_captura" value="<?= $fecha_captura; ?>"  />
+	<input type="hidden" class="form-control" id="frm_manifiesto_capturista" name="frm_manifiesto_capturista" value="<?= $capturista; ?>" />
 </form>
 <!-- Vista manifiestos/formulariocapturakilos End -->
