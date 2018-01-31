@@ -70,5 +70,7 @@ $total=0.0;
 			</select>
 		</div>
 	</div>
+	<input type="hidden" class="form-control" id="frm_manifiesto_fecha_captura" name="frm_manifiesto_fecha_captura" value="<?= $fecha_captura; ?>"  />
+	<input type="hidden" class="form-control" id="frm_manifiesto_capturista" name="frm_manifiesto_capturista" value="<?= $capturista; ?>" />
 </form>
 <!-- Vista manifiestos/formulariocapturakilos End -->
