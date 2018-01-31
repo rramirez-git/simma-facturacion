@@ -14,6 +14,15 @@
 			</td>
 		</tr>
 	<?php endif;?>
+	<?php if($this->modsesion->hasPermisoHijo(128)): ?>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/8"); ?>','winreporte')">
+					Captura de Manifiestos
+				</button>
+			</td>
+		</tr>
+	<?php endif;?>
 	<tr>
 		<td>
 			<button type="button" class="btn btn-danger" onclick="Manifiesto.CerrarMenuCreacion()">
