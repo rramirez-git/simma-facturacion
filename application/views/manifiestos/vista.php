@@ -50,14 +50,29 @@ $total=0.0;
 		<h5>Generador</h5>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Cliente</label>
-			<div class="col-sm-10">
+			<div class="col-sm-4">
 				<p class="form-control-static"><?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></p>
+			</div>
+			<label class="col-sm-2 control-label" id="captura_fec">
+				<?php if ($manifiesto->getFecha_captura() != "") {
+				echo "Fecha de Captura:";
+				} ?>
+			</label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?> </p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Generador</label>
-			<div class="col-sm-10">
+			<div class="col-sm-4">
 				<p class="form-control-static"><?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></p>
+			</div>
+			<label class="col-sm-2 control-label">
+				<?php if ($manifiesto->getCapturista() != "") {
+				echo "Capturista:";
+				} ?></label>
+			<div class="col-sm-4">
+				<p class="form-control-static"><?= $manifiesto->getCapturista( ); ?></p>
 			</div>
 		</div>
 		<div class="form-group">
