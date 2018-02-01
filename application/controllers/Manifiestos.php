@@ -1912,10 +1912,6 @@ class Manifiestos extends CI_Controller
 							break;
 					}
 					if($this->modrecoleccion->getCantidad()>0)
-						$fecha_captura=date( 'Y-m-d H:i:s' );
-						$this->modmanifiesto->setFecha_captura( $fecha_captura );
-						$capturista=$this->session->userdata('datausr');
-						$this->modmanifiesto->setCapturista( $capturista["nombre"]." ".$capturista["apaterno"]." ".$capturista["amaterno"]  );
 						$this->modrecoleccion->addToDatabase();
 				}
 			}
