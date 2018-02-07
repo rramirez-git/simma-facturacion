@@ -28,7 +28,7 @@
 					<tr>
 						<td><?= $cte["tmpcte"]; ?></td>
 						<td><?= $cte["identificador"]; ?></td>
-						<td colspan="2"><?= $cte["razonsocial"]. ( $cte[ "nombrecorto" ] != "" ? " ({$cte["nombrecorto"]})" : "" ); ?></td>
+						<td colspan="2"><?= $cte["razonsocial"]. ( isset( $cte[ "nombrecorto" ] ) && $cte[ "nombrecorto" ] != "" ? " ({$cte["nombrecorto"]})" : "" ); ?></td>
 						<td>
 							<div class="alert <?= count($cte["errores"])>0?"alert-danger":"alert-success"; ?>">
 								<?= count($cte["errores"])>0?implode(", ",$cte["errores"]):"Cargado"; ?>
@@ -43,7 +43,7 @@
 							<td></td>
 							<td></td>
 							<td><?= $gen["identificador"]; ?></td>
-							<td><?= $gen["razonsocial"]. ( $gen[ "nombrecorto" ] != "" ? " ({$gen["nombrecorto"]})" : "" ); ?></td>
+							<td><?= $gen["razonsocial"]. ( isset( $gen[ "nombrecorto" ] ) && $gen[ "nombrecorto" ] != "" ? " ({$gen["nombrecorto"]})" : "" ); ?></td>
 							<td>
 								<div class="alert <?= count($gen["errores"])>0?"alert-danger":"alert-success"; ?>">
 									<?= count($gen["errores"])>0?implode(", ",$gen["errores"]):"Cargado"; ?>
