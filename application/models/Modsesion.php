@@ -35,7 +35,7 @@ class Modsesion extends CI_Model
 	}
 	public function logedin()
 	{
-		$insession=(!($this->session->userdata('idusuario')===false));
+		$insession=(!($this->session->userdata('idusuario') === false || $this->session->userdata('idusuario') === null));
 		if($insession)
 		{
 			$this->getPerfiles();

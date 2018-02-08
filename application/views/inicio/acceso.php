@@ -98,7 +98,9 @@
 				} else {
 					return true;
 				}
-    		}
+    		} else if( location.host.indexOf("www") > -1 ) {
+    			return true;
+			}
     		location.href = location.protocol + "//www." + location.host + location.pathname;
     	})();
     </script>
