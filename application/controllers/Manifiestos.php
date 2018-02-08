@@ -648,7 +648,9 @@ class Manifiestos extends CI_Controller
 				"cliente"=>$this->modcatalogo->getCatalogo(11)
 				),
 			"motivo"=>$this->modmanifiesto->getMotivo(),
-			"noexterno"=>$this->modmanifiesto->getNoexterno()
+			"noexterno"=>$this->modmanifiesto->getNoexterno(),
+			"fecha_captura"=>$this->modmanifiesto->getFecha_captura(),
+			"capturista"=>$this->modmanifiesto->getCapturista()
 			));
 	}
 	public function eliminar($id)
@@ -696,6 +698,10 @@ class Manifiestos extends CI_Controller
 			}
 		}
 		$this->modmanifiesto->setFacturable( $facturable ? 1 : 0 );
+		$fecha_captura=date( 'Y-m-d H:i:s' );
+		$this->modmanifiesto->setFecha_captura( $fecha_captura );
+		$capturista=$this->session->userdata('datausr');
+		$this->modmanifiesto->setCapturista( $capturista["nombre"]." ".$capturista["apaterno"]." ".$capturista["amaterno"]  );
 		$residuos=$this->modresiduo->getAll($this->modruta->getIdsucursal());
 		$recoleccionesActual=$this->modmanifiesto->getRecoleccionesDatabase();
 		if($recoleccionesActual!==false) foreach($recoleccionesActual as $rec)
@@ -707,7 +713,9 @@ class Manifiestos extends CI_Controller
 				$rec["idrecoleccion"],
 				$rec["idrecoleccion"],
 				"recoleccion",
-				"relresrec,relmanrec"
+				"relresrec,relmanrec",
+				"fecha_captura",
+				"capturista"
 			);
 		}
 		$this->modmanifiesto->updateToDatabase();
@@ -1750,6 +1758,10 @@ class Manifiestos extends CI_Controller
 					}
 				}
 				$this->modmanifiesto->setFacturable( $facturable ? 1 : 0 );
+				$fecha_captura=date( 'Y-m-d H:i:s' );
+				$this->modmanifiesto->setFecha_captura( $fecha_captura );
+				$capturista=$this->session->userdata('datausr');
+				$this->modmanifiesto->setCapturista( $capturista["nombre"]." ".$capturista["apaterno"]." ".$capturista["amaterno"]  );
 				$this->modmanifiesto->addToDatabase();
 				break;
 			case 'porcapturar':
@@ -1776,6 +1788,10 @@ class Manifiestos extends CI_Controller
 					}
 				}
 				$this->modmanifiesto->setFacturable( $facturable ? 1 : 0 );
+				$fecha_captura=date( 'Y-m-d H:i:s' );
+				$this->modmanifiesto->setFecha_captura( $fecha_captura );
+				$capturista=$this->session->userdata('datausr');
+				$this->modmanifiesto->setCapturista( $capturista["nombre"]." ".$capturista["apaterno"]." ".$capturista["amaterno"]  );
 				$this->modmanifiesto->updateToDatabase();
 				break;
 		}

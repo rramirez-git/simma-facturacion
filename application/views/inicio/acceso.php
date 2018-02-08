@@ -50,7 +50,7 @@
 							<img src="<?= base_url('project_files/img/sistema/simma-login.png'); ?>" width="336" height="82" class="brand animated fadeInDown">
 						</a>
 						<div class="contenedorForma">
-							<label class="label" for="usr"> UsuarioOK</label>
+							<label class="label" for="usr"> Usuario</label>
 							<input class="form-control" placeholder="Nombre de usuario" required="" id="usr" name="usr" />
 							<label  class="label" for="pwd"> Contraseña</label>
 							<input type="password" class="form-control" placeholder="Contraseña" required="" id="pwd" name="pwd" />
@@ -98,7 +98,9 @@
 				} else {
 					return true;
 				}
-    		}
+    		} else if( location.host.indexOf("www") > -1 ) {
+    			return true;
+			}
     		location.href = location.protocol + "//www." + location.host + location.pathname;
     	})();
     </script>
