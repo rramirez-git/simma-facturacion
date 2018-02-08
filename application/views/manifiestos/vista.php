@@ -53,27 +53,24 @@ $total=0.0;
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></p>
 			</div>
-			<label class="col-sm-2 control-label" id="captura_fec">
-				<?php if ($manifiesto->getFecha_captura() != "") {
-				echo "Fecha de Captura:";
-				} ?>
-			</label>
+			<?php if ($manifiesto->getFecha_captura() != "" && $manifiesto->getFecha_captura() != "0000-00-00 00:00:00" ) { ?>
+			<label class="col-sm-2 control-label" id="captura_fec">Fecha de Captura:</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?> </p>
 			</div>
+			<?php } ?>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Generador</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></p>
 			</div>
-			<label class="col-sm-2 control-label">
-				<?php if ($manifiesto->getCapturista() != "") {
-				echo "Capturista:";
-				} ?></label>
+			<?php if ($manifiesto->getCapturista() != "") { ?>
+			<label class="col-sm-2 control-label">Capturista:</label>
 			<div class="col-sm-4">
 				<p class="form-control-static"><?= $manifiesto->getCapturista( ); ?></p>
 			</div>
+			<?php } ?>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Responsable</label>
