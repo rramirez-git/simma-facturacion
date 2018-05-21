@@ -113,7 +113,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Cliente.DisplayFrmCP()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_cliente_colonia" class="col-sm-2 control-label">Colonia</label>
@@ -183,7 +183,7 @@
 		<h5>
 			Facturación
 			<button type="button" class="btn btn-default btn-xs" title="Agregar Opción" onclick="Cliente.FrmAgregarFacturacion()">
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<i class="fas fa-plus"></i>
 			</button>
 		</h5>
 		<div id="facturacion"><?= $facturaciones; ?></div>
@@ -222,7 +222,7 @@
 		<h5>
 			Cobranza
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde generales" onclick="Cliente.CopiaGenerales()">
-				<span class="glyphicon glyphicon-import"></span>
+				<i class="far fa-copy"></i>
 			</button>
 		</h5>
 		<div class="form-group">
@@ -312,7 +312,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Cliente.DisplayFrmCPCobranza()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_cliente_cobranzacolonia" class="col-sm-2 control-label">Colonia</label>

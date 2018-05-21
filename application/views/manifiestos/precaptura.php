@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Manifiesto.GetManifiestoPrecaptura()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 		</div>

@@ -29,7 +29,7 @@ if($show_top_bar_view)
 				{
 					?>
 					<button type="button" class="btn btn-default" title="Tema anterior: <?= $prev["label"]?>" onclick="location.href='<?= base_url($prev["href"]); ?>';">
-						<span class="glyphicon glyphicon-chevron-left"></span>
+						<i class="fas fa-chevron-left"></i>
 					</button>
 					<?php
 				}
@@ -37,7 +37,7 @@ if($show_top_bar_view)
 				{
 					?>
 					<button type="button" class="btn btn-default disabled">
-						<span class="glyphicon glyphicon-chevron-left"></span>
+						<i class="fas fa-chevron-left"></i>
 					</button>
 					<?php
 				}
@@ -45,7 +45,7 @@ if($show_top_bar_view)
 				{
 					?>
 					<button type="button" class="btn btn-default" title="Tema Sigiente: <?= $next["label"]?>" onclick="location.href='<?= base_url($next["href"]); ?>';">
-						<span class="glyphicon glyphicon-chevron-right"></span>
+						<i class="fas fa-chevron-right"></i>
 					</button>
 					<?php
 				}
@@ -53,7 +53,7 @@ if($show_top_bar_view)
 				{
 					?>
 					<button type="button" class="btn btn-default disabled">
-						<span class="glyphicon glyphicon-chevron-right"></span>
+						<i class="fas fa-chevron-right"></i>
 					</button>
 					<?php
 				}

@@ -5,17 +5,17 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(6)): ?>
 			<button type="button" class="btn btn-default" title="Ver todas las Empresas" onclick="location.href='<?= base_url('empresas'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(69)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Empresa" onclick="location.href='<?= base_url('empresas/actualizar/'.$objeto->getIdempresa()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(70)):?>
 			<button type="button" class="btn btn-default" title="Borrar Empresa" onclick="Empresa.Eliminar(<?= $objeto->getIdempresa(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

@@ -5,22 +5,22 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(9)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Vehiculos" onclick="location.href='<?= base_url('vehiculos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(22)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Vehículo" onclick="location.href='<?= base_url('vehiculos/actualizar/'.$objeto->getIdvehiculo()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(23)):?>
 			<button type="button" class="btn btn-default" title="Borrar Vehículo" onclick="Vehiculo.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdvehiculo(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

@@ -4,7 +4,7 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(66)): ?>
 			<button type="button" class="btn btn-default" title="Ver el Generador Asociado" onclick="location.href='<?= base_url('generadores/ver/'.$objeto->getIdgenerador()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif; ?>
 		</div>
@@ -234,7 +234,7 @@
 				<div class="alert alert-info ">
 					<div class="pull-right">
 						<label>
-							<span class="glyphicon glyphicon-info-sign"></span>
+							<i class="fas fa-info-circle"></i>
 							<input type="checkbox" checked="checked" id="delOtherDates" name="delOtherDates" value="1" />
 							Eliminar fechar almacenadas anteriormente.
 						</label>

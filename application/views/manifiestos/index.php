@@ -5,12 +5,12 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(30)): ?>
 			<button type="button" class="btn btn-default" title="Generacion de Manifiestos" onclick="Manifiesto.MostrarMenuCreacion()">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(42)): ?>
 			<button type="button" class="btn btn-default" title="Capturar Manifiestos" onclick="location.href='<?= base_url("manifiestos/capturar")?>'">
-				<span class="glyphicon glyphicon-pencil"></span>
+				<i class="fas fa-pencil-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(116)): ?>
@@ -37,7 +37,7 @@
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(101)): ?>
 			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Manifiesto.FrmReporte()">
-				<span class="glyphicon glyphicon-book"></span>
+				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>

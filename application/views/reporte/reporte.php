@@ -55,7 +55,7 @@
 			<div class="col-sm-7"></div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" title="Filtros" onclick="$('#parametros').slideToggle(1000)">
-					<span class="glyphicon glyphicon-filter"></span>
+					<i class="fas fa-filter"></i>
 				</button>
 			</div>
 			<div class="col-sm-2">

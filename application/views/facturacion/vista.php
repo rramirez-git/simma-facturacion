@@ -5,7 +5,7 @@
 		<label for="frm_cliente_tiposervicio" class="col-sm-2 control-label">
 			<?php if(isset($modoedicion) && $modoedicion===true): ?>
 				<button type="button" class="btn btn-default btn-xs" onclick="Cliente.EliminaFacturacion(<?= $objeto->getIdfacturacion(); ?>)">
-					<span class="glyphicon glyphicon-minus-sign"></span>
+					<i class="fas fa-minus"></i>
 				</button>
 			<?php endif; ?>
 			Tipo de Servicio

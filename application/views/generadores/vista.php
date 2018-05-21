@@ -4,22 +4,22 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(55)): ?>
 			<button type="button" class="btn btn-default" title="Ver el Cliente Asociado" onclick="location.href='<?= base_url('clientes/ver/'.$objeto->getIdcliente()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(79)):?>
 			<button type="button" class="btn btn-default" title="Calendarizar Generador" onclick="location.href='<?= base_url('generadores/calendarizar/'.$objeto->getIdgenerador()) ?>'">
-				<span class="glyphicon glyphicon-calendar"></span>
+				<i class="far fa-calendar-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(76)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Generador" onclick="location.href='<?= base_url('generadores/actualizar/'.$objeto->getIdgenerador()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(77)):?>
 			<button type="button" class="btn btn-default" title="Borrar Generador	" onclick="Generador.Eliminar(<?= $objeto->getIdcliente(); ?>,<?= $objeto->getIdgenerador(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

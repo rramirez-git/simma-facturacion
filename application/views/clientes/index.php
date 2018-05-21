@@ -5,20 +5,20 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(54)): ?>
 			<button type="button" class="btn btn-default" title="Importar Clientes" onclick="location.href='<?= base_url("clientes/importar/$idempresa/$idsucursal"); ?>'">
-				<span class="glyphicon glyphicon-circle-arrow-up"></span>
+				<i class="fas fa-upload"></i>
 			</button>
 			<button type="button" class="btn btn-default" title="Nuevo Cliente" onclick="location.href='<?= base_url('clientes/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(108)): ?>
 			<button type="button" class="btn btn-default" title="Ver Clanedarios" onclick="window.open('<?= base_url("clientes/calendarios")?>','calendarios');">
-				<span class="glyphicon glyphicon-calendar"></span>
+				<i class="far fa-calendar-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(100)): ?>
 			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Cliente.FrmReporte()">
-				<span class="glyphicon glyphicon-book"></span>
+				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>

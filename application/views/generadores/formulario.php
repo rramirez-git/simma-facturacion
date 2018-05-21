@@ -3,7 +3,7 @@
 	<h3>
 		Generadores
 		<button type="button" class="btn btn-default btn-xs" title="Copiar datos del Cliente" onclick="Generador.CopiaDatos()">
-			<span class="glyphicon glyphicon-import"></span>
+			<i class="far fa-copy"></i>
 		</button>
 	</h3>
 	<form class="form-horizontal" role="form" id="frm_generadores">
@@ -176,7 +176,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Generador.DisplayFrmCP()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_generador_colonia" class="col-sm-2 control-label">Colonia</label>
@@ -246,7 +246,7 @@
 		<h5>
 			Facturación
 			<button type="button" class="btn btn-default btn-xs" title="Agregar Opción" onclick="Generador.FrmAgregarFacturacion()">
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<i class="fas fa-plus"></i>
 			</button>
 		</h5>
 		<div id="facturacion"><?= $facturaciones; ?></div>
@@ -278,7 +278,7 @@
 		<h5>
 			Cobranza
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde generales" onclick="Generador.CopiaGenerales()">
-				<span class="glyphicon glyphicon-import"></span>
+				<i class="far fa-copy"></i>
 			</button>
 		</h5>
 		<div class="form-group">
@@ -342,7 +342,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Generador.DisplayFrmCPCobranza()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_generador_cobranzacolonia" class="col-sm-2 control-label">Colonia</label>

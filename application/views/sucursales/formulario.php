@@ -89,7 +89,7 @@
 		<h5>
 			Dirección
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
-				<span class="glyphicon glyphicon-import"></span>
+				<i class="far fa-copy"></i>
 			</button>
 		</h5>
 		<div class="form-group">
@@ -115,7 +115,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Sucursal.DisplayFrmCP()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_sucursal_colonia" class="col-sm-2 control-label">Colonia</label>
@@ -136,7 +136,7 @@
 		<h5>
 			Contacto
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaContacto()">
-				<span class="glyphicon glyphicon-import"></span>
+				<i class="far fa-copy"></i>
 			</button>
 		</h5>
 		<div class="form-group">
@@ -158,7 +158,7 @@
 		<h5>
 			Legal
 			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaLegal()">
-				<span class="glyphicon glyphicon-import"></span>
+				<i class="far fa-copy"></i>
 			</button>
 		</h5>
 		<div class="form-group">

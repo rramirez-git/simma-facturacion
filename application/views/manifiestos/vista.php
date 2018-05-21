@@ -20,27 +20,27 @@ $total=0.0;
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(18)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Manifiestos" onclick="location.href='<?= base_url('manifiestos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)): ?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(42)): ?>
 			<button type="button" class="btn btn-default" title="Capturar Kilos" onclick="Manifiesto.FrmCapturaKilos(<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-pencil"></span>
+				<i class="fas fa-pencil-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(43)): ?>
 			<button type="button" class="btn btn-default" title="Imprimir Manifiesto" onclick="Manifiesto.Imprimir(<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-print"></span>
+				<i class="fas fa-print"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(44)): ?>
 			<button type="button" class="btn btn-default" title="Borrar Manifiesto" onclick="Manifiesto.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

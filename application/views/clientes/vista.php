@@ -5,27 +5,27 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(5)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Clientes" onclick="location.href='<?= base_url('clientes/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(66)):?>
 			<button type="button" class="btn btn-default" title="Ver Generadores del Cliente" onclick="location.href=location.href.replace('#dataGeneradores','')+'#dataGeneradores';">
-				<span class="glyphicon glyphicon-tags"></span>
+				<i class="fas fa-tags"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(67)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Cliente" onclick="location.href='<?= base_url('clientes/actualizar/'.$objeto->getIdcliente()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(68)):?>
 			<button type="button" class="btn btn-default" title="Borrar Cliente	" onclick="Cliente.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdcliente(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
@@ -486,7 +486,7 @@
 			<div class="btn-group">
 				<?php if($this->modsesion->hasPermisoHijo(75)):?>
 				<button type="button" class="btn btn-default" title="Nuevo Generador" onclick="location.href='<?= base_url('generadores/nuevo/'.$objeto->getIdcliente());?>';">
-					<span class="glyphicon glyphicon-list-alt"></span>
+					<i class="far fa-file-alt"></i>
 				</button>
 				<?php endif;?>
 			</div>

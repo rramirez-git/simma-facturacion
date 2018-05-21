@@ -4,17 +4,17 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(109)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Grupos" onclick="location.href='<?= base_url('grupos'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(112)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Grupo" onclick="location.href='<?= base_url('grupos/actualizar/'.$objeto->getIdgrupo()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(113)):?>
 			<button type="button" class="btn btn-default" title="Borrar Grupo" onclick="Grupo.Eliminar(<?= $objeto->getIdgrupo(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

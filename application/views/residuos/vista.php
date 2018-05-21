@@ -4,22 +4,22 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(53)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Residuos" onclick="location.href='<?= base_url('residuos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(71)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Residuo" onclick="location.href='<?= base_url('residuos/actualizar/'.$objeto->getIdresiduo()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(72)):?>
 			<button type="button" class="btn btn-default" title="Borrar Residuo" onclick="Residuo.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdresiduo(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
