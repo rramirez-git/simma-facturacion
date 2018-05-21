@@ -4,17 +4,17 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(85)): ?>
 			<button type="button" class="btn btn-default" title="Nuevo Permiso" onclick="Permiso.CapturarNuevosElementos()">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(86)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Permiso" onclick="Permiso.ActualizarElementos()">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(87)):?>
 			<button type="button" class="btn btn-default" title="Borrar Permiso" onclick="Permiso.EliminarConfirm()">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

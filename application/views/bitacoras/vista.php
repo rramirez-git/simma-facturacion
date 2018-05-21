@@ -14,27 +14,27 @@ $manifiesto=new ModManifiesto();
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(19)): ?>
 			<button type="button" class="btn btn-default" title="Ver todas las bitacoras" onclick="location.href='<?= base_url('bitacoras/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(97)):?>
 			<button type="button" class="btn btn-default" title="Imprimir Bitácora" onclick="window.open('<?= base_url("bitacoras/imprimirbit/".$objeto->getIdbitacora()); ?>','bitacora2')">
-				<span class="glyphicon glyphicon-print"></span>
+				<i class="fas fa-print"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(98)):?>
 			<button type="button" class="btn btn-default" title="Imprimir Manifiestos" onclick="window.open('<?= base_url("bitacoras/imprimir/".$objeto->getIdbitacora()); ?>','bitacora')">
-				<span class="glyphicon glyphicon-picture"></span>
+				<i class="far fa-image"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(96)):?>
 			<button type="button" class="btn btn-default" title="Borrar Bitacora" onclick="Bitacora.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdbitacora(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

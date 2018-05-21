@@ -10,22 +10,22 @@ $objempresa=new Modempresa();
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(7)): ?>
 			<button type="button" class="btn btn-default" title="Ver todas las Sucurales" onclick="location.href='<?= base_url('sucursales/index/'.$objeto->getIdEmpresa()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(57)):?>
 			<button type="button" class="btn btn-default" title="Ver la Empresa Asociada" onclick="location.href='<?= base_url('empresas/ver/'.$objeto->getIdEmpresa()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(50)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Sucursal" onclick="location.href='<?= base_url('sucursales/actualizar/'.$objeto->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(51)):?>
 			<button type="button" class="btn btn-default" title="Borrar Sucursal" onclick="Sucursal.Eliminar(<?= $objeto->getIdempresa(); ?>,<?= $objeto->getIdsucursal(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

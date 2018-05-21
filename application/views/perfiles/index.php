@@ -4,7 +4,7 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(83)): ?>
 			<button type="button" class="btn btn-default" title="Nuevo Perfil" onclick="location.href='<?= base_url('perfiles/nuevo');?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

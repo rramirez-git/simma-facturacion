@@ -4,22 +4,22 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(29)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos las Catalogos" onclick="location.href='<?= base_url('catalogos'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(47)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Catalogo" onclick="Catalogos.MuestraFrmUpd()">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(48)):?>
 			<button type="button" class="btn btn-default" title="Agregar Opciones al Catalogo" onclick="Catalogos.MuestraFrmOpcs()">
-				<span class="glyphicon glyphicon-plus"></span>
+				<i class="fas fa-plus"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(49)):?>
 			<button type="button" class="btn btn-default" title="Borrar Opciones del Catalogo" onclick="Catalogos.BorrarOpciones()">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

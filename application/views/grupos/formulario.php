@@ -23,13 +23,13 @@
         	<fieldset>
         		<legend>
         			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdSucursales()">
-        				<span class="glyphicon glyphicon-refresh"></span>
+        				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
         			Sucursales Asignadas
         		</legend>
         		<div id="messageSuc" class="alert alert-warning">
-        			<span class="glyphicon glyphicon-alert"></span>
+        			<i class="fas fa-exclamation-triangle"></i>
         			Es necesario guardar el grupo para visualizar los elementos del grupo actualizados.
         		</div>
         		<?php foreach($sucs as $e): ?>
@@ -44,13 +44,13 @@
         	<fieldset>
         		<legend>
         			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdClientes()">
-        				<span class="glyphicon glyphicon-refresh"></span>
+        				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
         			Clientes Asignados
         		</legend>
         		<div id="messageCte" class="alert alert-warning">
-        			<span class="glyphicon glyphicon-alert"></span>
+        			<i class="fas fa-exclamation-triangle"></i>
         			Es necesario guardar el grupo para visualizar los elementos del grupo actualizados.
         		</div>
         		<?php foreach($ctes as $e): ?>
@@ -68,13 +68,13 @@
         	<fieldset>
         		<legend>
         			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdGeneradores()">
-        				<span class="glyphicon glyphicon-refresh"></span>
+        				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
         			Generadores Asignados
         		</legend>
         		<div id="messageGen" class="alert alert-warning">
-        			<span class="glyphicon glyphicon-alert"></span>
+        			<i class="fas fa-exclamation-triangle"></i>
         			Es necesario guardar el grupo para visualizar los elementos del grupo actualizados.
         		</div>
         		<?php foreach($gens as $e): ?>

@@ -4,17 +4,17 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(26)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Usuarios" onclick="location.href='<?= base_url('usuarios'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(92)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Usuario" onclick="location.href='<?= base_url('usuarios/actualizar/'.$objeto->getIdusuario()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(93)):?>
 			<button type="button" class="btn btn-default" title="Borrar Usuario" onclick="Usuario.Eliminar(<?= $objeto->getIdusuario(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

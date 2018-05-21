@@ -4,12 +4,12 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(64)): ?>
 			<button type="button" class="btn btn-default" title="Nueva Ruta" onclick="location.href='<?= base_url('rutas/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(102)): ?>
 			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Ruta.FrmReporte()">
-				<span class="glyphicon glyphicon-book"></span>
+				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>

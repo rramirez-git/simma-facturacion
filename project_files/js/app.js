@@ -3098,10 +3098,10 @@ if( $.fn.dataTable && $.fn.dataTable.defaults ) {
 		    "emptyTable":	"No hay resultados que mostrar",
 		    "search":		"Buscar:",
 		    "paginate": {
-				"first":    "<span class=\"glyphicon glyphicon-fast-backward\"></span>",
-				"previous": "<span class=\"glyphicon glyphicon-backward\"></span>",
-				"next":     "<span class=\"glyphicon glyphicon-forward\"></span>",
-				"last":     "<span class=\"glyphicon glyphicon-fast-forward\"></span>"
+				"first":    "<i class=\"fas fa-fast-backward\"></i>",
+				"previous": "<i class=\"fas fa-backward\"></i>",
+				"next":     "<i class=\"fas fa-forward\"></i>",
+				"last":     "<i class=\"fas fa-fast-forward\"></i>"
 			},
 			"decimal": ".",
 	        "thousands": ","

@@ -31,8 +31,8 @@ class Empresas extends CI_Controller
 		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body=$this->load->view('empresas/formulario',array(
 			"menumain"=>$menumain,
-			"objeto"=>$this->modempresa,
-			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23)
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
+			"objeto"=>$this->modempresa
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 	}
@@ -61,8 +61,8 @@ class Empresas extends CI_Controller
 		$body=$this->load->view('empresas/vista',array(
 			"menumain"=>$menumain,
 			"objeto"=>$this->modempresa,
-			"sucursales"=>$this->modsucursal->getAll($id),
-			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23)
+			"regimen_fiscal"=>$this->modcatalogo->getCatalogo(23),
+			"sucursales"=>$this->modsucursal->getAll($id)
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 		$this->modsesion->addLog(

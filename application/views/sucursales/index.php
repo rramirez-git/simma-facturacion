@@ -5,7 +5,7 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(24)): ?>
 			<button type="button" class="btn btn-default" title="Nueva Sucursal" onclick="location.href='<?= base_url('sucursales/nuevo/'.$idempresa);?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

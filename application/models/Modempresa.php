@@ -191,6 +191,7 @@ class Modempresa extends CI_Model
 			"representante"=>$this->representante,
 			"cargorepresentante"=>$this->cargorepresentante,
 			"coorporativo"=>$this->coorporativo,
+			"regimen_fiscal"=>$this->regimen_fiscal,
 			"transportista"=>$this->transportista,
 			"regimen_fiscal"=>$this->regimen_fiscal,
 			"destinofinal"=>$this->destinofinal

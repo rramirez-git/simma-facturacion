@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-default" onclick="Empresa.DisplayFrmCP()">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<label for="frm_empresa_colonia" class="col-sm-2 control-label">Colonia</label>

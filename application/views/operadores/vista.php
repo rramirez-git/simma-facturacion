@@ -5,22 +5,22 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(8)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Operadores" onclick="location.href='<?= base_url('operadores/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(60)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Operador" onclick="location.href='<?= base_url('operadores/actualizar/'.$objeto->getIdoperador()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(61)):?>
 			<button type="button" class="btn btn-default" title="Borrar Operador" onclick="Operador.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdoperador(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

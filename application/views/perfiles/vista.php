@@ -4,17 +4,17 @@
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(28)): ?>
 			<button type="button" class="btn btn-default" title="Ver todos los Perfiles" onclick="location.href='<?= base_url('perfiles'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(90)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Perfil" onclick="location.href='<?= base_url('perfiles/actualizar/'.$objeto->getIdperfil()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(91)):?>
 			<button type="button" class="btn btn-default" title="Borrar Perfil" onclick="Perfil.Eliminar(<?= $objeto->getIdperfil(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>

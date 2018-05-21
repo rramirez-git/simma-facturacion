@@ -1,7 +1,6 @@
 <!-- Vista inicio/index -->
 <?= $menumain; ?>
 <div class="container">
-	<hr />
 	<div class="row">
 		<?php
 		$inds = array();
@@ -42,19 +41,17 @@
 			$total_rows += $rows;
 			?>
 			<div class="col-md-<?= $rows; ?>">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<?php if(isset($indicador["idreporte"]) && $indicador["idreporte"]): ?>
-							<a target="winreporte" href="<?= base_url('reporte/ver/'.$indicador["idreporte"])?>">
-							<?php endif; ?>
-							<?= ReplaceMonth($indicador["nombre"]); ?>
-							<?php if(isset($indicador["idreporte"]) && $indicador["idreporte"]): ?>
-							</a>
-							<?php endif; ?>
-						</h3>
+				<div class="card">
+					<div class="card-header">
+						<?php if(isset($indicador["idreporte"]) && $indicador["idreporte"]): ?>
+						<a target="winreporte" href="<?= base_url('reporte/ver/'.$indicador["idreporte"])?>">
+						<?php endif; ?>
+						<?= ReplaceMonth($indicador["nombre"]); ?>
+						<?php if(isset($indicador["idreporte"]) && $indicador["idreporte"]): ?>
+						</a>
+						<?php endif; ?>
 					</div>
-					<div class="panel-body" id="indicador_<?= $kind; ?>">
+					<div class="card-body" id="indicador_<?= $kind; ?>">
 						<div class="center-block">Cargando Indicador</div>
 						<div class="progress progress-striped active">
 							<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">

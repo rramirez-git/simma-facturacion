@@ -11,27 +11,27 @@ $vehiculo->getFromDatabase();
 		<div class="btn-group">
 			<?php if($this->modsesion->hasPermisoHijo(52)): ?>
 			<button type="button" class="btn btn-default" title="Ver todas las rutas" onclick="location.href='<?= base_url('rutas/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
 			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(94)):?>
 			<button type="button" class="btn btn-default" title="Ver Plan de Recoleccion" onclick="location.href='<?= base_url("rutas/planrecoleccion/".$objeto->getIdruta()); ?>'">
-				<span class="glyphicon glyphicon-briefcase"></span>
+				<i class="fas fa-briefcase"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(73)):?>
 			<button type="button" class="btn btn-default" title="Actualizar Ruta" onclick="location.href='<?= base_url('rutas/actualizar/'.$objeto->getIdruta()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(74)):?>
 			<button type="button" class="btn btn-default" title="Borrar Ruta" onclick="Ruta.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdruta(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
@@ -149,10 +149,10 @@ $vehiculo->getFromDatabase();
 		Generadores Asociados
 		<?php if($this->modsesion->hasPermisoHijo(80)): ?>
 	    <button type="button" class="btn btn-default btn-xs" title="Asociar Generadores" onclick="location.href='<?= base_url("rutas/agregargeneradores/".$objeto->getIdruta()); ?>'">
-			<span class="glyphicon glyphicon-plus-sign"></span>
+			<i class="fas fa-plus"></i>
 		</button>
 	    <button type="button" class="btn btn-default btn-xs" title="Desasociador Generadores" onclick="location.href='<?= base_url("rutas/eliminargeneradores/".$objeto->getIdruta()); ?>'">
-			<span class="glyphicon glyphicon-minus-sign"></span>
+			<i class="fas fa-minus"></i>
 		</button>
 		<?php endif; ?>
 	</h5>
