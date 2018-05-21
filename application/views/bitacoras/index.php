@@ -1,31 +1,27 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 		</div>
 	</div>
 	<h3>Bitácoras</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer">
-		<div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
-			<div class="col-sm-10">
+	<form autocomplete="off" method="post" id="frm_prefer">
+		<div class="form-row"><div class="form-group col-sm-12">
+			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'bitacoras/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>
 					<?php endforeach; ?>
 				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
-			<div class="col-sm-10">
+		</div></div>
+		<div class="form-row"><div class="form-group col-sm-12">
+			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'bitacoras/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
 						<option value="<?= $sucursal["idsucursal"]; ?>" <?= ($sucursal["idsucursal"]==$idsucursal?'selected="selected"':''); ?>><?= $sucursal["nombre"]; ?></option>
 					<?php endforeach; ?>
 				</select>
-			</div>
-		</div>
+		</div></div>
 	</form>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
@@ -76,6 +72,3 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>

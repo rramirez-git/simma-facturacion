@@ -1,31 +1,31 @@
 <!-- Vista cliente/index -->
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(54)): ?>
-			<button type="button" class="btn btn-default" title="Importar Clientes" onclick="location.href='<?= base_url("clientes/importar/$idempresa/$idsucursal"); ?>'">
+			<button type="button" class="btn btn-outline-secondary" title="Importar Clientes" onclick="location.href='<?= base_url("clientes/importar/$idempresa/$idsucursal"); ?>'">
 				<i class="fas fa-upload"></i>
 			</button>
-			<button type="button" class="btn btn-default" title="Nuevo Cliente" onclick="location.href='<?= base_url('clientes/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Nuevo Cliente" onclick="location.href='<?= base_url('clientes/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(108)): ?>
-			<button type="button" class="btn btn-default" title="Ver Clanedarios" onclick="window.open('<?= base_url("clientes/calendarios")?>','calendarios');">
+			<button type="button" class="btn btn-outline-secondary" title="Ver Clanedarios" onclick="window.open('<?= base_url("clientes/calendarios")?>','calendarios');">
 				<i class="far fa-calendar-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(100)): ?>
-			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Cliente.FrmReporte()">
+			<button type="button" class="btn btn-outline-secondary" title="Generar Reportes" onclick="Cliente.FrmReporte()">
 				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Clientes</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer" action="<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>">
-		<div class="form-group">
+	<form autocomplete="off" method="post" id="frm_prefer" action="<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'clientes/index/'+$('#frm_prefer_empresa').val();">
@@ -36,7 +36,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'clientes/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<h5>Búscar Cliente:</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_identificador" class="col-sm-2 control-label">Número de Cliente</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
@@ -60,13 +60,13 @@
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_razonsocial" class="col-sm-2 control-label">Razon Social</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_vendedor" class="col-sm-2 control-label">Vendedor</label>
 			<div class="col-sm-4">
 				<select id="frm_prefer_vendedor" name="frm_prefer_vendedor" class="form-control">
@@ -83,13 +83,13 @@
 				<input type="text" class="form-control" id="frm_prefer_giro" name="frm_prefer_giro" value="<?= $filtros["giro"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_observaciones" class="col-sm-2 control-label">Observaciones</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_observaciones" name="frm_prefer_observaciones" value="<?= $filtros["observaciones"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_identificador" class="col-sm-2 control-label">Colonia</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_colonia" name="frm_prefer_colonia" value="<?= $filtros["colonia"]; ?>" />
@@ -99,7 +99,7 @@
 				<input type="text" class="form-control" id="frm_prefer_municipio" name="frm_prefer_municipio" value="<?= $filtros["municipio"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Cliente.Buscar()" >Buscar</button>
@@ -247,7 +247,4 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>
 <!-- Vista cliente/index End -->

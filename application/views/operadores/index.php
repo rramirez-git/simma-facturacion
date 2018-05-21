@@ -1,18 +1,18 @@
 <!-- Vista operadores/index -->
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(58)): ?>
-			<button type="button" class="btn btn-default" title="Nuevo Operador" onclick="location.href='<?= base_url('operadores/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Nuevo Operador" onclick="location.href='<?= base_url('operadores/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Operadores</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer">
-		<div class="form-group">
+	<form autocomplete="off" method="post" id="frm_prefer">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val();">
@@ -22,7 +22,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
@@ -74,7 +74,4 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>
 <!-- Vista operadores/index End -->

@@ -1,6 +1,6 @@
 <!-- Vista facturacion/formulario -->
-<form class="form-horizontal" role="form" id="frm_facturacion">
-	<div class="form-group">
+<form autocomplete="off" id="frm_facturacion">
+	<div class="form-row"><div class="form-group">
 		<label for="frm_facturacion_tiposervicio" class="col-sm-2 control-label">Tipo de Servicio</label>
 		<div class="col-sm-4">
 			<select id="frm_facturacion_tiposervicio" name="frm_facturacion_tiposervicio" class="form-control">
@@ -22,7 +22,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-row"><div class="form-group">
 		<label for="frm_facturacion_precio" class="col-sm-2 control-label">Precio</label>
 		<div class="col-sm-4">
 			<input type="text" class="form-control" id="frm_facturacion_precio" name="frm_facturacion_precio" value="<?= $objeto->getPrecio(); ?>" placeholder="Precio" />
@@ -32,7 +32,7 @@
 			<input type="text" class="form-control" id="frm_facturacion_kilosintegrados" name="frm_facturacion_kilosintegrados" value="<?= $objeto->getKilosintegrados(); ?>" placeholder="Unidades Integrades" />
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-row"><div class="form-group">
 		<label for="frm_facturacion_kiloexcedido" class="col-sm-2 control-label">Precio Unidades Excedidas</label>
 		<div class="col-sm-4">
 			<input type="text" class="form-control" id="frm_facturacion_kiloexcedido" name="frm_facturacion_kiloexcedido" value="<?= $objeto->getKiloexcedido(); ?>" placeholder="Precio Unidad Excedida" />

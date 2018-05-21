@@ -44,7 +44,7 @@
         <div class="row homebrand">
 			<div class="large-12">
 				<div class="page-canvas">
-					<form id="frm_acceso" class="form-signin" role="form" onsubmit="return false">
+					<form autocomplete="off" id="frm_acceso" class="form-signin" onsubmit="return false">
 						<input type="hidden" name="url" id="url" value="<?= base_url('inicio/login'); ?>" />
 						<a href="#">
 							<img src="<?= base_url('project_files/img/sistema/simma-login.png'); ?>" width="336" height="82" class="brand animated fadeInDown">

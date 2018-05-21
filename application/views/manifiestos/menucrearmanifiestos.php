@@ -8,7 +8,7 @@
 	<?php if($this->modsesion->hasPermisoHijo(38)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="Manifiesto.CrearManifiestoCteGen()">
+				<button type="button" class="btn btn-outline-secondary" onclick="Manifiesto.CrearManifiestoCteGen()">
 					Por Número de Cliente / Generador
 				</button>
 			</td>
@@ -17,7 +17,7 @@
 	if($this->modsesion->hasPermisoHijo(39)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="Manifiesto.CrearManifiestoRutaBruto()">
+				<button type="button" class="btn btn-outline-secondary" onclick="Manifiesto.CrearManifiestoRutaBruto()">
 					Por Ruta (todos los generadores de la ruta)
 				</button>
 			</td>
@@ -26,7 +26,7 @@
 	if($this->modsesion->hasPermisoHijo(40)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="Manifiesto.CrearManifiestoRutaCalendario()">
+				<button type="button" class="btn btn-outline-secondary" onclick="Manifiesto.CrearManifiestoRutaCalendario()">
 					Por Ruta (con base en calendario)
 				</button>
 			</td>
@@ -35,7 +35,7 @@
 	if($this->modsesion->hasPermisoHijo(41)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="Manifiesto.CrearManifiestoCalendario()">
+				<button type="button" class="btn btn-outline-secondary" onclick="Manifiesto.CrearManifiestoCalendario()">
 					Por Calendario
 				</button>
 			</td>

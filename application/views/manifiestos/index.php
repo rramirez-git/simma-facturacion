@@ -1,21 +1,21 @@
 <!-- Vista manifiestos/index -->
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(30)): ?>
-			<button type="button" class="btn btn-default" title="Generacion de Manifiestos" onclick="Manifiesto.MostrarMenuCreacion()">
+			<button type="button" class="btn btn-outline-secondary" title="Generacion de Manifiestos" onclick="Manifiesto.MostrarMenuCreacion()">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(42)): ?>
-			<button type="button" class="btn btn-default" title="Capturar Manifiestos" onclick="location.href='<?= base_url("manifiestos/capturar")?>'">
+			<button type="button" class="btn btn-outline-secondary" title="Capturar Manifiestos" onclick="location.href='<?= base_url("manifiestos/capturar")?>'">
 				<i class="fas fa-pencil-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(116)): ?>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Importar manifiestos">
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" title="Importar manifiestos">
 					Importar
 					<span class="caret"></span>
 				</button>
@@ -36,15 +36,15 @@
 			</div>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(101)): ?>
-			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Manifiesto.FrmReporte()">
+			<button type="button" class="btn btn-outline-secondary" title="Generar Reportes" onclick="Manifiesto.FrmReporte()">
 				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Manifiestos</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer" action="<?= base_url("manifiestos/index/$idempresa/$idsucursal")?>">
-		<div class="form-group">
+	<form autocomplete="off" method="post" id="frm_prefer" action="<?= base_url("manifiestos/index/$idempresa/$idsucursal")?>">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val();">
@@ -54,7 +54,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_sucursal" class="col-sm-2 control-label">Sucursal</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
@@ -65,13 +65,13 @@
 			</div>
 		</div>
 		<h5>Búscar Manifiesto:</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_identificador" class="col-sm-2 control-label">No. de Manifiesto</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_numruta" class="col-sm-2 control-label">No. de Ruta</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_numruta" name="frm_prefer_numruta" value="<?= $filtros["numruta"]; ?>" />
@@ -81,7 +81,7 @@
 				<input type="text" class="form-control" id="frm_prefer_nombreruta" name="frm_prefer_nombreruta" value="<?= $filtros["nombreruta"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_fecha_inicio" class="col-sm-2 control-label">Fecha</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fecha_inicio" name="frm_prefer_fecha_inicio" value="<?= $filtros["fecha_inicio"]; ?>" />
@@ -90,7 +90,7 @@
 				<input type="date" class="form-control" id="frm_prefer_fecha_fin" name="frm_prefer_fecha_fin" value="<?= $filtros["fecha_fin"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_identificadorcliente" class="col-sm-2 control-label">No. Cliente</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificadorcliente" name="frm_prefer_identificadorcliente" value="<?= $filtros["identificadorcliente"]; ?>" />
@@ -100,13 +100,13 @@
 				<input type="text" class="form-control" id="frm_prefer_identificadorgenerador" name="frm_prefer_identificadorgenerador" value="<?= $filtros["identificadorgenerador"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_razonsocial" class="col-sm-2 control-label">Razón Social</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_rfc" class="col-sm-2 control-label">RFC</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
@@ -116,7 +116,7 @@
 				<input type="text" class="form-control" id="frm_prefer_nra" name="frm_prefer_nra" value="<?= $filtros["nra"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_destinofinal" class="col-sm-2 control-label">Destino Final</label>
 			<div class="col-sm-4">
 				<select class="form-control" id="frm_prefer_destinofinal" name="frm_prefer_destinofinal">
@@ -148,7 +148,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_fechaembarque_inicio" class="col-sm-2 control-label">Fecha de Embarque</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fechaembarque_inicio" name="frm_prefer_fechaembarque_inicio" value="<?= $filtros["fechaembarque_inicio"]; ?>" />
@@ -157,7 +157,7 @@
 				<input type="date" class="form-control" id="frm_prefer_fechaembarque_fin" name="frm_prefer_fechaembarque_fin" value="<?= $filtros["fechaembarque_fin"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_prefer_fecharecepcion_inicio" class="col-sm-2 control-label">Fecha de Recepción</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fecharecepcion_inicio" name="frm_prefer_fecharecepcion_inicio" value="<?= $filtros["fecharecepcion_inicio"]; ?>" />
@@ -166,7 +166,7 @@
 				<input type="date" class="form-control" id="frm_prefer_fecharecepcion_fin" name="frm_prefer_fecharecepcion_fin" value="<?= $filtros["fecharecepcion_fin"]; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
 				<input type="hidden" name="action" id="action" value="" />
@@ -228,7 +228,4 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>
 <!-- Vista manifiestos/index End -->

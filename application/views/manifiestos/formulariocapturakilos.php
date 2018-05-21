@@ -2,7 +2,7 @@
 <?php
 //var_dump( $recoleccion );
 $total=0.0;
-?><form id="frm_captura_kilos" style="max-width: 1200px; font-size: 85%; overflow: auto; max-height: 550px;">
+?><form autocomplete="off" id="frm_captura_kilos" style="max-width: 1200px; font-size: 85%; overflow: auto; max-height: 550px;">
 	<div class="row">
 		<label for="frm_noexterno" class="col-sm-4 control-label">No. Externo</label>
 		<div class="col-sm-8">

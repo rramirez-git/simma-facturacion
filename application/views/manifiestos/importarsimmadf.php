@@ -1,15 +1,15 @@
 <!-- Vista manifiestos/importarsimmadf -->
 <?= $menumain; ?>
 <div class="container">
-	<h3>Importar Manifiestos <small>SIMMA Polanco</small></h3>
-	<form class="form-horizontal" role="form" id="frm_importar" method="post" action="<?= base_url("manifiestos/importar_exec/$tipo/$idempresa/$idsucursal"); ?>" enctype="multipart/form-data" onsubmit="Mensaje('Cargando Información')">
-		<div class="form-group">
+	<h3>Importar Manifiestos <small class="text-muted">SIMMA Polanco</small></h3>
+	<form autocomplete="off" id="frm_importar" method="post" action="<?= base_url("manifiestos/importar_exec/$tipo/$idempresa/$idsucursal"); ?>" enctype="multipart/form-data" onsubmit="Mensaje('Cargando Información')">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_importar_archivo" class="col-sm-2 control-label">Archivo a importar</label>
 			<div class="col-sm-10">
 				<input type="file" class="form-control" id="frm_importar_archivo" name="frm_importar_archivo" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="submit" class="btn btn-success">Importar</button>

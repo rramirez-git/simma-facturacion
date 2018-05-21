@@ -1,8 +1,8 @@
 <?= $menumain; ?>
 <div class="container">
-	<h3>Asociar Generadores <small><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
-	<form class="form-horizontal" role="form" id="frm_rutas">
-		<div class="form-group">
+	<h3>Asociar Generadores <small class="text-muted"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
+	<form autocomplete="off" id="frm_rutas">
+		<div class="form-row"><div class="form-group">
 			<label for="cliente" class="col-sm-2 control-label">No. Cliente:</label>
 			<div class="col-sm-3">
 				<input type="text" class="form-control" id="cliente" name="cliente" />
@@ -12,7 +12,7 @@
 				<input type="text" class="form-control" id="generador" name="generador" />
 			</div>
 			<div class="col-sm-2">
-            	<button type="button" class="btn btn-default" onclick="Ruta.BuscarCteGen()">
+            	<button type="button" class="btn btn-outline-secondary" onclick="Ruta.BuscarCteGen()">
             		<i class="fas fa-search"></i>
             	</button>
         	</div>

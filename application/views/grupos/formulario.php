@@ -1,28 +1,28 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Grupos</h3>
-	<form class="form-horizontal" role="form" id="frm_grupos">
+	<form autocomplete="off" id="frm_grupos">
         <input type="hidden" id="frm_grupo_idgrupo" name="frm_grupo_idgrupo" value="<?= $objeto->getIdgrupo(); ?>" />
         <input type="hidden" id="frm_grupo_usuarios" name="frm_grupo_usuarios" value="<?= implode(",",$objeto->getUsuarios()); ?>" />
         <input type="hidden" id="frm_grupo_generadores" name="frm_grupo_generadores" value="<?= implode(",",$objeto->getGeneradores()); ?>" />
         <input type="hidden" id="frm_grupo_clientes" name="frm_grupo_clientes" value="<?= implode(",",$objeto->getClientes()); ?>" />
         <input type="hidden" id="frm_grupo_sucursales" name="frm_grupo_sucursales" value="<?= implode(",",$objeto->getSucursales()); ?>" />
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_grupo_nombre" class="col-sm-2 control-label">Nombre <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
         	<div class="col-sm-10">
         		<input type="text" class="form-control" id="frm_grupo_nombre" name="frm_grupo_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del grupo" maxlength="250" />
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_grupo_descripcion" class="col-sm-2 control-label">Descripción</label>
         	<div class="col-sm-10">
         		<textarea rows="3" class="form-control" id="frm_grupo_descripcion" name="frm_grupo_descripcion"><?= $objeto->getDescripcion(); ?></textarea>
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdSucursales()">
+        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdSucursales()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -40,10 +40,10 @@
         		<?php endforeach; ?>
         	</fieldset>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdClientes()">
+        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdClientes()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -64,10 +64,10 @@
         		<?php endforeach; ?>
         	</fieldset>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-default" onclick="Grupo.FrmUpdGeneradores()">
+        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdGeneradores()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -88,7 +88,7 @@
         		<?php endforeach; ?>
         	</fieldset>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Grupo.Enviar(<?= ($objeto->getIdgrupo()!="" && $objeto->getIdgrupo()!=0?'false':'true'); ?>)" >Guardar</button>

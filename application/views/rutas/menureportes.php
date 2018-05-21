@@ -7,7 +7,7 @@
 	<?php if($this->modsesion->hasPermisoHijo(106)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/4"); ?>','winreporte')">
+				<button type="button" class="btn btn-outline-secondary" onclick="window.open('<?= base_url("reporte/ver/4"); ?>','winreporte')">
 					Maestro de Plan de Servicios
 				</button>
 			</td>
@@ -16,7 +16,7 @@
 	<?php if($this->modsesion->hasPermisoHijo(107)): ?>
 		<tr>
 			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/5"); ?>','winreporte')">
+				<button type="button" class="btn btn-outline-secondary" onclick="window.open('<?= base_url("reporte/ver/5"); ?>','winreporte')">
 					Reporte de Operaciones
 				</button>
 			</td>

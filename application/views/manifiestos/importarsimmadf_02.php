@@ -4,8 +4,8 @@
 	if(!isset($manifiestos)||$manifiestos===false||!is_array($manifiestos)) $manifiestos=array();
 ?>
 <div class="container">
-	<h3>Importar Manifiestos <small>Preimportación</small></h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
+	<h3>Importar Manifiestos <small class="text-muted">Preimportación</small></h3>
+	<form autocomplete="off" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
@@ -224,7 +224,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Manifiesto.importarCaptura()" >Aceptar</button>

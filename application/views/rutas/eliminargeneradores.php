@@ -1,6 +1,6 @@
 <?= $menumain; ?>
 <div class="container">
-	<h3>Desasociar Generadores <small><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
+	<h3>Desasociar Generadores <small class="text-muted"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>

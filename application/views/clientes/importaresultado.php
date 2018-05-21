@@ -1,7 +1,7 @@
 <!-- Vista cliente/importaresultado -->
 <?= $menumain; ?>
 <div class="container">
-	<h3>Importar Clientes <small>Resultado</small></h3>
+	<h3>Importar Clientes <small class="text-muted">Resultado</small></h3>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>

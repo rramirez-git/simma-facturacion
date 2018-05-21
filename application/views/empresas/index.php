@@ -1,9 +1,9 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(56)): ?>
-			<button type="button" class="btn btn-default" title="Nueva Empresa" onclick="location.href='<?= base_url('empresas/nuevo');?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Nueva Empresa" onclick="location.href='<?= base_url('empresas/nuevo');?>';">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
@@ -55,6 +55,3 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>

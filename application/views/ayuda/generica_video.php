@@ -22,13 +22,13 @@ if($show_top_bar_view)
 			?>
 			<li class="active"><?= $title; ?></li>
 		</ol>
-		<div class="btn-toolbar pull-right" role="toolbar">
-			<div class="btn-group">
+		<div class="btn-toolbar float-right" role="toolbar">
+			<div class="btn-group" role="group">
 				<?php
 				if($prev["label"]!="" && $prev["href"]!="")
 				{
 					?>
-					<button type="button" class="btn btn-default" title="Tema anterior: <?= $prev["label"]?>" onclick="location.href='<?= base_url($prev["href"]); ?>';">
+					<button type="button" class="btn btn-outline-secondary" title="Tema anterior: <?= $prev["label"]?>" onclick="location.href='<?= base_url($prev["href"]); ?>';">
 						<i class="fas fa-chevron-left"></i>
 					</button>
 					<?php
@@ -36,7 +36,7 @@ if($show_top_bar_view)
 				else
 				{
 					?>
-					<button type="button" class="btn btn-default disabled">
+					<button type="button" class="btn btn-outline-secondary disabled">
 						<i class="fas fa-chevron-left"></i>
 					</button>
 					<?php
@@ -44,7 +44,7 @@ if($show_top_bar_view)
 				if($next["label"]!="" && $next["href"]!="")
 				{
 					?>
-					<button type="button" class="btn btn-default" title="Tema Sigiente: <?= $next["label"]?>" onclick="location.href='<?= base_url($next["href"]); ?>';">
+					<button type="button" class="btn btn-outline-secondary" title="Tema Sigiente: <?= $next["label"]?>" onclick="location.href='<?= base_url($next["href"]); ?>';">
 						<i class="fas fa-chevron-right"></i>
 					</button>
 					<?php
@@ -52,7 +52,7 @@ if($show_top_bar_view)
 				else
 				{
 					?>
-					<button type="button" class="btn btn-default disabled">
+					<button type="button" class="btn btn-outline-secondary disabled">
 						<i class="fas fa-chevron-right"></i>
 					</button>
 					<?php

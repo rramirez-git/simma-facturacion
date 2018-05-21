@@ -1,10 +1,10 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Rutas</h3>
-	<form class="form-horizontal" role="form" id="frm_rutas">
+	<form autocomplete="off" id="frm_rutas">
 		<input type="hidden" id="frm_ruta_idruta" name="frm_ruta_idruta" value="<?= $objeto->getIdruta(); ?>" />
 		<input type="hidden" id="frm_ruta_idsucursal" name="frm_ruta_idsucursal" value="<?= $idsucursal; ?>" />
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_ruta_nombre" class="col-sm-2 control-label">Nombre de la Ruta <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_ruta_nombre" name="frm_ruta_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre de la Ruta" />
@@ -14,7 +14,7 @@
 				<input type="text" class="form-control" id="frm_ruta_identificador" name="frm_ruta_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Ruta" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="empresadestinofinal" class="col-sm-2 control-label">Planta de Tratamiento <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-4">
 				<select class="form-control" id="frm_ruta_empresadestinofinal" name="frm_ruta_empresadestinofinal">
@@ -44,13 +44,13 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_ruta_descripcion" class="col-sm-2 control-label">Descripción de la Ruta</label>
 			<div class="col-sm-10">
 				<textarea rows="3" class="form-control" id="frm_ruta_descripcion" name="frm_ruta_descripcion"><?= $objeto->getDescripcion(); ?></textarea>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_ruta_idoperador" class="col-sm-2 control-label">Operador <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-4">
 				<select class="form-control" id="frm_ruta_idoperador" name="frm_ruta_idoperador">
@@ -138,7 +138,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Ruta.Enviar(<?= ($objeto->getIdruta()!="" && $objeto->getIdruta()!=0?'false':'true'); ?>)" >Guardar</button>

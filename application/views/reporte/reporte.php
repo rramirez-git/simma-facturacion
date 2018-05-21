@@ -1,7 +1,7 @@
 <?= $menumain; ?>
 <div class="container">
-	<h3>Reporte <small><?= $reporte->getTitulo(); ?></small></h3>
-	<form class="form-horizontal" role="form" id="frm_reporte">
+	<h3>Reporte <small class="text-muted"><?= $reporte->getTitulo(); ?></small></h3>
+	<form autocomplete="off" id="frm_reporte">
 		<input type="hidden" name="read" id="read" value="1" />
 		<input type="hidden" name="idreporte" id="idreporte" value="<?= $reporte->getIdreporte(); ?>">
 		<div id="parametros">
@@ -51,10 +51,10 @@
 				?>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-7"></div>
 			<div class="col-sm-1">
-				<button type="button" class="btn btn-default" title="Filtros" onclick="$('#parametros').slideToggle(1000)">
+				<button type="button" class="btn btn-outline-secondary" title="Filtros" onclick="$('#parametros').slideToggle(1000)">
 					<i class="fas fa-filter"></i>
 				</button>
 			</div>

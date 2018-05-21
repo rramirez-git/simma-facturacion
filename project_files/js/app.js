@@ -2689,10 +2689,6 @@ function fnReporte()
 			$('#btnDescarga').removeClass('disabled');
 			$('#btnDescarga').attr('disabled', '');
 			$('#btnDescarga').prop('disabled', false);
-			if($("#reporttable").length>0 && $("#reporttablebody")[0].rows.length>0)
-			{
-				$("#reporttable").DataTable();
-			}
 			if(typeof $(resp)[4]!=="undefined")
 				console.log($(resp)[4].nodeValue);
 			else

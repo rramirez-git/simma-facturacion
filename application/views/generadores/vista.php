@@ -1,68 +1,68 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(55)): ?>
-			<button type="button" class="btn btn-default" title="Ver el Cliente Asociado" onclick="location.href='<?= base_url('clientes/ver/'.$objeto->getIdcliente()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Ver el Cliente Asociado" onclick="location.href='<?= base_url('clientes/ver/'.$objeto->getIdcliente()); ?>';">
 				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(79)):?>
-			<button type="button" class="btn btn-default" title="Calendarizar Generador" onclick="location.href='<?= base_url('generadores/calendarizar/'.$objeto->getIdgenerador()) ?>'">
+			<button type="button" class="btn btn-outline-secondary" title="Calendarizar Generador" onclick="location.href='<?= base_url('generadores/calendarizar/'.$objeto->getIdgenerador()) ?>'">
 				<i class="far fa-calendar-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(76)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Generador" onclick="location.href='<?= base_url('generadores/actualizar/'.$objeto->getIdgenerador()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Generador" onclick="location.href='<?= base_url('generadores/actualizar/'.$objeto->getIdgenerador()); ?>';">
 				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(77)):?>
-			<button type="button" class="btn btn-default" title="Borrar Generador	" onclick="Generador.Eliminar(<?= $objeto->getIdcliente(); ?>,<?= $objeto->getIdgenerador(); ?>)">
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Generador	" onclick="Generador.Eliminar(<?= $objeto->getIdcliente(); ?>,<?= $objeto->getIdgenerador(); ?>)">
 				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Generadores</h3>
-	<form class="form-horizontal" role="form" id="frm_generadores">
-		<div class="form-group">
+	<form autocomplete="off" id="frm_generadores">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_razonsocial" class="col-sm-2 control-label">Razón Social</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getRazonsocial(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_nombrecorto" class="col-sm-2 control-label">Nombre Corto</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getNombrecorto(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombrecorto(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_identificador" class="col-sm-2 control-label">Número de Generador</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getIdentificador(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?></p>
 			</div>
 			<label for="frm_generador_rfc" class="col-sm-2 control-label">Registro Federal de Contribuyentes</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRfc(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_numregamb" class="col-sm-2 control-label">Número de Registro Ambiental</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getNumregamb(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumregamb(); ?></p>
 			</div>
 			<!--<label for="frm_generador_numreggen" class="col-sm-2 control-label">Número de Registro como Generador</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNumreggen(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumreggen(); ?></p>
 			</div>-->
 			
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_frecuencia" class="col-sm-2 control-label">Frecuencia de Recolección</label>
 			<div class="col-sm-4">
-				<p class="form-control-static">
+				<input class="form-control" disabled="disabled" value="
 					<?php 
 						if($frecuencia!==false) 
 							foreach($frecuencia["opciones"] as $opc) 
@@ -76,7 +76,7 @@
 			</div>
 			<!--<label for="frm_generador_servicio" class="col-sm-2 control-label">Tipo de Servicio</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getServicio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getServicio(); ?></p>
 			</div>-->
 			<div class="col-sm-2">
 				<div class="checkbox">
@@ -87,14 +87,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_giro" class="col-sm-2 control-label">Giro</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getGiro(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getGiro(); ?></p>
 			</div>
 		</div>
 		<h5>Servicios</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-2">
 				<div class="checkbox">
 					<label>
@@ -152,115 +152,115 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_horarioinicio" class="col-sm-2 control-label">Hora Inicio</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getHorarioinicio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorarioinicio(); ?></p>
 			</div>
 			<label for="frm_generador_horariofin" class="col-sm-2 control-label">Hora Fin</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getHorariofin(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorariofin(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_horarioinicio2" class="col-sm-2 control-label">Hora Inicio</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getHorarioinicio2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorarioinicio2(); ?></p>
 			</div>
 			<label for="frm_generador_horariofin2" class="col-sm-2 control-label">Hora Fin</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getHorariofin2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorariofin2(); ?></p>
 			</div>
 		</div>
 		<h5>Dirección</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_calle" class="col-sm-2 control-label">Calle</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCalle(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_numexterior" class="col-sm-2 control-label">Número Exterior</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNumexterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?></p>
 			</div>
 			<label for="frm_generador_numinterior" class="col-sm-2 control-label">Número Interior</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNuminterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 		    <label for="frm_generador_cp" class="col-sm-2 control-label">Código Postal</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCp(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?></p>
 			</div>
 			<label for="frm_generador_colonia" class="col-sm-2 control-label">Colonia</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getColonia(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_municipio" class="col-sm-2 control-label">Delegación o Municipio</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getMunicipio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?></p>
 			</div>
 			<label for="frm_generador_estado" class="col-sm-2 control-label">Estado</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getEstado(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_referencias" class="col-sm-2 control-label">Referencias</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getReferencias(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferencias(); ?></p>
 			</div>
 		</div>
 		<h5>Contacto</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_representante" class="col-sm-2 control-label">Representante</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getRepresentante(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_representantecargo" class="col-sm-2 control-label">Cargo</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentantecargo(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantecargo(); ?></p>
 			</div>
 			<label for="frm_generador_representanteemail" class="col-sm-2 control-label">Corro Electrónico</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentanteemail(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteemail(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_representantetelefono" class="col-sm-2 control-label">Teléfono</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentantetelefono(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono(); ?></p>
 			</div>
 			<label for="frm_generador_representanextension" class="col-sm-2 control-label">Extensión</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentanteextension(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextension(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_representantetelefono2" class="col-sm-2 control-label">Teléfono 2</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentantetelefono2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono2(); ?></p>
 			</div>
 			<label for="frm_generador_representanextension2" class="col-sm-2 control-label">Extensión 2</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRepresentanteextension2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextension2(); ?></p>
 			</div>
 		</div>
 		<h5>Notas y Observaciones</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-12">
-				<p class="form-control-static"><?= $objeto->getObservaciones(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?></p>
 			</div>
 		</div>
 		<h5>Facturación</h5>
 		<div id="facturacion"><?= $facturaciones; ?></div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-3">
 				<div class="checkbox">
@@ -279,90 +279,90 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_leyendas" class="col-sm-2 control-label">Leyendas</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getLeyendas(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getLeyendas(); ?></p>
 			</div>
 		</div>
 		<h5>Cobranza</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzacontacto" class="col-sm-2 control-label">Contacto</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCobranzacontacto(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacontacto(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzaemail" class="col-sm-2 control-label">Corro Electrónico</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCobranzaemail(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaemail(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzatelefono" class="col-sm-2 control-label">Teléfono</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzatelefono(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono(); ?></p>
 			</div>
 			<label for="frm_generador_cobranzaextension" class="col-sm-2 control-label">Extensión</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzaextension(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzatelefono2" class="col-sm-2 control-label">Teléfono 2</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzatelefono2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono2(); ?></p>
 			</div>
 			<label for="frm_generador_cobranzaextension2" class="col-sm-2 control-label">Extensión 2</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzaextension2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension2(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzaobservaciones" class="col-sm-2 control-label">Observaciones</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCobranzaobservaciones(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaobservaciones(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzacalle" class="col-sm-2 control-label">Calle</label>
 			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCobranzacalle(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacalle(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzanumexterior" class="col-sm-2 control-label">Número Exterior</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzanumexterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanumexterior(); ?></p>
 			</div>
 			<label for="frm_generador_cobranzanuminterior" class="col-sm-2 control-label">Número Interior</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzanuminterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanuminterior(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 		    <label for="frm_generador_cobranzacp" class="col-sm-2 control-label">Código Postal</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzacp(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?></p>
 			</div>
 			<label for="frm_generador_cobranzacolonia" class="col-sm-2 control-label">Colonia</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzacolonia(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacolonia(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_generador_cobranzamunicipio" class="col-sm-2 control-label">Delegación o Municipio</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzamunicipio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzamunicipio(); ?></p>
 			</div>
 			<label for="frm_generador_cobranzaestado" class="col-sm-2 control-label">Estado</label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCobranzaestado(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaestado(); ?></p>
 			</div>
 		</div>
 		<h5>Rutas Asociadas</h5>
 		<?php foreach($rutas as $r): ?>
-			<div class="form-group">
+			<div class="form-row"><div class="form-group">
 				<div class="col-sm-1"></div>
 				<div class="col-sm-11">
 					<?= $r; ?>

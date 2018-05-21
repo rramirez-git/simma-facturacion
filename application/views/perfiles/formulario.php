@@ -1,21 +1,21 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Perfiles</h3>
-	<form class="form-horizontal" role="form" id="frm_perfiles">
+	<form autocomplete="off" id="frm_perfiles">
         <input type="hidden" id="frm_perfil_idperfil" name="frm_perfil_idperfil" value="<?= $objeto->getIdperfil(); ?>" />
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_perfil_nombre" class="col-sm-2 control-label">Nombre <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
         	<div class="col-sm-10">
         		<input type="text" class="form-control" id="frm_perfil_nombre" name="frm_perfil_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del perfil" maxlength="250" />
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_perfil_observaciones" class="col-sm-2 control-label">Observaciones</label>
         	<div class="col-sm-10">
         		<textarea rows="3" class="form-control" id="frm_perfil_observaciones" name="frm_perfil_observaciones"><?= $objeto->getObservaciones(); ?></textarea>
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<div class="col-sm-12">
         		<fieldset>
         			<legend>Permisos</legend>
@@ -39,7 +39,7 @@
         		</fieldset>
         	</div>-->
         </div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Perfil.Enviar(<?= ($objeto->getIdperfil()!="" && $objeto->getIdperfil()!=0?'false':'true'); ?>)" >Guardar</button>

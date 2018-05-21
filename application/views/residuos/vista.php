@@ -1,55 +1,53 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(53)): ?>
-			<button type="button" class="btn btn-default" title="Ver todos los Residuos" onclick="location.href='<?= base_url('residuos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Ver todos los Residuos" onclick="location.href='<?= base_url('residuos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
 				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
-			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
 				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(71)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Residuo" onclick="location.href='<?= base_url('residuos/actualizar/'.$objeto->getIdresiduo()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Residuo" onclick="location.href='<?= base_url('residuos/actualizar/'.$objeto->getIdresiduo()); ?>';">
 				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(72)):?>
-			<button type="button" class="btn btn-default" title="Borrar Residuo" onclick="Residuo.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdresiduo(); ?>)">
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Residuo" onclick="Residuo.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdresiduo(); ?>)">
 				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Residuos</h3>
-	<form class="form-horizontal" role="form" id="frm_residuos">
-		<div class="form-group">
+	<form autocomplete="off" id="frm_residuos">
+		<div class="form-row"><div class="form-group">
             <label for="frm_residuo_nombre" class="col-sm-2 control-label">Residuo <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNombre(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
 			</div>
 			<label for="frm_residuo_nom052" class="col-sm-2 control-label">Residuo Norma-052 <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNom052(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNom052(); ?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_residuo_tiporesiduo" class="col-sm-2 control-label">Tipo de Residuo</label>
 			<div class="col-sm-10">
-				<p class="form-control-static">
-					<?php 
+				<input class="form-control" disabled="disabled" value="<?php 
 						if($tiporesiduo["opciones"]!==false) 
 							foreach($tiporesiduo["opciones"] as $opc)
 								if($opc["idcatalogodet"]==$objeto->getTiporesiduo())
 									echo $opc["descripcion"];
-					?>
-				</p>
+					?>" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-1">
 				<div class="checkbox">
@@ -100,7 +98,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-5">
 				<div class="checkbox">

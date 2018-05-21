@@ -1,39 +1,39 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(109)): ?>
-			<button type="button" class="btn btn-default" title="Ver todos los Grupos" onclick="location.href='<?= base_url('grupos'); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Ver todos los Grupos" onclick="location.href='<?= base_url('grupos'); ?>';">
 				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(112)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Grupo" onclick="location.href='<?= base_url('grupos/actualizar/'.$objeto->getIdgrupo()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Grupo" onclick="location.href='<?= base_url('grupos/actualizar/'.$objeto->getIdgrupo()); ?>';">
 				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(113)):?>
-			<button type="button" class="btn btn-default" title="Borrar Grupo" onclick="Grupo.Eliminar(<?= $objeto->getIdgrupo(); ?>)">
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Grupo" onclick="Grupo.Eliminar(<?= $objeto->getIdgrupo(); ?>)">
 				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Grupos</h3>
-	<form class="form-horizontal" role="form" id="frm_grupos">
-        <div class="form-group">
+	<form autocomplete="off" id="frm_grupos">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_grupo_nombre" class="col-sm-2 control-label">Nombre</label>
         	<div class="col-sm-10">
-        		<p class="form-control-static"><?= $objeto->getNombre(); ?></p>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?></p>
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<label for="frm_grupo_descripcion" class="col-sm-2 control-label">Descripción</label>
         	<div class="col-sm-10">
-        		<p class="form-control-static"><?= $objeto->getDescripcion(); ?></p>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getDescripcion(); ?></p>
         	</div>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>Sucursales Asignadas</legend>
         	</fieldset>
@@ -44,7 +44,7 @@
         		<?php endforeach; ?>
         	<?php endforeach; ?>
         </div>
-        <div class="form-group">
+        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>Clientes Asignados</legend>
         	</fieldset>
@@ -58,7 +58,7 @@
         		<?php endforeach; ?>
         	<?php endforeach; ?>
         </div>
-    	<div class="form-group">
+    	<div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>Generadores Asignados</legend>
         	</fieldset>

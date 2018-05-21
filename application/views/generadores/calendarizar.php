@@ -1,9 +1,9 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(66)): ?>
-			<button type="button" class="btn btn-default" title="Ver el Generador Asociado" onclick="location.href='<?= base_url('generadores/ver/'.$objeto->getIdgenerador()); ?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Ver el Generador Asociado" onclick="location.href='<?= base_url('generadores/ver/'.$objeto->getIdgenerador()); ?>';">
 				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif; ?>
@@ -210,7 +210,7 @@
 	    </div>
 	</div>
 	<div id="fechascalendario_space" style="display: none;">
-		<form class="form-horizontal" role="form" id="frm_fechas">
+		<form autocomplete="off" id="frm_fechas">
 			<div class="table-responsive">
 				<table class="table table-striped table-hover">
 					<thead>
@@ -232,7 +232,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="alert alert-info ">
-					<div class="pull-right">
+					<div class="float-right">
 						<label>
 							<i class="fas fa-info-circle"></i>
 							<input type="checkbox" checked="checked" id="delOtherDates" name="delOtherDates" value="1" />

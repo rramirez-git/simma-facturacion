@@ -1,17 +1,17 @@
 <!-- Vista sucursales/formulario -->
 <?= $menumain; ?>
 <div class="container">
-	<h3>Sucursales <small><?= $objeto->getIdsucursal()!="" && $objeto->getIdsucursal()!=0?"Actualizar":"Nueva" ; ?> sucursal</small></h3>
-	<form class="form-horizontal" role="form" id="frm_sucursales" method="post">
+	<h3>Sucursales <small class="text-muted"><?= $objeto->getIdsucursal()!="" && $objeto->getIdsucursal()!=0?"Actualizar":"Nueva" ; ?> sucursal</small></h3>
+	<form autocomplete="off" id="frm_sucursales" method="post">
 		<input type="hidden" id="frm_sucursal_idempresa" name="frm_sucursal_idempresa" value="<?= $empresa->getIdempresa(); ?>" />
 		<input type="hidden" id="frm_sucursal_idsucursal" name="frm_sucursal_idsucursal" value="<?= $objeto->getIdsucursal(); ?>" />
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_nombre" class="col-sm-2 control-label">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_nombre" name="frm_sucursal_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre o Razón Social de la Sucursal" maxlength="62" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_iniciales" class="col-sm-2 control-label">Iniciales</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_iniciales" name="frm_sucursal_iniciales" value="<?= $objeto->getIniciales(); ?>" placeholder="Iniciales para manifiestos" maxlength="20" />
@@ -20,7 +20,7 @@
 		<h5>
 			Facturación
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de serie</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_fac_serie" name="frm_sucursal_fac_serie" value="<?= $objeto->getFac_serie(); ?>" placeholder="Número de serie Facturación" maxlength="25" />
@@ -30,7 +30,7 @@
 				<input type="number" class="form-control" id="frm_sucursal_fac_folio_actual" name="frm_sucursal_fac_folio_actual" value="<?= $objeto->getFac_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
 			<div class="col-sm-4">
 				<input type="number" class="form-control" id="frm_sucursal_fac_folio_incial" name="frm_sucursal_fac_folio_incial" value="<?= $objeto->getFac_folio_incial(); ?>"  min="0" max="999999999" />
@@ -43,7 +43,7 @@
 		<h5>
 			Notas de credito
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de Serie</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_nc_serie" name="frm_sucursal_nc_serie" value="<?= $objeto->getNc_serie(); ?>" placeholder="Número de Serie Notas de credito" maxlength="25" />
@@ -53,7 +53,7 @@
 				<input type="number" class="form-control" id="frm_sucursal_nc_folio_actual" name="frm_sucursal_nc_folio_actual" value="<?= $objeto->getNc_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
 			<div class="col-sm-4">
 				<input type="number" class="form-control" id="frm_sucursal_nc_folio_incial" name="frm_sucursal_nc_folio_incial" value="<?= $objeto->getNc_folio_incial(); ?>"  min="0" max="999999999" />
@@ -66,7 +66,7 @@
 		<h5>
 			Pagos
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de Serie</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_pago_serie" name="frm_sucursal_pago_serie" value="<?= $objeto->getPago_serie(); ?>" placeholder="Número de Serie Pagos" maxlength="25" />
@@ -76,7 +76,7 @@
 				<input type="number" class="form-control" id="frm_sucursal_pago_folio_actual" name="frm_sucursal_pago_folio_actual" value="<?= $objeto->getPago_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_pago_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
 			<div class="col-sm-4">
 				<input type="number" class="form-control" id="frm_sucursal_pago_folio_incial" name="frm_sucursal_pago_folio_incial" value="<?= $objeto->getPago_folio_incial(); ?>"  min="0" max="999999999" />
@@ -88,17 +88,17 @@
 		</div>
 		<h5>
 			Dirección
-			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
+			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_calle" class="col-sm-2 control-label">Calle</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_calle" name="frm_sucursal_calle" value="<?= $objeto->getCalle(); ?>" placeholder="Calle" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_numexterior" class="col-sm-2 control-label">Número Exterior</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_numexterior" name="frm_sucursal_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior de la Sucursal" />
@@ -108,13 +108,13 @@
 				<input type="text" class="form-control" id="frm_sucursal_numinterior" name="frm_sucursal_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior de la Sucursal" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 		    <label for="frm_sucursal_cp" class="col-sm-2 control-label">Código Postal</label>
 			<div class="col-sm-3">
 				<input type="number" class="form-control" id="frm_sucursal_cp" name="frm_sucursal_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" />
 			</div>
 			<div class="col-sm-1">
-				<button type="button" class="btn btn-default" onclick="Sucursal.DisplayFrmCP()">
+				<button type="button" class="btn btn-outline-secondary" onclick="Sucursal.DisplayFrmCP()">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
@@ -123,7 +123,7 @@
 				<input type="text" class="form-control" id="frm_sucursal_colonia" name="frm_sucursal_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="colonia" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_municipio" class="col-sm-2 control-label">Delegación o Municipio</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_municipio" name="frm_sucursal_municipio" value="<?= $objeto->getMunicipio(); ?>" placeholder="Delegación o Municipio" />
@@ -135,17 +135,17 @@
 		</div>
 		<h5>
 			Contacto
-			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaContacto()">
+			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaContacto()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_representante" class="col-sm-2 control-label">Representante <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_representante" name="frm_sucursal_representante" value="<?= $objeto->getRepresentante(); ?>" placeholder="Representante" maxlength="50" />
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_cargorepresentante" class="col-sm-2 control-label">Cargo</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_cargorepresentante" name="frm_sucursal_cargorepresentante" value="<?= $objeto->getCargorepresentante(); ?>" placeholder="Representante" maxlength="30" />
@@ -157,11 +157,11 @@
 		</div>
 		<h5>
 			Legal
-			<button type="button" class="btn btn-default btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaLegal()">
+			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaLegal()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_autsemarnat" class="col-sm-2 control-label">Número de Autorización SEMARNAT</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_sucursal_autsemarnat" name="frm_sucursal_autsemarnat" value="<?= $objeto->getAutsemarnat(); ?>" placeholder="Número de Autorización SEMARNAT" maxlength="10" />
@@ -171,13 +171,13 @@
 				<input type="text" class="form-control" id="frm_sucursal_registrosct" name="frm_sucursal_registrosct" value="<?= $objeto->getRegistrosct(); ?>" placeholder="Número de Registro SCT" maxlength="23" />
 			</div>
 		</div>
-		<!--<div class="form-group">
+		<!--<div class="form-row"><div class="form-group">
 			<label for="frm_sucursal_numregamb" class="col-sm-2 control-label">Número de Registro Ambiental <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_sucursal_numregamb" name="frm_sucursal_numregamb" value="<?= $objeto->getNumregamb(); ?>" placeholder="Número de Registro Ambiental" />
 			</div>
 		</div>-->
-		<div class="form-group">
+		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
                 <button type="button" class="btn btn-success" onclick="Sucursal.Enviar(<?= ($objeto->getIdSucursal()!="" && $objeto->getIdSucursal()!=0?'false':'true'); ?>)" >Guardar</button>

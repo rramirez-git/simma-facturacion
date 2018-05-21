@@ -1,9 +1,9 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(83)): ?>
-			<button type="button" class="btn btn-default" title="Nuevo Perfil" onclick="location.href='<?= base_url('perfiles/nuevo');?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Nuevo Perfil" onclick="location.href='<?= base_url('perfiles/nuevo');?>';">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
