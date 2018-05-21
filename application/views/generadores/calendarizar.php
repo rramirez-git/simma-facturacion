@@ -195,7 +195,7 @@
 	<div class="row">
 		<div class="col-sm-10"></div>
 		<div class="col-sm-2">
-	        <button type="button" class="btn btn-success" onclick="Calendario.GeneraFechas()" >Siguiente</button>
+	        <button type="button" class="btn btn-outline-primary" onclick="Calendario.GeneraFechas()" >Siguiente</button>
 	    </div>
 	</div>
 	<hr />
@@ -246,10 +246,10 @@
 		<div class="row">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-		        <button type="button" class="btn btn-success" onclick="Calendario.GuardarFechas()" >Guardar</button>
+		        <button type="button" class="btn btn-outline-primary" onclick="Calendario.GuardarFechas()" >Guardar</button>
 		    </div>
 		    <div class="col-sm-2">
-		        <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url('generadores/ver/'.$objeto->getIdgenerador()); ?>';">Cancelar</button>
+		        <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('generadores/ver/'.$objeto->getIdgenerador()); ?>';">Cancelar</button>
 		    </div>
 		</div>
 	</div>

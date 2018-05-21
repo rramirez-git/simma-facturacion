@@ -10,39 +10,39 @@
 		<input type="hidden" id="frm_generador_idsucursal" name="frm_generador_idgenerador" value="<?= $objeto->getIdgenerador(); ?>" />
 		<input type="hidden" id="frm_generador_idcliente" name="frm_generador_idcliente" value="<?= $objeto->getIdcliente(); ?>" />
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_razonsocial" class="col-sm-2 control-label">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+			<label for="frm_generador_razonsocial">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_razonsocial" name="frm_generador_razonsocial" value="<?= $objeto->getRazonsocial(); ?>" placeholder="Nombre o Razón Social del Generador" maxlength="60" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_nombrecorto" class="col-sm-2 control-label">Nombre Corto</label>
+			<label for="frm_generador_nombrecorto">Nombre Corto</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_nombrecorto" name="frm_generador_nombrecorto" value="<?= $objeto->getNombrecorto(); ?>" placeholder="" maxlength="60" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_identificador" class="col-sm-2 control-label">Número de Generador <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+			<label for="frm_generador_identificador">Número de Generador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_identificador" name="frm_generador_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Generador" readonly="readonly" maxlength="13" />
 			</div>
-			<label for="frm_generador_rfc" class="col-sm-2 control-label">Registro Federal de Contribuyentes <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+			<label for="frm_generador_rfc">Registro Federal de Contribuyentes <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_rfc" name="frm_generador_rfc" value="<?= $objeto->getRfc(); ?>" placeholder="Registro Federal de Contribuyentes del Generador" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_numregamb" class="col-sm-2 control-label">Número de Registro Ambiental</label>
+			<label for="frm_generador_numregamb">Número de Registro Ambiental</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_numregamb" name="frm_generador_numregamb" value="<?= $objeto->getNumregamb(); ?>" placeholder="NRA" maxlength="61" />
 			</div>
-			<!--<label for="frm_generador_numreggen" class="col-sm-2 control-label">Número de Registro como Generador</label>
+			<!--<label for="frm_generador_numreggen">Número de Registro como Generador</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_numreggen" name="frm_generador_numreggen" value="<?= $objeto->getNumreggen(); ?>" placeholder="NRG" />
 			</div>-->
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_frecuencia" class="col-sm-2 control-label">Frecuencia de Recolección</label>
+			<label for="frm_generador_frecuencia">Frecuencia de Recolección</label>
 			<div class="col-sm-4">
 				<select id="frm_generador_frecuencia" name="frm_generador_frecuencia" class="form-control">
 					<?php if($frecuencia!==false) foreach($frecuencia["opciones"] as $opc): ?>
@@ -52,7 +52,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<!--<label for="frm_generador_servicio" class="col-sm-2 control-label">Tipo de Servicio</label>
+			<!--<label for="frm_generador_servicio">Tipo de Servicio</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_servicio" name="frm_generador_servicio" value="<?= $objeto->getServicio(); ?>" placeholder="Tipo de Servicio" />
 			</div>-->
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_giro" class="col-sm-2 control-label">Giro</label>
+			<label for="frm_generador_giro">Giro</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_giro" name="frm_generador_giro" value="<?= $objeto->getGiro(); ?>" placeholder="" maxlength="255" />
 			</div>
@@ -133,44 +133,44 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_horarioinicio" class="col-sm-2 control-label">Hora Inicio</label>
+			<label for="frm_generador_horarioinicio">Hora Inicio</label>
 			<div class="col-sm-4">
 				<input type="time" class="form-control" id="frm_generador_horarioinicio" name="frm_generador_horarioinicio" value="<?= $objeto->getHorarioinicio(); ?>" />
 			</div>
-			<label for="frm_generador_horariofin" class="col-sm-2 control-label">Hora Fin</label>
+			<label for="frm_generador_horariofin">Hora Fin</label>
 			<div class="col-sm-4">
 				<input type="time" class="form-control" id="frm_generador_horariofin" name="frm_generador_horariofin" value="<?= $objeto->getHorariofin(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_horarioinicio2" class="col-sm-2 control-label">Hora Inicio</label>
+			<label for="frm_generador_horarioinicio2">Hora Inicio</label>
 			<div class="col-sm-4">
 				<input type="time" class="form-control" id="frm_generador_horarioinicio2" name="frm_generador_horarioinicio2" value="<?= $objeto->getHorarioinicio2(); ?>" />
 			</div>
-			<label for="frm_generador_horariofin2" class="col-sm-2 control-label">Hora Fin</label>
+			<label for="frm_generador_horariofin2">Hora Fin</label>
 			<div class="col-sm-4">
 				<input type="time" class="form-control" id="frm_generador_horariofin2" name="frm_generador_horariofin2" value="<?= $objeto->getHorariofin2(); ?>" />
 			</div>
 		</div>
 		<h5>Dirección</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_calle" class="col-sm-2 control-label">Calle</label>
+			<label for="frm_generador_calle">Calle</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_calle" name="frm_generador_calle" value="<?= $objeto->getCalle(); ?>" placeholder="Calle" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_numexterior" class="col-sm-2 control-label">Número Exterior</label>
+			<label for="frm_generador_numexterior">Número Exterior</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_numexterior" name="frm_generador_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior" />
 			</div>
-			<label for="frm_generador_numinterior" class="col-sm-2 control-label">Número Interior</label>
+			<label for="frm_generador_numinterior">Número Interior</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_numinterior" name="frm_generador_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-		    <label for="frm_generador_cp" class="col-sm-2 control-label">Código Postal</label>
+		    <label for="frm_generador_cp">Código Postal</label>
 			<div class="col-sm-3">
 				<input type="number" class="form-control" id="frm_generador_cp" name="frm_generador_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" maxlength="5" />
 			</div>
@@ -179,60 +179,60 @@
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
-			<label for="frm_generador_colonia" class="col-sm-2 control-label">Colonia</label>
+			<label for="frm_generador_colonia">Colonia</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_colonia" name="frm_generador_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="colonia" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_municipio" class="col-sm-2 control-label">Delegación o Municipio</label>
+			<label for="frm_generador_municipio">Delegación o Municipio</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_municipio" name="frm_generador_municipio" value="<?= $objeto->getMunicipio(); ?>" placeholder="Delegación o Municipio" maxlength="27" />
 			</div>
-			<label for="frm_generador_estado" class="col-sm-2 control-label">Estado</label>
+			<label for="frm_generador_estado">Estado</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_estado" name="frm_generador_estado" value="<?= $objeto->getEstado(); ?>" placeholder="Estado" maxlength="16" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_referencias" class="col-sm-2 control-label">Referencias</label>
+			<label for="frm_generador_referencias">Referencias</label>
 			<div class="col-sm-10">
 				<textarea rows="3" class="form-control" id="frm_generador_referencias" name="frm_generador_referencias"><?= $objeto->getReferencias(); ?></textarea>
 			</div>
 		</div>
 		<h5>Contacto</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_representante" class="col-sm-2 control-label">Representante <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+			<label for="frm_generador_representante">Representante <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_representante" name="frm_generador_representante" value="<?= $objeto->getRepresentante(); ?>" placeholder="Representante" maxlength="75" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_representantecargo" class="col-sm-2 control-label">Cargo</label>
+			<label for="frm_generador_representantecargo">Cargo</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_representantecargo" name="frm_generador_representantecargo" value="<?= $objeto->getRepresentantecargo(); ?>" placeholder="Cargo del Representante" />
 			</div>
-			<label for="frm_generador_representanteemail" class="col-sm-2 control-label">Corro Electrónico</label>
+			<label for="frm_generador_representanteemail">Corro Electrónico</label>
 			<div class="col-sm-4">
 				<input type="email" class="form-control" id="frm_generador_representanteemail" name="frm_generador_representanteemail" value="<?= $objeto->getRepresentanteemail(); ?>" placeholder="Correo Electrónico" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_representantetelefono" class="col-sm-2 control-label">Teléfono</label>
+			<label for="frm_generador_representantetelefono">Teléfono</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_representantetelefono" name="frm_generador_representantetelefono" value="<?= $objeto->getRepresentantetelefono(); ?>" placeholder="Teléfono" maxlength="13" />
 			</div>
-			<label for="frm_generador_representanextension" class="col-sm-2 control-label">Extensión</label>
+			<label for="frm_generador_representanextension">Extensión</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_representanteextension" name="frm_generador_representanteextension" value="<?= $objeto->getRepresentanteextension(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_representantetelefono2" class="col-sm-2 control-label">Teléfono 2</label>
+			<label for="frm_generador_representantetelefono2">Teléfono 2</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_representantetelefono2" name="frm_generador_representantetelefono2" value="<?= $objeto->getRepresentantetelefono2(); ?>" placeholder="Teléfono 2" maxlength="13" />
 			</div>
-			<label for="frm_generador_representanextension2" class="col-sm-2 control-label">Extensión 2</label>
+			<label for="frm_generador_representanextension2">Extensión 2</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_representanteextension2" name="frm_generador_representanteextension2" value="<?= $objeto->getRepresentanteextension2(); ?>" placeholder="Extensión 2" maxlength="5" />
 			</div>
@@ -270,7 +270,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_leyendas" class="col-sm-2 control-label">Leyendas</label>
+			<label for="frm_generador_leyendas">Leyendas</label>
 			<div class="col-sm-10">
 				<textarea rows="3" class="form-control" id="frm_generador_leyendas" name="frm_generador_leyendas"><?= $objeto->getLeyendas(); ?></textarea>
 			</div>
@@ -282,61 +282,61 @@
 			</button>
 		</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzacontacto" class="col-sm-2 control-label">Contacto</label>
+			<label for="frm_generador_cobranzacontacto">Contacto</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_cobranzacontacto" name="frm_generador_cobranzacontacto" value="<?= $objeto->getCobranzacontacto(); ?>" placeholder="Contacto" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzaemail" class="col-sm-2 control-label">Corro Electrónico</label>
+			<label for="frm_generador_cobranzaemail">Corro Electrónico</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" id="frm_generador_cobranzaemail" name="frm_generador_cobranzaemail" value="<?= $objeto->getCobranzaemail(); ?>" placeholder="Correo Electrónico" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzatelefono" class="col-sm-2 control-label">Teléfono</label>
+			<label for="frm_generador_cobranzatelefono">Teléfono</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_cobranzatelefono" name="frm_generador_cobranzatelefono" value="<?= $objeto->getCobranzatelefono(); ?>" placeholder="Teléfono" maxlength="13" />
 			</div>
-			<label for="frm_generador_cobranzaextension" class="col-sm-2 control-label">Extensión</label>
+			<label for="frm_generador_cobranzaextension">Extensión</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_cobranzaextension" name="frm_generador_cobranzaextension" value="<?= $objeto->getCobranzaextension(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzatelefono2" class="col-sm-2 control-label">Teléfono 2</label>
+			<label for="frm_generador_cobranzatelefono2">Teléfono 2</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_cobranzatelefono2" name="frm_generador_cobranzatelefono2" value="<?= $objeto->getCobranzatelefono2(); ?>" placeholder="Teléfono 2" maxlength="13" />
 			</div>
-			<label for="frm_generador_cobranzaextension2" class="col-sm-2 control-label">Extensión 2</label>
+			<label for="frm_generador_cobranzaextension2">Extensión 2</label>
 			<div class="col-sm-4">
 				<input type="tel" class="form-control" id="frm_generador_cobranzaextension2" name="frm_generador_cobranzaextension2" value="<?= $objeto->getCobranzaextension2(); ?>" placeholder="Extensión 2" maxlength="5" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzaobservaciones" class="col-sm-2 control-label">Observaciones</label>
+			<label for="frm_generador_cobranzaobservaciones">Observaciones</label>
 			<div class="col-sm-10">
 				<textarea rows="3" class="form-control" id="frm_generador_cobranzaobservaciones" name="frm_generador_cobranzaobservaciones"><?= $objeto->getCobranzaobservaciones(); ?></textarea>
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzacalle" class="col-sm-2 control-label">Calle</label>
+			<label for="frm_generador_cobranzacalle">Calle</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_generador_cobranzacalle" name="frm_generador_cobranzacalle" value="<?= $objeto->getCobranzacalle(); ?>" placeholder="Calle" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzanumexterior" class="col-sm-2 control-label">Número Exterior</label>
+			<label for="frm_generador_cobranzanumexterior">Número Exterior</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_cobranzanumexterior" name="frm_generador_cobranzanumexterior" value="<?= $objeto->getCobranzanumexterior(); ?>" placeholder="Número Exterior" />
 			</div>
-			<label for="frm_generador_cobranzanuminterior" class="col-sm-2 control-label">Número Interior</label>
+			<label for="frm_generador_cobranzanuminterior">Número Interior</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_cobranzanuminterior" name="frm_generador_cobranzanuminterior" value="<?= $objeto->getCobranzanuminterior(); ?>" placeholder="Número Interior" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-		    <label for="frm_generador_cobranzacp" class="col-sm-2 control-label">Código Postal</label>
+		    <label for="frm_generador_cobranzacp">Código Postal</label>
 			<div class="col-sm-3">
 				<input type="number" class="form-control" id="frm_generador_cobranzacp" name="frm_generador_cobranzacp" value="<?= $objeto->getCobranzacp(); ?>" placeholder="C. P." min="0" max="99999" />
 			</div>
@@ -345,17 +345,17 @@
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
-			<label for="frm_generador_cobranzacolonia" class="col-sm-2 control-label">Colonia</label>
+			<label for="frm_generador_cobranzacolonia">Colonia</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_cobranzacolonia" name="frm_generador_cobranzacolonia" value="<?= $objeto->getCobranzacolonia(); ?>" placeholder="colonia" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_generador_cobranzamunicipio" class="col-sm-2 control-label">Delegación o Municipio</label>
+			<label for="frm_generador_cobranzamunicipio">Delegación o Municipio</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_cobranzamunicipio" name="frm_generador_cobranzamunicipio" value="<?= $objeto->getCobranzamunicipio(); ?>" placeholder="Delegación o Municipio" />
 			</div>
-			<label for="frm_generador_cobranzaestado" class="col-sm-2 control-label">Estado</label>
+			<label for="frm_generador_cobranzaestado">Estado</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_generador_cobranzaestado" name="frm_generador_cobranzaestado" value="<?= $objeto->getCobranzaestado(); ?>" placeholder="Estado" />
 			</div>
@@ -397,10 +397,10 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Generador.Enviar(<?= ($objeto->getIdgenerador()!="" && $objeto->getIdgenerador()!=0?'false':'true'); ?>)" >Guardar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Generador.Enviar(<?= ($objeto->getIdgenerador()!="" && $objeto->getIdgenerador()!=0?'false':'true'); ?>)" >Guardar</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("clientes/ver/{$objeto->getIdcliente()}"); ?>'">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("clientes/ver/{$objeto->getIdcliente()}"); ?>'">Cancelar</button>
             </div>
 		</div>
 	</form>

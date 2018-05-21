@@ -10,19 +10,19 @@ $generador=new Modgenerador();
 	<input type="hidden" id="frm_validacion_fecha" name="frm_validacion_fecha" value="<?= $fecha; ?>" />
 	<input type="hidden" id="frm_validacion_idruta" name="frm_validacion_idruta" value="<?= $ruta->getIdruta() ?>" />
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_bit" class="col-sm-2 control-label">Bitacora:</label>
+		<label for="frm_validacion_bit">Bitacora:</label>
 		<div class="col-sm-4">
-			<input class="form-control" disabled="disabled" value="<?= $bitacora ?></p>
+			<input class="form-control" disabled="disabled" value="<?= $bitacora ?>" />
 		</div>
-		<label for="frm_validacion_fec" class="col-sm-2 control-label">Fecha</label>
+		<label for="frm_validacion_fec">Fecha</label>
 		<div class="col-sm-4">
-			<input class="form-control" disabled="disabled" value="<?= DateToMx($fecha); ?></p>
+			<input class="form-control" disabled="disabled" value="<?= DateToMx($fecha); ?>" />
 		</div>
 	</div>
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_ruta" class="col-sm-2 control-label">Ruta</label>
+		<label for="frm_validacion_ruta">Ruta</label>
 		<div class="col-sm-10">
-			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></p>
+			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 		</div>
 	</div>
 	<div class="table-responsive">
@@ -75,10 +75,10 @@ $generador=new Modgenerador();
 	<div class="form-row"><div class="form-group">
 		<div class="col-sm-8"></div>
 		<div class="col-sm-2">
-            <button type="button" class="btn btn-success" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
+            <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
         </div>
 	</div>
 </form>

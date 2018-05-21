@@ -23,7 +23,7 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-9"></div>
 			<div class="col-sm-3">
-			    <button type="button" class="btn btn-success" onclick="Usuario.CambiarPwd()" >Cambiar Contraseña</button>
+			    <button type="button" class="btn btn-outline-primary" onclick="Usuario.CambiarPwd()" >Cambiar Contraseña</button>
 			</div>
 		</div>
 	</form>

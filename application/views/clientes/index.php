@@ -12,7 +12,7 @@
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(108)): ?>
-			<button type="button" class="btn btn-outline-secondary" title="Ver Clanedarios" onclick="window.open('<?= base_url("clientes/calendarios")?>','calendarios');">
+			<button type="button" class="btn btn-outline-secondary" title="Ver Calendarios" onclick="window.open('<?= base_url("clientes/calendarios")?>','calendarios');">
 				<i class="far fa-calendar-alt"></i>
 			</button>
 			<?php endif; 
@@ -25,9 +25,8 @@
 	</div>
 	<h3>Clientes</h3>
 	<form autocomplete="off" method="post" id="frm_prefer" action="<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>">
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'clientes/index/'+$('#frm_prefer_empresa').val();">
 					<option value="0"></option>
 					<?php foreach($empresas as $empresa): ?>
@@ -36,9 +35,8 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'clientes/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php if($idsucursal==0): ?>
 						<option value="0"></option>
@@ -50,25 +48,22 @@
 			</div>
 		</div>
 		<h5>Búscar Cliente:</h5>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_identificador" class="col-sm-2 control-label">Número de Cliente</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_identificador">Número de Cliente</label>
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
 			</div>
-			<label for="frm_prefer_rfc" class="col-sm-2 control-label">RFC</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_prefer_rfc">RFC</label>
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_razonsocial" class="col-sm-2 control-label">Razon Social</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_razonsocial">Razon Social</label>
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_vendedor" class="col-sm-2 control-label">Vendedor</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_vendedor">Vendedor</label>
 				<select id="frm_prefer_vendedor" name="frm_prefer_vendedor" class="form-control">
 					<option value=""></option>
 					<?php if($vendedor!==false) foreach($vendedor["opciones"] as $opc): ?>
@@ -78,33 +73,26 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<label for="frm_prefer_giro" class="col-sm-2 control-label">Giro</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_prefer_giro">Giro</label>
 				<input type="text" class="form-control" id="frm_prefer_giro" name="frm_prefer_giro" value="<?= $filtros["giro"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_observaciones" class="col-sm-2 control-label">Observaciones</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_observaciones">Observaciones</label>
 				<input type="text" class="form-control" id="frm_prefer_observaciones" name="frm_prefer_observaciones" value="<?= $filtros["observaciones"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_identificador" class="col-sm-2 control-label">Colonia</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_identificador">Colonia</label>
 				<input type="text" class="form-control" id="frm_prefer_colonia" name="frm_prefer_colonia" value="<?= $filtros["colonia"]; ?>" />
 			</div>
-			<label for="frm_prefer_rfc" class="col-sm-2 control-label">Municipio</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_prefer_rfc">Municipio</label>
 				<input type="text" class="form-control" id="frm_prefer_municipio" name="frm_prefer_municipio" value="<?= $filtros["municipio"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<div class="col-sm-10"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Cliente.Buscar()" >Buscar</button>
-            </div>
-		</div>
+		<button type="button" class="btn btn-outline-primary" onclick="Cliente.Buscar()" >Buscar</button>
 	</form>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">

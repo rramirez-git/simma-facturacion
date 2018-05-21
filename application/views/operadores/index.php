@@ -13,7 +13,7 @@
 	<h3>Operadores</h3>
 	<form autocomplete="off" method="post" id="frm_prefer">
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
+			<label for="frm_prefer_empresa">Empresa</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
+			<label for="frm_prefer_empresa">Sucursal</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>

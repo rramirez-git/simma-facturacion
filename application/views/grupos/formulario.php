@@ -8,13 +8,13 @@
         <input type="hidden" id="frm_grupo_clientes" name="frm_grupo_clientes" value="<?= implode(",",$objeto->getClientes()); ?>" />
         <input type="hidden" id="frm_grupo_sucursales" name="frm_grupo_sucursales" value="<?= implode(",",$objeto->getSucursales()); ?>" />
         <div class="form-row"><div class="form-group">
-        	<label for="frm_grupo_nombre" class="col-sm-2 control-label">Nombre <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+        	<label for="frm_grupo_nombre">Nombre <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
         	<div class="col-sm-10">
         		<input type="text" class="form-control" id="frm_grupo_nombre" name="frm_grupo_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del grupo" maxlength="250" />
         	</div>
         </div>
         <div class="form-row"><div class="form-group">
-        	<label for="frm_grupo_descripcion" class="col-sm-2 control-label">Descripción</label>
+        	<label for="frm_grupo_descripcion">Descripción</label>
         	<div class="col-sm-10">
         		<textarea rows="3" class="form-control" id="frm_grupo_descripcion" name="frm_grupo_descripcion"><?= $objeto->getDescripcion(); ?></textarea>
         	</div>
@@ -91,10 +91,10 @@
         <div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Grupo.Enviar(<?= ($objeto->getIdgrupo()!="" && $objeto->getIdgrupo()!=0?'false':'true'); ?>)" >Guardar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Grupo.Enviar(<?= ($objeto->getIdgrupo()!="" && $objeto->getIdgrupo()!=0?'false':'true'); ?>)" >Guardar</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url('grupos'); ?>'">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('grupos'); ?>'">Cancelar</button>
             </div>
 		</div>
 	</form>

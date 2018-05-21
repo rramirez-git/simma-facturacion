@@ -4,13 +4,13 @@
 	<form autocomplete="off" id="frm_perfiles">
         <input type="hidden" id="frm_perfil_idperfil" name="frm_perfil_idperfil" value="<?= $objeto->getIdperfil(); ?>" />
         <div class="form-row"><div class="form-group">
-        	<label for="frm_perfil_nombre" class="col-sm-2 control-label">Nombre <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
+        	<label for="frm_perfil_nombre">Nombre <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
         	<div class="col-sm-10">
         		<input type="text" class="form-control" id="frm_perfil_nombre" name="frm_perfil_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del perfil" maxlength="250" />
         	</div>
         </div>
         <div class="form-row"><div class="form-group">
-        	<label for="frm_perfil_observaciones" class="col-sm-2 control-label">Observaciones</label>
+        	<label for="frm_perfil_observaciones">Observaciones</label>
         	<div class="col-sm-10">
         		<textarea rows="3" class="form-control" id="frm_perfil_observaciones" name="frm_perfil_observaciones"><?= $objeto->getObservaciones(); ?></textarea>
         	</div>
@@ -42,10 +42,10 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Perfil.Enviar(<?= ($objeto->getIdperfil()!="" && $objeto->getIdperfil()!=0?'false':'true'); ?>)" >Guardar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Perfil.Enviar(<?= ($objeto->getIdperfil()!="" && $objeto->getIdperfil()!=0?'false':'true'); ?>)" >Guardar</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url('perfiles'); ?>'">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('perfiles'); ?>'">Cancelar</button>
             </div>
 		</div>
 	</form>

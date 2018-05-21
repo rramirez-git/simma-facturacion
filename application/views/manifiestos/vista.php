@@ -49,38 +49,38 @@ $total=0.0;
 	<form autocomplete="off" id="frm_manifiesto">
 		<h5>Generador</h5>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Cliente</label>
+			<label>Cliente</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>" />
 			</div>
 			<?php if ($manifiesto->getFecha_captura() != "" && $manifiesto->getFecha_captura() != "0000-00-00 00:00:00" ) { ?>
-			<label class="col-sm-2 control-label" id="captura_fec">Fecha de Captura:</label>
+			<label id="captura_fec">Fecha de Captura:</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?> </p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?>" />
 			</div>
 			<?php } ?>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Generador</label>
+			<label>Generador</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>" />
 			</div>
 			<?php if ($manifiesto->getCapturista() != "") { ?>
-			<label class="col-sm-2 control-label">Capturista:</label>
+			<label>Capturista:</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getCapturista( ); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getCapturista( ); ?>" />
 			</div>
 			<?php } ?>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Responsable</label>
+			<label>Responsable</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?>" />
 			</div>
 		</div>
 		<h5>Facturacion</h5>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Esquema de Facturación</label>
+			<label>Esquema de Facturación</label>
 			<div class="col-sm-8">
 				<input class="form-control" disabled="disabled" value="<?php
 				foreach( $tipos_cobro[ 'opciones' ] as $opc ) {
@@ -100,7 +100,7 @@ $total=0.0;
 						echo " (" . $opc[ 'descripcion'] . ")";
 					}
 				}
-				?></p>
+				?>" />
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
@@ -112,9 +112,9 @@ $total=0.0;
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Factura Asociada</label>
+			<label>Factura Asociada</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?>" />
 			</div>
 		</div>
 		<h5>Transportista</h5>
@@ -125,25 +125,25 @@ $total=0.0;
 		$empresa->getFromDatabase();
 		?>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Razon Social</label>
+			<label>Razon Social</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
 			</div>			
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Ruta</label>
+			<label>Ruta</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 			</div>			
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Operador</label>
+			<label>Operador</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $operador->getNombre()." ".$operador->getApaterno()." ".$operador->getAmaterno(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $operador->getNombre()." ".$operador->getApaterno()." ".$operador->getAmaterno(); ?>" />
 			</div>
-			<label class="col-sm-2 control-label">Vehiculo</label>
+			<label>Vehiculo</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $vehiculo->getPlaca()." (".$vehiculo->getTipo().")"; ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $vehiculo->getPlaca()." (".$vehiculo->getTipo().")"; ?>" />
 			</div>
 		</div>
 		<h5>Planta de Tratamiento</h5>
@@ -154,15 +154,15 @@ $total=0.0;
 		$empresa->getFromDatabase();
 		?>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Razon Social</label>
+			<label>Razon Social</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
 			</div>			
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Representante</label>
+			<label>Representante</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $sucursal->getRepresentante(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $sucursal->getRepresentante(); ?>" />
 			</div>			
 		</div>
 		<h5>Recolección</h5>

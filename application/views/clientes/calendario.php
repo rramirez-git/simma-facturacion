@@ -4,7 +4,7 @@
 	<h3>Calendarios</h3>
 	<form autocomplete="off" class="noImprimir" id="frm_rc" method="post">
 		<div class="form-row"><div class="form-group">
-			<label for="frm_fec_inicial" class="col-sm-2 control-label">Periodo</label>
+			<label for="frm_fec_inicial">Periodo</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_fec_inicial" name="frm_fec_inicial" value="<?= $fec_inicial; ?>" />
 			</div>
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Tipo:</label>
+			<label>Tipo:</label>
 			<div class="col-sm-3">
 				<label>
 					<input type="radio" name="tipo_gen" value="rc" <?= ($tipo=="rc"?'checked="checked"':''); ?> />
@@ -29,7 +29,7 @@
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cte_inicial" class="col-sm-2 control-label">No Cliente.</label>
+			<label for="frm_cte_inicial">No Cliente.</label>
 			<div class="col-sm-5">
 				<input type="number" class="form-control" id="frm_cte_inicial" name="frm_cte_inicial" value="<?= $cte_inicial; ?>" placeholder="" maxlength="10" />
 			</div>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_gen_inicial" class="col-sm-2 control-label">No Generador.</label>
+			<label for="frm_gen_inicial">No Generador.</label>
 			<div class="col-sm-5">
 				<input type="number" class="form-control" id="frm_gen_inicial" name="frm_gen_inicial" value="<?= $gen_inicial; ?>" placeholder="" maxlength="10" />
 			</div>
@@ -49,7 +49,7 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
-				<button type="submit" class="btn btn-success">Generar</button>
+				<button type="submit" class="btn btn-outline-primary">Generar</button>
 			</div>
 		</div>
 	</form>

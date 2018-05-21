@@ -59,7 +59,7 @@
 				</button>
 			</div>
 			<div class="col-sm-2">
-		        <button id="btnGenera" type="button" class="btn btn-success" onclick="Reporte.Ejecutar()" >Generar</button>
+		        <button id="btnGenera" type="button" class="btn btn-outline-primary" onclick="Reporte.Ejecutar()" >Generar</button>
 		    </div>
 			<div class="col-sm-2">
 		        <button id="btnDescarga" type="button" class="btn btn-info disabled" onclick="Reporte.Descargar()" >Descargar</button>

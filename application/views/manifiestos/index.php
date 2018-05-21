@@ -45,7 +45,7 @@
 	<h3>Manifiestos</h3>
 	<form autocomplete="off" method="post" id="frm_prefer" action="<?= base_url("manifiestos/index/$idempresa/$idsucursal")?>">
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
+			<label for="frm_prefer_empresa">Empresa</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_sucursal" class="col-sm-2 control-label">Sucursal</label>
+			<label for="frm_prefer_sucursal">Sucursal</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
@@ -66,23 +66,23 @@
 		</div>
 		<h5>Búscar Manifiesto:</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_identificador" class="col-sm-2 control-label">No. de Manifiesto</label>
+			<label for="frm_prefer_identificador">No. de Manifiesto</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_numruta" class="col-sm-2 control-label">No. de Ruta</label>
+			<label for="frm_prefer_numruta">No. de Ruta</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_numruta" name="frm_prefer_numruta" value="<?= $filtros["numruta"]; ?>" />
 			</div>
-			<label for="frm_prefer_nombreruta" class="col-sm-2 control-label">Ruta</label>
+			<label for="frm_prefer_nombreruta">Ruta</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_nombreruta" name="frm_prefer_nombreruta" value="<?= $filtros["nombreruta"]; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fecha_inicio" class="col-sm-2 control-label">Fecha</label>
+			<label for="frm_prefer_fecha_inicio">Fecha</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fecha_inicio" name="frm_prefer_fecha_inicio" value="<?= $filtros["fecha_inicio"]; ?>" />
 			</div>
@@ -91,33 +91,33 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_identificadorcliente" class="col-sm-2 control-label">No. Cliente</label>
+			<label for="frm_prefer_identificadorcliente">No. Cliente</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificadorcliente" name="frm_prefer_identificadorcliente" value="<?= $filtros["identificadorcliente"]; ?>" />
 			</div>
-			<label for="frm_prefer_identificadorgenerador" class="col-sm-2 control-label">No. Generador</label>
+			<label for="frm_prefer_identificadorgenerador">No. Generador</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificadorgenerador" name="frm_prefer_identificadorgenerador" value="<?= $filtros["identificadorgenerador"]; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_razonsocial" class="col-sm-2 control-label">Razón Social</label>
+			<label for="frm_prefer_razonsocial">Razón Social</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_rfc" class="col-sm-2 control-label">RFC</label>
+			<label for="frm_prefer_rfc">RFC</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
 			</div>
-			<label for="frm_prefer_nra" class="col-sm-2 control-label">No. Registro Ambiental</label>
+			<label for="frm_prefer_nra">No. Registro Ambiental</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_nra" name="frm_prefer_nra" value="<?= $filtros["nra"]; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_destinofinal" class="col-sm-2 control-label">Destino Final</label>
+			<label for="frm_prefer_destinofinal">Destino Final</label>
 			<div class="col-sm-4">
 				<select class="form-control" id="frm_prefer_destinofinal" name="frm_prefer_destinofinal">
 					<option value=""></option>
@@ -132,7 +132,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<label for="frm_prefer_transportista" class="col-sm-2 control-label">Transportista</label>
+			<label for="frm_prefer_transportista">Transportista</label>
 			<div class="col-sm-4">
 				<select class="form-control" id="frm_prefer_transportista" name="frm_prefer_transportista">
 					<option value=""></option>
@@ -149,7 +149,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fechaembarque_inicio" class="col-sm-2 control-label">Fecha de Embarque</label>
+			<label for="frm_prefer_fechaembarque_inicio">Fecha de Embarque</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fechaembarque_inicio" name="frm_prefer_fechaembarque_inicio" value="<?= $filtros["fechaembarque_inicio"]; ?>" />
 			</div>
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fecharecepcion_inicio" class="col-sm-2 control-label">Fecha de Recepción</label>
+			<label for="frm_prefer_fecharecepcion_inicio">Fecha de Recepción</label>
 			<div class="col-sm-5">
 				<input type="date" class="form-control" id="frm_prefer_fecharecepcion_inicio" name="frm_prefer_fecharecepcion_inicio" value="<?= $filtros["fecharecepcion_inicio"]; ?>" />
 			</div>
@@ -170,7 +170,7 @@
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
 				<input type="hidden" name="action" id="action" value="" />
-                <button type="button" class="btn btn-success" onclick="Manifiesto.Buscar()">Buscar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.Buscar()">Buscar</button>
             </div>
 		</div>
 	</form>

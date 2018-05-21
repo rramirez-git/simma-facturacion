@@ -9,25 +9,25 @@ $ruta=new Modruta();*/
 	<input type="hidden" id="frm_validacion_idgenerador" name="frm_validacion_idgenerador" value="<?= $generador->getIdgenerador()?>" />
 	<input type="hidden" id="frm_validacion_idruta" name="frm_validacion_idruta" value="<?= $ruta->getIdruta() ?>" />
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_cliente" class="col-sm-2 control-label">Cliente</label>
+		<label for="frm_validacion_cliente">Cliente</label>
 		<div class="col-sm-10">
-			<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></p>
+			<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>" />
 		</div>
 	</div>
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_generador" class="col-sm-2 control-label">Generador</label>
+		<label for="frm_validacion_generador">Generador</label>
 		<div class="col-sm-10">
-			<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></p>
+			<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>" />
 		</div>
 	</div>
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_ruta" class="col-sm-2 control-label">Ruta</label>
+		<label for="frm_validacion_ruta">Ruta</label>
 		<div class="col-sm-10">
-			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></p>
+			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 		</div>
 	</div>
 	<div class="form-row"><div class="form-group">
-		<label for="frm_validacion_identificador" class="col-sm-2 control-label">No. de Manifiesto</label>
+		<label for="frm_validacion_identificador">No. de Manifiesto</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="frm_validacion_identificador" name="frm_validacion_identificador" value="<?= $identificador; ?>" maxlength="19" />
 		</div>
@@ -35,10 +35,10 @@ $ruta=new Modruta();*/
 	<div class="form-row"><div class="form-group">
 		<div class="col-sm-8"></div>
 		<div class="col-sm-2">
-            <button type="button" class="btn btn-success" onclick="Manifiesto.CrearManifiestoCteGen_Exec()" >Crear</button>
+            <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoCteGen_Exec()" >Crear</button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
         </div>
 	</div>
 </form>

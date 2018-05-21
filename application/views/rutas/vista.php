@@ -38,19 +38,17 @@ $vehiculo->getFromDatabase();
 	</div>
 	<h3>Rutas</h3>
 	<form autocomplete="off" id="frm_rutas">
-		<div class="form-row"><div class="form-group">
-			<label for="frm_ruta_nombre" class="col-sm-2 control-label">Nombre de la Ruta</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_nombre">Nombre de la Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_nombre" name="frm_ruta_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre de la Ruta" />
 			</div>
-			<label for="frm_ruta_identificador" class="col-sm-2 control-label">Número de Ruta</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
+			<div class="form-group col">
+			<label for="frm_ruta_identificador">Número de Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_identificador" name="frm_ruta_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Ruta" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="empresadestinofinal" class="col-sm-2 control-label">Planta de Tratamiento</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="empresadestinofinal">Planta de Tratamiento <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresadestinofinal());
 				$sucursal->getFromDatabase();
@@ -59,8 +57,8 @@ $vehiculo->getFromDatabase();
 				?>
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
-			<label for="empresatransportista" class="col-sm-2 control-label">Transportista</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="empresatransportista">Transportista <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresatransportista());
 				$sucursal->getFromDatabase();
@@ -70,75 +68,73 @@ $vehiculo->getFromDatabase();
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_ruta_descripcion" class="col-sm-2 control-label">Descripción de la Ruta</label>
-			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getDescripcion(); ?>" />
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_descripcion">Descripción de la Ruta</label>
+				<p class="form-control" id="frm_ruta_descripcion" name="frm_ruta_descripcion"><?= $objeto->getDescripcion(); ?></p>
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_ruta_idoperador" class="col-sm-2 control-label">Operador</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_idoperador">Operador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input class="form-control" disabled="disabled" value="<?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?>" />
 			</div>
-			<label for="frm_ruta_idvehiculo" class="col-sm-2 control-label">Vehiculo</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_ruta_idvehiculo">Vehiculo <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input class="form-control" disabled="disabled" value="<?= "{$vehiculo->getPlaca()} ({$vehiculo->getTipo()})"; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<div class="col-sm-2">
+		<div class="form-row">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciolunes" name="frm_ruta_serviciolunes" <?= ($objeto->getServiciolunes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciolunes" name="frm_ruta_serviciolunes" <?= ($objeto->getServiciolunes()==1?'checked="checked"':''); ?> />
 						Lunes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciomartes" name="frm_ruta_serviciomartes" <?= ($objeto->getServiciomartes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciomartes" name="frm_ruta_serviciomartes" <?= ($objeto->getServiciomartes()==1?'checked="checked"':''); ?> />
 						Martes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciomiercoles" name="frm_ruta_serviciomiercoles" <?= ($objeto->getServiciomiercoles()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciomiercoles" name="frm_ruta_serviciomiercoles" <?= ($objeto->getServiciomiercoles()==1?'checked="checked"':''); ?> />
 						Miércoles
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciojueves" name="frm_ruta_serviciojueves" <?= ($objeto->getServiciojueves()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciojueves" name="frm_ruta_serviciojueves" <?= ($objeto->getServiciojueves()==1?'checked="checked"':''); ?> />
 						Jueves
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_servicioviernes" name="frm_ruta_servicioviernes" <?= ($objeto->getServicioviernes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_servicioviernes" name="frm_ruta_servicioviernes" <?= ($objeto->getServicioviernes()==1?'checked="checked"':''); ?> />
 						Viernes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciosabado" name="frm_ruta_serviciosabado" <?= ($objeto->getServiciosabado()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciosabado" name="frm_ruta_serviciosabado" <?= ($objeto->getServiciosabado()==1?'checked="checked"':''); ?> />
 						Sabado
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciodomingo" name="frm_ruta_serviciodomingo" <?= ($objeto->getServiciodomingo()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciodomingo" name="frm_ruta_serviciodomingo" <?= ($objeto->getServiciodomingo()==1?'checked="checked"':''); ?> />
 						Domingo
 					</label>
 				</div>

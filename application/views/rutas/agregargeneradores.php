@@ -2,17 +2,16 @@
 <div class="container">
 	<h3>Asociar Generadores <small class="text-muted"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
 	<form autocomplete="off" id="frm_rutas">
-		<div class="form-row"><div class="form-group">
-			<label for="cliente" class="col-sm-2 control-label">No. Cliente:</label>
-			<div class="col-sm-3">
+		<div class="form-row"><div class="form-group col">
+			<label for="cliente">No. Cliente:</label>
 				<input type="text" class="form-control" id="cliente" name="cliente" />
 			</div>
-			<label for="generador" class="col-sm-2 control-label">No. Generador</label>
-			<div class="col-sm-3">
+			<div class="form-group col">
+			<label for="generador">No. Generador</label>
 				<input type="text" class="form-control" id="generador" name="generador" />
 			</div>
-			<div class="col-sm-2">
-            	<button type="button" class="btn btn-outline-secondary" onclick="Ruta.BuscarCteGen()">
+			<div class="form-group col">
+            	<button type="button" class="btn btn-outline-secondary align-bottom" onclick="Ruta.BuscarCteGen()">
             		<i class="fas fa-search"></i>
             	</button>
         	</div>
@@ -42,13 +41,6 @@
 		</table>
 	</div>
 	<input type="hidden" id="idruta" name="idruta" value="<?= $ruta->getIdruta(); ?>" />
-	<div class="row">
-		<div class="col-sm-8"></div>
-		<div class="col-sm-2">
-            <button type="button" class="btn btn-success" onclick="Ruta.AddGeneradores()">Asociar</button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Cancelar</button>
-        </div>
-	</div>
+	<button type="button" class="btn btn-outline-primary" onclick="Ruta.AddGeneradores()">Asociar</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Cancelar</button>
 </div>

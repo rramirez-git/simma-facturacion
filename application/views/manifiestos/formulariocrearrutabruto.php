@@ -6,7 +6,7 @@
 		<input type="hidden" id="frm_nuevo_empresa" name="frm_nuevo_empresa" value="<?= $idempresa; ?>" />
 		<input type="hidden" id="frm_nuevo_sucursal" name="frm_nuevo_sucursal" value="<?= $idsucursal; ?>" />
 		<div class="form-row"><div class="form-group">
-			<label for="frm_nuevo_ruta" class="col-sm-2 control-label">Ruta</label>
+			<label for="frm_nuevo_ruta">Ruta</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="frm_nuevo_ruta" name="frm_nuevo_ruta" onchange="$('#frm_nuevo_bitacora')[0].value='Bitácora '+this.options[this.selectedIndex].text+' ('+hoy+')'">
 					<?php
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_nuevo_bitacora" class="col-sm-2 control-label">Bitácora</label>
+			<label for="frm_nuevo_bitacora">Bitácora</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_nuevo_bitacora" name="frm_nuevo_bitacora" value="<?= $nombreBitacora; ?>" />
 			</div>
@@ -42,10 +42,10 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Manifiesto.ValidaCreacionRutaBruto()" >Validar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.ValidaCreacionRutaBruto()" >Validar</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
             </div>
 		</div>
 	</form>

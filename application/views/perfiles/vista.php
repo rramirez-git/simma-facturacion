@@ -23,13 +23,13 @@
 	<form autocomplete="off" id="frm_perfiles">
         <input type="hidden" id="frm_perfil_idperfil" name="frm_perfil_idperfil" value="<?= $objeto->getIdperfil(); ?>" />
         <div class="form-row"><div class="form-group">
-        	<label for="frm_perfil_nombre" class="col-sm-2 control-label">Nombre</label>
+        	<label for="frm_perfil_nombre">Nombre</label>
         	<div class="col-sm-10">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
         	</div>
         </div>
         <div class="form-row"><div class="form-group">
-        	<label for="frm_perfil_observaciones" class="col-sm-2 control-label">Observaciones</label>
+        	<label for="frm_perfil_observaciones">Observaciones</label>
         	<div class="col-sm-10">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?>" />
         	</div>

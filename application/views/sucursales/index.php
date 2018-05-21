@@ -12,9 +12,8 @@
 	</div>
 	<h3>Sucursales</h3>
 	<form autocomplete="off" method="post" id="frm_prefer">
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'sucursales/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>

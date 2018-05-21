@@ -170,3 +170,12 @@ ul.pagination li {
     border: 1px solid #007bff;
     border-radius: 3px;
 }
+
+p.form-control {
+	background-color: #e9ecef;
+    min-height: 38px;
+}
+
+form {
+	margin-bottom: 5px;
+}

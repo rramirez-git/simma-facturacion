@@ -294,10 +294,10 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-8"></div>
 			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
             </div>
 		</div>
 	</form>

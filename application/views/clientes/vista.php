@@ -33,32 +33,31 @@
 	<h3>Clientes</h3>
 	<form autocomplete="off" id="frm_clientes">
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_razonsocial" class="col-sm-2 control-label">Razón Social</label>
+			<label for="frm_cliente_razonsocial">Razón Social</label>
 			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_nombrecorto" class="col-sm-2 control-label">Nombre Corto</label>
+			<label for="frm_cliente_nombrecorto">Nombre Corto</label>
 			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombreCorto(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_identificador" class="col-sm-2 control-label">Número de Cliente</label>
+			<label for="frm_cliente_identificador">Número de Cliente</label>
 			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
 			</div>
-			<label for="frm_cliente_rfc" class="col-sm-2 control-label">Registro Federal de Contribuyentes</label>
+			<label for="frm_cliente_rfc">Registro Federal de Contribuyentes</label>
 			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_vendedor" class="col-sm-2 control-label">Vendedor</label>
+			<label for="frm_cliente_vendedor">Vendedor</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value=
-				"<?php 
+				<input class="form-control" disabled="disabled" value="<?php 
 						if($vendedor!==false) 
 							foreach($vendedor["opciones"] as $opc) 
 								if($opc["idcatalogodet"]==$objeto->getVendedor()) 
@@ -66,29 +65,27 @@
 									echo $opc["descripcion"]; 
 									break; 
 								} 
-					?>
-					" />
+					?>" />
 			</div>
-			<label for="frm_cliente_afiliacion" class="col-sm-2 control-label">Afiliación</label>
+			<label for="frm_cliente_afiliacion">Afiliación</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getAfiliacion(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_giro" class="col-sm-2 control-label">Giro</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getGiro(); ?></p>
-			</div>
-			<label for="frm_cliente_fechaalta" class="col-sm-2 control-label">Fecha de Alta en Sistema</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaalta()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getAfiliacion(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_status" class="col-sm-2 control-label">Estatus</label>
+			<label for="frm_cliente_giro">Giro</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php 
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getGiro(); ?>" />
+			</div>
+			<label for="frm_cliente_fechaalta">Fecha de Alta en Sistema</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaalta()); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_status">Estatus</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?php 
 						if($estatuscliente!==false) 
 							foreach($estatuscliente["opciones"] as $opc) 
 								if($opc["idcatalogodet"]==$objeto->getStatus()) 
@@ -96,120 +93,119 @@
 									echo $opc["descripcion"]; 
 									break; 
 								} 
-					?>
-				</p>
+					?>" />
 			</div>
-			<label for="frm_cliente_fechastatus" class="col-sm-2 control-label">Fecha Cambio Status</label>
+			<label for="frm_cliente_fechastatus">Fecha Cambio Status</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechastatus()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechastatus()); ?>" />
 			</div>
 		</div>
 		<h5>Contrato</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_fechacontratoinicio" class="col-sm-2 control-label">Fecha de Inicio</label>
+			<label for="frm_cliente_fechacontratoinicio">Fecha de Inicio</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechacontratoinicio()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechacontratoinicio()); ?>" />
 			</div>
-			<label for="frm_cliente_fechacontratofin" class="col-sm-2 control-label">Fecha de Termino</label>
+			<label for="frm_cliente_fechacontratofin">Fecha de Termino</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechacontratofin()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechacontratofin()); ?>" />
 			</div>
 		</div>
 		<h5>Servicios</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_fechaserviciosinicio" class="col-sm-2 control-label">Fecha de Inicio</label>
+			<label for="frm_cliente_fechaserviciosinicio">Fecha de Inicio</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaserviciosinicio()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaserviciosinicio()); ?>" />
 			</div>
-			<label for="frm_cliente_fechaserviciosfin" class="col-sm-2 control-label">Fecha de Termino</label>
+			<label for="frm_cliente_fechaserviciosfin">Fecha de Termino</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaserviciosfin()); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaserviciosfin()); ?>" />
 			</div>
 		</div>
 		<h5>Dirección</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_calle" class="col-sm-2 control-label">Calle</label>
+			<label for="frm_cliente_calle">Calle</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_numexterior" class="col-sm-2 control-label">Número Exterior</label>
+			<label for="frm_cliente_numexterior">Número Exterior</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?>" />
 			</div>
-			<label for="frm_cliente_numinterior" class="col-sm-2 control-label">Número Interior</label>
+			<label for="frm_cliente_numinterior">Número Interior</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-		    <label for="frm_cliente_cp" class="col-sm-2 control-label">Código Postal</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?></p>
-			</div>
-			<label for="frm_cliente_colonia" class="col-sm-2 control-label">Colonia</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_municipio" class="col-sm-2 control-label">Delegación o Municipio</label>
+		    <label for="frm_cliente_cp">Código Postal</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
 			</div>
-			<label for="frm_cliente_estado" class="col-sm-2 control-label">Estado</label>
+			<label for="frm_cliente_colonia">Colonia</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_referencias" class="col-sm-2 control-label">Referencias</label>
+			<label for="frm_cliente_municipio">Delegación o Municipio</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
+			</div>
+			<label for="frm_cliente_estado">Estado</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_referencias">Referencias</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferencias(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferencias(); ?>" />
 			</div>
 		</div>
 		<h5>Contacto</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_representante" class="col-sm-2 control-label">Representante</label>
+			<label for="frm_cliente_representante">Representante</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_representantecargo" class="col-sm-2 control-label">Cargo</label>
+			<label for="frm_cliente_representantecargo">Cargo</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantecargo(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantecargo(); ?>" />
 			</div>
-			<label for="frm_cliente_representanteemail" class="col-sm-2 control-label">Correo Electrónico</label>
+			<label for="frm_cliente_representanteemail">Correo Electrónico</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteemail(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_representantetelefono" class="col-sm-2 control-label">Teléfono</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono(); ?></p>
-			</div>
-			<label for="frm_cliente_representanextension" class="col-sm-2 control-label">Extensión</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextencion(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteemail(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_representantetelefono2" class="col-sm-2 control-label">Teléfono 2</label>
+			<label for="frm_cliente_representantetelefono">Teléfono</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono(); ?>" />
 			</div>
-			<label for="frm_cliente_representanextension2" class="col-sm-2 control-label">Extensión 2</label>
+			<label for="frm_cliente_representanextension">Extensión</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextension2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextencion(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_representantetelefono2">Teléfono 2</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono2(); ?>" />
+			</div>
+			<label for="frm_cliente_representanextension2">Extensión 2</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextension2(); ?>" />
 			</div>
 		</div>
 		<h5>Notas y Observaciones</h5>
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-12">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?>" />
 			</div>
 		</div>
 		<h5>Facturación</h5>
@@ -241,17 +237,16 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_leyendas" class="col-sm-2 control-label">Leyendas</label>
+			<label for="frm_cliente_leyendas">Leyendas</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getLeyendas(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getLeyendas(); ?>" />
 			</div>
 		</div>
 		<h5>Cobranza</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_diascredito" class="col-sm-2 control-label">Días de Crédito</label>
+			<label for="frm_cliente_diascredito">Días de Crédito</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php 
+				<input class="form-control" disabled="disabled" value="<?php 
 						if($diascredito!==false) 
 							foreach($diascredito["opciones"] as $opc) 
 								if($opc["idcatalogodet"]==$objeto->getDiascredito()) 
@@ -259,119 +254,114 @@
 									echo $opc["descripcion"]; 
 									break; 
 								} 
-					?>
-				</p>
+					?>" />
 			</div>
-			<label for="frm_cliente_referenciabancaria" class="col-sm-2 control-label">Referencia Bancaria</label>
+			<label for="frm_cliente_referenciabancaria">Referencia Bancaria</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciabancaria(); ?><input class="form-control" disabled="disabled" value="
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciabancaria(); ?>" />
 			</div>
 		</div>		
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_metodopago" class="col-sm-2 control-label">Método de Pago</label>
+			<label for="frm_cliente_metodopago">Método de Pago</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getMetodoPago(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMetodoPago(); ?>" />
 			</div>
-			<label for="frm_cliente_referenciapago" class="col-sm-2 control-label">Referencia de Pago</label>
+			<label for="frm_cliente_referenciapago">Referencia de Pago</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciaPago(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciaPago(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzacontacto" class="col-sm-2 control-label">Contacto</label>
+			<label for="frm_cliente_cobranzacontacto">Contacto</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacontacto(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacontacto(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzaemail" class="col-sm-2 control-label">Correo Electrónico</label>
+			<label for="frm_cliente_cobranzaemail">Correo Electrónico</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaemail(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaemail(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzatelefono" class="col-sm-2 control-label">Teléfono</label>
+			<label for="frm_cliente_cobranzatelefono">Teléfono</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono(); ?>" />
 			</div>
-			<label for="frm_cliente_cobranzaextension" class="col-sm-2 control-label">Extensión</label>
+			<label for="frm_cliente_cobranzaextension">Extensión</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzatelefono2" class="col-sm-2 control-label">Teléfono 2</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono2(); ?></p>
-			</div>
-			<label for="frm_cliente_cobranzaextension2" class="col-sm-2 control-label">Extensión 2</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension2(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzaobservaciones" class="col-sm-2 control-label">Observaciones</label>
+			<label for="frm_cliente_cobranzatelefono2">Teléfono 2</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono2(); ?>" />
+			</div>
+			<label for="frm_cliente_cobranzaextension2">Extensión 2</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension2(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_cobranzaobservaciones">Observaciones</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaobservaciones(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaobservaciones(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzacalle" class="col-sm-2 control-label">Calle</label>
+			<label for="frm_cliente_cobranzacalle">Calle</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacalle(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacalle(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzanumexterior" class="col-sm-2 control-label">Número Exterior</label>
+			<label for="frm_cliente_cobranzanumexterior">Número Exterior</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanumexterior(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanumexterior(); ?>" />
 			</div>
-			<label for="frm_cliente_cobranzanuminterior" class="col-sm-2 control-label">Número Interior</label>
+			<label for="frm_cliente_cobranzanuminterior">Número Interior</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanuminterior(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-		    <label for="frm_cliente_cobranzacp" class="col-sm-2 control-label">Código Postal</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?></p>
-			</div>
-			<label for="frm_cliente_cobranzacolonia" class="col-sm-2 control-label">Colonia</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacolonia(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanuminterior(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cobranzamunicipio" class="col-sm-2 control-label">Delegación o Municipio</label>
+		    <label for="frm_cliente_cobranzacp">Código Postal</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzamunicipio(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?>" />
 			</div>
-			<label for="frm_cliente_cobranzaestado" class="col-sm-2 control-label">Estado</label>
+			<label for="frm_cliente_cobranzacolonia">Colonia</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaestado(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacolonia(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_cobranzamunicipio">Delegación o Municipio</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzamunicipio(); ?>" />
+			</div>
+			<label for="frm_cliente_cobranzaestado">Estado</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaestado(); ?>" />
 			</div>
 		</div>
 		<h5>Facturación Electrónica</h5>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_categoria" class="col-sm-2 control-label">Categoria</label>
+			<label for="frm_cliente_categoria">Categoria</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $categorias !== false ) foreach( $categorias[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $categorias !== false ) foreach( $categorias[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCategoria() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
-			<label for="frm_cliente_cfdi_moneda" class="col-sm-2 control-label">Moneda</label>
+			<label for="frm_cliente_cfdi_moneda">Moneda</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_moneda() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cfdi_formapago" class="col-sm-2 control-label">Forma de Pago</label>
+			<label for="frm_cliente_cfdi_formapago">Forma de Pago</label>
 			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="
 					<?php if( $formaspago !== false ) foreach( $formaspago[ "opciones" ] as $opc): ?>
@@ -379,103 +369,89 @@
 					<?php endforeach; ?>
 				</p>
 			</div>
-			<label for="frm_cliente_cfdi_metodopago" class="col-sm-2 control-label">Método de Pago</label>
+			<label for="frm_cliente_cfdi_metodopago">Método de Pago</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $metodospago !== false ) foreach( $metodospago[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $metodospago !== false ) foreach( $metodospago[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_metodopago() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cfdi_usocfdi" class="col-sm-2 control-label">Uso del CFDi</label>
+			<label for="frm_cliente_cfdi_usocfdi">Uso del CFDi</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_usocfdi() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
-			<label for="frm_cliente_cfdi_claveprodserv" class="col-sm-2 control-label">Producto</label>
+			<label for="frm_cliente_cfdi_claveprodserv">Producto</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $clavesproducto !== false ) foreach( $clavesproducto[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $clavesproducto !== false ) foreach( $clavesproducto[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveprodserv() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cfdi_claveunidad" class="col-sm-2 control-label">Clave Unidad</label>
+			<label for="frm_cliente_cfdi_claveunidad">Clave Unidad</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveunidad() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
-			<label for="frm_cliente_cfdi_unidad" class="col-sm-2 control-label">Unidad</label>
+			<label for="frm_cliente_cfdi_unidad">Unidad</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_unidad(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_unidad(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cfdi_impuesto" class="col-sm-2 control-label">Impuesto</label>
+			<label for="frm_cliente_cfdi_impuesto">Impuesto</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $impuestos !== false ) foreach( $impuestos[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $impuestos !== false ) foreach( $impuestos[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_Impuesto() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
-			<label for="frm_cliente_cfdi_tipofactor" class="col-sm-2 control-label">Tipo Factor</label>
+			<label for="frm_cliente_cfdi_tipofactor">Tipo Factor</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $tiposfactor !== false ) foreach( $tiposfactor[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $tiposfactor !== false ) foreach( $tiposfactor[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tipofactor() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cfdi_tasaocuota" class="col-sm-2 control-label">Impuesto Tasa o Cuota</label>
+			<label for="frm_cliente_cfdi_tasaocuota">Impuesto Tasa o Cuota</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php if( $tasas !== false ) foreach( $tasas[ "opciones" ] as $opc): ?>
+				<input class="form-control" disabled="disabled" value="<?php if( $tasas !== false ) foreach( $tasas[ "opciones" ] as $opc): ?>
 						<?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tasaocuota() ? $opc[ "descripcion" ] : '' ); ?>
-					<?php endforeach; ?>
-				</p>
+					<?php endforeach; ?>" />
 			</div>
-			<label for="frm_cliente_cfdi_base" class="col-sm-2 control-label">Impuesto Base</label>
+			<label for="frm_cliente_cfdi_base">Impuesto Base</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_base(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_base(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_banco" class="col-sm-2 control-label">Banco</label>
+			<label for="frm_cliente_banco">Banco</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getBanco(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getBanco(); ?>" />
 			</div>
-			<label for="frm_cliente_rfcbanco" class="col-sm-2 control-label">RFC</label>
+			<label for="frm_cliente_rfcbanco">RFC</label>
 			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfcbanco(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_cuenta" class="col-sm-2 control-label">Cuenta</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCuenta(); ?></p>
-			</div>
-			<label for="frm_cliente_clabe" class="col-sm-2 control-label">CLABE</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getClabe(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfcbanco(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group">
-			<label for="frm_cliente_correo" class="col-sm-2 control-label">Correo</label>
+			<label for="frm_cliente_cuenta">Cuenta</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCuenta(); ?>" />
+			</div>
+			<label for="frm_cliente_clabe">CLABE</label>
+			<div class="col-sm-4">
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getClabe(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group">
+			<label for="frm_cliente_correo">Correo</label>
 			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCorreo(); ?></p>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCorreo(); ?>" />
 			</div>
 		</div>
 	</form>

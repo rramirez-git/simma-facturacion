@@ -28,10 +28,10 @@
 		<div class="form-row"><div class="form-group">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-3">
-				<button type="button" class="btn btn-success" id="btnBuscarCP">Buscar</button>
+				<button type="button" class="btn btn-outline-primary" id="btnBuscarCP">Buscar</button>
 			</div>
 			<div class="col-sm-3">
-				<button type="button" class="btn btn-danger" id="btnCancelarCP">Cancelar</button>
+				<button type="button" class="btn btn-outline-secondary" id="btnCancelarCP">Cancelar</button>
 			</div>
 		</div>
 	</form>

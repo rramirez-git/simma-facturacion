@@ -43,7 +43,7 @@
 	<?php endif;?>
 	<tr>
 		<td>
-			<button type="button" class="btn btn-danger" onclick="Manifiesto.CerrarMenuCreacion()">
+			<button type="button" class="btn btn-outline-secondary" onclick="Manifiesto.CerrarMenuCreacion()">
 				Cancelar
 			</button>
 		</td>

@@ -22,120 +22,102 @@
 	</div>
 	<h3>Empresas <small class="text-muted"><?= $objeto->getRazonsocial(); ?></small></h3>
 	<form autocomplete="off" method="post" id="frm_empresas">
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Razón Social</label>
-			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-12">
+			<label>Razón Social</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Registro Federal de Contribuyentes</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-6">
+			<label>Registro Federal de Contribuyentes</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?>" />
 			</div>
-			<label for="frm_empresa_regimen_fiscal" class="col-sm-2 control-label">Regimen fiscal</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="
-					<?php 
+			<div class="form-group col-sm-6">
+			<label for="frm_empresa_regimen_fiscal">Regimen fiscal</label>
+				<input class="form-control" disabled="disabled" value="<?php 
 						if($regimen_fiscal["opciones"]!==false) 
 							foreach($regimen_fiscal["opciones"] as $opc)
 								if($opc["idcatalogodet"]==$objeto->getRegimenfiscal())
 									echo $opc["descripcion"];
-					?>
-				</p>
+					?>" />
 			</div>
 		</div>
 		<h5>Dirección</h5>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Calle</label>
-			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-12">
+			<label>Calle</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Número Exterior</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-6">
+			<label>Número Exterior</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?>" />
 			</div>
-			<label class="col-sm-2 control-label">Número Interior</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?></p>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-		    <label class="col-sm-2 control-label">Código Postal</label></span>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?></p>
-			</div>
-			<label class="col-sm-2 control-label">Colonia</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?></p>
+			<div class="form-group col-sm-6">
+			<label>Número Interior</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Delegación o Municipio</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-6">
+		    <label>Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
 			</div>
-			<label class="col-sm-2 control-label">Estado</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?></p>
+			<div class="form-group col-sm-6">
+			<label>Colonia</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group col-sm-6">
+			<label>Delegación o Municipio</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
+			</div>
+			<div class="form-group col-sm-6">
+			<label>Estado</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?>" />
 			</div>
 		</div>
 		<h5>Contacto</h5>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Representante</label>
-			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-12">
+			<label>Representante</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Cargo</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCargorepresentante(); ?></p>
-			</div>
-			<label class="col-sm-2 control-label">Teléfono</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getTelefono(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-6">
+			<label>Cargo</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCargorepresentante(); ?>" />
+			</div><div class="form-group col-sm-6">
+			<label>Teléfono</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getTelefono(); ?>" />
 			</div>
 		</div>
 		<h5>Legal</h5>
-		<div class="form-row"><div class="form-group">
-			<label class="col-sm-2 control-label">Número de Autorización SEMARNAT</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getAutsemarnat(); ?></p>
+		<div class="form-row"><div class="form-group col-sm-6">
+			<label>Número de Autorización SEMARNAT</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getAutsemarnat(); ?>" />
 			</div>
-			<label class="col-sm-2 control-label">Número de Registro SCT</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRegistrosct(); ?></p>
+			<div class="form-group col-sm-6">
+			<label>Número de Registro SCT</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRegistrosct(); ?>" />
 			</div>
 		</div>
 		<h5>Otros</h5>
-		<div class="form-row"><div class="form-group">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-3">
-				<div class="checkbox">
+		<div class="form-row">
+			<div class="form-group col-sm-2"></div>
+			<div class="form-group col-sm-3">
 					<label>
 						<input type="checkbox" id="frm_empresa_coorporativo" name="frm_empresa_coorporativo" value="1" disabled="disabled" <?= ($objeto->getCoorporativo()==1?'checked="checked"':''); ?> />
 						Empresa Coorporativo
 					</label>
-				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="checkbox">
+			<div class="form-group col-sm-3">
 					<label>
 						<input type="checkbox" id="frm_empresa_transportista" name="frm_empresa_transportista" value="1" disabled="disabled" <?= ($objeto->getTransportista()==1?'checked="checked"':''); ?> />
 						Empresa Transportista
 					</label>
-				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="checkbox">
+			<div class="form-group col-sm-3">
 					<label>
 						<input type="checkbox" id="frm_empresa_destinofinal" name="frm_empresa_destinofinal" value="1" disabled="disabled" <?= ($objeto->getDestinofinal()==1?'checked="checked"':''); ?> />
 						Empresa de Destino Final
 					</label>
-				</div>
 			</div>
 		</div>
 		<?php if($this->modsesion->hasPermisoHijo(7)): ?>

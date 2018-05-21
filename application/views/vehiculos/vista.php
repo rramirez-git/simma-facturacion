@@ -27,30 +27,27 @@
 	</div>
 	<h3>Vehículos</h3>
 	<form autocomplete="off" id="frm_vehiculos">
-        <div class="form-row"><div class="form-group">
-            <label for="frm_vehiculo_tipo" class="col-sm-2 control-label">Tipo de Vehículo</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getTipo(); ?>" />
+		<div class="form-row"><div class="form-group col">
+            <label for="frm_vehiculo_tipo">Tipo de Vehículo</label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_vehiculo_tipo" name="frm_vehiculo_tipo" value="<?= $objeto->getTipo(); ?>" placeholder="Tipo de Vehículo" maxlength="28" />
 			</div>
-			<label for="frm_vehiculo_placa" class="col-sm-2 control-label">Placa del Vehículo</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getPlaca(); ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_vehiculo_numautsct" class="col-sm-2 control-label">Número de Autorizacion SCT</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumautsct(); ?>" />
-			</div>
-			<label for="frm_vehiculo_numautsct" class="col-sm-2 control-label">Número de Autorizacion SEMARNAT</label>
-			<div class="col-sm-4">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getAutsemarnat(); ?>" />
+			 <div class="form-group col">
+			<label for="frm_vehiculo_placa">Placa del Vehículo <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_vehiculo_placa" name="frm_vehiculo_placa" value="<?= $objeto->getPlaca(); ?>" placeholder="Placa del Vehículo" maxlength="20" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_vehiculo_detalle" class="col-sm-2 control-label">Comentarios</label>
-			<div class="col-sm-10">
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getDetalle(); ?>" />
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_vehiculo_numautsct">Número de Autorizacion SCT</label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_vehiculo_numautsct" name="frm_vehiculo_numautsct" value="<?= $objeto->getNumautsct(); ?>" placeholder="Número de Autorizacion SCT" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_vehiculo_numautsct">Número de Autorizacion SEMARNAT</label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_vehiculo_autsemarnat" name="frm_vehiculo_autsemarnat" value="<?= $objeto->getAutsemarnat(); ?>" placeholder="Número de Autorizacion SEMARNAT" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_vehiculo_detalle">Comentarios</label>
+				<p class="form-control" id="frm_vehiculo_detalle" name="frm_vehiculo_detalle"><?= $objeto->getDetalle(); ?></p>
 			</div>
 		</div>
 	</form>
