@@ -506,7 +506,7 @@ class Modgenerador extends CI_Model
 		$this->db->reset_query();
 		foreach($this->rutas as $r)
 		{
-			if($r!==false) {
+			if($r!==false && $r > 0) {
 				$this->db->insert("relrutgen",array(
 					"idruta"=>$r,
 					"idgenerador"=>$this->idgenerador
@@ -596,7 +596,7 @@ class Modgenerador extends CI_Model
 		$this->db->reset_query();
 		foreach($this->rutas as $r)
 		{
-			if($r!==false) {
+			if($r!==false && $r > 0) {
 				$this->db->insert("relrutgen",array(
 					"idruta"=>$r,
 					"idgenerador"=>$this->idgenerador

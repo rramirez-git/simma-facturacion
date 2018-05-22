@@ -1,6 +1,6 @@
 function Alert(mensaje,afterOk) //msgID: 1 Deprecated
 {
-	$.msg({
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -13,11 +13,17 @@ function Alert(mensaje,afterOk) //msgID: 1 Deprecated
 							});
 		                }
 		//, msgID:1
-	});
+	});*/
+	Confirm( '<i class="fas fa-info-circle fa-2x"></i> ' + mensaje, afterOk );
 }
 function Confirm(mensaje,afterOk) //msgID: 2 Deprecated
 {
-	$.msg({
+	openModal( mensaje, '', '<div style="text-align: center;"><button id="btnOk" class="btn btn-outline-primary" type="button">Aceptar</button></div>' );
+	$('#btnOk').bind('click',function(){
+		afterOk();
+		closeModal();
+	});
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -33,7 +39,7 @@ function Confirm(mensaje,afterOk) //msgID: 2 Deprecated
 							});
 		                }
 		//, msgID:2
-	});
+	});*/
 }
 function Mensaje(mensaje) //msgID: 3
 {
@@ -50,7 +56,7 @@ function Mensaje(mensaje) //msgID: 3
 }
 function MensajeAfter(mensaje,afterOk) //msgID: 4
 {
-	$.msg({
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -60,7 +66,10 @@ function MensajeAfter(mensaje,afterOk) //msgID: 4
 							afterOk();
 						},
 		msgID:			4
-	});
+	});*/
+	closeModal();
+	openModal( mensaje );
+	afterOk();
 }
 function MuestraCPFrm(cp,colonia,municipio,estado,fnSelecciona)
 {

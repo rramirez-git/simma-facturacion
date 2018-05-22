@@ -80,7 +80,7 @@
 		</div>
 		<h5>
 			Dirección
-			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
+			<button type="button" class="btn btn-outline-secondary btn-sm" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaDireccion()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>
@@ -125,7 +125,7 @@
 		</div>
 		<h5>
 			Contacto
-			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaContacto()">
+			<button type="button" class="btn btn-outline-secondary btn-sm" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaContacto()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>
@@ -145,7 +145,7 @@
 		</div>
 		<h5>
 			Legal
-			<button type="button" class="btn btn-outline-secondary btn-xs" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaLegal()">
+			<button type="button" class="btn btn-outline-secondary btn-sm" title="Copiar datos desde la empresa" onclick="Sucursal.CopiaLegal()">
 				<i class="far fa-copy"></i>
 			</button>
 		</h5>

@@ -144,10 +144,10 @@ $vehiculo->getFromDatabase();
 	<h5>
 		Generadores Asociados
 		<?php if($this->modsesion->hasPermisoHijo(80)): ?>
-	    <button type="button" class="btn btn-outline-secondary btn-xs" title="Asociar Generadores" onclick="location.href='<?= base_url("rutas/agregargeneradores/".$objeto->getIdruta()); ?>'">
+	    <button type="button" class="btn btn-outline-secondary btn-sm" title="Asociar Generadores" onclick="location.href='<?= base_url("rutas/agregargeneradores/".$objeto->getIdruta()); ?>'">
 			<i class="fas fa-plus"></i>
 		</button>
-	    <button type="button" class="btn btn-outline-secondary btn-xs" title="Desasociador Generadores" onclick="location.href='<?= base_url("rutas/eliminargeneradores/".$objeto->getIdruta()); ?>'">
+	    <button type="button" class="btn btn-outline-secondary btn-sm" title="Desasociador Generadores" onclick="location.href='<?= base_url("rutas/eliminargeneradores/".$objeto->getIdruta()); ?>'">
 			<i class="fas fa-minus"></i>
 		</button>
 		<?php endif; ?>
