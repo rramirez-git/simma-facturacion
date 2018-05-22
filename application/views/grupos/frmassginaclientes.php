@@ -2,19 +2,21 @@
 	<h3>Asignación de Clientes</h3>
 	<div class="dataListSupercontainerSearcher">
 		<form autocomplete="off" onsubmit="return false" id="frm_assign">
-			<div class="input-group">
-		        <span class="input-group-addon">Buscar por</span>
-		        <input type="text" class="form-control" id="frm_txt2Find" name="frm_txt2Find" maxlength="250" />
-		    </div>
-			<div class="input-group">
-		        <span class="input-group-addon">Cliente Inicial</span>
-		        <input type="number" class="form-control" id="frm_cteInicio" name="frm_cteInicio" maxlength="10" min=0 />
-		        <span class="input-group-addon">Cliente Final</span>
-		        <input type="number" class="form-control" id="frm_cteFin" name="frm_cteFin" maxlength="10" min=0 />
-		        <span class="input-group-btn">
-        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.findCtes()">Buscar</button>
-		        </span>
-		    </div>
+			<div class="form-row">
+				<div class="form-group col">
+					<label>Buscar por</label>
+					<input type="text" class="form-control" id="frm_txt2Find" name="frm_txt2Find" maxlength="250" />
+				</div>
+				<div class="form-group col">
+					<label>Cliente Inicial</label>
+					<input type="number" class="form-control" id="frm_cteInicio" name="frm_cteInicio" maxlength="10" min=0 />
+				</div>
+				<div class="form-group col">
+					<label>Cliente Final</label>
+					<input type="number" class="form-control" id="frm_cteFin" name="frm_cteFin" maxlength="10" min=0 />
+				</div>
+			</div>
+			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.findCtes()">Buscar</button>
 		</form>
 	</div>
 	<div class="dataListSupercontainer">

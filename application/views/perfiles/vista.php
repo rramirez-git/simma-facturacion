@@ -22,26 +22,24 @@
 	<h3>Perfiles</h3>
 	<form autocomplete="off" id="frm_perfiles">
         <input type="hidden" id="frm_perfil_idperfil" name="frm_perfil_idperfil" value="<?= $objeto->getIdperfil(); ?>" />
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_perfil_nombre">Nombre</label>
-        	<div class="col-sm-10">
-        		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
+        	    <input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_perfil_observaciones">Observaciones</label>
-        	<div class="col-sm-10">
-        		<input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?>" />
+        	    <input class="form-control" disabled="disabled" value="<?= $objeto->getObservaciones(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
-        	<div class="col-sm-12">
+        <div class="form-row">
+        	<div class="col">
         		<fieldset>
         			<legend>Permisos</legend>
         			<?php if($permisos!==false) foreach($permisos as $permiso) PrintPermiso($objeto, $permiso); ?>
         		</fieldset>
         	</div>
-        	<!--<div class="col-sm-6">
+        	<!--<div class="">
         		<fieldset>
         			<legend>Sucursales</legend>
         			<?php if($sucursales!==false) foreach($sucursales as $emp): ?>

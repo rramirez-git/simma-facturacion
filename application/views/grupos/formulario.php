@@ -7,22 +7,19 @@
         <input type="hidden" id="frm_grupo_generadores" name="frm_grupo_generadores" value="<?= implode(",",$objeto->getGeneradores()); ?>" />
         <input type="hidden" id="frm_grupo_clientes" name="frm_grupo_clientes" value="<?= implode(",",$objeto->getClientes()); ?>" />
         <input type="hidden" id="frm_grupo_sucursales" name="frm_grupo_sucursales" value="<?= implode(",",$objeto->getSucursales()); ?>" />
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_grupo_nombre">Nombre <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
-        	<div class="col-sm-10">
         		<input type="text" class="form-control" id="frm_grupo_nombre" name="frm_grupo_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del grupo" maxlength="250" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_grupo_descripcion">Descripción</label>
-        	<div class="col-sm-10">
         		<textarea rows="3" class="form-control" id="frm_grupo_descripcion" name="frm_grupo_descripcion"><?= $objeto->getDescripcion(); ?></textarea>
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdSucursales()">
+        			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="Grupo.FrmUpdSucursales()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -39,11 +36,9 @@
         			<?php endforeach; ?>
         		<?php endforeach; ?>
         	</fieldset>
-        </div>
-        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdClientes()">
+        			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="Grupo.FrmUpdClientes()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -63,11 +58,9 @@
         			<?php endforeach; ?>
         		<?php endforeach; ?>
         	</fieldset>
-        </div>
-        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>
-        			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.FrmUpdGeneradores()">
+        			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="Grupo.FrmUpdGeneradores()">
         				<i class="fas fa-sync-alt"></i>
         				Actualizar
         			</button>
@@ -87,16 +80,8 @@
         			<?php endforeach; ?>
         		<?php endforeach; ?>
         	</fieldset>
-        </div>
-        <div class="form-row"><div class="form-group">
-			<div class="col-sm-8"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-outline-primary" onclick="Grupo.Enviar(<?= ($objeto->getIdgrupo()!="" && $objeto->getIdgrupo()!=0?'false':'true'); ?>)" >Guardar</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('grupos'); ?>'">Cancelar</button>
-            </div>
-		</div>
+        <button type="button" class="btn btn-outline-primary" onclick="Grupo.Enviar(<?= ($objeto->getIdgrupo()!="" && $objeto->getIdgrupo()!=0?'false':'true'); ?>)" >Guardar</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('grupos'); ?>'">Cancelar</button>
 	</form>
 </div>
 <script type="text/javascript">

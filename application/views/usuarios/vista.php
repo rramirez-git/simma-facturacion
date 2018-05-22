@@ -22,41 +22,39 @@
 	<h3>Usuarios</h3>
 	<form autocomplete="off" id="frm_usuarios">
         <input type="hidden" id="frm_usuario_idusuario" name="frm_usuario_idusuario" value="<?= $objeto->getIdusuario(); ?>" />
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_usuario_nombre">Nombre</label>
-        	<div class="col-sm-10">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_usuario_apaterno">Apellido Paterno</label>
-        	<div class="col-sm-4">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getApaterno(); ?>" />
         	</div>
+        	<div class="form-group col">
         	<label for="frm_usuario_amaterno">Apellido Materno</label>
-        	<div class="col-sm-4">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getAmaterno(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_usuario_usuario">Usuario</label>
-        	<div class="col-sm-4">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getUsuario(); ?>" />
         	</div>
+        	<div class="form-group col">
         	<label for="frm_usuario_email">Correo Electrónico</label>
-        	<div class="col-sm-4">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getEmail(); ?>" />
         	</div>
         </div>
-        <div class="col-sm-12">
-        	<div class="checkbox">
+        <div class="form-row">
+        	<div class="form-group col">
         		<label>
         			<input type="checkbox" value="1" id="frm_usuario_activo" name="frm_usuario_activo" <?= ($objeto->getActivo()==1?'checked="checked"':''); ?> disabled="disabled" />
         			Activo
         		</label>
         	</div>
         </div>
-        <div class="col-sm-6">
+        <div class="form-row">
+        <div class="col">
         	<fieldset>
         		<legend>Perfiles</legend>
         		<?php if($perfiles!==false) foreach($perfiles as $perfil): ?>
@@ -69,7 +67,7 @@
         		<?php endforeach; ?>
         	</fieldset>
         </div>
-        <div class="col-sm-6">
+        <div class="col">
         	<fieldset>
         		<legend>Grupos</legend>
         		<?php if($grupos!==false) foreach($grupos as $grupo): ?>
@@ -81,6 +79,7 @@
         			</div>
         		<?php endforeach; ?>
         	</fieldset>
+        </div>
         </div>
 	</form>
 </div>

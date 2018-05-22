@@ -21,33 +21,27 @@
 	</div>
 	<h3>Grupos</h3>
 	<form autocomplete="off" id="frm_grupos">
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_grupo_nombre">Nombre</label>
-        	<div class="col-sm-10">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
+        <div class="form-row"><div class="form-group col">
         	<label for="frm_grupo_descripcion">Descripción</label>
-        	<div class="col-sm-10">
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getDescripcion(); ?>" />
         	</div>
         </div>
-        <div class="form-row"><div class="form-group">
         	<fieldset>
         		<legend>Sucursales Asignadas</legend>
-        	</fieldset>
         	<?php foreach($sucs as $e): ?>
         		<h4><?= $e["empresa"]?></h4>
         		<?php foreach($e["sucs"] as $s): ?>
         			<p><?= $s["sucursal"]; ?></p>
         		<?php endforeach; ?>
         	<?php endforeach; ?>
-        </div>
-        <div class="form-row"><div class="form-group">
+        	</fieldset>
         	<fieldset>
         		<legend>Clientes Asignados</legend>
-        	</fieldset>
         	<?php foreach($ctes as $e): ?>
         		<h4><?= $e["empresa"]?></h4>
         		<?php foreach($e["sucs"] as $s): ?>
@@ -57,11 +51,9 @@
         			<?php endforeach; ?>
         		<?php endforeach; ?>
         	<?php endforeach; ?>
-        </div>
-    	<div class="form-row"><div class="form-group">
+        	</fieldset>
         	<fieldset>
         		<legend>Generadores Asignados</legend>
-        	</fieldset>
         	<?php foreach($gens as $e): ?>
         		<h4><?= $e["empresa"]?></h4>
         		<?php foreach($e["sucs"] as $s): ?>
@@ -71,6 +63,6 @@
         			<?php endforeach; ?>
         		<?php endforeach; ?>
         	<?php endforeach; ?>
-        </div>
+        	</fieldset>
 	</form>
 </div>

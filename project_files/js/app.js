@@ -14,7 +14,7 @@ function Alert(mensaje,afterOk) //msgID: 1 Deprecated
 		                }
 		//, msgID:1
 	});*/
-	Confirm( '<i class="fas fa-info-circle fa-2x"></i> ' + mensaje, afterOk );
+	Confirm( mensaje, afterOk );
 }
 function Confirm(mensaje,afterOk) //msgID: 2 Deprecated
 {

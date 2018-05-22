@@ -41,29 +41,29 @@ $manifiesto=new ModManifiesto();
 	</div>
 	<h3>Bitacoras</h3>
 	<form autocomplete="off" id="frm_rutas">
-		<div class="form-row"><div class="form-group col-sm-12">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_ruta_nombre">Bitacora</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
 		</div></div>
-		<div class="form-row"><div class="form-group col-sm-6">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_ruta_nombre">Folio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
 			</div>
-			<div class="form-group col-sm-6">
+			<div class="form-group col">
 			<label for="frm_ruta_identificador">Fecha de la Bitacora</label>
 				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFecha()); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col-sm-6">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_ruta_nombre">Nombre de la Ruta</label>
 				<input class="form-control" disabled="disabled" value="<?= $ruta->getNombre(); ?>" />
 			</div>
-			<div class="form-group col-sm-6">
+			<div class="form-group col">
 			<label for="frm_ruta_identificador">Número de Ruta</label>
 				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col-sm-6">
+		<div class="form-row"><div class="form-group col">
 			<label for="empresadestinofinal">Planta de Tratamiento</label>
 				<?php
 				$sucursal->setIdsucursal($ruta->getEmpresadestinofinal());
@@ -73,7 +73,7 @@ $manifiesto=new ModManifiesto();
 				?>
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
-			<div class="form-group col-sm-6">
+			<div class="form-group col">
 			<label for="empresatransportista">Transportista</label>
 				<?php
 				$sucursal->setIdsucursal($ruta->getEmpresatransportista());
@@ -84,11 +84,11 @@ $manifiesto=new ModManifiesto();
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col-sm-6">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_ruta_idoperador">Operador</label>
 				<input class="form-control" disabled="disabled" value="<?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?>" />
 			</div>
-			<div class="form-group col-sm-6">
+			<div class="form-group col">
 			<label for="frm_ruta_idvehiculo">Vehiculo</label>
 				<input class="form-control" disabled="disabled" value="<?= "{$vehiculo->getPlaca()} ({$vehiculo->getTipo()})"; ?>" />
 			</div>

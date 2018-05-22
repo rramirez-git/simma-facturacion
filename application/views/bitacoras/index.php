@@ -6,7 +6,7 @@
 	</div>
 	<h3>Bitácoras</h3>
 	<form autocomplete="off" method="post" id="frm_prefer">
-		<div class="form-row"><div class="form-group col-sm-12">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'bitacoras/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
@@ -14,7 +14,7 @@
 					<?php endforeach; ?>
 				</select>
 		</div></div>
-		<div class="form-row"><div class="form-group col-sm-12">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'bitacoras/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
