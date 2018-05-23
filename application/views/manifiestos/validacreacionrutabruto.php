@@ -8,18 +8,14 @@ $generador=new Modgenerador();
 	<input type="hidden" id="frm_validacion_idsucursal" name="frm_validacion_idsucursal" value="<?= $idsucursal; ?>" />
 	<input type="hidden" id="frm_validacion_idruta" name="frm_validacion_idruta" value="<?= $ruta->getIdruta(); ?>" />
 	<input type="hidden" id="frm_validacion_bitacora" name="frm_validacion_bitacora" value="<?= $bitacora; ?>" />
-	<div class="form-row"><div class="form-group">
+	<div class="form-row"><div class="form-group col">
 		<label for="frm_validacion_ruta">Ruta</label>
-		<div class="col-sm-4">
 			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 		</div>
+		<div class="form-group col">
 		<label for="frm_validacion_bit">Bitacora:</label>
-		<div class="col-sm-4">
 			<input class="form-control" disabled="disabled" value="<?= $bitacora; ?>" />
 		</div>
-	</div>
-	<div class="form-row"><div class="form-group">
-		<div class="col-sm-6"></div>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
@@ -68,14 +64,7 @@ $generador=new Modgenerador();
 			</tbody>
 		</table>
 	</div>
-	<div class="form-row"><div class="form-group">
-		<div class="col-sm-8"></div>
-		<div class="col-sm-2">
-            <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
-        </div>
-	</div>
+	<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
 </form>
 <!-- Vista manifiestos/validacreacionrutabruto End -->

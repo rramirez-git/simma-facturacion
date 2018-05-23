@@ -15,24 +15,24 @@
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(116)): ?>
 			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" title="Importar manifiestos">
+				<button id="btnSubmenuManifiestos" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" title="Importar manifiestos">
 					Importar
 					<span class="caret"></span>
 				</button>
-				<ul	class="dropdown-menu">
+				<div class="dropdown-menu" aria-labelledby="btnSubmenuManifiestos">
 					<?php if($this->modsesion->hasPermisoHijo(117)): ?>
-					<li title="Importar Manifiestos desde Excel"><a href="<?= base_url("manifiestos/importar/excel/$idempresa/$idsucursal")?>">Excel</a></li>
+						<a class="dropdown-item" href="<?= base_url("manifiestos/importar/excel/$idempresa/$idsucursal")?>" title="Importar Manifiestos desde Excel">Excel</a>
 					<?php endif;
 					if($this->modsesion->hasPermisoHijo(118)): ?>
-					<li title="Importar Manifiestos desde formiik"><a href="<?= base_url("manifiestos/importar/formiik/$idempresa/$idsucursal")?>">Formiik</a></li>
+						<a class="dropdown-item" href="<?= base_url("manifiestos/importar/formiik/$idempresa/$idsucursal")?>" title="Importar Manifiestos desde Formiik">Formiik</a>
 					<?php endif;
 					if($this->modsesion->hasPermisoHijo(119)): ?>
-					<li title="Importar Manifiestos desde Excel. SIMMA Guadalajara"><a href="<?= base_url("manifiestos/importar/simmagdl/$idempresa/$idsucursal")?>">SIMMA Guadalajara</a></li>
+						<a class="dropdown-item" href="<?= base_url("manifiestos/importar/simmagdl/$idempresa/$idsucursal")?>" title="Importar Manifiestos desde Excel. SIMMA Guadalajara">SIMMA Guadalajara</a>
 					<?php endif;
 					if($this->modsesion->hasPermisoHijo(120)): ?>
-					<li title="Importar Manifiestos desde Excel. SIMMA Polanco"><a href="<?= base_url("manifiestos/importar/simmadf/$idempresa/$idsucursal")?>">SIMMA Polanco</a></li>
+						<a class="dropdown-item" href="<?= base_url("manifiestos/importar/simmadf/$idempresa/$idsucursal")?>" title="Importar Manifiestos desde Excel. SIMMA Polanco">SIMMA Polanco</a>
 					<?php endif; ?>
-				</ul>
+				</div>
 			</div>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(101)): ?>
@@ -44,19 +44,16 @@
 	</div>
 	<h3>Manifiestos</h3>
 	<form autocomplete="off" method="post" id="frm_prefer" action="<?= base_url("manifiestos/index/$idempresa/$idsucursal")?>">
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_empresa">Empresa</label>
-			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
+			<div class="form-group col">
 			<label for="frm_prefer_sucursal">Sucursal</label>
-			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'manifiestos/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
 						<option value="<?= $sucursal["idsucursal"]; ?>" <?= ($sucursal["idsucursal"]==$idsucursal?'selected="selected"':''); ?>><?= $sucursal["nombre"]; ?></option>
@@ -65,60 +62,52 @@
 			</div>
 		</div>
 		<h5>Búscar Manifiesto:</h5>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_identificador">No. de Manifiesto</label>
-			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
+			<div class="form-group col">
 			<label for="frm_prefer_numruta">No. de Ruta</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_numruta" name="frm_prefer_numruta" value="<?= $filtros["numruta"]; ?>" />
 			</div>
+			<div class="form-group col">
 			<label for="frm_prefer_nombreruta">Ruta</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_nombreruta" name="frm_prefer_nombreruta" value="<?= $filtros["nombreruta"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fecha_inicio">Fecha</label>
-			<div class="col-sm-5">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_fecha_inicio">Fecha Inicial</label>
 				<input type="date" class="form-control" id="frm_prefer_fecha_inicio" name="frm_prefer_fecha_inicio" value="<?= $filtros["fecha_inicio"]; ?>" />
 			</div>
-			<div class="col-sm-5">
+			<div class="form-group col">
+			<label for="frm_prefer_fecha_fin">Fecha Final</label>
 				<input type="date" class="form-control" id="frm_prefer_fecha_fin" name="frm_prefer_fecha_fin" value="<?= $filtros["fecha_fin"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_identificadorcliente">No. Cliente</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificadorcliente" name="frm_prefer_identificadorcliente" value="<?= $filtros["identificadorcliente"]; ?>" />
 			</div>
+			<div class="form-group col">
 			<label for="frm_prefer_identificadorgenerador">No. Generador</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_identificadorgenerador" name="frm_prefer_identificadorgenerador" value="<?= $filtros["identificadorgenerador"]; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
+			<div class="form-group col">
 			<label for="frm_prefer_razonsocial">Razón Social</label>
-			<div class="col-sm-10">
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_rfc">RFC</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
 			</div>
+			<div class="form-group col">
 			<label for="frm_prefer_nra">No. Registro Ambiental</label>
-			<div class="col-sm-4">
 				<input type="text" class="form-control" id="frm_prefer_nra" name="frm_prefer_nra" value="<?= $filtros["nra"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_destinofinal">Destino Final</label>
-			<div class="col-sm-4">
 				<select class="form-control" id="frm_prefer_destinofinal" name="frm_prefer_destinofinal">
 					<option value=""></option>
 					<?php if($destinosfinales!==false) foreach($destinosfinales as $emp): ?>
@@ -132,8 +121,8 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
+			<div class="form-group col">
 			<label for="frm_prefer_transportista">Transportista</label>
-			<div class="col-sm-4">
 				<select class="form-control" id="frm_prefer_transportista" name="frm_prefer_transportista">
 					<option value=""></option>
 					<?php if($transportistas!==false) foreach($transportistas as $emp): ?>
@@ -148,31 +137,25 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fechaembarque_inicio">Fecha de Embarque</label>
-			<div class="col-sm-5">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_fechaembarque_inicio">Fecha Inicial de Embarque</label>
 				<input type="date" class="form-control" id="frm_prefer_fechaembarque_inicio" name="frm_prefer_fechaembarque_inicio" value="<?= $filtros["fechaembarque_inicio"]; ?>" />
 			</div>
-			<div class="col-sm-5">
+			<div class="form-group col">
+			<label for="frm_prefer_fechaembarque_fin">Fecha Final de Embarque</label>
 				<input type="date" class="form-control" id="frm_prefer_fechaembarque_fin" name="frm_prefer_fechaembarque_fin" value="<?= $filtros["fechaembarque_fin"]; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
-			<label for="frm_prefer_fecharecepcion_inicio">Fecha de Recepción</label>
-			<div class="col-sm-5">
+			<div class="form-group col">
+			<label for="frm_prefer_fecharecepcion_inicio">Fecha Inicial de Recepción</label>
 				<input type="date" class="form-control" id="frm_prefer_fecharecepcion_inicio" name="frm_prefer_fecharecepcion_inicio" value="<?= $filtros["fecharecepcion_inicio"]; ?>" />
 			</div>
-			<div class="col-sm-5">
+			<div class="form-group col">
+			<label for="frm_prefer_fecharecepcion_fin">Fecha Final de Recepción</label>
 				<input type="date" class="form-control" id="frm_prefer_fecharecepcion_fin" name="frm_prefer_fecharecepcion_fin" value="<?= $filtros["fecharecepcion_fin"]; ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<div class="col-sm-10"></div>
-			<div class="col-sm-2">
-				<input type="hidden" name="action" id="action" value="" />
-                <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.Buscar()">Buscar</button>
-            </div>
-		</div>
+		<input type="hidden" name="action" id="action" value="" />
+		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.Buscar()">Buscar</button>
 	</form>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">

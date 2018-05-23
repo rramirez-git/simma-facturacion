@@ -36,20 +36,20 @@
 			<label for="frm_cliente_razonsocial">Razón Social</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?>" />
 			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_rfc">Registro Federal de Contribuyentes</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?>" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_nombrecorto">Nombre Corto</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombreCorto(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_identificador">Número de Cliente</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
 			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_rfc">Registro Federal de Contribuyentes</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?>" />
-			</div>
+			
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_vendedor">Vendedor</label>
@@ -67,17 +67,17 @@
 			<label for="frm_cliente_afiliacion">Afiliación</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getAfiliacion(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_giro">Giro</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getGiro(); ?>" />
 			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_fechaalta">Fecha de Alta en Sistema</label>
 				<input class="form-control" disabled="disabled" value="<?= DateToMx($objeto->getFechaalta()); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_status">Estatus</label>
 				<input class="form-control" disabled="disabled" value="<?php 
 						if($estatuscliente!==false) 
@@ -119,6 +119,10 @@
 			<label for="frm_cliente_calle">Calle</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
 			</div>
+			<div class="form-group col">
+		    <label for="frm_cliente_cp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_numexterior">Número Exterior</label>
@@ -129,16 +133,12 @@
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_cliente_cp">Código Postal</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_colonia">Colonia</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_municipio">Delegación o Municipio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
 			</div>
@@ -157,8 +157,7 @@
 			<label for="frm_cliente_representante">Representante</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_representantecargo">Cargo</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantecargo(); ?>" />
 			</div>
@@ -175,8 +174,7 @@
 			<label for="frm_cliente_representanextension">Extensión</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextencion(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_representantetelefono2">Teléfono 2</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono2(); ?>" />
 			</div>
@@ -235,22 +233,20 @@
 			<label for="frm_cliente_referenciabancaria">Referencia Bancaria</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciabancaria(); ?>" />
 			</div>
-		</div>		
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_metodopago">Método de Pago</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getMetodoPago(); ?>" />
-			</div>
 			<div class="form-group col">
 			<label for="frm_cliente_referenciapago">Referencia de Pago</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getReferenciaPago(); ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_metodopago">Método de Pago</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMetodoPago(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_cobranzacontacto">Contacto</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacontacto(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzaemail">Correo Electrónico</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaemail(); ?>" />
 			</div>
@@ -263,8 +259,7 @@
 			<label for="frm_cliente_cobranzaextension">Extensión</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzatelefono2">Teléfono 2</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono2(); ?>" />
 			</div>
@@ -282,6 +277,10 @@
 			<label for="frm_cliente_cobranzacalle">Calle</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacalle(); ?>" />
 			</div>
+			<div class="form-group col">
+		    <label for="frm_cliente_cobranzacp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?>" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_cobranzanumexterior">Número Exterior</label>
@@ -292,16 +291,12 @@
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_cliente_cobranzacp">Código Postal</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?>" />
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_cobranzacolonia">Colonia</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacolonia(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzamunicipio">Delegación o Municipio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzamunicipio(); ?>" />
 			</div>
@@ -316,56 +311,6 @@
 				<input class="form-control" disabled="disabled" value="<?php if( $categorias !== false ) foreach( $categorias[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCategoria() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_cliente_cfdi_moneda">Moneda</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_moneda() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cfdi_formapago">Forma de Pago</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $formaspago !== false ) foreach( $formaspago[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_formapago() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_cfdi_metodopago">Método de Pago</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $metodospago !== false ) foreach( $metodospago[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_metodopago() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cfdi_usocfdi">Uso del CFDi</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_usocfdi() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_cfdi_claveprodserv">Producto</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $clavesproducto !== false ) foreach( $clavesproducto[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveprodserv() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cfdi_claveunidad">Clave Unidad</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveunidad() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_cfdi_unidad">Unidad</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_unidad(); ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cfdi_impuesto">Impuesto</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $impuestos !== false ) foreach( $impuestos[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_Impuesto() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_cfdi_tipofactor">Tipo Factor</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $tiposfactor !== false ) foreach( $tiposfactor[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tipofactor() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cfdi_tasaocuota">Impuesto Tasa o Cuota</label>
-				<input class="form-control" disabled="disabled" value="<?php if( $tasas !== false ) foreach( $tasas[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tasaocuota() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_cfdi_base">Impuesto Base</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_base(); ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_banco">Banco</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getBanco(); ?>" />
 			</div>
@@ -382,11 +327,58 @@
 			<label for="frm_cliente_clabe">CLABE</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getClabe(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_correo">Correo</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCorreo(); ?>" />
 			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_moneda">Moneda</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_moneda() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_formapago">Forma de Pago</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $formaspago !== false ) foreach( $formaspago[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_formapago() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_metodopago">Método de Pago</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $metodospago !== false ) foreach( $metodospago[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getcfdi_metodopago() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div><div class="form-group col">
+			<label for="frm_cliente_cfdi_usocfdi">Uso del CFDi</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_usocfdi() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_claveprodserv">Producto</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $clavesproducto !== false ) foreach( $clavesproducto[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveprodserv() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_claveunidad">Clave Unidad</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_claveunidad() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_unidad">Unidad</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_unidad(); ?>" />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_impuesto">Impuesto</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $impuestos !== false ) foreach( $impuestos[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_Impuesto() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cfdi_tipofactor">Tipo Factor</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $tiposfactor !== false ) foreach( $tiposfactor[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tipofactor() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div><div class="form-group col">
+			<label for="frm_cliente_cfdi_tasaocuota">Impuesto Tasa o Cuota</label>
+				<input class="form-control" disabled="disabled" value="<?php if( $tasas !== false ) foreach( $tasas[ "opciones" ] as $opc): ?><?= ( $opc[ "idcatalogodet" ] == $objeto->getCfdi_tasaocuota() ? $opc[ "descripcion" ] : '' ); ?><?php endforeach; ?>" />
+			</div>
+			<!--<div class="form-group col">
+			<label for="frm_cliente_cfdi_base">Impuesto Base</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCfdi_base(); ?>" />
+			</div>-->
 		</div>
 	</form>
 	<?php if($this->modsesion->hasPermisoHijo(66)):?>

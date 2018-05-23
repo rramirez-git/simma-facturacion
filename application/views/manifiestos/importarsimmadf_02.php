@@ -200,7 +200,7 @@
 								<?php endif; ?>
 							</td>
 							<td colspan="2">
-								<label class="control-label">
+								<label>
 									<input type="checkbox" id="pso_<?= $k; ?>" name="pso_<?= $k; ?>" value="<?= $k; ?>" checked="checked" />
 									<input type="hidden" id="status_<?= $k; ?>" name="status_<?= $k; ?>" value="<?= $manif["status"]; ?>" />
 									<?php
@@ -224,16 +224,9 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="form-row"><div class="form-group">
-			<div class="col-sm-8"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-outline-primary" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
-            </div>
-		</div>
-	</form>
+		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+    </form>
 </div>
 <script type="text/javascript">
 	var gens=<?= json_encode($this->modsesion->getAllGens()); ?>;

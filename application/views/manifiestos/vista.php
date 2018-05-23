@@ -48,40 +48,37 @@ $total=0.0;
 	<h3>Manifiesto <small class="text-muted"><?= $manifiesto->getIdentificador().($manifiesto->getNoexterno()!=""?" (No. Externo: {$manifiesto->getNoexterno()})":""); ?></small></h3>
 	<form autocomplete="off" id="frm_manifiesto">
 		<h5>Generador</h5>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Cliente</label>
-			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>" />
 			</div>
 			<?php if ($manifiesto->getFecha_captura() != "" && $manifiesto->getFecha_captura() != "0000-00-00 00:00:00" ) { ?>
+			<div class="form-group col">
 			<label id="captura_fec">Fecha de Captura:</label>
-			<div class="col-sm-4">
+			
 				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?>" />
 			</div>
 			<?php } ?>
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Generador</label>
-			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>" />
 			</div>
 			<?php if ($manifiesto->getCapturista() != "") { ?>
+			<div class="form-group col">
 			<label>Capturista:</label>
-			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getCapturista( ); ?>" />
 			</div>
 			<?php } ?>
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Responsable</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?>" />
 			</div>
 		</div>
 		<h5>Facturacion</h5>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Esquema de Facturación</label>
-			<div class="col-sm-8">
 				<input class="form-control" disabled="disabled" value="<?php
 				foreach( $tipos_cobro[ 'opciones' ] as $opc ) {
 					if( $opc[ 'idcatalogodet' ] == $tipo_cobro->getTipocobro() ) {
@@ -102,18 +99,13 @@ $total=0.0;
 				}
 				?>" />
 			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
+			<div class="form-group col">
 					<label>
 						<input type="checkbox" value="1" id="frm_manifiesto_facturable" name="frm_manifiesto_facturable" <?= ($manifiesto->getFacturable()==1?'checked="checked"':''); ?> disabled="disabled" />
 						Facturable
 					</label>
-				</div>
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
+			</div><div class="form-group col">
 			<label>Factura Asociada</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?>" />
 			</div>
 		</div>
@@ -124,25 +116,21 @@ $total=0.0;
 		$empresa->setIdempresa($sucursal->getIdempresa());
 		$empresa->getFromDatabase();
 		?>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Razon Social</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
-			</div>			
-		</div>
-		<div class="form-row"><div class="form-group">
+			</div>
+			<div class="form-group col">
 			<label>Ruta</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 			</div>			
 		</div>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Operador</label>
-			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $operador->getNombre()." ".$operador->getApaterno()." ".$operador->getAmaterno(); ?>" />
 			</div>
+			<div class="form-group col">
 			<label>Vehiculo</label>
-			<div class="col-sm-4">
 				<input class="form-control" disabled="disabled" value="<?= $vehiculo->getPlaca()." (".$vehiculo->getTipo().")"; ?>" />
 			</div>
 		</div>
@@ -153,15 +141,12 @@ $total=0.0;
 		$empresa->setIdempresa($sucursal->getIdempresa());
 		$empresa->getFromDatabase();
 		?>
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label>Razon Social</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
-			</div>			
-		</div>
-		<div class="form-row"><div class="form-group">
+			</div>
+			<div class="form-group col">
 			<label>Representante</label>
-			<div class="col-sm-10">
 				<input class="form-control" disabled="disabled" value="<?= $sucursal->getRepresentante(); ?>" />
 			</div>			
 		</div>
