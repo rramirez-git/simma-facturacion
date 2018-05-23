@@ -21,7 +21,7 @@ class Cambiopassword extends CI_Controller
 		$actual=trim($this->input->post('actual'));
 		$nueva=trim($this->input->post('nueva'));
 		$this->modusuario->getFromDatabase($this->session->userdata('idusuario'));
-		if($this->modusuario->getPassword()!=$this->encrypt->sha1($actual))
+		if($this->modusuario->getPassword() != sha1($actual))
 			echo "La contraseña actual no coincide con la almacenada en el sistema.";
 		else
 		{

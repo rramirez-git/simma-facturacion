@@ -1,14 +1,14 @@
 <div class="dataListSupercontainerParent">
 	<h3>Asignación de Sucursales</h3>
 	<div class="dataListSupercontainerSearcher">
-		<form onsubmit="return false" class="form-horizontal" role="form" id="frm_assign">
-			<div class="input-group">
-		        <span class="input-group-addon">Buscar por</span>
-		        <input type="text" class="form-control" id="frm_txt2Find" name="frm_txt2Find" maxlength="250" />
-		        <span class="input-group-btn">
-        			<button type="button" class="btn btn-default" onclick="Grupo.findSucursales()">Buscar</button>
-		        </span>
-		    </div>
+		<form autocomplete="off" onsubmit="return false" id="frm_assign">
+			<div class="form-row">
+				<div class="form-group col">
+					<label>Buscar por</label>
+					<input type="text" class="form-control" id="frm_txt2Find" name="frm_txt2Find" maxlength="250" />
+				</div>
+			</div>
+			<button type="button" class="btn btn-outline-secondary" onclick="Grupo.findSucursales()">Buscar</button>
 		</form>
 	</div>
 	<div class="dataListSupercontainer">

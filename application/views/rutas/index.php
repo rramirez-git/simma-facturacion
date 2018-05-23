@@ -1,24 +1,23 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(64)): ?>
-			<button type="button" class="btn btn-default" title="Nueva Ruta" onclick="location.href='<?= base_url('rutas/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
+			<button type="button" class="btn btn-outline-secondary" title="Nueva Ruta" onclick="location.href='<?= base_url('rutas/nuevo/'.$idempresa.'/'.$idsucursal);?>';">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; 
 			if($this->modsesion->hasPermisoHijo(102)): ?>
-			<button type="button" class="btn btn-default" title="Generar Reportes" onclick="Ruta.FrmReporte()">
+			<button type="button" class="btn btn-outline-secondary" title="Generar Reportes" onclick="Ruta.FrmReporte()">
 				<i class="fas fa-book"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Rutas</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer">
-		<div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
-			<div class="col-sm-10">
+	<form autocomplete="off" method="post" id="frm_prefer">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'rutas/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>
@@ -26,9 +25,8 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Sucursal</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'rutas/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
 						<option value="<?= $sucursal["idsucursal"]; ?>" <?= ($sucursal["idsucursal"]==$idsucursal?'selected="selected"':''); ?>><?= $sucursal["nombre"]; ?></option>
@@ -98,6 +96,3 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>

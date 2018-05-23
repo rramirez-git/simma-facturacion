@@ -1,32 +1,13 @@
-<table class="menuCreacion">
-	<tr>
-		<th>
-			Seleccione el reporte a generar:
-		</th>
-	</tr>
+<p><strong>Seleccione el reporte a generar:</strong></p>
+<div class="list-group">
 	<?php if($this->modsesion->hasPermisoHijo(106)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/4"); ?>','winreporte')">
-					Maestro de Plan de Servicios
-				</button>
-			</td>
-		</tr>
+		<a href="<?= base_url("reporte/ver/4"); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Maestro de Plan de Servicios
+		</a>
 	<?php endif;?>
 	<?php if($this->modsesion->hasPermisoHijo(107)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/5"); ?>','winreporte')">
-					Reporte de Operaciones
-				</button>
-			</td>
-		</tr>
+		<a href="<?= base_url("reporte/ver/5"); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Reporte de Operaciones
+		</a>
 	<?php endif;?>
-	<tr>
-		<td>
-			<button type="button" class="btn btn-danger" onclick="Manifiesto.CerrarMenuCreacion()">
-				Cancelar
-			</button>
-		</td>
-	</tr>
-</table>
+</div>

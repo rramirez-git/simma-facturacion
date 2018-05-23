@@ -1,7 +1,7 @@
 <!-- Vista cliente/importaresultado -->
 <?= $menumain; ?>
 <div class="container">
-	<h3>Importar Clientes <small>Resultado</small></h3>
+	<h3>Importar Clientes <small class="text-muted">Resultado</small></h3>
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
@@ -57,11 +57,6 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="row">
-		<div class="col-sm-10"></div>
-		<div class="col-sm-2">
-			<button type="button" class="btn btn-success" onclick="location.href='<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>'">Regresar</button>
-		</div>
-	</div>
+	<button type="button" class="btn btn-outline-primary" onclick="location.href='<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>'">Regresar</button>
 </div>
 <!-- Vista cliente/importaresultado End -->

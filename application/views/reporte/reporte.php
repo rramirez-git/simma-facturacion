@@ -1,16 +1,16 @@
 <?= $menumain; ?>
 <div class="container">
-	<h3>Reporte <small><?= $reporte->getTitulo(); ?></small></h3>
-	<form class="form-horizontal" role="form" id="frm_reporte">
+	<h3>Reporte <small class="text-muted"><?= $reporte->getTitulo(); ?></small></h3>
+	<form autocomplete="off" id="frm_reporte">
 		<input type="hidden" name="read" id="read" value="1" />
 		<input type="hidden" name="idreporte" id="idreporte" value="<?= $reporte->getIdreporte(); ?>">
 		<div id="parametros">
-			<div class="row">
+			<div class="form-row">
 				<?php foreach($reporte->getParams() as $k=>$p)
 				{
 					?>
-					<label for="<?= $p["parametro"]; ?>" class="control-label col-sm-2"><?= $p["etiqueta"]?></label>
-					<div class="col-sm-2">
+					<div class="form-group col">
+						<label for="<?= $p["parametro"]; ?>"><?= $p["etiqueta"]?></label>
 						<?php
 						switch(strtolower($p["tipo"]))
 						{
@@ -40,31 +40,22 @@
 						?>
 					</div>
 					<?php
-					if($k%3==2)
+					if($k%4==3)
 					{
 						?>
 						</div>
-						<div class="row">
+						<div class="form-row">
 						<?php
 					}
 				}
 				?>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-7"></div>
-			<div class="col-sm-1">
-				<button type="button" class="btn btn-default" title="Filtros" onclick="$('#parametros').slideToggle(1000)">
-					<i class="fas fa-filter"></i>
-				</button>
-			</div>
-			<div class="col-sm-2">
-		        <button id="btnGenera" type="button" class="btn btn-success" onclick="Reporte.Ejecutar()" >Generar</button>
-		    </div>
-			<div class="col-sm-2">
-		        <button id="btnDescarga" type="button" class="btn btn-info disabled" onclick="Reporte.Descargar()" >Descargar</button>
-		    </div>
-		</div>
+		<button type="button" class="btn btn-outline-secondary" title="Filtros" onclick="$('#parametros').slideToggle(1000)">
+			<i class="fas fa-filter"></i>
+		</button>
+		<button id="btnGenera" type="button" class="btn btn-outline-primary" onclick="Reporte.Ejecutar()" >Generar</button>
+		<button id="btnDescarga" type="button" class="btn btn-info disabled" onclick="Reporte.Descargar()" >Descargar</button>
 	</form>
 	<div id="bodyreport"></div>
 </div>

@@ -1,9 +1,9 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(45)): ?>
-			<button type="button" class="btn btn-default" title="Nuevo Catalogo" onclick="Catalogos.MuestraFrmNuevo()">
+			<button type="button" class="btn btn-outline-secondary" title="Nuevo Catalogo" onclick="Catalogos.MuestraFrmNuevo()">
 				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
@@ -40,6 +40,3 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>

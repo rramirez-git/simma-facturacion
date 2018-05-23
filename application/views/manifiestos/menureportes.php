@@ -1,34 +1,15 @@
 <!-- Vista manifiestos/menureportes -->
-<table class="menuCreacion">
-	<tr>
-		<th>
-			Seleccione el reporte a generar:
-		</th>
-	</tr>
-	<?php if($this->modsesion->hasPermisoHijo(105)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/3"); ?>','winreporte')">
-					Maestro de Manifiestos
-				</button>
-			</td>
-		</tr>
+<p><strong>Seleccione el reporte a generar:</strong></p>
+<div class="list-group">
+	<?php if($this->modsesion->hasPermisoHijo( 105 ) ): ?>
+		<a href="<?= base_url( "reporte/ver/3" ); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Maestro de Manifiestos
+		</a>
 	<?php endif;?>
-	<?php if($this->modsesion->hasPermisoHijo(128)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/8"); ?>','winreporte')">
-					Captura de Manifiestos
-				</button>
-			</td>
-		</tr>
+	<?php if($this->modsesion->hasPermisoHijo( 128 ) ): ?>
+		<a href="<?= base_url( "reporte/ver/8" ); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Captura de Manifiestos
+		</a>
 	<?php endif;?>
-	<tr>
-		<td>
-			<button type="button" class="btn btn-danger" onclick="Manifiesto.CerrarMenuCreacion()">
-				Cancelar
-			</button>
-		</td>
-	</tr>
-</table>
+</div>
 <!-- Vista manifiestos/menureportes End -->
