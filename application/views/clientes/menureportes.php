@@ -1,34 +1,15 @@
 <!-- Vista cliente/menureportes -->
-<table class="menuCreacion">
-	<tr>
-		<th>
-			Seleccione el reporte a generar:
-		</th>
-	</tr>
+<p><strong>Seleccione el reporte a generar:</strong></p>
+<div class="list-group">
 	<?php if($this->modsesion->hasPermisoHijo(103)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/1"); ?>','winreporte')">
-					Maestro de Clientes
-				</button>
-			</td>
-		</tr>
-	<?php endif;
-	if($this->modsesion->hasPermisoHijo(104)): ?>
-		<tr>
-			<td>
-				<button type="button" class="btn btn-default" onclick="window.open('<?= base_url("reporte/ver/2"); ?>','winreporte')">
-					Maestro de Generadores
-				</button>
-			</td>
-		</tr>
+		<a href="<?= base_url("reporte/ver/1"); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Maestro de Clientes
+		</a>
+	<?php endif; ?>
+	<?php if($this->modsesion->hasPermisoHijo(104)): ?>
+		<a href="<?= base_url("reporte/ver/2"); ?>" target="winreporte" class="list-group-item list-group-item-action">
+			Maestro de Generadores
+		</a>
 	<?php endif;?>
-	<tr>
-		<td>
-			<button type="button" class="btn btn-danger" onclick="Manifiesto.CerrarMenuCreacion()">
-				Cancelar
-			</button>
-		</td>
-	</tr>
-</table>
+</div>
 <!-- Vista cliente/menureportes End -->

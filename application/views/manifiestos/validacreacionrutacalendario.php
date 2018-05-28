@@ -4,29 +4,25 @@ $cliente=new Modcliente();
 $generador=new Modgenerador();
 //$ruta=new Modruta();
 ?>
-<form class="form-horizontal" role="form" method="post" id="frm_validacion">
+<form autocomplete="off" method="post" id="frm_validacion">
 	<input type="hidden" id="frm_validacion_idsucursal" name="frm_validacion_idsucursal" value="<?= $idsucursal; ?>" />
 	<input type="hidden" id="frm_validacion_idruta" name="frm_validacion_idruta" value="<?= $ruta->getIdruta(); ?>" />
 	<input type="hidden" id="frm_validacion_bitacora" name="frm_validacion_bitacora" value="<?= $bitacora; ?>" />
 	<input type="hidden" id="frm_validacion_fecha" name="frm_validacion_fecha" value="<?= $fecha; ?>" />
-	<div class="form-group">
-		<label for="frm_validacion_ruta" class="col-sm-2 control-label">Ruta</label>
-		<div class="col-sm-4">
-			<p class="form-control-static"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></p>
+	<div class="form-row"><div class="form-group col">
+		<label for="frm_validacion_ruta">Ruta</label>
+			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 		</div>
-		<label for="frm_validacion_bit" class="col-sm-2 control-label">Bitacora:</label>
-		<div class="col-sm-4">
-			<p class="form-control-static"><?= $bitacora ?></p>
+		<div class="form-group col">
+		<label for="frm_validacion_bit">Bitacora:</label>
+			<input class="form-control" disabled="disabled" value="<?= $bitacora ?>" />
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="frm_validacion_fec" class="col-sm-2 control-label">Fecha</label>
-		<div class="col-sm-4">
-			<p class="form-control-static"><?= DateToMx($fecha); ?></p>
+		<div class="form-group col">
+		<label for="frm_validacion_fec">Fecha</label>
+			<input class="form-control" disabled="disabled" value="<?= DateToMx($fecha); ?>" />
 		</div>
 	</div>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Cliente</th>
@@ -56,8 +52,24 @@ $generador=new Modgenerador();
 						$cliente->getFromDatabase();
 						?>
 						<tr>
-							<td><?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></td>
-							<td><?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></td>
+							<td>
+								<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+									<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+										<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>
+									</a>
+								<?php else: ?>
+									<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>
+								<?php endif; ?>
+							</td>
+							<td>
+								<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+									<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+										<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>
+									</a>
+								<?php else: ?>
+									<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>
+								<?php endif; ?>
+							</td>
 							<td><?= $identificador; ?></td>
 							<td><input type="checkbox" id="frm_validacion_manifiesto[]" name="frm_validacion_manifiesto[]" checked="checked" value="<?= $generador->getIdgenerador()."|".$identificador; ?>" /></td>
 						</tr>
@@ -71,15 +83,7 @@ $generador=new Modgenerador();
 				?>
 			</tbody>
 		</table>
-	</div>
-	<div class="form-group" id="btnControlGeneracion">
-		<div class="col-sm-8"></div>
-		<div class="col-sm-2">
-            <button type="button" class="btn btn-success" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
-        </div>
-	</div>
+	<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
 </form>
 <!-- Vista manifiestos/validacreacionrutacalendario End -->

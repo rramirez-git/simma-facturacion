@@ -19,7 +19,12 @@ class Bitacoras extends CI_Controller
 		if($idempresa==0 && count($empresas)>0) $idempresa=$empresas[0]["idempresa"];
 		$sucursales=($idempresa>0?$this->modsucursal->getAll($idempresa):array());
 		if($idsucursal==0 && count($sucursales)>0) $idsucursal=$sucursales[0]["idsucursal"];
-		$bitacoras=($idsucursal>0?$this->modbitacora->getAll($idsucursal):array());
+		$filtros = array(
+			"identificador" => $this->input->post( "frm_prefer_identificador" ),
+			"fecha" => $this->input->post( "frm_prefer_fecha" ),
+			"ruta" => $this->input->post( "frm_prefer_ruta" )
+		);
+		$bitacoras = ( $idsucursal > 0 && $this->input->post( 'action' ) == 'find' ? $this->modbitacora->getAll( $idsucursal, $filtros ) : array() );
 		$body=$this->load->view('bitacoras/index',array(
 			"menumain"=>$menumain,
 			"sucursales"=>$sucursales,
@@ -31,6 +36,7 @@ class Bitacoras extends CI_Controller
 			"objruta"=>$this->modruta,
 			"objempresa"=>$this->modempresa,
 			"objsucursal"=>$this->modsucursal,
+			"filtros" => $filtros
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 	}

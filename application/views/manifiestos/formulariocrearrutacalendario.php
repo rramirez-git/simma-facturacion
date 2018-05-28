@@ -1,13 +1,12 @@
 <!-- Vista manifiestos/formulariocrearrutacalendario -->
 <?= $menumain; ?>
 <div class="container">
-	<h3>Manifiestos <small>Creación por Ruta (Todos los Generadores Asociados)</small></h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_nuevo">
+	<h3>Manifiestos <small class="text-muted">Creación por Ruta (Todos los Generadores Asociados)</small></h3>
+	<form autocomplete="off" method="post" id="frm_nuevo">
 		<input type="hidden" id="frm_nuevo_empresa" name="frm_nuevo_empresa" value="<?= $idempresa; ?>" />
 		<input type="hidden" id="frm_nuevo_sucursal" name="frm_nuevo_sucursal" value="<?= $idsucursal; ?>" />
-		<div class="form-group">
-			<label for="frm_nuevo_ruta" class="col-sm-2 control-label">Ruta</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_nuevo_ruta">Ruta</label>
 				<select class="form-control" id="frm_nuevo_ruta" name="frm_nuevo_ruta" onchange="$('#frm_nuevo_bitacora')[0].value='Bitácora '+this.options[this.selectedIndex].text+' ('+$('#frm_nuevo_fecha').val()+')'">
 					<?php
 					$nombreBitacora="";
@@ -33,27 +32,18 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_nuevo_fecha" class="col-sm-2 control-label">Fecha Programada</label>
-			<div class="col-sm-3">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_nuevo_fecha">Fecha Programada</label>
 				<input type="date" class="form-control" id="frm_nuevo_fecha" name="frm_nuevo_fecha" value="<?= Today(); ?>" onchange="$('#frm_nuevo_bitacora')[0].value='Bitácora '+$('#frm_nuevo_ruta')[0].options[$('#frm_nuevo_ruta')[0].selectedIndex].text+' ('+this.value+')'" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_nuevo_bitacora" class="col-sm-2 control-label">Bitácora</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_nuevo_bitacora">Bitácora</label>
 				<input type="text" class="form-control" id="frm_nuevo_bitacora" name="frm_nuevo_bitacora" value="<?= $nombreBitacora; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-8"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Manifiesto.ValidaCreacionRutaCalendario()" >Validar</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
-            </div>
-		</div>
+		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.ValidaCreacionRutaCalendario()" >Validar</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
 	</form>
 	<div id="prevalidacion"></div>
 </div>

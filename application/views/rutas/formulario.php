@@ -1,22 +1,20 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Rutas</h3>
-	<form class="form-horizontal" role="form" id="frm_rutas">
+	<form autocomplete="off" id="frm_rutas">
 		<input type="hidden" id="frm_ruta_idruta" name="frm_ruta_idruta" value="<?= $objeto->getIdruta(); ?>" />
 		<input type="hidden" id="frm_ruta_idsucursal" name="frm_ruta_idsucursal" value="<?= $idsucursal; ?>" />
-		<div class="form-group">
-			<label for="frm_ruta_nombre" class="col-sm-2 control-label">Nombre de la Ruta <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_nombre">Nombre de la Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_ruta_nombre" name="frm_ruta_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre de la Ruta" />
 			</div>
-			<label for="frm_ruta_identificador" class="col-sm-2 control-label">Número de Ruta <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_ruta_identificador">Número de Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_ruta_identificador" name="frm_ruta_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Ruta" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="empresadestinofinal" class="col-sm-2 control-label">Planta de Tratamiento <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="empresadestinofinal">Planta de Tratamiento <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<select class="form-control" id="frm_ruta_empresadestinofinal" name="frm_ruta_empresadestinofinal">
 					<?php if($destinosfinales!==false) foreach($destinosfinales as $emp): ?>
 						<optgroup label="<?= $emp["nombre"]; ?>">
@@ -29,8 +27,8 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<label for="empresatransportista" class="col-sm-2 control-label">Transportista <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="empresatransportista">Transportista <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<select class="form-control" id="frm_ruta_empresatransportista" name="frm_ruta_empresatransportista" onchange="Ruta.ObtieneOperadoresVehiculos()">
 					<?php if($transportistas!==false) foreach($transportistas as $emp): ?>
 						<optgroup label="<?= $emp["nombre"]; ?>">
@@ -44,15 +42,13 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_ruta_descripcion" class="col-sm-2 control-label">Descripción de la Ruta</label>
-			<div class="col-sm-10">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_descripcion">Descripción de la Ruta</label>
 				<textarea rows="3" class="form-control" id="frm_ruta_descripcion" name="frm_ruta_descripcion"><?= $objeto->getDescripcion(); ?></textarea>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_ruta_idoperador" class="col-sm-2 control-label">Operador <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_idoperador">Operador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<select class="form-control" id="frm_ruta_idoperador" name="frm_ruta_idoperador">
 					<?php if($transportistas!==false) 
 						foreach($transportistas as $emp) 
@@ -65,8 +61,8 @@
 									<?php endforeach; ?>
 				</select>
 			</div>
-			<label for="frm_ruta_idvehiculo" class="col-sm-2 control-label">Vehiculo <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="frm_ruta_idvehiculo">Vehiculo <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<select class="form-control" id="frm_ruta_idvehiculo" name="frm_ruta_idvehiculo">
 					<?php if($transportistas!==false) 
 						foreach($transportistas as $emp) 
@@ -80,8 +76,8 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group" style="display: none;">
-			<div class="col-sm-2">
+		<div class="form-row">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciolunes" name="frm_ruta_serviciolunes" <?= ($objeto->getServiciolunes()==1?'checked="checked"':''); ?> />
@@ -89,7 +85,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciomartes" name="frm_ruta_serviciomartes" <?= ($objeto->getServiciomartes()==1?'checked="checked"':''); ?> />
@@ -97,7 +93,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciomiercoles" name="frm_ruta_serviciomiercoles" <?= ($objeto->getServiciomiercoles()==1?'checked="checked"':''); ?> />
@@ -105,7 +101,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciojueves" name="frm_ruta_serviciojueves" <?= ($objeto->getServiciojueves()==1?'checked="checked"':''); ?> />
@@ -113,7 +109,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_servicioviernes" name="frm_ruta_servicioviernes" <?= ($objeto->getServicioviernes()==1?'checked="checked"':''); ?> />
@@ -121,7 +117,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciosabado" name="frm_ruta_serviciosabado" <?= ($objeto->getServiciosabado()==1?'checked="checked"':''); ?> />
@@ -129,7 +125,7 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="1" id="frm_ruta_serviciodomingo" name="frm_ruta_serviciodomingo" <?= ($objeto->getServiciodomingo()==1?'checked="checked"':''); ?> />
@@ -138,15 +134,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-8"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Ruta.Enviar(<?= ($objeto->getIdruta()!="" && $objeto->getIdruta()!=0?'false':'true'); ?>)" >Guardar</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url('rutas'); ?>'">Cancelar</button>
-            </div>
-		</div>
+		<button type="button" class="btn btn-outline-primary" onclick="Ruta.Enviar(<?= ($objeto->getIdruta()!="" && $objeto->getIdruta()!=0?'false':'true'); ?>)" >Guardar</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url('rutas'); ?>'">Cancelar</button>
 	</form>
 </div>
 <script type="text/javascript">

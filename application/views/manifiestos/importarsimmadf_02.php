@@ -4,10 +4,9 @@
 	if(!isset($manifiestos)||$manifiestos===false||!is_array($manifiestos)) $manifiestos=array();
 ?>
 <div class="container">
-	<h3>Importar Manifiestos <small>Preimportación</small></h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+	<h3>Importar Manifiestos <small class="text-muted">Preimportación</small></h3>
+	<form autocomplete="off" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
+			<table class="table table-hover table-sm table-responsive">
 				<thead>
 					<tr>
 						<th>Fila</th>
@@ -200,7 +199,7 @@
 								<?php endif; ?>
 							</td>
 							<td colspan="2">
-								<label class="control-label">
+								<label>
 									<input type="checkbox" id="pso_<?= $k; ?>" name="pso_<?= $k; ?>" value="<?= $k; ?>" checked="checked" />
 									<input type="hidden" id="status_<?= $k; ?>" name="status_<?= $k; ?>" value="<?= $manif["status"]; ?>" />
 									<?php
@@ -223,17 +222,9 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-8"></div>
-			<div class="col-sm-2">
-                <button type="button" class="btn btn-success" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
-            </div>
-		</div>
-	</form>
+		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
+    </form>
 </div>
 <script type="text/javascript">
 	var gens=<?= json_encode($this->modsesion->getAllGens()); ?>;

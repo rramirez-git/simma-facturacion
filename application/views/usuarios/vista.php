@@ -1,62 +1,59 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(26)): ?>
-			<button type="button" class="btn btn-default" title="Ver todos los Usuarios" onclick="location.href='<?= base_url('usuarios'); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver todos los Usuarios" onclick="location.href='<?= base_url('usuarios'); ?>';">
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(92)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Usuario" onclick="location.href='<?= base_url('usuarios/actualizar/'.$objeto->getIdusuario()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Usuario" onclick="location.href='<?= base_url('usuarios/actualizar/'.$objeto->getIdusuario()); ?>';">
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(93)):?>
-			<button type="button" class="btn btn-default" title="Borrar Usuario" onclick="Usuario.Eliminar(<?= $objeto->getIdusuario(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Usuario" onclick="Usuario.Eliminar(<?= $objeto->getIdusuario(); ?>)">
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Usuarios</h3>
-	<form class="form-horizontal" role="form" id="frm_usuarios">
+	<form autocomplete="off" id="frm_usuarios">
         <input type="hidden" id="frm_usuario_idusuario" name="frm_usuario_idusuario" value="<?= $objeto->getIdusuario(); ?>" />
-        <div class="form-group">
-        	<label for="frm_usuario_nombre" class="col-sm-2 control-label">Nombre</label>
-        	<div class="col-sm-10">
-        		<p class="form-control-static"><?= $objeto->getNombre(); ?></p>
+        <div class="form-row"><div class="form-group col">
+        	<label for="frm_usuario_nombre">Nombre</label>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
+        	</div>
+        	<div class="form-group col">
+        	<label for="frm_usuario_apaterno">Apellido Paterno</label>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getApaterno(); ?>" />
+        	</div>
+        	<div class="form-group col">
+        	<label for="frm_usuario_amaterno">Apellido Materno</label>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getAmaterno(); ?>" />
         	</div>
         </div>
-        <div class="form-group">
-        	<label for="frm_usuario_apaterno" class="col-sm-2 control-label">Apellido Paterno</label>
-        	<div class="col-sm-4">
-        		<p class="form-control-static"><?= $objeto->getApaterno(); ?></p>
+        <div class="form-row"><div class="form-group col">
+        	<label for="frm_usuario_usuario">Usuario</label>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getUsuario(); ?>" />
         	</div>
-        	<label for="frm_usuario_amaterno" class="col-sm-2 control-label">Apellido Materno</label>
-        	<div class="col-sm-4">
-        		<p class="form-control-static"><?= $objeto->getAmaterno(); ?></p>
-        	</div>
-        </div>
-        <div class="form-group">
-        	<label for="frm_usuario_usuario" class="col-sm-2 control-label">Usuario</label>
-        	<div class="col-sm-4">
-        		<p class="form-control-static"><?= $objeto->getUsuario(); ?></p>
-        	</div>
-        	<label for="frm_usuario_email" class="col-sm-2 control-label">Correo Electrónico</label>
-        	<div class="col-sm-4">
-        		<p class="form-control-static"><?= $objeto->getEmail(); ?></p>
+        	<div class="form-group col">
+        	<label for="frm_usuario_email">Correo Electrónico</label>
+        		<input class="form-control" disabled="disabled" value="<?= $objeto->getEmail(); ?>" />
         	</div>
         </div>
-        <div class="col-sm-12">
-        	<div class="checkbox">
+        <div class="form-row">
+        	<div class="form-group col">
         		<label>
         			<input type="checkbox" value="1" id="frm_usuario_activo" name="frm_usuario_activo" <?= ($objeto->getActivo()==1?'checked="checked"':''); ?> disabled="disabled" />
         			Activo
         		</label>
         	</div>
         </div>
-        <div class="col-sm-6">
+        <div class="form-row">
+        <div class="col">
         	<fieldset>
         		<legend>Perfiles</legend>
         		<?php if($perfiles!==false) foreach($perfiles as $perfil): ?>
@@ -69,7 +66,7 @@
         		<?php endforeach; ?>
         	</fieldset>
         </div>
-        <div class="col-sm-6">
+        <div class="col">
         	<fieldset>
         		<legend>Grupos</legend>
         		<?php if($grupos!==false) foreach($grupos as $grupo): ?>
@@ -81,6 +78,7 @@
         			</div>
         		<?php endforeach; ?>
         	</fieldset>
+        </div>
         </div>
 	</form>
 </div>

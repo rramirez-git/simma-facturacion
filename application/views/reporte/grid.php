@@ -1,8 +1,7 @@
 <?php
 $enc="";
 ?>
-<div class="table-responsive">
-	<table class="table table-striped table-hover Reporte" id="reporttable">
+	<table class="table table-hover table-sm table-responsive Reporte" id="reporttable">
 		<tbody id="reporttablebody">
 			<?php if($registros!==false) foreach($registros as $k=>$reg):
 				?>
@@ -27,7 +26,6 @@ $enc="";
 			</tr>
 		</tfoot>
 	</table>
-</div>
 <?php if($registros===false||count($registros)==0): ?>
 	<div class="alert alert-warning">No hay resultados que mostrar</div>
 <?php endif; ?>

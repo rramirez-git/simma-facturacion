@@ -1,14 +1,14 @@
 <?php
 if(!isset($tipopanel)) $tipopanel="primary";
 ?>
-<div class="panel panel-<?= $tipopanel; ?>">
+<div class="card bg-<?= $tipopanel; ?>">
 	<?php if(isset($panelheading) && $panelheading!=""): ?>
-		<div class="panel-heading"><?= $panelheading; ?></div>
+		<div class="card-header"><?= $panelheading; ?></div>
 	<?php endif; ?>
 	<?php if(isset($panelbody) && $panelbody!=""): ?>
-		<div class="panel-body"><?= $panelbody; ?></div>
+		<div class="card-body"><?= $panelbody; ?></div>
 	<?php endif; ?>
 	<?php if(isset($panelfooter) && $panelfooter!=""): ?>
-		<div class="panel-footer"><?= $panelfooter; ?></div>
+		<div class="card-footer"><?= $panelfooter; ?></div>
 	<?php endif; ?>
 </div>

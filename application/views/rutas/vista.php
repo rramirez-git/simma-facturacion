@@ -7,138 +7,134 @@ $vehiculo->setIdvehiculo($objeto->getIdvehiculo());
 $vehiculo->getFromDatabase();
 ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(52)): ?>
-			<button type="button" class="btn btn-default" title="Ver todas las rutas" onclick="location.href='<?= base_url('rutas/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver todas las rutas" onclick="location.href='<?= base_url('rutas/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)):?>
-			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(94)):?>
-			<button type="button" class="btn btn-default" title="Ver Plan de Recoleccion" onclick="location.href='<?= base_url("rutas/planrecoleccion/".$objeto->getIdruta()); ?>'">
-				<span class="glyphicon glyphicon-briefcase"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver Plan de Recoleccion" onclick="location.href='<?= base_url("rutas/planrecoleccion/".$objeto->getIdruta()); ?>'">
+				<i class="fas fa-briefcase"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(73)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Ruta" onclick="location.href='<?= base_url('rutas/actualizar/'.$objeto->getIdruta()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Ruta" onclick="location.href='<?= base_url('rutas/actualizar/'.$objeto->getIdruta()); ?>';">
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(74)):?>
-			<button type="button" class="btn btn-default" title="Borrar Ruta" onclick="Ruta.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdruta(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Ruta" onclick="Ruta.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $objeto->getIdruta(); ?>)">
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Rutas</h3>
-	<form class="form-horizontal" role="form" id="frm_rutas">
-		<div class="form-group">
-			<label for="frm_ruta_nombre" class="col-sm-2 control-label">Nombre de la Ruta</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNombre(); ?></p>
+	<form autocomplete="off" id="frm_rutas">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_nombre">Nombre de la Ruta</label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_nombre" name="frm_ruta_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre de la Ruta" />
 			</div>
-			<label for="frm_ruta_identificador" class="col-sm-2 control-label">Número de Ruta</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getIdentificador(); ?></p>
+			<div class="form-group col">
+			<label for="frm_ruta_identificador">Número de Ruta</label>
+				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_identificador" name="frm_ruta_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Ruta" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="empresadestinofinal" class="col-sm-2 control-label">Planta de Tratamiento</label>
-			<div class="col-sm-4">
+		<div class="form-row"><div class="form-group col">
+			<label for="empresadestinofinal">Planta de Tratamiento</label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresadestinofinal());
 				$sucursal->getFromDatabase();
 				$empresa->setIdempresa($sucursal->getIdempresa());
 				$empresa->getFromDatabase();
 				?>
-				<p class="form-control-static"><?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?></p>
+				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
-			<label for="empresatransportista" class="col-sm-2 control-label">Transportista</label>
-			<div class="col-sm-4">
+			<div class="form-group col">
+			<label for="empresatransportista">Transportista</label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresatransportista());
 				$sucursal->getFromDatabase();
 				$empresa->setIdempresa($sucursal->getIdempresa());
 				$empresa->getFromDatabase();
 				?>
-				<p class="form-control-static"><?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?></p>
+				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_ruta_descripcion" class="col-sm-2 control-label">Descripción de la Ruta</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getDescripcion(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_descripcion">Descripción de la Ruta</label>
+				<p class="form-control" id="frm_ruta_descripcion" name="frm_ruta_descripcion"><?= $objeto->getDescripcion(); ?></p>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_ruta_idoperador" class="col-sm-2 control-label">Operador</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_ruta_idoperador">Operador</label>
+				<input class="form-control" disabled="disabled" value="<?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?>" />
 			</div>
-			<label for="frm_ruta_idvehiculo" class="col-sm-2 control-label">Vehiculo</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= "{$vehiculo->getPlaca()} ({$vehiculo->getTipo()})"; ?></p>
+			<div class="form-group col">
+			<label for="frm_ruta_idvehiculo">Vehiculo</label>
+				<input class="form-control" disabled="disabled" value="<?= "{$vehiculo->getPlaca()} ({$vehiculo->getTipo()})"; ?>" />
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-2">
+		<div class="form-row">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciolunes" name="frm_ruta_serviciolunes" <?= ($objeto->getServiciolunes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciolunes" name="frm_ruta_serviciolunes" <?= ($objeto->getServiciolunes()==1?'checked="checked"':''); ?> />
 						Lunes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciomartes" name="frm_ruta_serviciomartes" <?= ($objeto->getServiciomartes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciomartes" name="frm_ruta_serviciomartes" <?= ($objeto->getServiciomartes()==1?'checked="checked"':''); ?> />
 						Martes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciomiercoles" name="frm_ruta_serviciomiercoles" <?= ($objeto->getServiciomiercoles()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciomiercoles" name="frm_ruta_serviciomiercoles" <?= ($objeto->getServiciomiercoles()==1?'checked="checked"':''); ?> />
 						Miércoles
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciojueves" name="frm_ruta_serviciojueves" <?= ($objeto->getServiciojueves()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciojueves" name="frm_ruta_serviciojueves" <?= ($objeto->getServiciojueves()==1?'checked="checked"':''); ?> />
 						Jueves
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_servicioviernes" name="frm_ruta_servicioviernes" <?= ($objeto->getServicioviernes()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_servicioviernes" name="frm_ruta_servicioviernes" <?= ($objeto->getServicioviernes()==1?'checked="checked"':''); ?> />
 						Viernes
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciosabado" name="frm_ruta_serviciosabado" <?= ($objeto->getServiciosabado()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciosabado" name="frm_ruta_serviciosabado" <?= ($objeto->getServiciosabado()==1?'checked="checked"':''); ?> />
 						Sabado
 					</label>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="1" id="frm_ruta_serviciodomingo" name="frm_ruta_serviciodomingo" <?= ($objeto->getServiciodomingo()==1?'checked="checked"':''); ?> disabled="disabled" />
+						<input disabled="disabled" type="checkbox" value="1" id="frm_ruta_serviciodomingo" name="frm_ruta_serviciodomingo" <?= ($objeto->getServiciodomingo()==1?'checked="checked"':''); ?> />
 						Domingo
 					</label>
 				</div>
@@ -148,22 +144,21 @@ $vehiculo->getFromDatabase();
 	<h5>
 		Generadores Asociados
 		<?php if($this->modsesion->hasPermisoHijo(80)): ?>
-	    <button type="button" class="btn btn-default btn-xs" title="Asociar Generadores" onclick="location.href='<?= base_url("rutas/agregargeneradores/".$objeto->getIdruta()); ?>'">
-			<span class="glyphicon glyphicon-plus-sign"></span>
+	    <button type="button" class="btn btn-outline-secondary btn-sm" title="Asociar Generadores" onclick="location.href='<?= base_url("rutas/agregargeneradores/".$objeto->getIdruta()); ?>'">
+			<i class="fas fa-plus"></i>
 		</button>
-	    <button type="button" class="btn btn-default btn-xs" title="Desasociador Generadores" onclick="location.href='<?= base_url("rutas/eliminargeneradores/".$objeto->getIdruta()); ?>'">
-			<span class="glyphicon glyphicon-minus-sign"></span>
+	    <button type="button" class="btn btn-outline-secondary btn-sm" title="Desasociador Generadores" onclick="location.href='<?= base_url("rutas/eliminargeneradores/".$objeto->getIdruta()); ?>'">
+			<i class="fas fa-minus"></i>
 		</button>
 		<?php endif; ?>
 	</h5>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>No. Cliente</th>
-					<th>Cliente</th>
-					<th>No. Generador</th>
-					<th>Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">No. Cliente</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Cliente</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">No. Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">Generador</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -174,7 +169,7 @@ $vehiculo->getFromDatabase();
 					<th>Generador</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php
 				$gs=$objeto->getGeneradoresAsociados($objeto->getIdruta());
 				if($gs!==false && count($gs)>0) foreach($gs as $g)
@@ -185,15 +180,46 @@ $vehiculo->getFromDatabase();
 					$cliente->getFromDatabase();
 					?>
 					<tr>
-						<td><?= $cliente->getIdentificador(); ?></td>
-						<td><?= $cliente->getRazonsocial(); ?></td>
-						<td><?= $generador->getIdentificador(); ?></td>
-						<td><?= $generador->getRazonsocial(); ?></td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+								<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+									<?= $cliente->getIdentificador(); ?>
+								</a>
+							<?php else: ?>
+								<?= $cliente->getIdentificador(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+								<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+									<?= $cliente->getRazonsocial(); ?>
+								</a>
+							<?php else: ?>
+								<?= $cliente->getRazonsocial(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+									<?= $generador->getIdentificador(); ?>
+								</a>
+							<?php else: ?>
+								<?= $generador->getIdentificador(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+									<?= $generador->getRazonsocial(); ?>
+								</a>
+							<?php else: ?>
+								<?= $generador->getRazonsocial(); ?>
+							<?php endif; ?>
+						</td>
 					</tr>
 					<?php
 				}
 				?>
 			</tbody>
 		</table>
-	</div>
 </div>

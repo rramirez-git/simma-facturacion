@@ -6,21 +6,10 @@ body .container
 {
 	color: #738189;
 }
-.barra_navegacion
-{
-	background-color: rgb(50,50,50);
-	/*opacity: 0.50;
-	-moz-opacity: 0.50;
-	filter: alpha(opacity=50);*/
-	overflow: visible;
-	height: 80px;
-	position: relative;
-	margin-bottom: 0px;
-}
 .logo_simma
 {
 	vertical-align: middle;
-	height: 55px;
+	height: 35px;
 	border: none;
 	display: inline-block;
 	margin-top: 15px;
@@ -45,7 +34,7 @@ body .container
 }
 @media print
 {
-	div.barra_navegacion, div.btn-toolbar.pull-right
+	nav.navbar
 	{
 		display: none;
 	}
@@ -55,6 +44,9 @@ body .container
 	}
 	.noImprimir
 	{
+		display: none;
+	}
+	div.btn-toolbar.float-right {
 		display: none;
 	}
 }
@@ -169,4 +161,33 @@ div.dataListSupercontainerParent
 div.dataListSupercontainerSearcher
 {
 	margin-bottom: 10px;
+}
+
+.card {
+	margin-bottom: 10px;
+}
+
+ul.pagination li {
+    margin: 0px 5px;
+    padding: 0px 15px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+}
+
+p.form-control {
+	background-color: #e9ecef;
+    min-height: 38px;
+}
+
+form {
+	margin-bottom: 5px;
+}
+body {
+	padding-bottom: 20px;
+}
+table.table.table-hover.table-sm.table-responsive thead th.sortable {
+	cursor: pointer;
+}
+table.table.table-hover.table-sm.table-responsive thead th.sortable:hover {
+	text-decoration: underline;
 }

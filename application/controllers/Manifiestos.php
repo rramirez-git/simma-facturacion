@@ -17,11 +17,12 @@ class Manifiestos extends CI_Controller
 		$this->load->model('modruta');
 		$head=$this->load->view('html/head',array(),true);
 		$menumain=$this->load->view('menu/menumain',array(),true);
-		$empresas=$this->modempresa->getAllCoorporativo();
+		$empresas=$this->modempresa->getAllTransportista();
 		if($idempresa==0 && count($empresas)>0) $idempresa=$empresas[0]["idempresa"];
 		$sucursales=($idempresa>0?$this->modsucursal->getAll($idempresa):array());
 		if($idsucursal==0 && count($sucursales)>0) $idsucursal=$sucursales[0]["idsucursal"];
 		$filtros=array(
+			"identificador_bitacora"=>$this->input->post('frm_prefer_identificador_bitacora'),
 			"identificador"=>$this->input->post('frm_prefer_identificador'),
 			"numruta"=>$this->input->post('frm_prefer_numruta'),
 			"nombreruta"=>$this->input->post('frm_prefer_nombreruta'),
@@ -92,22 +93,27 @@ class Manifiestos extends CI_Controller
 			$this->modcliente->setIdcliente($this->modgenerador->getIdcliente());
 			$this->modcliente->getFromDatabase();
 			$manifiestos[$k]["nocliente"]=$this->modcliente->getIdentificador();
+			$manifiestos[$k]["idcliente"]=$this->modcliente->getIdcliente();
 			$manifiestos[$k]["nogenerador"]=$this->modgenerador->getIdentificador();
+			$manifiestos[$k]["idgenerador"]=$this->modgenerador->getIdgenerador();
 			$manifiestos[$k]["generador"]=$this->modgenerador->getRazonsocial();
 			$this->modruta->setIdruta($this->modmanifiesto->getIdruta());
 			$this->modruta->getFromDatabase();
 			$manifiestos[$k]["noruta"]=$this->modruta->getIdentificador();
 			$manifiestos[$k]["ruta"]=$this->modruta->getNombre();
+			$manifiestos[$k]["idruta"]=$this->modruta->getIdruta();
 			$this->modsucursal->setIdsucursal($this->modruta->getEmpresadestinofinal());
 			$this->modsucursal->getFromDatabase();
 			$this->modempresa->setIdempresa($this->modsucursal->getIdempresa());
 			$this->modempresa->getFromDatabase();
 			$manifiestos[$k]["destinofinal"]="{$this->modempresa->getRazonsocial()} - {$this->modsucursal->getNombre()}";
+			$manifiestos[$k]["iddestinofinal"] = $this->modsucursal->getIdsucursal();
 			$this->modsucursal->setIdsucursal($this->modruta->getEmpresatransportista());
 			$this->modsucursal->getFromDatabase();
 			$this->modempresa->setIdempresa($this->modsucursal->getIdempresa());
 			$this->modempresa->getFromDatabase();
 			$manifiestos[$k]["transportista"]="{$this->modempresa->getRazonsocial()} - {$this->modsucursal->getNombre()}";
+			$manifiestos[$k]["idtransportista"] = $this->modsucursal->getIdsucursal() ;
 		}
 		$body=$this->load->view('manifiestos/index',array(
 			"menumain"=>$menumain,
@@ -597,7 +603,7 @@ class Manifiestos extends CI_Controller
 			"tipo_cobro" => $this->modfacturacion,
 			"tipos_cobro" => $this->modcatalogo->getCatalogo( 6 ),
 			"tipos_servicio" => $this->modcatalogo->getCatalogo( 5 ),
-			"unidades" => $this->modcatalogo->getCatalogo( 29 )
+			"unidades" => $this->modcatalogo->getCatalogo( 17 )
 			),true);
 		$this->load->view('html/html',array("head"=>$head,"body"=>$body));
 		$this->modsesion->addLog(
@@ -650,7 +656,10 @@ class Manifiestos extends CI_Controller
 			"motivo"=>$this->modmanifiesto->getMotivo(),
 			"noexterno"=>$this->modmanifiesto->getNoexterno(),
 			"fecha_captura"=>$this->modmanifiesto->getFecha_captura(),
-			"capturista"=>$this->modmanifiesto->getCapturista()
+			"fecha_embarque" => $this->modmanifiesto->getFechaembarque(),
+			"capturista"=>$this->modmanifiesto->getCapturista(),
+			"unidades" => $this->modcatalogo->getCatalogo( 17 ),
+			"residuos" => $residuos
 			));
 	}
 	public function eliminar($id)
@@ -685,6 +694,7 @@ class Manifiestos extends CI_Controller
 		$this->modruta->getFromDatabase();
 		$this->modmanifiesto->setMotivo($this->input->post('frm_motivo'));
 		$this->modmanifiesto->setNoexterno($this->input->post('frm_noexterno'));
+		$this->modmanifiesto->setFechaembarque( $this->input->post( 'frm_fechaembarque' ) );
 		$motivos = $this->modcatalogo->getCatalogo( 8 )[ 'opciones' ];
 		$motivos = array_merge( $motivos, $this->modcatalogo->getCatalogo( 9 )[ 'opciones' ] );
 		$motivos = array_merge( $motivos, $this->modcatalogo->getCatalogo( 10 )[ 'opciones' ] );
@@ -725,12 +735,18 @@ class Manifiestos extends CI_Controller
 			$tipo=$this->input->post('tipo_'.$res["idresiduo"]);
 			$cantidad=$this->input->post('cantidad_'.$res["idresiduo"]);
 			//$unidad=$this->input->post('unidad_'.$res["nom052"]);
-			$unidad="kg";
+			$unidad = $this->input->post( 'unidad_' .$res[ "idresiduo" ] );
+			$cantidadunidad = $this->input->post( 'cantidad_unidad_' .$res[ "idresiduo" ] );
+			if( null === $cantidadunidad || "" == $cantidadunidad ) {
+				$cantidadunidad = $cantidad;
+				$unidad = 156;
+			}
 			if($cantidad!="")
 			{
 				$this->modrecoleccion->setContenedorcapacidad($capacidad);
 				$this->modrecoleccion->setContenedortipo($tipo);
 				$this->modrecoleccion->setCantidad($cantidad);
+				$this->modrecoleccion->setCantidad_unidad( $cantidadunidad );
 				$this->modrecoleccion->setUnidad($unidad);
 				$this->modrecoleccion->setIdresiduo($res["idresiduo"]);
 				$this->modrecoleccion->setIdmanifiesto($idmanifiesto);
@@ -807,7 +823,10 @@ class Manifiestos extends CI_Controller
 					"cliente"=>$this->modcatalogo->getCatalogo(11)
 					),
 				"motivo"=>$this->modmanifiesto->getMotivo(),
-				"noexterno"=>$this->modmanifiesto->getNoexterno()
+				"noexterno"=>$this->modmanifiesto->getNoexterno(),
+				"unidades" =>$this->modcatalogo->getCatalogo( 17 ),
+				"fecha_embarque" => $this->modmanifiesto->getFechaembarque(),
+				"residuos" => $residuos
 				),true);
 			array_push($data,$this->modgenerador->getIdGenerador());
 			array_push($data,$this->modgenerador->getRazonSocial());

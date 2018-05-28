@@ -1,22 +1,21 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(56)): ?>
-			<button type="button" class="btn btn-default" title="Nueva Empresa" onclick="location.href='<?= base_url('empresas/nuevo');?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Nueva Empresa" onclick="location.href='<?= base_url('empresas/nuevo');?>';">
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Empresas</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Razon Social</th>
-					<th>RFC</th>
-					<th>Representante</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Razon Social</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">RFC</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">Representante</th>
 					<th>Coorporativo</th>
 					<th>Transportista</th>
 					<th>Destino Final</th>
@@ -32,7 +31,7 @@
 					<th>Destino Final</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php foreach($empresas as $empresa): ?>
 					<tr>
 						<td>
@@ -53,8 +52,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>

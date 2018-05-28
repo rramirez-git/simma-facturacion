@@ -226,7 +226,7 @@ class Modusuario extends CI_Model
 		$this->load->library('encrypt');
 		if($this->idusuario==""||$this->idusuario==0)
 			return false;
-		$this->password=$this->encrypt->sha1($pwd);
+		$this->password = sha1($pwd);
 		$data=array(
 			"password"=>$this->password
 		);

@@ -1,6 +1,6 @@
 function Alert(mensaje,afterOk) //msgID: 1 Deprecated
 {
-	$.msg({
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -13,11 +13,17 @@ function Alert(mensaje,afterOk) //msgID: 1 Deprecated
 							});
 		                }
 		//, msgID:1
-	});
+	});*/
+	Confirm( mensaje, afterOk );
 }
 function Confirm(mensaje,afterOk) //msgID: 2 Deprecated
 {
-	$.msg({
+	openModal( mensaje, '', '<div style="text-align: center;"><button id="btnOk" class="btn btn-outline-primary" type="button">Aceptar</button></div>' );
+	$('#btnOk').bind('click',function(){
+		afterOk();
+		closeModal();
+	});
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -33,21 +39,24 @@ function Confirm(mensaje,afterOk) //msgID: 2 Deprecated
 							});
 		                }
 		//, msgID:2
-	});
+	});*/
 }
 function Mensaje(mensaje) //msgID: 3
 {
-	$.msg({
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
 		content:		mensaje,
 		msgID:			3
 	});
+	*/
+	closeModal();
+	openModal( mensaje );
 }
 function MensajeAfter(mensaje,afterOk) //msgID: 4
 {
-	$.msg({
+	/*$.msg({
 		autoUnblock : 	false,
 		bgPath : 		baseURL+'project_files/msg/',
         clickUnblock : 	false,
@@ -57,7 +66,10 @@ function MensajeAfter(mensaje,afterOk) //msgID: 4
 							afterOk();
 						},
 		msgID:			4
-	});
+	});*/
+	closeModal();
+	openModal( mensaje );
+	afterOk();
 }
 function MuestraCPFrm(cp,colonia,municipio,estado,fnSelecciona)
 {
@@ -70,24 +82,24 @@ function MuestraCPFrm(cp,colonia,municipio,estado,fnSelecciona)
 		data:	datos
 	});
 	ajx.fail(function(jqXHRObj,mensaje){
-		$.msg('unblock',10 );
+		closeModal();
 		setTimeout(function(){
 			Mensaje("Error al cargar formulario: "+mensaje+"<br />"+jqXHRObj.responseText);
 		},500);
 	});
 	ajx.done(function(resp){
-		$.msg('unblock',10 );
+		closeModal();
 		setTimeout(function(){
 			MensajeAfter(resp,function(){
 				$("#btnCancelarCP").bind('click',function(){
-					$.msg('unblock',10 );
+					closeModal();
 				});
 				$("#btnBuscarCP").bind('click',function(){
 					var tmpCp			= $("#frm_cp_cp").val().trim();
 					var tmpColonia		= $("#frm_cp_colonia").val().trim();
 					var tmpMunicipio	= $("#frm_cp_municipio").val().trim();
 					var tmpEstado		= $("#frm_cp_estado").val().trim();
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						MuestraCPFrm(tmpCp,tmpColonia,tmpMunicipio,tmpEstado,fnSelecciona);
 					},500);
@@ -246,6 +258,20 @@ Array.prototype.igual=function(data)
 			cont++;
 	return (this.length==data.length && cont==this.length);
 }
+function dataSortFunction( a, b ) { 
+	return ( "number" == typeof a && "number" == typeof b 
+		? a - b 
+		: ( "string" == typeof a && "string" == typeof b 
+			? ( a < b ? -1 : ( a == b ? 0 : 1 ) ) 
+			: dataSortFunction( "" + a, "" + b ) 
+		) 
+	);
+}
+Array.prototype.data_sort = function( asc ) {
+	if( "undefined" == typeof asc ) { asc = true; }
+	this.sort( dataSortFunction );
+	if( ! asc  ) { this.reverse(); }
+}
 String.prototype.toNormalString=function()
 {
 	var cadena=this;
@@ -291,6 +317,38 @@ function EstandarizaString(cadena)
 		return cadena.substring(0,largo)+"...";
 	return cadena.substring(0,largo/2)+"..."+cadena.substring(cadena.length-(largo/2));
 }
+function TableSortByColumn( idtable, column, type ) {
+	var data_cels = $( "#" + idtable + " tr td:nth-child(" + column + ")" );
+	var tmp_tbl = $( '<table></table>' );
+	var data = [];
+	data_cels.each( function() { 
+		var text = $( this ).text().trim();
+		var num = parseFloat( text );
+		if( isNaN( num ) || text.length != ( "" + num ).length ) {
+			if( -1 == data.indexOf( text ) ) {
+				data.push( text );
+			}
+		} else {
+			if( -1 == data.indexOf( num ) ) {
+				data.push( num );
+			}
+		}
+	} );
+	if( "desc" == type ) {
+		data.data_sort( false );
+	} else {
+		data.data_sort( true );
+	}
+	for( idx in data ) {
+		var trs = $( "#" + idtable + " tr" );
+		for( var i = 0; i < trs.length; i++ ) {
+			if( $( trs[ i ] ).find( "td:nth-child(" + column + ")" ).text().trim() == data[ idx ] ) {
+				tmp_tbl.append( $( trs[ i ] ) );
+			}
+		}
+	}
+	$( "#" + idtable ).html( tmp_tbl.html() );
+}
 function fnEmpresa()
 {
 	this.ValidaFrmIn=function()
@@ -335,7 +393,7 @@ function fnEmpresa()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -345,7 +403,7 @@ function fnEmpresa()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar esta empresa?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -361,7 +419,7 @@ function fnEmpresa()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -375,7 +433,7 @@ function fnEmpresa()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_empresa_cp"			).attr('value',	cp);
 		$("#frm_empresa_colonia"	).attr('value',	colonia);
 		$("#frm_empresa_municipio"	).attr('value',	municipio);
@@ -426,7 +484,7 @@ function fnSucursal()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_sucursal_cp"		).attr('value',cp);
 		$("#frm_sucursal_colonia"	).attr('value',colonia);
 		$("#frm_sucursal_municipio"	).attr('value',municipio);
@@ -485,7 +543,7 @@ function fnSucursal()
 				else Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500);
@@ -495,7 +553,7 @@ function fnSucursal()
 	this.Eliminar=function(idEmpresa,id)
 	{
 		Confirm("¿Realmente desa eliminar esta sucursal?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -511,7 +569,7 @@ function fnSucursal()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -558,7 +616,7 @@ function fnOperador()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -568,7 +626,7 @@ function fnOperador()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar a este Operador?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -581,14 +639,14 @@ function fnOperador()
 					if(resp=="") {
 						location.href=baseURL+'operadores/index/'+idEmpresa+'/'+idSucursal;
 					} else {
-						$.msg( 'unblock', 10 );
+						closeModal();
 						setTimeout( function(){ 
 							Alert( resp );
 						}, 500 );
 					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -624,7 +682,7 @@ function fnVehiculo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -634,7 +692,7 @@ function fnVehiculo()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Vehículo?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -647,14 +705,14 @@ function fnVehiculo()
 					if( resp == "" ) {
 						location.href=baseURL+'vehiculos/index/'+idEmpresa+'/'+idSucursal;
 					} else {
-						$.msg( 'unblock', 10 );
+						closeModal();
 						setTimeout( function() {
 							Alert( resp );
 						}, 500 );
 					}
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -730,7 +788,7 @@ function fnRuta()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -740,7 +798,7 @@ function fnRuta()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar esta Ruta?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -756,7 +814,7 @@ function fnRuta()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -892,11 +950,14 @@ function fnRuta()
 			}
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
-			$("#prevalidacion").html(resp);
-			$("#prevalidacion div.form-group").hide();
-			$("#prevalidacion table tr th:last-child").hide();
-			$("#prevalidacion table tr td:last-child").hide();
+			closeModal();
+			$( "#prevalidacion" ).html(resp);
+			$( "#prevalidacion div.form-group" ).hide();
+			$( "#prevalidacion table tr th:last-child" ).hide();
+			$( "#prevalidacion table tr td:last-child" ).hide();
+			$( "#prevalidacion table tr th:nth-child(3)" ).hide();
+			$( "#prevalidacion table tr td:nth-child(3)" ).hide();
+			$( "#frm_validacion button" ).hide();
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
 			Mensaje("Error al generar datos de plan de recolección: "+mensaje+"<br />"+jqXHRObj.responseText);
@@ -945,7 +1006,7 @@ function fnCliente()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_cliente_cp"			).attr('value',	cp);
 		$("#frm_cliente_colonia"	).attr('value',	colonia);
 		$("#frm_cliente_municipio"	).attr('value',	municipio);
@@ -953,7 +1014,7 @@ function fnCliente()
 	}
 	this.EstableceCPCobranza=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_cliente_cobranzacp"			).attr('value',	cp);
 		$("#frm_cliente_cobranzacolonia"	).attr('value',	colonia);
 		$("#frm_cliente_cobranzamunicipio"	).attr('value',	municipio);
@@ -998,7 +1059,7 @@ function fnCliente()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -1008,7 +1069,7 @@ function fnCliente()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Cliente?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1024,7 +1085,7 @@ function fnCliente()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1178,7 +1239,7 @@ function fnGenerador()
 	}
 	this.EstableceCP=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_generador_cp"			).attr('value',	cp);
 		$("#frm_generador_colonia"		).attr('value',	colonia);
 		$("#frm_generador_municipio"	).attr('value',	municipio);
@@ -1186,7 +1247,7 @@ function fnGenerador()
 	}
 	this.EstableceCPCobranza=function(cp,colonia,municipio,estado)
 	{
-		$.msg('unblock',10 );
+		closeModal();
 		$("#frm_generador_cobranzacp"			).attr('value',	cp);
 		$("#frm_generador_cobranzacolonia"		).attr('value',	colonia);
 		$("#frm_generador_cobranzamunicipio"	).attr('value',	municipio);
@@ -1250,7 +1311,7 @@ function fnGenerador()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -1261,7 +1322,7 @@ function fnGenerador()
 	{
 		tmpIdCte = idCliente;
 		Confirm("¿Realmente desa eliminar este Generador?",function(){
-			$.msg('unblock',10);
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1277,7 +1338,7 @@ function fnGenerador()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1357,7 +1418,7 @@ function fnResiduo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -1367,7 +1428,7 @@ function fnResiduo()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Residuo?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1383,7 +1444,7 @@ function fnResiduo()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1418,7 +1479,7 @@ function fnManifiesto()
 	}
 	this.CerrarMenuCreacion=function()
 	{
-		$.msg('unblock',10 );
+		closeModal();
 	}
 	this.CrearManifiestoCteGen=function()
 	{
@@ -1563,7 +1624,7 @@ function fnManifiesto()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar este Manifiesto?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -1579,7 +1640,7 @@ function fnManifiesto()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -1678,7 +1739,7 @@ function fnManifiesto()
 			data:	$("#frm_captura_kilos").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				if(resp.trim()=="")
 					Manifiesto.LimpiaFormPrecaptura();
@@ -1707,7 +1768,7 @@ function fnManifiesto()
 	this.SumaCantidad=function()
 	{
 		var suma=0.0;
-		$(".tblCantidades input").each(function(idx){
+		$("#data-capture input.kilos").each(function(idx){
 			if( typeof this.id != "undefined" && this.id != "total" && ! isNaN( parseFloat($(this).val()) ) )
 				suma+=parseFloat($(this).val());
 		});
@@ -1917,7 +1978,7 @@ function fnManifiesto()
 				}
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Alert("Error al ejecutar captura de manifiestos: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 				},500);
@@ -1925,10 +1986,54 @@ function fnManifiesto()
 		}
 		else
 		{
-			$.msg('unblock',10 );
+			closeModal();
 				setTimeout(function(){
 					Alert("Importado Terminado",function(){location.href=baseURL+'manifiestos';});
 				},500);
+		}
+	}
+	this.AddRowCapture = function() {
+		var id_residuo = parseInt( $( "#opc_res" ).val() );
+		if( id_residuo >= 1 ) {
+			$( "#data-capture" ).append( $( rows_residuo[ $( "#opc_res" ).val() ] ) );
+			$( "#opc_res option" ).each( function() {
+				if( id_residuo == this.value ) {
+					$( this ).remove();
+				}
+			} );
+			$( "#data-capture tr:last-child input.kilos" ).keydown( Manifiesto.CapturaKeyPressKilos );
+			$( "#data-capture tr:last-child input.cant_und" ).keydown( Manifiesto.CapturaKeyPressCantUnd );
+			$( "#data-capture tr:last-child input.kilos" ).focus();
+		}
+	}
+	this.CapturaKeyPressKilos = function( event ) {
+		if( "undefined" != typeof event.originalEvent && "undefined" != typeof event.originalEvent.path && "undefined" != typeof event.originalEvent.path[ 2 ] ) {
+			if( "arrowdown" == event.key.toLowerCase() || 40 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.nextElementSibling ) {
+					$( tr.nextElementSibling ).find( "input.kilos" ).focus();
+				}
+			} else if( "arrowup" == event.key.toLowerCase() || 38 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.previousElementSibling ) {
+					$( tr.previousElementSibling ).find( "input.kilos" ).focus();
+				}
+			}
+		}
+	}
+	this.CapturaKeyPressCantUnd = function( event ) {
+		if( "undefined" != typeof event.originalEvent && "undefined" != typeof event.originalEvent.path && "undefined" != typeof event.originalEvent.path[ 2 ] ) {
+			if( "arrowdown" == event.key.toLowerCase() || 40 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.nextElementSibling ) {
+					$( tr.nextElementSibling ).find( "input.cant_und" ).focus();
+				}
+			} else if( "arrowup" == event.key.toLowerCase() || 38 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.previousElementSibling ) {
+					$( tr.previousElementSibling ).find( "input.cant_und" ).focus();
+				}
+			}
 		}
 	}
 }
@@ -2208,7 +2313,7 @@ function fnPerfil()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2218,7 +2323,7 @@ function fnPerfil()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Perfil?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2234,7 +2339,7 @@ function fnPerfil()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2274,7 +2379,7 @@ function fnUsuario()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2284,7 +2389,7 @@ function fnUsuario()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Usuario?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2300,7 +2405,7 @@ function fnUsuario()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2327,7 +2432,7 @@ function fnUsuario()
 				Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al accesar: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2348,7 +2453,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al accesar: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2371,7 +2476,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al establecer contraseña: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2406,7 +2511,7 @@ function fnUsuario()
 			Alert(resp,function(){return true});
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al establecer contraseña: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2627,14 +2732,14 @@ function fnCalendario()
 				location.href=baseURL+'generadores/ver/'+$("#idgenerador").val();
 			else
 			{
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Alert()(resp,function(){return true;});
 				},500);
 			}
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 			},500);
@@ -2646,7 +2751,7 @@ function fnBitacora()
 	this.Eliminar=function(idEmpresa,idSucursal,id)
 	{
 		Confirm("¿Realmente desa eliminar esta Bitácora?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2662,7 +2767,7 @@ function fnBitacora()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2684,22 +2789,18 @@ function fnReporte()
 			data	: $("#frm_reporte").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			$("#bodyreport").html(resp);
 			$('#btnDescarga').removeClass('disabled');
 			$('#btnDescarga').attr('disabled', '');
 			$('#btnDescarga').prop('disabled', false);
-			if($("#reporttable").length>0 && $("#reporttablebody")[0].rows.length>0)
-			{
-				$("#reporttable").DataTable();
-			}
 			if(typeof $(resp)[4]!=="undefined")
 				console.log($(resp)[4].nodeValue);
 			else
 				console.log($(resp)[2].nodeValue);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Error al generar reporte: "+mensaje+"<br />"+jqXHRObj.responseText);
 			},500);
@@ -2715,14 +2816,14 @@ function fnReporte()
 			data	: $("#frm_reporte").serialize()
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			if(resp.length>250)
 				setTimeout(function(){Alert(resp,function(){return true;});},500);
 			else
 				location.href=resp;
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al generar reporte: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return false;});
 			},500);
@@ -2765,7 +2866,7 @@ function fnGrupo()
 					Mensaje(resp);
 			});
 			ajx.fail(function(jqXHRObj,mensaje){
-				$.msg('unblock',10 );
+				closeModal();
 				setTimeout(function(){
 					Mensaje("Error al guardar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 				},500)
@@ -2775,7 +2876,7 @@ function fnGrupo()
 	this.Eliminar=function(id)
 	{
 		Confirm("¿Realmente desa eliminar este Grupo?",function(){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Mensaje("Eliminando");
 				var ajx=$.ajax({
@@ -2791,7 +2892,7 @@ function fnGrupo()
 						Mensaje(resp);
 				});
 				ajx.fail(function(jqXHRObj,mensaje){
-					$.msg('unblock',10 );
+					closeModal();
 					setTimeout(function(){
 						Mensaje("Error al eliminar los datos: "+mensaje+"<br />"+jqXHRObj.responseText);
 					},500);
@@ -2808,7 +2909,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				var elems=$("#frm_grupo_sucursales").val().trim().split(",");
 				$("#frm_grupo_sucursales")[0].value="";
@@ -2820,7 +2921,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al obtener lista de sucursales: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2835,7 +2936,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				var elems=$("#frm_grupo_clientes").val().trim().split(",");
 				$("#frm_grupo_clientes")[0].value="";
@@ -2848,7 +2949,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al obtener lista de clientes: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -2863,7 +2964,7 @@ function fnGrupo()
 			cache:	false
 		});
 		ajx.done(function(resp){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				var elems=$("#frm_grupo_generadores").val().trim().split(",");
 				$("#frm_grupo_generadores")[0].value="";
@@ -2875,7 +2976,7 @@ function fnGrupo()
 			},500);
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
-			$.msg('unblock',10 );
+			closeModal();
 			setTimeout(function(){
 				Alert("Error al obtener lista de generadores: "+mensaje+"<br />"+jqXHRObj.responseText,function(){return true;});
 			},500);
@@ -3085,29 +3186,7 @@ var Calendario	= new fnCalendario();
 var Bitacora	= new fnBitacora();
 var Reporte		= new fnReporte();
 var Grupo		= new fnGrupo();
-if( $.fn.dataTable && $.fn.dataTable.defaults ) {
-	$.extend(true, $.fn.dataTable.defaults, {
-		"scrollY": 400,
-		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todo"]],
-		"language": {
-		    "lengthMenu":	"Mostrar _MENU_ registros por página",
-		    "zeroRecords":	"No se encontraron resultados",
-		    "info":			"Página _PAGE_ de _PAGES_",
-		    "infoEmpty":	"No hay resultados que mostrar",
-		    "infoFiltered":	"(filtro de _MAX_ registros en total)",
-		    "emptyTable":	"No hay resultados que mostrar",
-		    "search":		"Buscar:",
-		    "paginate": {
-				"first":    "<span class=\"glyphicon glyphicon-fast-backward\"></span>",
-				"previous": "<span class=\"glyphicon glyphicon-backward\"></span>",
-				"next":     "<span class=\"glyphicon glyphicon-forward\"></span>",
-				"last":     "<span class=\"glyphicon glyphicon-fast-forward\"></span>"
-			},
-			"decimal": ".",
-	        "thousands": ","
-		},
-		"searching": false,
-		"pagingType": "full_numbers",
-		"order": [[ 0, "asc" ]]
-	});
-}
+
+$( document ).ready( function(){
+	$( "thead th.sortable" ).attr( 'title', "Clic para ordenar" );
+} );

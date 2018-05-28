@@ -1,20 +1,19 @@
 <!-- Vista sucursales/index -->
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(24)): ?>
-			<button type="button" class="btn btn-default" title="Nueva Sucursal" onclick="location.href='<?= base_url('sucursales/nuevo/'.$idempresa);?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Nueva Sucursal" onclick="location.href='<?= base_url('sucursales/nuevo/'.$idempresa);?>';">
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Sucursales</h3>
-	<form class="form-horizontal" role="form" method="post" id="frm_prefer">
-		<div class="form-group">
-			<label for="frm_prefer_empresa" class="col-sm-2 control-label">Empresa</label>
-			<div class="col-sm-10">
+	<form autocomplete="off" method="post" id="frm_prefer">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_empresa">Empresa</label>
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'sucursales/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>
@@ -23,12 +22,11 @@
 			</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Sucursal</th>
-					<th>Representante</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Sucursal</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Representante</th>
 					<th>Ubicación</th>
 				</tr>
 			</thead>
@@ -39,7 +37,7 @@
 					<th>Ubicación</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($sucursales!==false) foreach($sucursales as $sucursal): ?>
 				<tr>
 					<td>
@@ -60,9 +58,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>
 <!-- Vista sucursales/index End -->

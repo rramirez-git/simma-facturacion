@@ -15,16 +15,26 @@
 		<link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('project_files/img/icon/apple-touch-icon-144x144.png'); ?>" />
 		<link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('project_files/img/icon/apple-touch-icon-152x152.png'); ?>" />
 		<meta name="apple-mobile-web-app-title" content="SIMMA | Servicios Industriales para el manejo del medio ambiente.">
-		<script src="<?= base_url('project_files/js/jquery-2.1.4.min.js'); ?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('project_files/css/bootstrap-4.1.0/css/bootstrap.min.css'); ?>" />
+		<script src="<?= base_url('project_files/js/jquery-3.3.1.min.js'); ?>"></script>
+		<script src="<?= base_url('project_files/js/popper.min.js'); ?>"></script>
 		<script src="<?= base_url('project_files/js/vendor/modernizr.js'); ?>"></script>
+		<script type="text/javascript" src="<?= base_url('project_files/css/bootstrap-4.1.0/js/bootstrap.min.js'); ?>"></script>
 		<!-- jQuery MSG plugin -->
 		<script type="text/javascript" src="<?= base_url('project_files/msg/jquery.center.min.js'); ?>"></script>
 		<script type="text/javascript" src="<?= base_url('project_files/msg/jquery.msg.min.js'); ?>"></script>
 		<link media="screen" href="<?= base_url('project_files/msg/jquery.msg.css'); ?>" rel="stylesheet" type="text/css">
 		<script src="<?= base_url('project_files/js/app.js'); ?>"></script>
+		<script src="<?= base_url('project_files/js/generic.js'); ?>"></script>
+		<script src="<?= base_url('project_files/js/handlebars-v1.1.2.js'); ?>"></script>
 		<script type="text/javascript">
 			var baseURL='<?= base_url(); ?>';
 		</script>
+		<style type="text/css">
+			.row.homebrand {
+				display: block !important;
+			}
+		</style>
 	</head>
 	<body class="home" style="background-image: url('<?= base_url('project_files/img/sistema/bg.jpg'); ?>');">
 		<ul id="cbp-bislideshow" class="cbp-bislideshow">
@@ -35,7 +45,7 @@
 		<div class="row homebrand">
 			<div class="large-12">
 				<div class="page-canvas">
-					<form id="frm_acceso" class="form-signin" role="form" onsubmit="return false;">
+					<form autocomplete="off" id="frm_acceso" class="form-signin" onsubmit="return false;">
 						<a href="<?= base_url(); ?>">
 							<img src="<?= base_url('project_files/img/sistema/simma-login.png'); ?>" width="336" height="82" class="brand animated fadeInDown">
 						</a>
@@ -60,6 +70,27 @@
 		<script src="<?= base_url('project_files/js/foundation.min.js'); ?>"></script>
 		<script>
 			$(document).foundation();
+		</script>
+		<div id="panel-div"></div>
+		<script id="modal-panel-scr" type="text/x-handlebars-template">
+			<div class="modal fade" role="dialog" id="modal-panel">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">{{{title}}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							{{{body}}}
+						</div>
+						<div class="modal-footer">
+							{{{footer}}}
+						</div>
+					</div>
+				</div>
+			</div>
 		</script>
 	</body>
 </html>

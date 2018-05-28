@@ -8,16 +8,18 @@ class Modrecoleccion extends CI_Model
 	private $unidad;
 	private $idresiduo;
 	private $idmanifiesto;
+	private $cantidad_unidad;
 	public function __constructor()
 	{
 		parent::__construct();
 		$this->idrecoleccion=0;
 		$this->contenedorcapacidad="";
 		$this->contenedortipo="";
-		$this->cantidad="";
+		$this->cantidad=0.0;
 		$this->unidad="";
 		$this->idresiduo=0;
 		$this->idmanifiesto=0;
+		$this->cantidad_unidad = 0.0;
 	}
 	public function getIdrecoleccion() { return $this->idrecoleccion; }
 	public function getContenedorcapacidad() { return $this->contenedorcapacidad; }
@@ -26,6 +28,7 @@ class Modrecoleccion extends CI_Model
 	public function getUnidad() { return $this->unidad; }
 	public function getIdresiduo() { return $this->idresiduo; }
 	public function getIdmanifiesto() { return $this->idmanifiesto; }
+	public function getCantidad_unidad() { return $this->cantidad_unidad; }
 	public function setIdrecoleccion($valor) { $this->idrecoleccion= intval($valor); }
 	public function setContenedorcapacidad($valor) { $this->contenedorcapacidad= "".$valor; }
 	public function setContenedortipo($valor) { $this->contenedortipo= "".$valor; }
@@ -33,6 +36,7 @@ class Modrecoleccion extends CI_Model
 	public function setUnidad($valor) { $this->unidad= "".$valor; }
 	public function setIdresiduo($valor) { $this->idresiduo= intval($valor); }
 	public function setIdmanifiesto($valor) { $this->idmanifiesto= intval($valor); }
+	public function setCantidad_unidad( $valor ) { $this->cantidad_unidad = floatval( $valor ); }
     public function getFromDatabase($id=0)
 	{
 		if($this->idrecoleccion==""||$this->idrecoleccion==0)
@@ -53,6 +57,7 @@ class Modrecoleccion extends CI_Model
 		$this->setContenedortipo($reg["contenedortipo"]);
 		$this->setCantidad($reg["cantidad"]);
 		$this->setUnidad($reg["unidad"]);
+		$this->setCantidad_unidad( $reg[ "cantidad_unidad" ] );
 		$this->db->where('idrecoleccion',$this->idrecoleccion);
 		$regs=$this->db->get('relresrec');
 		$this->db->reset_query();
@@ -77,6 +82,7 @@ class Modrecoleccion extends CI_Model
 		$this->setContenedorcapacidad($this->input->post("frm_recoleccion_contenedorcapacidad"));
 		$this->setContenedortipo($this->input->post("frm_recoleccion_contenedortipo"));
 		$this->setCantidad($this->input->post("frm_recoleccion_cantidad"));
+		$this->setCantidad_unidad( $this->input->post( "frm_recoleccion_cantidad_unidad" ) );
 		$this->setUnidad($this->input->post("frm_recoleccion_unidad"));
 		$this->setIdresiduo($this->input->post("frm_recoleccion_idresiduo"));
 		$this->setIdmanifiesto($this->input->post("frm_recoleccion_idmanifiesto"));
@@ -88,6 +94,7 @@ class Modrecoleccion extends CI_Model
 			"contenedorcapacidad"=>$this->contenedorcapacidad,
 			"contenedortipo"=>$this->contenedortipo,
 			"cantidad"=>$this->cantidad,
+			"cantidad_unidad"=>$this->cantidad_unidad,
 			"unidad"=>$this->unidad
 		);
 		$this->db->insert('recoleccion',$data);
@@ -115,7 +122,8 @@ class Modrecoleccion extends CI_Model
 			"contenedorcapacidad"=>$this->contenedorcapacidad,
 			"contenedortipo"=>$this->contenedortipo,
 			"cantidad"=>$this->cantidad,
-			"unidad"=>$this->unidad
+			"unidad"=>$this->unidad,
+			"cantidad_unidad"=>$this->cantidad_unidad
 		);
 	}
 	public function delete($id=0)

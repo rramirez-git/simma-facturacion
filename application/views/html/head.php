@@ -26,10 +26,13 @@
 <!-- Bootstrap & jQuery -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="<?= base_url('project_files/bootstrap/css/bootstrap.min.css'); ?>" />
-<!--<link rel="stylesheet" type="text/css" href="<?= base_url('project_files/bootstrap/css/bootstrap-theme.min.css'); ?>" />-->
-<script src="<?= base_url('project_files/js/jquery-2.1.4.min.js'); ?>"></script>
-<script type="text/javascript" src="<?= base_url('project_files/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?= base_url('project_files/css/bootstrap-4.1.0/css/bootstrap.min.css'); ?>" />
+<script src="<?= base_url('project_files/js/jquery-3.3.1.min.js'); ?>"></script>
+<script src="<?= base_url('project_files/js/popper.min.js'); ?>"></script>
+<script src="<?= base_url('project_files/js/handlebars-v1.1.2.js'); ?>"></script>
+<script src="<?= base_url('project_files/fonts/fontawesome-5.0.10/js/fontawesome-all.min.js'); ?>"></script>
+<script type="text/javascript" src="<?= base_url('project_files/css/bootstrap-4.1.0/js/bootstrap.min.js'); ?>"></script>
+<script src="<?= base_url('project_files/js/generic.js'); ?>"></script>
 <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
 <!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

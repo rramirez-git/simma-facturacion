@@ -1,17 +1,16 @@
 <?= $menumain; ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(88)): ?>
-			<button type="button" class="btn btn-default" title="Nuevo Usuario" onclick="location.href='<?= base_url('usuarios/nuevo');?>';">
-				<span class="glyphicon glyphicon-list-alt"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Nuevo Usuario" onclick="location.href='<?= base_url('usuarios/nuevo');?>';">
+				<i class="far fa-file-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
 	<h3>Usuarios</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -53,5 +52,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>

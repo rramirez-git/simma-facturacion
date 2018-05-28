@@ -6,188 +6,165 @@ $objsucursal=new Modsucursal();
 $objempresa=new Modempresa();
 ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(7)): ?>
-			<button type="button" class="btn btn-default" title="Ver todas las Sucurales" onclick="location.href='<?= base_url('sucursales/index/'.$objeto->getIdEmpresa()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver todas las Sucurales" onclick="location.href='<?= base_url('sucursales/index/'.$objeto->getIdEmpresa()); ?>';">
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(57)):?>
-			<button type="button" class="btn btn-default" title="Ver la Empresa Asociada" onclick="location.href='<?= base_url('empresas/ver/'.$objeto->getIdEmpresa()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver la Empresa Asociada" onclick="location.href='<?= base_url('empresas/ver/'.$objeto->getIdEmpresa()); ?>';">
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(50)):?>
-			<button type="button" class="btn btn-default" title="Actualizar Sucursal" onclick="location.href='<?= base_url('sucursales/actualizar/'.$objeto->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-edit"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Actualizar Sucursal" onclick="location.href='<?= base_url('sucursales/actualizar/'.$objeto->getIdsucursal()); ?>';">
+				<i class="far fa-edit"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(51)):?>
-			<button type="button" class="btn btn-default" title="Borrar Sucursal" onclick="Sucursal.Eliminar(<?= $objeto->getIdempresa(); ?>,<?= $objeto->getIdsucursal(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Sucursal" onclick="Sucursal.Eliminar(<?= $objeto->getIdempresa(); ?>,<?= $objeto->getIdsucursal(); ?>)">
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
-	<h3>Sucursales <small><?= $objeto->getNombre(); ?></small></h3>
-	<form class="form-horizontal" role="form" id="frm_sucursales" method="post">
-		<div class="form-group">
-			<label for="frm_sucursal_nombre" class="col-sm-2 control-label">Razón Social</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getNombre(); ?></p>
+	<h3>Sucursales <small class="text-muted"><?= $objeto->getNombre(); ?></small></h3>
+	<form autocomplete="off" id="frm_sucursales" method="post">
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_nombre">Razón Social</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_iniales" class="col-sm-2 control-label">Iniciales</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getIniciales(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_iniales">Iniciales</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getIniciales(); ?>" />
 			</div>
 		</div>
 		<h5>Facturación</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_fac_serie" class="col-sm-2 control-label">Número de Serie</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_serie(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_fac_serie">Número de Serie</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_serie(); ?>" />
 			</div>
-			<label for="frm_sucursal_fac_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_folio_actual(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_fac_folio_actual">Número de Folio Actual</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_folio_actual(); ?>" />
+			</div><div class="form-group col">
+			<label for="frm_sucursal_fac_folio_incial">Número de Folio Inicial</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_folio_incial(); ?>" />
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_fac_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_folio_incial(); ?></p>
-			</div>
-			<label for="frm_sucursal_fac_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getFac_folio_final(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_fac_folio_final">Número de Folio Final</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_folio_final(); ?>" />
 			</div>
 		</div>
 		<h5>Notas de Crédito</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_nc_serie" class="col-sm-2 control-label">Número de Serie</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_serie(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_nc_serie">Número de Serie</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_serie(); ?>" />
 			</div>
-			<label for="frm_sucursal_nc_folio_actual" class="col-sm-2 control-label">Número de Folio Actual</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_folio_actual(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_nc_folio_actual">Número de Folio Actual</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_folio_actual(); ?>" />
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_nc_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_folio_incial(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_nc_folio_incial">Número de Folio Inicial</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_folio_incial(); ?>" />
 			</div>
-			<label for="frm_sucursal_nc_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNc_folio_final(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_nc_folio_final">Número de Folio Final</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_folio_final(); ?>" />
 			</div>
 		</div>
 		<h5>Pagos</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_pago_serie" class="col-sm-2 control-label">Número de Serie</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getPago_serie(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_pago_serie">Número de Serie</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_serie(); ?>" />
 			</div>
-			<label for="frm_sucursal_pago_folio_actual" class="col-sm-2 control-label">Número de folio Actual</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getPago_folio_actual(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_pago_folio_actual">Número de folio Actual</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_folio_actual(); ?>" />
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_pago_folio_incial" class="col-sm-2 control-label">Número de Folio Inicial</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getPago_folio_incial(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_pago_folio_incial">Número de Folio Inicial</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_folio_incial(); ?>" />
 			</div>
-			<label for="frm_sucursal_pago_folio_final" class="col-sm-2 control-label">Número de Folio Final</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getPago_folio_final(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_pago_folio_final">Número de Folio Final</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_folio_final(); ?>" />
 			</div>
 		</div>
 		<h5>Dirección</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_calle" class="col-sm-2 control-label">Calle</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getCalle(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_calle">Calle</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
+			</div>
+			<div class="form-group col">
+		    <label for="frm_sucursal_cp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_numexterior" class="col-sm-2 control-label">Número Exterior</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNumexterior(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_numexterior">Número Exterior</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumexterior(); ?>" />
 			</div>
-			<label for="frm_sucursal_numinterior" class="col-sm-2 control-label">Número Interior</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getNuminterior(); ?></p>
-			</div>
-		</div>
-		<div class="form-group">
-		    <label for="frm_sucursal_cp" class="col-sm-2 control-label">Código Postal</label></span>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCp(); ?></p>
-			</div>
-			<label for="frm_sucursal_colonia" class="col-sm-2 control-label">Colonia</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getColonia(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_numinterior">Número Interior</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_municipio" class="col-sm-2 control-label">Delegación o Municipio</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getMunicipio(); ?></p>
+		<div class="form-row">
+			<div class="form-group col">
+			<label for="frm_sucursal_colonia">Colonia</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
 			</div>
-			<label for="frm_sucursal_estado" class="col-sm-2 control-label">Estado</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getEstado(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_municipio">Delegación o Municipio</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_sucursal_estado">Estado</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getEstado(); ?>" />
 			</div>
 		</div>
 		<h5>Contacto</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_representante" class="col-sm-2 control-label">Representante</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getRepresentante(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_representante">Representante</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="frm_sucursal_cargorepresentante" class="col-sm-2 control-label">Cargo</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getCargorepresentante(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_cargorepresentante">Cargo</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCargorepresentante(); ?>" />
 			</div>
-			<label for="frm_sucursal_telefono" class="col-sm-2 control-label">Teléfono</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getTelefono(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_telefono">Teléfono</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getTelefono(); ?>" />
 			</div>
 		</div>
 		<h5>Legal</h5>
-		<div class="form-group">
-			<label for="frm_sucursal_autsemarnat" class="col-sm-2 control-label">Número de Autorización SEMARNAT</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getAutsemarnat(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_autsemarnat">Número de Autorización SEMARNAT</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getAutsemarnat(); ?>" />
 			</div>
-			<label for="frm_sucursal_registrosct" class="col-sm-2 control-label">Número de Registro SCT</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $objeto->getRegistrosct(); ?></p>
+			<div class="form-group col">
+			<label for="frm_sucursal_registrosct">Número de Registro SCT</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getRegistrosct(); ?>" />
 			</div>
 		</div>
-		<!--<div class="form-group">
-			<label for="frm_sucursal_numregamb" class="col-sm-2 control-label">Número de Registro Ambiental <abbr class="text-danger" title="Campo Obligatorio">(*)</abbr></label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $objeto->getNumregamb(); ?></p>
+		<!--<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_numregamb">Número de Registro Ambiental <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumregamb(); ?>" />
 			</div>
 		</div>-->
 		<?php if($this->modsesion->hasPermisoHijo(8) && count($operadores)>0): ?>
 			<h5>Operadores</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Cargo</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 1, 'asc' )">Nombre</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 2, 'asc' )">Cargo</th>
 							<th>Teléfono</th>
-							<th>Correo Electrónico</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 4, 'asc' )">Correo Electrónico</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -198,7 +175,7 @@ $objempresa=new Modempresa();
 							<th>Correo Electrónico</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-ope">
 						<?php if($operadores!==false) foreach($operadores as $operador): ?>
 							<tr>
 								<td>
@@ -215,18 +192,16 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(9) && count($vehiculos)>0): ?>
 			<h5>Vehiculos</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Placa</th>
-							<th>Número de Autorizacion SCT</th>
-							<th>Número de Autorizacion SEMARNAT</th>
-							<th>Tipo de Vehículo</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 1, 'asc' )">Placa</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 2, 'asc' )">Número de Autorizacion SCT</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 3, 'asc' )">Número de Autorizacion SEMARNAT</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 4, 'asc' )">Tipo de Vehículo</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -237,7 +212,7 @@ $objempresa=new Modempresa();
 							<th>Tipo de Vehículo</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-veh">
 						<?php if($vehiculos!==false) foreach($vehiculos as $vehiculo): ?>
 							<tr>
 								<td>
@@ -252,19 +227,17 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(52) && count($rutas)>0):?>
 			<h5>Rutas</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Número de Ruta</th>
-							<th>Nombre</th>
-							<th>Descripcion</th>
-							<th>Destino Final</th>
-							<th>Transportista</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 1, 'asc' )">Número de Ruta</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 2, 'asc' )">Nombre</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 3, 'asc' )">Descripcion</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 4, 'asc' )">Destino Final</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 5, 'asc' )">Transportista</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -276,7 +249,7 @@ $objempresa=new Modempresa();
 							<th>Transportista</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-rut">
 						<?php if($rutas!==false) foreach($rutas as $ruta): ?>
 							<tr>
 								<td>
@@ -311,11 +284,7 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; ?>
 	</form>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){$("div.table-responsive table").DataTable();});
-</script>
 <!-- Vista sucursales/vista End -->

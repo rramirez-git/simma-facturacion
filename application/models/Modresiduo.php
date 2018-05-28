@@ -13,6 +13,7 @@ class ModResiduo extends CI_Model
 	private $reportecoa;
 	private $idsucursal;
 	private $tiporesiduo;
+	private $mostrar_default;
 	public function __construct()
 	{
 		parent::__construct();
@@ -28,6 +29,7 @@ class ModResiduo extends CI_Model
 		$this->reportecoa=0;
 		$this->idsucursal=0;
 		$this->tiporesiduo="";
+		$this->mostrar_default = 0;
 	}
 	public function getIdresiduo() { return $this->idresiduo; }
 	public function getNombre() { return $this->nombre; }
@@ -41,6 +43,7 @@ class ModResiduo extends CI_Model
 	public function getReportecoa() { return $this->reportecoa; }
 	public function getIdsucursal() { return $this->idsucursal; }
 	public function getTiporesiduo() { return $this->tiporesiduo; }
+	public function getMostrar_default() { return $this->mostrar_default; }
 	public function setIdresiduo($valor) { $this->idresiduo= intval($valor); }
 	public function setNombre($valor) { $this->nombre= "".$valor; }
 	public function setNom052($valor) { $this->nom052= "".$valor; }
@@ -53,6 +56,7 @@ class ModResiduo extends CI_Model
 	public function setReportecoa($valor) { $this->reportecoa= intval($valor); }
 	public function setIdsucursal($valor) { $this->idsucursal= intval($valor); }
 	public function setTiporesiduo($valor) { $this->tiporesiduo= "".$valor; }
+	public function setMostrar_default( $valor ) { $this->mostrar_default = intval( $valor ); }
 	public function getFromDatabase($id=0)
 	{
 		if($this->idresiduo==""||$this->idresiduo==0)
@@ -79,6 +83,7 @@ class ModResiduo extends CI_Model
 		$this->setB($reg["B"]);
 		$this->setReportecoa($reg["reportecoa"]);
 		$this->setTiporesiduo($reg["tiporesiduo"]);
+		$this->setMostrar_default( $reg[ "mostrar_default" ] );
 		$this->db->where('idresiduo',$this->idresiduo);
 		$regs=$this->db->get('relsucres');
 		$this->db->reset_query();
@@ -102,6 +107,7 @@ class ModResiduo extends CI_Model
 		$this->setReportecoa($this->input->post("frm_residuo_reportecoa"));
 		$this->setIdsucursal($this->input->post("frm_residuo_idsucursal"));
 		$this->setTiporesiduo($this->input->post("frm_residuo_tiporesiduo"));
+		$this->setMostrar_default( $this->input->post( "frm_residuo_mostrar_default" ) );
 		return true;
 	}
 	public function addToDatabase()
@@ -116,7 +122,8 @@ class ModResiduo extends CI_Model
 			"I"=>$this->I,
 			"B"=>$this->B,
 			"reportecoa"=>$this->reportecoa,
-			"tiporesiduo"=>$this->tiporesiduo
+			"tiporesiduo"=>$this->tiporesiduo,
+			"mostrar_default"=>$this->mostrar_default
 		);
 		$this->db->insert('residuo',$data);
 		$this->setIdresiduo($this->db->insert_id());
@@ -144,7 +151,8 @@ class ModResiduo extends CI_Model
 			"I"=>$this->I,
 			"B"=>$this->B,
 			"reportecoa"=>$this->reportecoa,
-			"tiporesiduo"=>$this->tiporesiduo
+			"tiporesiduo"=>$this->tiporesiduo,
+			"mostrar_default" => $this->mostrar_default
 		);
 		$this->db->where('idresiduo',$this->idresiduo);
 		$this->db->update('residuo',$data);

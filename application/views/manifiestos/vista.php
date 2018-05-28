@@ -16,73 +16,73 @@ $sucursal->getFromDatabase();
 $total=0.0;
 ?>
 <div class="container">
-	<div class="btn-toolbar pull-right" role="toolbar">
-		<div class="btn-group">
+	<div class="btn-toolbar float-right" role="toolbar">
+		<div class="btn-group" role="group">
 			<?php if($this->modsesion->hasPermisoHijo(18)): ?>
-			<button type="button" class="btn btn-default" title="Ver todos los Manifiestos" onclick="location.href='<?= base_url('manifiestos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-th-list"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver todos los Manifiestos" onclick="location.href='<?= base_url('manifiestos/index/'.$sucursal->getIdempresa().'/'.$sucursal->getIdsucursal()); ?>';">
+				<i class="fas fa-th-list"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(25)): ?>
-			<button type="button" class="btn btn-default" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
-				<span class="glyphicon glyphicon-eye-open"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Ver la Sucursal Asociada" onclick="location.href='<?= base_url('sucursales/ver/'.$sucursal->getIdsucursal()); ?>';">
+				<i class="fas fa-eye"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(42)): ?>
-			<button type="button" class="btn btn-default" title="Capturar Kilos" onclick="Manifiesto.FrmCapturaKilos(<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-pencil"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Capturar Kilos" onclick="Manifiesto.FrmCapturaKilos(<?= $manifiesto->getIdmanifiesto(); ?>)">
+				<i class="fas fa-pencil-alt"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(43)): ?>
-			<button type="button" class="btn btn-default" title="Imprimir Manifiesto" onclick="Manifiesto.Imprimir(<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-print"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Imprimir Manifiesto" onclick="Manifiesto.Imprimir(<?= $manifiesto->getIdmanifiesto(); ?>)">
+				<i class="fas fa-print"></i>
 			</button>
 			<?php endif;
 			if($this->modsesion->hasPermisoHijo(44)): ?>
-			<button type="button" class="btn btn-default" title="Borrar Manifiesto" onclick="Manifiesto.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $manifiesto->getIdmanifiesto(); ?>)">
-				<span class="glyphicon glyphicon-trash"></span>
+			<button type="button" class="btn btn-outline-secondary" title="Borrar Manifiesto" onclick="Manifiesto.Eliminar(<?= $sucursal->getIdempresa(); ?>,<?= $sucursal->getIdsucursal(); ?>,<?= $manifiesto->getIdmanifiesto(); ?>)">
+				<i class="far fa-trash-alt"></i>
 			</button>
 			<?php endif; ?>
 		</div>
 	</div>
-	<h3>Manifiesto <small><?= $manifiesto->getIdentificador().($manifiesto->getNoexterno()!=""?" (No. Externo: {$manifiesto->getNoexterno()})":""); ?></small></h3>
-	<form class="form-horizontal" role="form" id="frm_manifiesto">
+	<h3>Manifiesto <small class="text-muted"><?= $manifiesto->getIdentificador().($manifiesto->getNoexterno()!=""?" (No. Externo: {$manifiesto->getNoexterno()})":""); ?></small></h3>
+	<form autocomplete="off" id="frm_manifiesto">
 		<h5>Generador</h5>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Cliente</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label>Cliente</label>
+				<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>" />
 			</div>
-			<?php if ($manifiesto->getFecha_captura() != "" && $manifiesto->getFecha_captura() != "0000-00-00 00:00:00" ) { ?>
-			<label class="col-sm-2 control-label" id="captura_fec">Fecha de Captura:</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?> </p>
+			<div class="form-group col">
+			<label>Generador</label>
+				<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>" />
 			</div>
-			<?php } ?>
+			<div class="form-group col">
+			<label>Responsable</label>
+				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?>" />
+			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Generador</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></p>
+		<div class="form-row">
+			<div class="form-group col">
+			<label id="captura_fec">Fecha Programada:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha(), 0, 10) ); ?>" />
 			</div>
-			<?php if ($manifiesto->getCapturista() != "") { ?>
-			<label class="col-sm-2 control-label">Capturista:</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $manifiesto->getCapturista( ); ?></p>
+			<div class="form-group col">
+			<label id="captura_fec">Fecha de Ebarque:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFechaEmbarque(), 0, 10) ); ?>" />
 			</div>
-			<?php } ?>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Responsable</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?></p>
+			<div class="form-group col">
+			<label id="captura_fec">Fecha de Captura:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?>" />
+			</div>
+			<div class="form-group col">
+			<label>Capturista:</label>
+				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getCapturista( ); ?>" />
 			</div>
 		</div>
 		<h5>Facturacion</h5>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Esquema de Facturación</label>
-			<div class="col-sm-8">
-				<p class="form-control-static"><?php
+		<div class="form-row"><div class="form-group col">
+			<label>Esquema de Facturación</label>
+				<input class="form-control" disabled="disabled" value="<?php
 				foreach( $tipos_cobro[ 'opciones' ] as $opc ) {
 					if( $opc[ 'idcatalogodet' ] == $tipo_cobro->getTipocobro() ) {
 						echo $opc[ 'descripcion'] . " / ";
@@ -100,21 +100,19 @@ $total=0.0;
 						echo " (" . $opc[ 'descripcion'] . ")";
 					}
 				}
-				?></p>
+				?>" />
 			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
+			<div class="form-group col">
+			<label>Factura Asociada</label>
+				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?>" />
+			</div>
+		</div>
+		<div class="form-group col">
+			<div class="form-group col">
 					<label>
 						<input type="checkbox" value="1" id="frm_manifiesto_facturable" name="frm_manifiesto_facturable" <?= ($manifiesto->getFacturable()==1?'checked="checked"':''); ?> disabled="disabled" />
 						Facturable
 					</label>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Factura Asociada</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?></p>
 			</div>
 		</div>
 		<h5>Transportista</h5>
@@ -124,26 +122,22 @@ $total=0.0;
 		$empresa->setIdempresa($sucursal->getIdempresa());
 		$empresa->getFromDatabase();
 		?>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Razon Social</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?></p>
-			</div>			
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Ruta</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></p>
-			</div>			
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Operador</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $operador->getNombre()." ".$operador->getApaterno()." ".$operador->getAmaterno(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label>Razon Social</label>
+				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
 			</div>
-			<label class="col-sm-2 control-label">Vehiculo</label>
-			<div class="col-sm-4">
-				<p class="form-control-static"><?= $vehiculo->getPlaca()." (".$vehiculo->getTipo().")"; ?></p>
+			<div class="form-group col">
+			<label>Ruta</label>
+				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
+			</div>			
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label>Operador</label>
+				<input class="form-control" disabled="disabled" value="<?= $operador->getNombre()." ".$operador->getApaterno()." ".$operador->getAmaterno(); ?>" />
+			</div>
+			<div class="form-group col">
+			<label>Vehiculo</label>
+				<input class="form-control" disabled="disabled" value="<?= $vehiculo->getPlaca()." (".$vehiculo->getTipo().")"; ?>" />
 			</div>
 		</div>
 		<h5>Planta de Tratamiento</h5>
@@ -153,32 +147,29 @@ $total=0.0;
 		$empresa->setIdempresa($sucursal->getIdempresa());
 		$empresa->getFromDatabase();
 		?>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Razon Social</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?></p>
-			</div>			
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Representante</label>
-			<div class="col-sm-10">
-				<p class="form-control-static"><?= $sucursal->getRepresentante(); ?></p>
+		<div class="form-row"><div class="form-group col">
+			<label>Razon Social</label>
+				<input class="form-control" disabled="disabled" value="<?= $empresa->getRazonsocial()." (".$sucursal->getNombre().")"; ?>" />
+			</div>
+			<div class="form-group col">
+			<label>Representante</label>
+				<input class="form-control" disabled="disabled" value="<?= $sucursal->getRepresentante(); ?>" />
 			</div>			
 		</div>
 		<h5>Recolección</h5>
 		<?php if($motivo!="" && $motivo>0) foreach($motivos as $cat) foreach($cat["opciones"] as $opc) if($motivo==$opc["idcatalogodet"]): ?>
 			<?= $opc["descripcion"]; ?> (<?= $cat["descripcion"]; ?>)
 		<?php endif; ?>
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover table-sm table-responsive">
 				<thead>
 					<tr>
 						<th>Residuo</th>
 						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
-						<th>Cantidad Total</th>
-						<!--<th>Unidad de Volumen</th>-->
+						<th>Cantidad (kg)</th>
+						<th>Unidad</th>
+						<th>Cantidad en Unidad</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -187,8 +178,9 @@ $total=0.0;
 						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
-						<th>Cantidad Total</th>
-						<!--<th>Unidad de Volumen</th>-->
+						<th>Cantidad (kg)</th>
+						<th>Unidad</th>
+						<th>Cantidad en Unidad</th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -198,8 +190,13 @@ $total=0.0;
 							<td><?php echo $r[ 'residuo' ][ 'opcion' ]; ?></td>
 							<!--<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedorcapacidad"]:""); ?></td>
 							<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedortipo"]:""); ?></td>-->
-							<td class="numero"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:""); ?></td>
-							<!--<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["unidad"]:""); ?></td>-->
+							<td class="numero kilos"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:""); ?></td>
+							<td>
+								<?php if( false != $r["recoleccion"] ) foreach( $unidades[ "opciones" ] as $und ) if( $und[ "idcatalogodet" ] == $r["recoleccion"]["unidad"] ) :?>
+									<?php echo $und[ "descripcion" ]; ?>
+								<?php endif; ?>
+							</td>
+							<td class="numero"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad_unidad"]:""); ?></td>
 						</tr>
 					<?php 
 					$total+=floatval(($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:"0"));
@@ -208,10 +205,11 @@ $total=0.0;
 						<td><strong>Total</strong></td>
 						<td></td>
 						<td class="numero"><strong><?= number_format($total,3); ?></strong></td>
+						<td></td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
 	</form>
 </div>
 <script type="text/javascript">
