@@ -63,6 +63,9 @@
 		</div>
 		<h5>Búscar Manifiesto:</h5>
 		<div class="form-row"><div class="form-group col">
+			<label for="frm_prefer_identificador_bitacora">No. de Bitácora</label>
+				<input type="text" class="form-control" id="frm_prefer_identificador_bitacora" name="frm_prefer_identificador_bitacora" value="<?= $filtros["identificador_bitacora"]; ?>" />
+			</div><div class="form-group col">
 			<label for="frm_prefer_identificador">No. de Manifiesto</label>
 				<input type="text" class="form-control" id="frm_prefer_identificador" name="frm_prefer_identificador" value="<?= $filtros["identificador"]; ?>" />
 			</div>
@@ -157,19 +160,18 @@
 		<input type="hidden" name="action" id="action" value="" />
 		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.Buscar()">Buscar</button>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>No. Manifiesto</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">No. Manifiesto</th>
 					<th>Fecha</th>
-					<th>No. Cliente</th>
-					<th>No. Generador</th>
-					<th>Generador</th>
-					<th>No. Ruta</th>
-					<th>Ruta</th>
-					<th>Transportista</th>
-					<th>Destino Final</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">No. Cliente</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">No. Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 5, 'asc' )">Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 6, 'asc' )">No. Ruta</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 7, 'asc' )">Ruta</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 8, 'asc' )">Transportista</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 9, 'asc' )">Destino Final</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -185,7 +187,7 @@
 					<th>Destino Final</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($manifiestos!==false) foreach($manifiestos as $manifiesto): ?>
 					<tr>
 						<td data-order="<?= Refill($manifiesto["identificador"],10,"0"); ?>">
@@ -198,17 +200,72 @@
 							<?php endif; ?>
 						</td>
 						<td><?= DateToMx($manifiesto["fecha"]); ?></td>
-						<td><?= $manifiesto["nocliente"]; ?></td>
-						<td><?= $manifiesto["nogenerador"]; ?></td>
-						<td><?= $manifiesto["generador"]; ?></td>
-						<td><?= $manifiesto["noruta"]; ?></td>
-						<td><?= $manifiesto["ruta"]; ?></td>
-						<td><?= $manifiesto["destinofinal"]; ?></td>
-						<td><?= $manifiesto["transportista"]; ?></td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+								<a href="<?= base_url( "clientes/ver/" . $manifiesto[ "idcliente" ] ); ?>">
+									<?= $manifiesto["nocliente"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["nocliente"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?= base_url( "generadores/ver/" . $manifiesto[ "idgenerador" ] ); ?>">
+									<?= $manifiesto["nogenerador"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["nogenerador"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?= base_url( "generadores/ver/" . $manifiesto[ "idgenerador" ] ); ?>">
+									<?= $manifiesto["generador"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["generador"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 65 ) ): ?>
+								<a href="<?= base_url( "rutas/ver/" . $manifiesto[ "idruta" ] ); ?>">
+									<?= $manifiesto["noruta"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["noruta"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 65 ) ): ?>
+								<a href="<?= base_url( "rutas/ver/" . $manifiesto[ "idruta" ] ); ?>">
+									<?= $manifiesto["ruta"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["ruta"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 25 ) ): ?>
+								<a href="<?= base_url( "sucursales/ver/" . $manifiesto[ "iddestinofinal" ] ); ?>">
+									<?= $manifiesto["destinofinal"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["destinofinal"]; ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 25 ) ): ?>
+								<a href="<?= base_url( "sucursales/ver/" . $manifiesto[ "idtransportista" ] ); ?>">
+									<?= $manifiesto["transportista"]; ?>
+								</a>
+							<?php else: ?>
+								<?= $manifiesto["transportista"]; ?>
+							<?php endif; ?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <!-- Vista manifiestos/index End -->

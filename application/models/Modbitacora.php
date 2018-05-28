@@ -133,10 +133,19 @@ class Modbitacora extends CI_Model
 		$this->db->update("bitacora",$data);
 		$this->db->reset_query();
 	}
-	public function getAll($idsucursal=0)
+	public function getAll($idsucursal=0, $filtros = array())
 	{
 		if($idsucursal>0)
 			$this->db->where("idbitacora in (select idbitacora from relsucbit where idsucursal=$idsucursal)");
+		if( isset( $filtros[ "identificador"] ) && "" != $filtros[ "identificador"] ) {
+			$this->db->where( "( identificador like '%" . $filtros[ "identificador"] . "%' or nombre like '%" . $filtros[ "identificador"] . "%' )" );
+		}
+		if( isset( $filtros[ "ruta" ] ) && "" != $filtros[ "ruta" ] ) {
+			$this->db->where( "idbitacora in ( select idbitacora from relbitrut where idruta in ( select idruta from ruta where identificador like '%" . $filtros[ "ruta" ] . "%' or nombre like '%" . $filtros[ "ruta" ] . "%' ) )" );
+		}
+		if( isset( $filtros[ "fecha" ] ) && "" != $filtros[ "fecha" ] ) {
+			$this->db->where( "fecha", $filtros[ "fecha" ] );
+		}
 		$this->db->order_by('nombre');
 		$regs=$this->db->get('bitacora');
 		$this->db->reset_query();

@@ -26,8 +26,7 @@
         	<label for="frm_usuario_nombre">Nombre</label>
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
         	</div>
-        </div>
-        <div class="form-row"><div class="form-group col">
+        	<div class="form-group col">
         	<label for="frm_usuario_apaterno">Apellido Paterno</label>
         		<input class="form-control" disabled="disabled" value="<?= $objeto->getApaterno(); ?>" />
         	</div>

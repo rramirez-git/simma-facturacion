@@ -10,13 +10,12 @@
 		</div>
 	</div>
 	<h3>Empresas</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Razon Social</th>
-					<th>RFC</th>
-					<th>Representante</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Razon Social</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">RFC</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">Representante</th>
 					<th>Coorporativo</th>
 					<th>Transportista</th>
 					<th>Destino Final</th>
@@ -32,7 +31,7 @@
 					<th>Destino Final</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php foreach($empresas as $empresa): ?>
 					<tr>
 						<td>
@@ -53,5 +52,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>

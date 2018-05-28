@@ -27,15 +27,14 @@
 	<h3>Residuos</h3>
 	<form autocomplete="off" id="frm_residuos">
 		<div class="form-row"><div class="form-group col">
-            <label for="frm_residuo_nombre">Residuo <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+            <label for="frm_residuo_nombre">Residuo</label>
 				<input disabled="disabled" type="text" class="form-control" id="frm_residuo_nombre" name="frm_residuo_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre del Residuo" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_residuo_nom052">Residuo Norma-052 <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="frm_residuo_nom052">Residuo Norma-052</label>
 				<input disabled="disabled" type="text" class="form-control" id="frm_residuo_nom052" name="frm_residuo_nom052" value="<?= $objeto->getNom052(); ?>" placeholder="Residuo Norma-052" />
 			</div>
-		</div>		
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_residuo_tiporesiduo">Tipo de Residuo</label>
 				<input class="form-control" disabled="disabled" value="<?php 
 						if($tiporesiduo["opciones"]!==false) 
@@ -87,6 +86,12 @@
 					<label>
 						<input disabled="disabled" type="checkbox" value="1" id="frm_residuo_reportecoa" name="frm_residuo_reportecoa" <?= ($objeto->getReportecoa()==1?'checked="checked"':''); ?> />
 						Este residuo se reporta en COA
+					</label>
+			</div>
+			<div class="form-group col">
+					<label>
+						<input disabled="disabled" type="checkbox" value="1" id="frm_residuo_mostrar_default" name="frm_residuo_mostrar_default" <?= ($objeto->getMostrar_default()==1?'checked="checked"':''); ?> />
+						Mostrar para Captura Default
 					</label>
 			</div>
 		</div>

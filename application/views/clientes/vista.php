@@ -394,14 +394,13 @@
 			</div>
 		</div>
 		<h4>Generadores</h4>
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover table-sm table-responsive">
 				<thead>
 					<tr>
-						<th>Número de Generador</th>
-						<th>Nombre</th>
+						<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Número de Generador</th>
+						<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Nombre</th>
 						<th>Ubicación</th>
-						<th>Número de Registro Ambiental</th>
+						<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">Número de Registro Ambiental</th>
 						<!--<th>Número de Registro como Generador</th>
 						<th>Servicios</th>-->
 						<th>Horario</th>
@@ -418,7 +417,7 @@
 						<th>Horario</th>
 					</tr>
 				</tfoot>
-				<tbody>
+				<tbody id="data-table">
 					<?php if($generadores!==false) foreach($generadores as $generador): ?>
 						<tr>
 							<td data-order="<?= Refill($generador["identificador"],10,"0"); ?>">
@@ -426,7 +425,11 @@
 									<?= $generador["identificador"]; ?>
 								</a>
 							</td>
-							<td><?= $generador["razonsocial"]; ?></td>
+							<td>
+								<a href="<?= base_url('generadores/ver/'.$generador["idgenerador"]); ?>">
+									<?= $generador["razonsocial"]; ?>
+								</a>
+							</td>
 							<td><?= "{$generador["municipio"]}, {$generador["estado"]}"; ?></td>
 							<td><?= $generador["numregamb"]; ?></td>
 							<!--<td><?= $generador["numreggen"]; ?></td>
@@ -444,7 +447,6 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-		</div>
 	</div>
 	<?php endif;?>
 </div>

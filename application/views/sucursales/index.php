@@ -22,12 +22,11 @@
 			</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Sucursal</th>
-					<th>Representante</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Sucursal</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Representante</th>
 					<th>Ubicación</th>
 				</tr>
 			</thead>
@@ -38,7 +37,7 @@
 					<th>Ubicación</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($sucursales!==false) foreach($sucursales as $sucursal): ?>
 				<tr>
 					<td>
@@ -59,6 +58,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <!-- Vista sucursales/index End -->

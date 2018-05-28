@@ -22,8 +22,7 @@ $generador=new Modgenerador();
 			<input class="form-control" disabled="disabled" value="<?= DateToMx($fecha); ?>" />
 		</div>
 	</div>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Cliente</th>
@@ -53,8 +52,24 @@ $generador=new Modgenerador();
 						$cliente->getFromDatabase();
 						?>
 						<tr>
-							<td><?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?></td>
-							<td><?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?></td>
+							<td>
+								<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+									<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+										<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>
+									</a>
+								<?php else: ?>
+									<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>
+								<?php endif; ?>
+							</td>
+							<td>
+								<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+									<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+										<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>
+									</a>
+								<?php else: ?>
+									<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>
+								<?php endif; ?>
+							</td>
 							<td><?= $identificador; ?></td>
 							<td><input type="checkbox" id="frm_validacion_manifiesto[]" name="frm_validacion_manifiesto[]" checked="checked" value="<?= $generador->getIdgenerador()."|".$identificador; ?>" /></td>
 						</tr>
@@ -68,7 +83,6 @@ $generador=new Modgenerador();
 				?>
 			</tbody>
 		</table>
-	</div>
 	<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
 </form>

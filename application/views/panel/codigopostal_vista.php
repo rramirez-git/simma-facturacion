@@ -21,8 +21,7 @@
 	<button type="button" class="btn btn-outline-primary" id="btnBuscarCP">Buscar</button>
 	<button type="button" class="btn btn-outline-secondary" id="btnCancelarCP">Cancelar</button>
 </form>
-<div class="table-responsive">
-	<table class="table table-striped table-hover table-condensed">
+	<table class="table table-hover table-sm table-responsive">
 		<thead>
 			<tr>
 				<th>CP</th>
@@ -54,4 +53,3 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-</div>

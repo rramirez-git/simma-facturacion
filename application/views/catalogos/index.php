@@ -10,8 +10,7 @@
 		</div>
 	</div>
 	<h3>Catalogos</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Catalogo</th>
@@ -38,5 +37,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>

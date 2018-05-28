@@ -106,7 +106,7 @@ class Generadores extends CI_Controller
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 				"modoedicion"=>false,
-				"unidad" => $this->modcatalogo->getCatalogo( 29 )
+				"unidad" => $this->modcatalogo->getCatalogo( 17 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -157,7 +157,7 @@ class Generadores extends CI_Controller
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 				"modoedicion"=>true,
-				"unidad" => $this->modcatalogo->getCatalogo( 29 )
+				"unidad" => $this->modcatalogo->getCatalogo( 17 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -227,7 +227,7 @@ class Generadores extends CI_Controller
 			"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 			"modoedicion"=>true,
-			"unidad" => $this->modcatalogo->getCatalogo( 29 )
+			"unidad" => $this->modcatalogo->getCatalogo( 17 )
 		));
 	}
 	public function eliminaFacturacion($idfacturacion)

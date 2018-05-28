@@ -367,6 +367,10 @@ class ModManifiesto extends CI_Model
 				$whr.=($whr!=""?" and ":"")."fecharecepcion <= '{$filtros["fecharecepcion_fin"]}'";
 				$takePrefs=true;
 			}
+			if( isset( $filtros[ "identificador_bitacora" ] ) && "" != trim( $filtros[ "identificador_bitacora" ] ) ) {
+				$whr .= ( "" != $whr ? " and " : "" ) . "idmanifiesto in ( select idmanifiesto from relbitman where idbitacora in ( select idbitacora from bitacora where identificador like '%{$filtros[ "identificador_bitacora" ]}%' ) )";
+				$takesPrefs = true;
+			}
 			if($whr!="" && ($takePrefs||true))
 			{
 				$this->db->where($whr);

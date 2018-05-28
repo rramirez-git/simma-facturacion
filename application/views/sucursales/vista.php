@@ -36,8 +36,7 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_nombre">Razón Social</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_iniales">Iniciales</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getIniciales(); ?>" />
 			</div>
@@ -50,9 +49,7 @@ $objempresa=new Modempresa();
 			<div class="form-group col">
 			<label for="frm_sucursal_fac_folio_actual">Número de Folio Actual</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_folio_actual(); ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			</div><div class="form-group col">
 			<label for="frm_sucursal_fac_folio_incial">Número de Folio Inicial</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getFac_folio_incial(); ?>" />
 			</div>
@@ -70,8 +67,7 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_nc_folio_actual">Número de Folio Actual</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_folio_actual(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_nc_folio_incial">Número de Folio Inicial</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNc_folio_incial(); ?>" />
 			</div>
@@ -89,8 +85,7 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_pago_folio_actual">Número de folio Actual</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_folio_actual(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_pago_folio_incial">Número de Folio Inicial</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getPago_folio_incial(); ?>" />
 			</div>
@@ -104,6 +99,10 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_calle">Calle</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
 			</div>
+			<div class="form-group col">
+		    <label for="frm_sucursal_cp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_sucursal_numexterior">Número Exterior</label>
@@ -114,16 +113,12 @@ $objempresa=new Modempresa();
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_sucursal_cp">Código Postal</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_sucursal_colonia">Colonia</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_municipio">Delegación o Municipio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
 			</div>
@@ -137,8 +132,7 @@ $objempresa=new Modempresa();
 			<label for="frm_sucursal_representante">Representante</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_cargorepresentante">Cargo</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCargorepresentante(); ?>" />
 			</div>
@@ -164,14 +158,13 @@ $objempresa=new Modempresa();
 		</div>-->
 		<?php if($this->modsesion->hasPermisoHijo(8) && count($operadores)>0): ?>
 			<h5>Operadores</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Cargo</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 1, 'asc' )">Nombre</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 2, 'asc' )">Cargo</th>
 							<th>Teléfono</th>
-							<th>Correo Electrónico</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 4, 'asc' )">Correo Electrónico</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -182,7 +175,7 @@ $objempresa=new Modempresa();
 							<th>Correo Electrónico</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-ope">
 						<?php if($operadores!==false) foreach($operadores as $operador): ?>
 							<tr>
 								<td>
@@ -199,18 +192,16 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(9) && count($vehiculos)>0): ?>
 			<h5>Vehiculos</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Placa</th>
-							<th>Número de Autorizacion SCT</th>
-							<th>Número de Autorizacion SEMARNAT</th>
-							<th>Tipo de Vehículo</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 1, 'asc' )">Placa</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 2, 'asc' )">Número de Autorizacion SCT</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 3, 'asc' )">Número de Autorizacion SEMARNAT</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 4, 'asc' )">Tipo de Vehículo</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -221,7 +212,7 @@ $objempresa=new Modempresa();
 							<th>Tipo de Vehículo</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-veh">
 						<?php if($vehiculos!==false) foreach($vehiculos as $vehiculo): ?>
 							<tr>
 								<td>
@@ -236,19 +227,17 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(52) && count($rutas)>0):?>
 			<h5>Rutas</h5>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
+				<table class="table table-hover table-sm table-responsive">
 					<thead>
 						<tr>
-							<th>Número de Ruta</th>
-							<th>Nombre</th>
-							<th>Descripcion</th>
-							<th>Destino Final</th>
-							<th>Transportista</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 1, 'asc' )">Número de Ruta</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 2, 'asc' )">Nombre</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 3, 'asc' )">Descripcion</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 4, 'asc' )">Destino Final</th>
+							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 5, 'asc' )">Transportista</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -260,7 +249,7 @@ $objempresa=new Modempresa();
 							<th>Transportista</th>
 						</tr>
 					</tfoot>
-					<tbody>
+					<tbody id="data-table-rut">
 						<?php if($rutas!==false) foreach($rutas as $ruta): ?>
 							<tr>
 								<td>
@@ -295,7 +284,6 @@ $objempresa=new Modempresa();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-			</div>
 		<?php endif; ?>
 	</form>
 </div>

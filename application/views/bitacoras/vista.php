@@ -44,8 +44,8 @@ $manifiesto=new ModManifiesto();
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_ruta_nombre">Bitacora</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombre(); ?>" />
-		</div></div>
-		<div class="form-row"><div class="form-group col">
+		</div>
+		<div class="form-group col">
 			<label for="frm_ruta_nombre">Folio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
 			</div>
@@ -62,8 +62,7 @@ $manifiesto=new ModManifiesto();
 			<label for="frm_ruta_identificador">Número de Ruta</label>
 				<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="empresadestinofinal">Planta de Tratamiento</label>
 				<?php
 				$sucursal->setIdsucursal($ruta->getEmpresadestinofinal());
@@ -73,6 +72,8 @@ $manifiesto=new ModManifiesto();
 				?>
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="empresatransportista">Transportista</label>
 				<?php
@@ -83,8 +84,7 @@ $manifiesto=new ModManifiesto();
 				?>
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_ruta_idoperador">Operador</label>
 				<input class="form-control" disabled="disabled" value="<?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?>" />
 			</div>
@@ -94,8 +94,7 @@ $manifiesto=new ModManifiesto();
 			</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Cliente</th>
@@ -122,9 +121,27 @@ $manifiesto=new ModManifiesto();
 					$cliente->getFromDatabase();
 				?>
 				<tr>
-					<td><?= "{$cliente->getIdentificador()} - {$cliente->getRazonsocial()}"?></td>
-					<td><?= "{$generador->getIdentificador()} - {$generador->getRazonsocial()}"?></td>
-					<td><?= $manifiesto->getIdentificador(); ?></td>
+					<td>
+						<?php if($this->modsesion->hasPermisoHijo(55)): ?>
+							<a href="<?php echo base_url( "/clientes/ver/{$cliente->getIdcliente()}" ); ?>" ><?= "{$cliente->getIdentificador()} - {$cliente->getRazonsocial()}"; ?></a>
+						<?php else: ?>
+							<?= "{$cliente->getIdentificador()} - {$cliente->getRazonsocial()}"; ?>
+						<?php endif; ?>
+					</td>
+					<td>
+						<?php if($this->modsesion->hasPermisoHijo(66)): ?>
+							<a href="<?php echo base_url( "/generadores/ver/{$generador->getIdgenerador()}" ); ?>" ><?= "{$generador->getIdentificador()} - {$generador->getRazonsocial()}"; ?></a>
+						<?php else: ?>
+							<?= "{$generador->getIdentificador()} - {$generador->getRazonsocial()}"; ?>
+						<?php endif; ?>
+					</td>
+					<td>
+						<?php if($this->modsesion->hasPermisoHijo(32)): ?>
+							<a href="<?php echo base_url( "/manifiestos/ver/{$manifiesto->getIdmanifiesto()}" ); ?>" ><?= $manifiesto->getIdentificador(); ?></a>
+						<?php else: ?>	
+							<?= $manifiesto->getIdentificador(); ?>
+						<?php endif; ?>
+					</td>
 					<td>
 						<?= $generador->getCalle(); ?>
 						<?= ($generador->getNumexterior()!=""?" , Num. ".$generador->getNumexterior():""); ?>

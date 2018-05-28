@@ -52,28 +52,31 @@ $total=0.0;
 			<label>Cliente</label>
 				<input class="form-control" disabled="disabled" value="<?= $cliente->getIdentificador()." - ".$cliente->getRazonsocial(); ?>" />
 			</div>
-			<?php if ($manifiesto->getFecha_captura() != "" && $manifiesto->getFecha_captura() != "0000-00-00 00:00:00" ) { ?>
 			<div class="form-group col">
-			<label id="captura_fec">Fecha de Captura:</label>
-			
-				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?>" />
-			</div>
-			<?php } ?>
-		</div>
-		<div class="form-row"><div class="form-group col">
 			<label>Generador</label>
 				<input class="form-control" disabled="disabled" value="<?= $generador->getIdentificador()." - ".$generador->getRazonsocial(); ?>" />
 			</div>
-			<?php if ($manifiesto->getCapturista() != "") { ?>
+			<div class="form-group col">
+			<label>Responsable</label>
+				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?>" />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
+			<label id="captura_fec">Fecha Programada:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha(), 0, 10) ); ?>" />
+			</div>
+			<div class="form-group col">
+			<label id="captura_fec">Fecha de Ebarque:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFechaEmbarque(), 0, 10) ); ?>" />
+			</div>
+			<div class="form-group col">
+			<label id="captura_fec">Fecha de Captura:</label>
+				<input class="form-control" disabled="disabled" value="<?= DateToMx( substr($manifiesto->getFecha_captura(), 0, 10) ).substr($manifiesto->getFecha_captura(), 10); ?>" />
+			</div>
 			<div class="form-group col">
 			<label>Capturista:</label>
 				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getCapturista( ); ?>" />
-			</div>
-			<?php } ?>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label>Responsable</label>
-				<input class="form-control" disabled="disabled" value="<?= $generador->getRepresentante()." - ".$generador->getRepresentantetelefono().($generador->getRepresentanteextension()!=""?" (Ext. ".$generador->getRepresentanteextension().")":""); ?>" />
 			</div>
 		</div>
 		<h5>Facturacion</h5>
@@ -100,13 +103,16 @@ $total=0.0;
 				?>" />
 			</div>
 			<div class="form-group col">
+			<label>Factura Asociada</label>
+				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?>" />
+			</div>
+		</div>
+		<div class="form-group col">
+			<div class="form-group col">
 					<label>
 						<input type="checkbox" value="1" id="frm_manifiesto_facturable" name="frm_manifiesto_facturable" <?= ($manifiesto->getFacturable()==1?'checked="checked"':''); ?> disabled="disabled" />
 						Facturable
 					</label>
-			</div><div class="form-group col">
-			<label>Factura Asociada</label>
-				<input class="form-control" disabled="disabled" value="<?= $manifiesto->getUuid() . ( $manifiesto->getUuid_excedente() != "" ? '<br />' : '' ) . $manifiesto->getUuid_excedente(); ?>" />
 			</div>
 		</div>
 		<h5>Transportista</h5>
@@ -154,16 +160,16 @@ $total=0.0;
 		<?php if($motivo!="" && $motivo>0) foreach($motivos as $cat) foreach($cat["opciones"] as $opc) if($motivo==$opc["idcatalogodet"]): ?>
 			<?= $opc["descripcion"]; ?> (<?= $cat["descripcion"]; ?>)
 		<?php endif; ?>
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover table-sm table-responsive">
 				<thead>
 					<tr>
 						<th>Residuo</th>
 						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
-						<th>Cantidad Total</th>
-						<!--<th>Unidad de Volumen</th>-->
+						<th>Cantidad (kg)</th>
+						<th>Unidad</th>
+						<th>Cantidad en Unidad</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -172,8 +178,9 @@ $total=0.0;
 						<th>Tipo</th>
 						<!--<th>Capacidad del Contenedor</th>
 						<th>Tipo de Contenedor</th>-->
-						<th>Cantidad Total</th>
-						<!--<th>Unidad de Volumen</th>-->
+						<th>Cantidad (kg)</th>
+						<th>Unidad</th>
+						<th>Cantidad en Unidad</th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -183,8 +190,13 @@ $total=0.0;
 							<td><?php echo $r[ 'residuo' ][ 'opcion' ]; ?></td>
 							<!--<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedorcapacidad"]:""); ?></td>
 							<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["contenedortipo"]:""); ?></td>-->
-							<td class="numero"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:""); ?></td>
-							<!--<td><?= ($r["recoleccion"]!==false?$r["recoleccion"]["unidad"]:""); ?></td>-->
+							<td class="numero kilos"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:""); ?></td>
+							<td>
+								<?php if( false != $r["recoleccion"] ) foreach( $unidades[ "opciones" ] as $und ) if( $und[ "idcatalogodet" ] == $r["recoleccion"]["unidad"] ) :?>
+									<?php echo $und[ "descripcion" ]; ?>
+								<?php endif; ?>
+							</td>
+							<td class="numero"><?= ($r["recoleccion"]!==false?$r["recoleccion"]["cantidad_unidad"]:""); ?></td>
 						</tr>
 					<?php 
 					$total+=floatval(($r["recoleccion"]!==false?$r["recoleccion"]["cantidad"]:"0"));
@@ -193,10 +205,11 @@ $total=0.0;
 						<td><strong>Total</strong></td>
 						<td></td>
 						<td class="numero"><strong><?= number_format($total,3); ?></strong></td>
+						<td></td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
 	</form>
 </div>
 <script type="text/javascript">

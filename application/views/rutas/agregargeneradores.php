@@ -17,8 +17,7 @@
         	</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th></th>
@@ -39,7 +38,6 @@
 			</tfoot>
 			<tbody id="generadores"></tbody>
 		</table>
-	</div>
 	<input type="hidden" id="idruta" name="idruta" value="<?= $ruta->getIdruta(); ?>" />
 	<button type="button" class="btn btn-outline-primary" onclick="Ruta.AddGeneradores()">Asociar</button>
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Cancelar</button>

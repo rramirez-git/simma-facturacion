@@ -26,8 +26,7 @@
 	</div>
 	<h3>Catalogos <small class="text-muted"><?= $catalogo["descripcion"]; ?></small></h3>
 	<input type="hidden" name="idcatalogo" id="idcatalogo" value="<?= $catalogo["idcatalogo"]; ?>" />
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<td></td>
@@ -53,5 +52,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
