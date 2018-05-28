@@ -132,7 +132,7 @@ class Clientes extends CI_Controller
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 				"modoedicion"=>false,
-				"unidad" => $this->modcatalogo->getCatalogo( 29 )
+				"unidad" => $this->modcatalogo->getCatalogo( 17 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -184,7 +184,7 @@ class Clientes extends CI_Controller
 				"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 				"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 				"modoedicion"=>true,
-				"unidad" => $this->modcatalogo->getCatalogo( 29 )
+				"unidad" => $this->modcatalogo->getCatalogo( 17 )
 			),true);
 		}
 		$head=$this->load->view('html/head',array(),true);
@@ -240,7 +240,7 @@ class Clientes extends CI_Controller
 			"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
 			"modoedicion"=>true,
-			"unidad" => $this->modcatalogo->getCatalogo( 29 )
+			"unidad" => $this->modcatalogo->getCatalogo( 17 )
 		));
 	}
 	public function eliminaFacturacion($idfacturacion)
@@ -436,7 +436,7 @@ class Clientes extends CI_Controller
 									    $fac->setKiloexcedido($celda->nodeValue);
 									    break;
 									case 'AI':
-										$fac->setUnidad($this->modcatalogo->getIdOption(29,$celda->nodeValue));
+										$fac->setUnidad($this->modcatalogo->getIdOption(17,$celda->nodeValue));
 										break;
 									case 'AJ':
 										$objeto->setFacturaxgenerador(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
@@ -726,7 +726,7 @@ class Clientes extends CI_Controller
 									    $fac->setKiloexcedido($celda->nodeValue);
 									    break;
 									case 'AM':
-										$fac->setUnidad($this->modcatalogo->getIdOption(29,$celda->nodeValue));
+										$fac->setUnidad($this->modcatalogo->getIdOption(17,$celda->nodeValue));
 										break;
 									case 'AN':
 										$objeto->setOrdencompra(strtoupper(trim($celda->nodeValue))=="SI"?1:0);
