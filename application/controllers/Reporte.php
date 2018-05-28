@@ -41,6 +41,7 @@ class Reporte extends CI_Controller
 			$regs=$this->modreporte->execute();
 			if($regs!==false && count($regs)>0)
 			{
+				/*
 				$doc=new DOMDocument("1.0","utf-8");
 				$raiz=$doc->createElement("libro");
 				$props=$doc->createElement("propiedades");
@@ -69,9 +70,25 @@ class Reporte extends CI_Controller
 				$doc->save($this->config->item("ruta_downloads").$archivo);
 				$url=base_url("project_files/app/make_excel_from_xml.php?arch=$archivo&path=".base_url("reporte/descargarExcel"));
 				header("location: ".$url);
+				*/
+				$template = $this->config->item( 'ruta_templates' ) . $this->modreporte->getPlantilla();
+				$rep_file = $this->config->item( 'ruta_downloads' ) . str_replace( ' ', '_', $this->modreporte->getTitulo() ) . '_' . time() . '.csv';
+				copy( $template, $rep_file );
+				$arch = fopen( $rep_file, "a" );
+				foreach( $regs as $reg ) {
+					foreach( $reg as $k => $v ) {
+						$reg[ $k ] = utf8_decode( $v );
+					}
+					fputcsv( $arch, $reg );
+				}
+				fclose( $arch );
+				//header( 'location: ' . base_url( 'reporte/descargarExcel/' . basename( $rep_file ) ) );
+				echo basename( $rep_file );
+				return true;
 			}
 		}
 		echo " No hay registros para exportar";
+		return false;
 	}
 	public function descargarExcel($archivo)
 	{
@@ -79,7 +96,9 @@ class Reporte extends CI_Controller
 		{
 			$this->load->library('zip');
 			$this->zip->read_file($this->config->item("ruta_downloads").$archivo);
-			$this->zip->download(str_replace(".xlsx",".zip",$archivo));
+			$archivo = str_replace( ".xlsx", ".zip", $archivo );
+			$archivo = str_replace( ".csv", ".zip", $archivo );
+			$this->zip->download( $archivo );
 		}
 	}
 	public function obtieneIndicador($archivo)

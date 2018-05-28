@@ -2820,7 +2820,7 @@ function fnReporte()
 			if(resp.length>250)
 				setTimeout(function(){Alert(resp,function(){return true;});},500);
 			else
-				location.href=resp;
+				location.href= baseURL + 'reporte/descargarExcel/' + resp;
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
 			closeModal();
