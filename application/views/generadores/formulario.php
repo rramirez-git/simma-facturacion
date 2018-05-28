@@ -13,22 +13,20 @@
 			<label for="frm_generador_razonsocial">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_generador_razonsocial" name="frm_generador_razonsocial" value="<?= $objeto->getRazonsocial(); ?>" placeholder="Nombre o Razón Social del Generador" maxlength="60" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_nombrecorto">Nombre Corto</label>
-				<input type="text" class="form-control" id="frm_generador_nombrecorto" name="frm_generador_nombrecorto" value="<?= $objeto->getNombrecorto(); ?>" placeholder="" maxlength="60" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_identificador">Número de Generador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
-				<input type="text" class="form-control" id="frm_generador_identificador" name="frm_generador_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Generador" readonly="readonly" maxlength="13" />
-			</div>
 			<div class="form-group col">
 			<label for="frm_generador_rfc">Registro Federal de Contribuyentes <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_generador_rfc" name="frm_generador_rfc" value="<?= $objeto->getRfc(); ?>" placeholder="Registro Federal de Contribuyentes del Generador" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
+			<label for="frm_generador_nombrecorto">Nombre Corto</label>
+				<input type="text" class="form-control" id="frm_generador_nombrecorto" name="frm_generador_nombrecorto" value="<?= $objeto->getNombrecorto(); ?>" placeholder="" maxlength="60" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_generador_identificador">Número de Generador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input type="text" class="form-control" id="frm_generador_identificador" name="frm_generador_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Generador" readonly="readonly" maxlength="13" />
+			</div>
+			<div class="form-group col">
 			<label for="frm_generador_numregamb">Número de Registro Ambiental</label>
 				<input type="text" class="form-control" id="frm_generador_numregamb" name="frm_generador_numregamb" value="<?= $objeto->getNumregamb(); ?>" placeholder="NRA" maxlength="61" />
 			</div>
@@ -112,20 +110,19 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_horarioinicio">Hora Inicio</label>
+			<label for="frm_generador_horarioinicio">Hora Inicio (Mat.)</label>
 				<input type="time" class="form-control" id="frm_generador_horarioinicio" name="frm_generador_horarioinicio" value="<?= $objeto->getHorarioinicio(); ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_generador_horariofin">Hora Fin</label>
+			<label for="frm_generador_horariofin">Hora Fin (Mat.)</label>
 				<input type="time" class="form-control" id="frm_generador_horariofin" name="frm_generador_horariofin" value="<?= $objeto->getHorariofin(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_horarioinicio2">Hora Inicio</label>
+			<div class="form-group col">
+			<label for="frm_generador_horarioinicio2">Hora Inicio (Vesp.)</label>
 				<input type="time" class="form-control" id="frm_generador_horarioinicio2" name="frm_generador_horarioinicio2" value="<?= $objeto->getHorarioinicio2(); ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_generador_horariofin2">Hora Fin</label>
+			<label for="frm_generador_horariofin2">Hora Fin (Vesp.)</label>
 				<input type="time" class="form-control" id="frm_generador_horariofin2" name="frm_generador_horariofin2" value="<?= $objeto->getHorariofin2(); ?>" />
 			</div>
 		</div>
@@ -133,6 +130,17 @@
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_generador_calle">Calle</label>
 				<input type="text" class="form-control" id="frm_generador_calle" name="frm_generador_calle" value="<?= $objeto->getCalle(); ?>" placeholder="Calle" />
+			</div>
+			<div class="form-group col">
+		    <label for="frm_generador_cp">Código Postal</label>
+		    	<div class="input-group">
+					<input type="number" class="form-control" id="frm_generador_cp" name="frm_generador_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" maxlength="5" />
+					<div class="input-group-append">
+						<button type="button" class="btn btn-outline-secondary" onclick="Generador.DisplayFrmCP()">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
@@ -144,23 +152,12 @@
 				<input type="text" class="form-control" id="frm_generador_numinterior" name="frm_generador_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_generador_cp">Código Postal</label>
-		    	<div class="input-group">
-					<input type="number" class="form-control" id="frm_generador_cp" name="frm_generador_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" maxlength="5" />
-					<div class="input-group-append">
-						<button type="button" class="btn btn-outline-secondary" onclick="Generador.DisplayFrmCP()">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_generador_colonia">Colonia</label>
-				<input type="text" class="form-control" id="frm_generador_colonia" name="frm_generador_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="colonia" />
+				<input type="text" class="form-control" id="frm_generador_colonia" name="frm_generador_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="Colonia" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_municipio">Delegación o Municipio</label>
 				<input type="text" class="form-control" id="frm_generador_municipio" name="frm_generador_municipio" value="<?= $objeto->getMunicipio(); ?>" placeholder="Delegación o Municipio" maxlength="27" />
 			</div>
@@ -179,8 +176,7 @@
 			<label for="frm_generador_representante">Representante <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_generador_representante" name="frm_generador_representante" value="<?= $objeto->getRepresentante(); ?>" placeholder="Representante" maxlength="75" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_representantecargo">Cargo</label>
 				<input type="text" class="form-control" id="frm_generador_representantecargo" name="frm_generador_representantecargo" value="<?= $objeto->getRepresentantecargo(); ?>" placeholder="Cargo del Representante" />
 			</div>
@@ -197,8 +193,7 @@
 			<label for="frm_generador_representanextension">Extensión</label>
 				<input type="tel" class="form-control" id="frm_generador_representanteextension" name="frm_generador_representanteextension" value="<?= $objeto->getRepresentanteextension(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_representantetelefono2">Teléfono 2</label>
 				<input type="tel" class="form-control" id="frm_generador_representantetelefono2" name="frm_generador_representantetelefono2" value="<?= $objeto->getRepresentantetelefono2(); ?>" placeholder="Teléfono 2" maxlength="13" />
 			</div>
@@ -248,8 +243,7 @@
 			<label for="frm_generador_cobranzacontacto">Contacto</label>
 				<input type="text" class="form-control" id="frm_generador_cobranzacontacto" name="frm_generador_cobranzacontacto" value="<?= $objeto->getCobranzacontacto(); ?>" placeholder="Contacto" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_cobranzaemail">Corro Electrónico</label>
 				<input type="email" class="form-control" id="frm_generador_cobranzaemail" name="frm_generador_cobranzaemail" value="<?= $objeto->getCobranzaemail(); ?>" placeholder="Correo Electrónico" />
 			</div>
@@ -262,8 +256,7 @@
 			<label for="frm_generador_cobranzaextension">Extensión</label>
 				<input type="tel" class="form-control" id="frm_generador_cobranzaextension" name="frm_generador_cobranzaextension" value="<?= $objeto->getCobranzaextension(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_cobranzatelefono2">Teléfono 2</label>
 				<input type="tel" class="form-control" id="frm_generador_cobranzatelefono2" name="frm_generador_cobranzatelefono2" value="<?= $objeto->getCobranzatelefono2(); ?>" placeholder="Teléfono 2" maxlength="13" />
 			</div>
@@ -281,17 +274,7 @@
 			<label for="frm_generador_cobranzacalle">Calle</label>
 				<input type="text" class="form-control" id="frm_generador_cobranzacalle" name="frm_generador_cobranzacalle" value="<?= $objeto->getCobranzacalle(); ?>" placeholder="Calle" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_cobranzanumexterior">Número Exterior</label>
-				<input type="text" class="form-control" id="frm_generador_cobranzanumexterior" name="frm_generador_cobranzanumexterior" value="<?= $objeto->getCobranzanumexterior(); ?>" placeholder="Número Exterior" />
-			</div>
 			<div class="form-group col">
-			<label for="frm_generador_cobranzanuminterior">Número Interior</label>
-				<input type="text" class="form-control" id="frm_generador_cobranzanuminterior" name="frm_generador_cobranzanuminterior" value="<?= $objeto->getCobranzanuminterior(); ?>" placeholder="Número Interior" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
 		    <label for="frm_generador_cobranzacp">Código Postal</label>
 		    	<div class="input-group">
 					<input type="number" class="form-control" id="frm_generador_cobranzacp" name="frm_generador_cobranzacp" value="<?= $objeto->getCobranzacp(); ?>" placeholder="C. P." min="0" max="99999" />
@@ -302,12 +285,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group col">
-			<label for="frm_generador_cobranzacolonia">Colonia</label>
-				<input type="text" class="form-control" id="frm_generador_cobranzacolonia" name="frm_generador_cobranzacolonia" value="<?= $objeto->getCobranzacolonia(); ?>" placeholder="colonia" />
-			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
+			<label for="frm_generador_cobranzanumexterior">Número Exterior</label>
+				<input type="text" class="form-control" id="frm_generador_cobranzanumexterior" name="frm_generador_cobranzanumexterior" value="<?= $objeto->getCobranzanumexterior(); ?>" placeholder="Número Exterior" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_generador_cobranzanuminterior">Número Interior</label>
+				<input type="text" class="form-control" id="frm_generador_cobranzanuminterior" name="frm_generador_cobranzanuminterior" value="<?= $objeto->getCobranzanuminterior(); ?>" placeholder="Número Interior" />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
+			<label for="frm_generador_cobranzacolonia">Colonia</label>
+				<input type="text" class="form-control" id="frm_generador_cobranzacolonia" name="frm_generador_cobranzacolonia" value="<?= $objeto->getCobranzacolonia(); ?>" placeholder="Colonia" />
+			</div>
+			<div class="form-group col">
 			<label for="frm_generador_cobranzamunicipio">Delegación o Municipio</label>
 				<input type="text" class="form-control" id="frm_generador_cobranzamunicipio" name="frm_generador_cobranzamunicipio" value="<?= $objeto->getCobranzamunicipio(); ?>" placeholder="Delegación o Municipio" />
 			</div>

@@ -39,16 +39,16 @@ $vehiculo->getFromDatabase();
 	<h3>Rutas</h3>
 	<form autocomplete="off" id="frm_rutas">
 		<div class="form-row"><div class="form-group col">
-			<label for="frm_ruta_nombre">Nombre de la Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="frm_ruta_nombre">Nombre de la Ruta</label>
 				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_nombre" name="frm_ruta_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre de la Ruta" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_ruta_identificador">Número de Ruta <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="frm_ruta_identificador">Número de Ruta</label>
 				<input disabled="disabled" type="text" class="form-control" id="frm_ruta_identificador" name="frm_ruta_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Ruta" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
-			<label for="empresadestinofinal">Planta de Tratamiento <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="empresadestinofinal">Planta de Tratamiento</label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresadestinofinal());
 				$sucursal->getFromDatabase();
@@ -58,7 +58,7 @@ $vehiculo->getFromDatabase();
 				<input class="form-control" disabled="disabled" value="<?= "{$empresa->getRazonsocial()} - {$sucursal->getNombre()}"; ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="empresatransportista">Transportista <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="empresatransportista">Transportista</label>
 				<?php
 				$sucursal->setIdsucursal($objeto->getEmpresatransportista());
 				$sucursal->getFromDatabase();
@@ -74,11 +74,11 @@ $vehiculo->getFromDatabase();
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
-			<label for="frm_ruta_idoperador">Operador <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="frm_ruta_idoperador">Operador</label>
 				<input class="form-control" disabled="disabled" value="<?= "{$operador->getNombre()} {$operador->getApaterno()} {$operador->getAmaterno()}"; ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_ruta_idvehiculo">Vehiculo <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+			<label for="frm_ruta_idvehiculo">Vehiculo</label>
 				<input class="form-control" disabled="disabled" value="<?= "{$vehiculo->getPlaca()} ({$vehiculo->getTipo()})"; ?>" />
 			</div>
 		</div>
@@ -152,14 +152,13 @@ $vehiculo->getFromDatabase();
 		</button>
 		<?php endif; ?>
 	</h5>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>No. Cliente</th>
-					<th>Cliente</th>
-					<th>No. Generador</th>
-					<th>Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">No. Cliente</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Cliente</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">No. Generador</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">Generador</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -170,7 +169,7 @@ $vehiculo->getFromDatabase();
 					<th>Generador</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php
 				$gs=$objeto->getGeneradoresAsociados($objeto->getIdruta());
 				if($gs!==false && count($gs)>0) foreach($gs as $g)
@@ -181,15 +180,46 @@ $vehiculo->getFromDatabase();
 					$cliente->getFromDatabase();
 					?>
 					<tr>
-						<td><?= $cliente->getIdentificador(); ?></td>
-						<td><?= $cliente->getRazonsocial(); ?></td>
-						<td><?= $generador->getIdentificador(); ?></td>
-						<td><?= $generador->getRazonsocial(); ?></td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+								<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+									<?= $cliente->getIdentificador(); ?>
+								</a>
+							<?php else: ?>
+								<?= $cliente->getIdentificador(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 55 ) ): ?>
+								<a href="<?php echo base_url( '/clientes/ver/' . $cliente->getIdcliente() ); ?>">
+									<?= $cliente->getRazonsocial(); ?>
+								</a>
+							<?php else: ?>
+								<?= $cliente->getRazonsocial(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+									<?= $generador->getIdentificador(); ?>
+								</a>
+							<?php else: ?>
+								<?= $generador->getIdentificador(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo( 66 ) ): ?>
+								<a href="<?php echo base_url( '/generadores/ver/' . $generador->getIdgenerador() ); ?>">
+									<?= $generador->getRazonsocial(); ?>
+								</a>
+							<?php else: ?>
+								<?= $generador->getRazonsocial(); ?>
+							<?php endif; ?>
+						</td>
 					</tr>
 					<?php
 				}
 				?>
 			</tbody>
 		</table>
-	</div>
 </div>

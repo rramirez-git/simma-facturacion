@@ -46,6 +46,9 @@ body .container
 	{
 		display: none;
 	}
+	div.btn-toolbar.float-right {
+		display: none;
+	}
 }
 
 table.Reporte
@@ -181,4 +184,10 @@ form {
 }
 body {
 	padding-bottom: 20px;
+}
+table.table.table-hover.table-sm.table-responsive thead th.sortable {
+	cursor: pointer;
+}
+table.table.table-hover.table-sm.table-responsive thead th.sortable:hover {
+	text-decoration: underline;
 }

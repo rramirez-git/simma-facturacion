@@ -9,8 +9,7 @@
 			<label for="frm_sucursal_nombre">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_sucursal_nombre" name="frm_sucursal_nombre" value="<?= $objeto->getNombre(); ?>" placeholder="Nombre o Razón Social de la Sucursal" maxlength="62" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_iniciales">Iniciales</label>
 				<input type="text" class="form-control" id="frm_sucursal_iniciales" name="frm_sucursal_iniciales" value="<?= $objeto->getIniciales(); ?>" placeholder="Iniciales para manifiestos" maxlength="20" />
 			</div>
@@ -26,8 +25,7 @@
 			<label for="frm_sucursal_fac_folio_actual">Número de Folio Actual</label>
 				<input type="number" class="form-control" id="frm_sucursal_fac_folio_actual" name="frm_sucursal_fac_folio_actual" value="<?= $objeto->getFac_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_fac_folio_incial">Número de Folio Inicial</label>
 				<input type="number" class="form-control" id="frm_sucursal_fac_folio_incial" name="frm_sucursal_fac_folio_incial" value="<?= $objeto->getFac_folio_incial(); ?>"  min="0" max="999999999" />
 			</div>
@@ -47,8 +45,7 @@
 			<label for="frm_sucursal_nc_folio_actual">Número de Folio Actual</label>
 				<input type="number" class="form-control" id="frm_sucursal_nc_folio_actual" name="frm_sucursal_nc_folio_actual" value="<?= $objeto->getNc_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_nc_folio_incial">Número de Folio Inicial</label>
 				<input type="number" class="form-control" id="frm_sucursal_nc_folio_incial" name="frm_sucursal_nc_folio_incial" value="<?= $objeto->getNc_folio_incial(); ?>"  min="0" max="999999999" />
 			</div>
@@ -68,8 +65,7 @@
 			<label for="frm_sucursal_pago_folio_actual">Número de Folio Actual</label>
 				<input type="number" class="form-control" id="frm_sucursal_pago_folio_actual" name="frm_sucursal_pago_folio_actual" value="<?= $objeto->getPago_folio_actual(); ?>"  min="0" max="999999999" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_pago_folio_incial">Número de Folio Inicial</label>
 				<input type="number" class="form-control" id="frm_sucursal_pago_folio_incial" name="frm_sucursal_pago_folio_incial" value="<?= $objeto->getPago_folio_incial(); ?>"  min="0" max="999999999" />
 			</div>
@@ -88,17 +84,7 @@
 			<label for="frm_sucursal_calle">Calle</label>
 				<input type="text" class="form-control" id="frm_sucursal_calle" name="frm_sucursal_calle" value="<?= $objeto->getCalle(); ?>" placeholder="Calle" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_sucursal_numexterior">Número Exterior</label>
-				<input type="text" class="form-control" id="frm_sucursal_numexterior" name="frm_sucursal_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior de la Sucursal" />
-			</div>
 			<div class="form-group col">
-			<label for="frm_sucursal_numinterior">Número Interior</label>
-				<input type="text" class="form-control" id="frm_sucursal_numinterior" name="frm_sucursal_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior de la Sucursal" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
 		    <label for="frm_sucursal_cp">Código Postal</label>
 			<div class="input-group">
 				<input type="number" class="form-control" id="frm_sucursal_cp" name="frm_sucursal_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" />
@@ -109,12 +95,21 @@
 				</div>
 			</div>
 			</div>
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_sucursal_numexterior">Número Exterior</label>
+				<input type="text" class="form-control" id="frm_sucursal_numexterior" name="frm_sucursal_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior de la Sucursal" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_sucursal_numinterior">Número Interior</label>
+				<input type="text" class="form-control" id="frm_sucursal_numinterior" name="frm_sucursal_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior de la Sucursal" />
+			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_sucursal_colonia">Colonia</label>
 				<input type="text" class="form-control" id="frm_sucursal_colonia" name="frm_sucursal_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="colonia" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			</div><div class="form-group col">
 			<label for="frm_sucursal_municipio">Delegación o Municipio</label>
 				<input type="text" class="form-control" id="frm_sucursal_municipio" name="frm_sucursal_municipio" value="<?= $objeto->getMunicipio(); ?>" placeholder="Delegación o Municipio" />
 			</div>
@@ -133,8 +128,7 @@
 			<label for="frm_sucursal_representante">Representante <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_sucursal_representante" name="frm_sucursal_representante" value="<?= $objeto->getRepresentante(); ?>" placeholder="Representante" maxlength="50" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_sucursal_cargorepresentante">Cargo</label>
 				<input type="text" class="form-control" id="frm_sucursal_cargorepresentante" name="frm_sucursal_cargorepresentante" value="<?= $objeto->getCargorepresentante(); ?>" placeholder="Representante" maxlength="30" />
 			</div>

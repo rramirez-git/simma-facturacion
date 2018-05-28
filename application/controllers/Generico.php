@@ -47,7 +47,7 @@ class Generico extends CI_Controller
 			"objeto"=>$this->modfacturacion,
 			"tiposervicio"=>$this->modcatalogo->getCatalogo(5),
 			"tipocobro"=>$this->modcatalogo->getCatalogo(6),
-			"unidad" => $this->modcatalogo->getCatalogo( 29 )
+			"unidad" => $this->modcatalogo->getCatalogo( 17 )
 		));
 	}
 }

@@ -35,12 +35,3 @@ function do_reload() {
 		setTimeout( do_reload, 2000 );
 	}
 }
-
-function data_sort( a, b ) {
-	if( "number" == typeof a && "number" == typeof b ) {
-		return a - b;
-	} else if( "string" == typeof a && "string" == typeof b ) {
-		return ( a < b ? -1 : ( a == b ? 0 : 1 ) );
-	}
-	return data_sort( "" + a, "" + b );
-}

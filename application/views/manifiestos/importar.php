@@ -6,8 +6,7 @@
 <div class="container">
 	<h3>Importar Manifiestos <small class="text-muted">Preimportación</small></h3>
 	<form autocomplete="off" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table class="table table-hover table-sm table-responsive">
 				<thead>
 					<tr>
 						<th>Fila</th>
@@ -179,7 +178,6 @@
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-		</div>
 		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.importarCaptura()" >Aceptar</button>
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
     </form>

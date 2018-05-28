@@ -258,6 +258,20 @@ Array.prototype.igual=function(data)
 			cont++;
 	return (this.length==data.length && cont==this.length);
 }
+function dataSortFunction( a, b ) { 
+	return ( "number" == typeof a && "number" == typeof b 
+		? a - b 
+		: ( "string" == typeof a && "string" == typeof b 
+			? ( a < b ? -1 : ( a == b ? 0 : 1 ) ) 
+			: dataSortFunction( "" + a, "" + b ) 
+		) 
+	);
+}
+Array.prototype.data_sort = function( asc ) {
+	if( "undefined" == typeof asc ) { asc = true; }
+	this.sort( dataSortFunction );
+	if( ! asc  ) { this.reverse(); }
+}
 String.prototype.toNormalString=function()
 {
 	var cadena=this;
@@ -302,6 +316,38 @@ function EstandarizaString(cadena)
 	if(largo<=cadena.length && cadena.length<=(largo*2))
 		return cadena.substring(0,largo)+"...";
 	return cadena.substring(0,largo/2)+"..."+cadena.substring(cadena.length-(largo/2));
+}
+function TableSortByColumn( idtable, column, type ) {
+	var data_cels = $( "#" + idtable + " tr td:nth-child(" + column + ")" );
+	var tmp_tbl = $( '<table></table>' );
+	var data = [];
+	data_cels.each( function() { 
+		var text = $( this ).text().trim();
+		var num = parseFloat( text );
+		if( isNaN( num ) || text.length != ( "" + num ).length ) {
+			if( -1 == data.indexOf( text ) ) {
+				data.push( text );
+			}
+		} else {
+			if( -1 == data.indexOf( num ) ) {
+				data.push( num );
+			}
+		}
+	} );
+	if( "desc" == type ) {
+		data.data_sort( false );
+	} else {
+		data.data_sort( true );
+	}
+	for( idx in data ) {
+		var trs = $( "#" + idtable + " tr" );
+		for( var i = 0; i < trs.length; i++ ) {
+			if( $( trs[ i ] ).find( "td:nth-child(" + column + ")" ).text().trim() == data[ idx ] ) {
+				tmp_tbl.append( $( trs[ i ] ) );
+			}
+		}
+	}
+	$( "#" + idtable ).html( tmp_tbl.html() );
 }
 function fnEmpresa()
 {
@@ -905,10 +951,13 @@ function fnRuta()
 		});
 		ajx.done(function(resp){
 			closeModal();
-			$("#prevalidacion").html(resp);
-			$("#prevalidacion div.form-group").hide();
-			$("#prevalidacion table tr th:last-child").hide();
-			$("#prevalidacion table tr td:last-child").hide();
+			$( "#prevalidacion" ).html(resp);
+			$( "#prevalidacion div.form-group" ).hide();
+			$( "#prevalidacion table tr th:last-child" ).hide();
+			$( "#prevalidacion table tr td:last-child" ).hide();
+			$( "#prevalidacion table tr th:nth-child(3)" ).hide();
+			$( "#prevalidacion table tr td:nth-child(3)" ).hide();
+			$( "#frm_validacion button" ).hide();
 		});
 		ajx.fail(function(jqXHRObj,mensaje){
 			Mensaje("Error al generar datos de plan de recolección: "+mensaje+"<br />"+jqXHRObj.responseText);
@@ -1719,7 +1768,7 @@ function fnManifiesto()
 	this.SumaCantidad=function()
 	{
 		var suma=0.0;
-		$(".tblCantidades input").each(function(idx){
+		$("#data-capture input.kilos").each(function(idx){
 			if( typeof this.id != "undefined" && this.id != "total" && ! isNaN( parseFloat($(this).val()) ) )
 				suma+=parseFloat($(this).val());
 		});
@@ -1941,6 +1990,50 @@ function fnManifiesto()
 				setTimeout(function(){
 					Alert("Importado Terminado",function(){location.href=baseURL+'manifiestos';});
 				},500);
+		}
+	}
+	this.AddRowCapture = function() {
+		var id_residuo = parseInt( $( "#opc_res" ).val() );
+		if( id_residuo >= 1 ) {
+			$( "#data-capture" ).append( $( rows_residuo[ $( "#opc_res" ).val() ] ) );
+			$( "#opc_res option" ).each( function() {
+				if( id_residuo == this.value ) {
+					$( this ).remove();
+				}
+			} );
+			$( "#data-capture tr:last-child input.kilos" ).keydown( Manifiesto.CapturaKeyPressKilos );
+			$( "#data-capture tr:last-child input.cant_und" ).keydown( Manifiesto.CapturaKeyPressCantUnd );
+			$( "#data-capture tr:last-child input.kilos" ).focus();
+		}
+	}
+	this.CapturaKeyPressKilos = function( event ) {
+		if( "undefined" != typeof event.originalEvent && "undefined" != typeof event.originalEvent.path && "undefined" != typeof event.originalEvent.path[ 2 ] ) {
+			if( "arrowdown" == event.key.toLowerCase() || 40 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.nextElementSibling ) {
+					$( tr.nextElementSibling ).find( "input.kilos" ).focus();
+				}
+			} else if( "arrowup" == event.key.toLowerCase() || 38 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.previousElementSibling ) {
+					$( tr.previousElementSibling ).find( "input.kilos" ).focus();
+				}
+			}
+		}
+	}
+	this.CapturaKeyPressCantUnd = function( event ) {
+		if( "undefined" != typeof event.originalEvent && "undefined" != typeof event.originalEvent.path && "undefined" != typeof event.originalEvent.path[ 2 ] ) {
+			if( "arrowdown" == event.key.toLowerCase() || 40 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.nextElementSibling ) {
+					$( tr.nextElementSibling ).find( "input.cant_und" ).focus();
+				}
+			} else if( "arrowup" == event.key.toLowerCase() || 38 == event.keyCode ) {
+				var tr = event.originalEvent.path[ 2 ];
+				if( null !== tr.previousElementSibling ) {
+					$( tr.previousElementSibling ).find( "input.cant_und" ).focus();
+				}
+			}
 		}
 	}
 }
@@ -3093,29 +3186,7 @@ var Calendario	= new fnCalendario();
 var Bitacora	= new fnBitacora();
 var Reporte		= new fnReporte();
 var Grupo		= new fnGrupo();
-if( $.fn.dataTable && $.fn.dataTable.defaults ) {
-	$.extend(true, $.fn.dataTable.defaults, {
-		"scrollY": 400,
-		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todo"]],
-		"language": {
-		    "lengthMenu":	"Mostrar _MENU_ registros por página",
-		    "zeroRecords":	"No se encontraron resultados",
-		    "info":			"Página _PAGE_ de _PAGES_",
-		    "infoEmpty":	"No hay resultados que mostrar",
-		    "infoFiltered":	"(filtro de _MAX_ registros en total)",
-		    "emptyTable":	"No hay resultados que mostrar",
-		    "search":		"Buscar:",
-		    "paginate": {
-				"first":    "<i class=\"fas fa-fast-backward\"></i>",
-				"previous": "<i class=\"fas fa-backward\"></i>",
-				"next":     "<i class=\"fas fa-forward\"></i>",
-				"last":     "<i class=\"fas fa-fast-forward\"></i>"
-			},
-			"decimal": ".",
-	        "thousands": ","
-		},
-		"searching": false,
-		"pagingType": "full_numbers",
-		"order": [[ 0, "asc" ]]
-	});
-}
+
+$( document ).ready( function(){
+	$( "thead th.sortable" ).attr( 'title', "Clic para ordenar" );
+} );

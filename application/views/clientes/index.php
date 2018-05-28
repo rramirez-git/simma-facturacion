@@ -34,8 +34,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'clientes/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php if($idsucursal==0): ?>
@@ -56,8 +55,7 @@
 			<label for="frm_prefer_rfc">RFC</label>
 				<input type="text" class="form-control" id="frm_prefer_rfc" name="frm_prefer_rfc" value="<?= $filtros["rfc"]; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_prefer_razonsocial">Razon Social</label>
 				<input type="text" class="form-control" id="frm_prefer_razonsocial" name="frm_prefer_razonsocial" value="<?= $filtros["razonsocial"]; ?>" />
 			</div>
@@ -82,8 +80,7 @@
 			<label for="frm_prefer_observaciones">Observaciones</label>
 				<input type="text" class="form-control" id="frm_prefer_observaciones" name="frm_prefer_observaciones" value="<?= $filtros["observaciones"]; ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_prefer_identificador">Colonia</label>
 				<input type="text" class="form-control" id="frm_prefer_colonia" name="frm_prefer_colonia" value="<?= $filtros["colonia"]; ?>" />
 			</div>
@@ -94,17 +91,16 @@
 		</div>
 		<button type="button" class="btn btn-outline-primary" onclick="Cliente.Buscar()" >Buscar</button>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Empresa</th>
-					<th>Sucursal</th>
-					<th>No. Cte.</th>
-					<th>Razon Social</th>
-					<th>RFC</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Empresa</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Sucursal</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">No. Cte.</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">Razon Social</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 5, 'asc' )">RFC</th>
 					<th>Ubicación</th>
-					<th>Venderdor</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 7, 'asc' )">Venderdor</th>
 					<th>Giro</th>
 					<th>Contrato</th>
 					<!--<th>Servicios</th>-->
@@ -124,7 +120,7 @@
 					<!--<th>Servicios</th>-->
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($clientes!==false) foreach($clientes as $cliente):
 					$auxCte=new Modcliente();
 					$auxSuc=new Modsucursal();
@@ -134,8 +130,24 @@
 					$auxEmp->getFromDatabase($auxSuc->getIdempresa());
 					?>
 					<tr>
-						<td><?= $auxEmp->getRazonsocial(); ?></td>
-						<td><?= $auxSuc->getNombre(); ?></td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo(57)): ?>
+								<a href="<?php echo base_url( '/empresas/ver/' . $auxEmp->getIdempresa() ); ?>">
+									<?= $auxEmp->getRazonsocial(); ?>
+								</a>
+							<?php else: ?>
+								<?= $auxEmp->getRazonsocial(); ?>
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php if($this->modsesion->hasPermisoHijo(25)): ?>
+								<a href="<?php echo base_url( '/sucursales/ver/' . $auxSuc->getIdsucursal() ); ?>">
+									<?= $auxSuc->getNombre(); ?>
+								</a>
+							<?php else: ?>
+								<?= $auxSuc->getNombre(); ?>
+							<?php endif; ?>
+						</td>
 						<td data-order="<?= Refill($cliente["identificador"],10,"0"); ?>">
 							<?php if($this->modsesion->hasPermisoHijo(55)): ?>
 							<a href="<?= base_url('clientes/ver/'.$cliente["idcliente"]); ?>">
@@ -170,16 +182,14 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 	<h4>Generadores</h4>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>No. Cte.</th>
-					<th>No. Gen.</th>
-					<th>Razon Social</th>
-					<th>RFC</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table-gen', 1, 'asc' )">No. Cte.</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table-gen', 2, 'asc' )">No. Gen.</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table-gen', 3, 'asc' )">Razon Social</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table-gen', 4, 'asc' )">RFC</th>
 					<th>Ubicación</th>
 				</tr>
 			</thead>
@@ -192,7 +202,7 @@
 					<th>Ubicación</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table-gen">
 				<?php if($generadores!==false) foreach($generadores as $generador):
 					$auxGen=new Modgenerador();
 					$auxCte=new Modcliente();
@@ -233,6 +243,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <!-- Vista cliente/index End -->

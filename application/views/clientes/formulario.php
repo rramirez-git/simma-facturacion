@@ -9,20 +9,20 @@
 			<label for="frm_cliente_razonsocial">Razón Social <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_cliente_razonsocial" name="frm_cliente_razonsocial" value="<?= $objeto->getRazonsocial(); ?>" placeholder="Nombre o Razón Social del Cliente" maxlength="60" />
 			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_rfc">Registro Federal de Contribuyentes <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
+				<input type="text" class="form-control" id="frm_cliente_rfc" name="frm_cliente_rfc" value="<?= $objeto->getRfc(); ?>" placeholder="Registro Federal de Contribuyentes del Cliente" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_nombrecorto">Nombre Corto</label>
 				<input type="text" class="form-control" id="frm_cliente_nombrecorto" name="frm_cliente_nombrecorto" value="<?= $objeto->getNombreCorto(); ?>" placeholder="Nombre Corto del Cliente" maxlength="250" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_identificador">Número de Cliente <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_cliente_identificador" name="frm_cliente_identificador" value="<?= $objeto->getIdentificador(); ?>" placeholder="Número de Cliente" readonly="readonly" maxlength="13" />
 			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_rfc">Registro Federal de Contribuyentes <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
-				<input type="text" class="form-control" id="frm_cliente_rfc" name="frm_cliente_rfc" value="<?= $objeto->getRfc(); ?>" placeholder="Registro Federal de Contribuyentes del Cliente" />
-			</div>
+			
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_vendedor">Vendedor</label>
@@ -38,17 +38,17 @@
 			<label for="frm_cliente_afiliacion">Afiliación</label>
 				<input type="text" class="form-control" id="frm_cliente_afiliacion" name="frm_cliente_afiliacion" value="<?= $objeto->getAfiliacion(); ?>" placeholder="Afiliación" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_giro">Giro</label>
 				<input type="text" class="form-control" id="frm_cliente_giro" name="frm_cliente_giro" value="<?= $objeto->getGiro(); ?>" placeholder="Giro del Cliente" />
 			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_fechaalta">Fecha de Alta en Sistema</label>
 				<input type="date" class="form-control" id="frm_cliente_fechaalta" name="frm_cliente_fechaalta" value="<?= $objeto->getFechaalta(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_status">Estatus</label>
 				<select id="frm_cliente_status" name="frm_cliente_status" class="form-control">
 					<?php if($estatuscliente!==false) foreach($estatuscliente["opciones"] as $opc): ?>
@@ -86,17 +86,7 @@
 			<label for="frm_cliente_calle">Calle</label>
 				<input type="text" class="form-control" id="frm_cliente_calle" name="frm_cliente_calle" value="<?= $objeto->getCalle(); ?>" placeholder="Calle" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_numexterior">Número Exterior</label>
-				<input type="text" class="form-control" id="frm_cliente_numexterior" name="frm_cliente_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior de la Empresa" />
-			</div>
 			<div class="form-group col">
-			<label for="frm_cliente_numinterior">Número Interior</label>
-				<input type="text" class="form-control" id="frm_cliente_numinterior" name="frm_cliente_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior de la Empresa" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
 		    <label for="frm_cliente_cp">Código Postal</label>
 		    <div class="input-group">
 				<input type="number" class="form-control" id="frm_cliente_cp" name="frm_cliente_cp" value="<?= $objeto->getCp(); ?>" placeholder="C. P." min="0" max="99999" />
@@ -107,12 +97,22 @@
 				</div>
 			</div>
 			</div>
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_cliente_numexterior">Número Exterior</label>
+				<input type="text" class="form-control" id="frm_cliente_numexterior" name="frm_cliente_numexterior" value="<?= $objeto->getNumexterior(); ?>" placeholder="Número Exterior de la Empresa" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_numinterior">Número Interior</label>
+				<input type="text" class="form-control" id="frm_cliente_numinterior" name="frm_cliente_numinterior" value="<?= $objeto->getNuminterior(); ?>" placeholder="Número Interior de la Empresa" />
+			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_colonia">Colonia</label>
 				<input type="text" class="form-control" id="frm_cliente_colonia" name="frm_cliente_colonia" value="<?= $objeto->getColonia(); ?>" placeholder="colonia" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_municipio">Delegación o Municipio</label>
 				<input type="text" class="form-control" id="frm_cliente_municipio" name="frm_cliente_municipio" value="<?= $objeto->getMunicipio(); ?>" placeholder="Delegación o Municipio" />
 			</div>
@@ -131,13 +131,12 @@
 			<label for="frm_cliente_representante">Representante <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
 				<input type="text" class="form-control" id="frm_cliente_representante" name="frm_cliente_representante" value="<?= $objeto->getRepresentante(); ?>" placeholder="Representante" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_representantecargo">Cargo</label>
 				<input type="text" class="form-control" id="frm_cliente_representantecargo" name="frm_cliente_representantecargo" value="<?= $objeto->getRepresentantecargo(); ?>" placeholder="Cargo del Representante" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_cliente_representanteemail">Corro Electrónico</label>
+			<label for="frm_cliente_representanteemail">Correo Electrónico</label>
 				<input type="email" class="form-control" id="frm_cliente_representanteemail" name="frm_cliente_representanteemail" value="<?= $objeto->getRepresentanteemail(); ?>" placeholder="Correo Electrónico" />
 			</div>
 		</div>
@@ -149,8 +148,7 @@
 			<label for="frm_cliente_representanteextencion">Extensión</label>
 				<input type="tel" class="form-control" id="frm_cliente_representanteextencion" name="frm_cliente_representanteextencion" value="<?= $objeto->getRepresentanteextencion(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_representantetelefono2">Teléfono 2</label>
 				<input type="tel" class="form-control" id="frm_cliente_representantetelefono2" name="frm_cliente_representantetelefono2" value="<?= $objeto->getRepresentantetelefono2(); ?>" placeholder="Teléfono 2" maxlength="13" />
 			</div>
@@ -216,22 +214,20 @@
 			<label for="frm_cliente_referenciabancaria">Referencia Bancaria</label>
 				<input type="text" class="form-control" id="frm_cliente_referenciabancaria" name="frm_cliente_referenciabancaria" value="<?= $objeto->getReferenciabancaria(); ?>" placeholder="" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_metodopago">Método de Pago</label>
-				<input type="text" class="form-control" id="frm_cliente_metodopago" name="frm_cliente_metodopago" value="<?= $objeto->getMetodoPago(); ?>" placeholder="" maxlength="250" />
-			</div>
 			<div class="form-group col">
 			<label for="frm_cliente_referenciapago">Referencia de Pago</label>
 				<input type="text" class="form-control" id="frm_cliente_referenciapago" name="frm_cliente_referenciapago" value="<?= $objeto->getReferenciaPago(); ?>" placeholder="" maxlength="250" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_metodopago">Método de Pago</label>
+				<input type="text" class="form-control" id="frm_cliente_metodopago" name="frm_cliente_metodopago" value="<?= $objeto->getMetodoPago(); ?>" placeholder="" maxlength="250" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_cliente_cobranzacontacto">Contacto</label>
 				<input type="text" class="form-control" id="frm_cliente_cobranzacontacto" name="frm_cliente_cobranzacontacto" value="<?= $objeto->getCobranzacontacto(); ?>" placeholder="Contacto" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzaemail">Corro Electrónico</label>
 				<input type="email" class="form-control" id="frm_cliente_cobranzaemail" name="frm_cliente_cobranzaemail" value="<?= $objeto->getCobranzaemail(); ?>" placeholder="Correo Electrónico" />
 			</div>
@@ -244,8 +240,7 @@
 			<label for="frm_cliente_cobranzaextension">Extensión</label>
 				<input type="tel" class="form-control" id="frm_cliente_cobranzaextension" name="frm_cliente_cobranzaextension" value="<?= $objeto->getCobranzaextension(); ?>" placeholder="Extensión" maxlength="5" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzatelefono2">Teléfono 2</label>
 				<input type="tel" class="form-control" id="frm_cliente_cobranzatelefono2" name="frm_cliente_cobranzatelefono2" value="<?= $objeto->getCobranzatelefono2(); ?>" placeholder="Teléfono" maxlength="13" />
 			</div>
@@ -263,17 +258,7 @@
 			<label for="frm_cliente_cobranzacalle">Calle</label>
 				<input type="text" class="form-control" id="frm_cliente_cobranzacalle" name="frm_cliente_cobranzacalle" value="<?= $objeto->getCobranzacalle(); ?>" placeholder="Calle" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cobranzanumexterior">Número Exterior</label>
-				<input type="text" class="form-control" id="frm_cliente_cobranzanumexterior" name="frm_cliente_cobranzanumexterior" value="<?= $objeto->getCobranzanumexterior(); ?>" placeholder="Número Exterior" />
-			</div>
 			<div class="form-group col">
-			<label for="frm_cliente_cobranzanuminterior">Número Interior</label>
-				<input type="text" class="form-control" id="frm_cliente_cobranzanuminterior" name="frm_cliente_cobranzanuminterior" value="<?= $objeto->getCobranzanuminterior(); ?>" placeholder="Número Interior" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
 		    <label for="frm_cliente_cobranzacp">Código Postal</label>
 		    	<div class="input-group">
 					<input type="number" class="form-control" id="frm_cliente_cobranzacp" name="frm_cliente_cobranzacp" value="<?= $objeto->getCobranzacp(); ?>" placeholder="C. P." min="0" max="99999" />
@@ -284,12 +269,22 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_cliente_cobranzanumexterior">Número Exterior</label>
+				<input type="text" class="form-control" id="frm_cliente_cobranzanumexterior" name="frm_cliente_cobranzanumexterior" value="<?= $objeto->getCobranzanumexterior(); ?>" placeholder="Número Exterior" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_cobranzanuminterior">Número Interior</label>
+				<input type="text" class="form-control" id="frm_cliente_cobranzanuminterior" name="frm_cliente_cobranzanuminterior" value="<?= $objeto->getCobranzanuminterior(); ?>" placeholder="Número Interior" />
+			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_cobranzacolonia">Colonia</label>
 				<input type="text" class="form-control" id="frm_cliente_cobranzacolonia" name="frm_cliente_cobranzacolonia" value="<?= $objeto->getCobranzacolonia(); ?>" placeholder="colonia" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cobranzamunicipio">Delegación o Municipio</label>
 				<input type="text" class="form-control" id="frm_cliente_cobranzamunicipio" name="frm_cliente_cobranzamunicipio" value="<?= $objeto->getCobranzamunicipio(); ?>" placeholder="Delegación o Municipio" />
 			</div>
@@ -299,7 +294,8 @@
 			</div>
 		</div>
 		<h5>Facturación Electrónica</h5>
-		<div class="form-row"><div class="form-group col">
+		<div class="form-row">
+			<div class="form-group col">
 			<label for="frm_cliente_categoria">Categoria</label>
 				<select id="frm_cliente_categoria" name="frm_cliente_categoria" class="form-control">
 					<?php if( $categorias !== false ) foreach( $categorias[ "opciones" ] as $opc): ?>
@@ -310,6 +306,29 @@
 				</select>
 			</div>
 			<div class="form-group col">
+			<label for="frm_cliente_banco">Banco</label>
+				<input type="text" class="form-control" id="frm_cliente_banco" name="frm_cliente_banco" value="<?= $objeto->getBanco(); ?>" placeholder="Banco" maxlength="250" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_rfcbanco">RFC</label>
+				<input type="text" class="form-control" id="frm_cliente_rfcbanco" name="frm_cliente_rfcbanco" value="<?= $objeto->getRfcbanco(); ?>" placeholder="RFC del Banco" maxlength="13" />
+			</div>
+		</div>
+		<div class="form-row"><div class="form-group col">
+			<label for="frm_cliente_cuenta">Cuenta</label>
+				<input type="number" class="form-control" id="frm_cliente_cuenta" name="frm_cliente_cuenta" value="<?= $objeto->getCuenta(); ?>" placeholder="Cuenta Bancaria" maxlength="30" min="0" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_clabe">CLABE</label>
+				<input type="number" class="form-control" id="frm_cliente_clabe" name="frm_cliente_clabe" value="<?= $objeto->getClabe(); ?>" placeholder="CLABE Interbancaria" maxlength="30" min="0" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_cliente_correo">Correo</label>
+				<input type="email" class="form-control" id="frm_cliente_correo" name="frm_cliente_correo" value="<?= $objeto->getCorreo(); ?>" placeholder="Correo" maxlength="250" />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col">
 			<label for="frm_cliente_cfdi_moneda">Moneda</label>
 				<select id="frm_cliente_cfdi_moneda" name="frm_cliente_cfdi_moneda" class="form-control">
 					<?php if( $monedas !== false ) foreach( $monedas[ "opciones" ] as $opc): ?>
@@ -319,8 +338,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cfdi_formapago">Forma de Pago</label>
 				<select id="frm_cliente_cfdi_formapago" name="frm_cliente_cfdi_formapago" class="form-control">
 					<?php if( $formaspago !== false ) foreach( $formaspago[ "opciones" ] as $opc): ?>
@@ -340,8 +358,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cfdi_usocfdi">Uso del CFDi</label>
 				<select id="frm_cliente_cfdi_usocfdi" name="frm_cliente_cfdi_usocfdi" class="form-control">
 					<?php if( $usoscfdi !== false ) foreach( $usoscfdi[ "opciones" ] as $opc): ?>
@@ -351,6 +368,8 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_cliente_cfdi_claveprodserv">Producto</label>
 				<select id="frm_cliente_cfdi_claveprodserv" name="frm_cliente_cfdi_claveprodserv" class="form-control">
@@ -361,8 +380,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cfdi_claveunidad">Clave Unidad</label>
 				<select id="frm_cliente_cfdi_claveunidad" name="frm_cliente_cfdi_claveunidad" class="form-control">
 					<?php if( $clavesunidad !== false ) foreach( $clavesunidad[ "opciones" ] as $opc): ?>
@@ -397,8 +415,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_cliente_cfdi_tasaocuota">Impuesto Tasa o Cuota</label>
 				<select id="frm_cliente_cfdi_tasaocuota" name="frm_cliente_cfdi_tasaocuota" class="form-control" onchange="Cliente.RellenaBase()">
 					<option></option>
@@ -412,29 +429,6 @@
 			<div class="form-group col">
 			<label for="frm_cliente_cfdi_base">Impuesto Base</label>
 				<input type="text" class="form-control" id="frm_cliente_cfdi_base" name="frm_cliente_cfdi_base" value="<?= $objeto->getCfdi_base(); ?>" placeholder="Base del Impuesto" maxlength="10" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_banco">Banco</label>
-				<input type="text" class="form-control" id="frm_cliente_banco" name="frm_cliente_banco" value="<?= $objeto->getBanco(); ?>" placeholder="Banco" maxlength="250" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_rfcbanco">RFC</label>
-				<input type="text" class="form-control" id="frm_cliente_rfcbanco" name="frm_cliente_rfcbanco" value="<?= $objeto->getRfcbanco(); ?>" placeholder="RFC del Banco" maxlength="13" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_cuenta">Cuenta</label>
-				<input type="number" class="form-control" id="frm_cliente_cuenta" name="frm_cliente_cuenta" value="<?= $objeto->getCuenta(); ?>" placeholder="Cuenta Bancaria" maxlength="30" min="0" />
-			</div>
-			<div class="form-group col">
-			<label for="frm_cliente_clabe">CLABE</label>
-				<input type="number" class="form-control" id="frm_cliente_clabe" name="frm_cliente_clabe" value="<?= $objeto->getClabe(); ?>" placeholder="CLABE Interbancaria" maxlength="30" min="0" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_cliente_correo">Correo</label>
-				<input type="email" class="form-control" id="frm_cliente_correo" name="frm_cliente_correo" value="<?= $objeto->getCorreo(); ?>" placeholder="Correo" maxlength="250" />
 			</div>
 		</div>
 		<button type="button" class="btn btn-outline-primary" onclick="Cliente.Enviar(<?= ($objeto->getIdcliente()!="" && $objeto->getIdcliente()!=0?'false':'true'); ?>)" >Guardar</button>

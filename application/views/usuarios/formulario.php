@@ -16,8 +16,7 @@
         	<label for="frm_usuario_amaterno">Apellido Materno</label>
         		<input type="text" class="form-control" id="frm_usuario_amaterno" name="frm_usuario_amaterno" value="<?= $objeto->getAmaterno(); ?>" placeholder="Apellido Materno" maxlength="250" />
         	</div>
-        </div>
-        <div class="form-row"><div class="form-group col">
+        	<div class="form-group col">
         	<label for="frm_usuario_usuario">Usuario <abbr class="text-danger" title="Campo Obligatorio">(obligatorio)</abbr></label>
         		<input type="text" class="form-control" id="frm_usuario_usuario" name="frm_usuario_usuario" value="<?= $objeto->getUsuario(); ?>" placeholder="Usuario" maxlength="250" />
         	</div>

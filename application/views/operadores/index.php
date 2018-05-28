@@ -12,19 +12,16 @@
 	</div>
 	<h3>Operadores</h3>
 	<form autocomplete="off" method="post" id="frm_prefer">
-		<div class="form-row"><div class="form-group">
+		<div class="form-row"><div class="form-group col">
 			<label for="frm_prefer_empresa">Empresa</label>
-			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_empresa" name="frm_prefer_empresa" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val();">
 					<?php foreach($empresas as $empresa): ?>
 						<option value="<?= $empresa["idempresa"]; ?>" <?= ($empresa["idempresa"]==$idempresa?'selected="selected"':''); ?>><?= $empresa["razonsocial"]; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group">
+			<div class="form-group col">
 			<label for="frm_prefer_empresa">Sucursal</label>
-			<div class="col-sm-10">
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'operadores/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
 						<option value="<?= $sucursal["idsucursal"]; ?>" <?= ($sucursal["idsucursal"]==$idsucursal?'selected="selected"':''); ?>><?= $sucursal["nombre"]; ?></option>
@@ -33,12 +30,11 @@
 			</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Nombre</th>
-					<th>Cargo</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Nombre</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Cargo</th>
 					<th>Teléfono</th>
 					<th>Correo Electrónico</th>
 				</tr>
@@ -51,7 +47,7 @@
 					<th>Correo Electrónico</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($operadores!==false) foreach($operadores as $operador): ?>
 					<tr>
 						<td>
@@ -72,6 +68,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <!-- Vista operadores/index End -->

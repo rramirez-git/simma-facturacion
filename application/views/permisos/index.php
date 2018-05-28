@@ -20,8 +20,7 @@
 		</div>
 	</div>
 	<h3>Permisos</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Permiso</th>
@@ -38,7 +37,6 @@
 				<?php if($permisos!==false) foreach($permisos as $permiso) PrintPermiso($permiso); ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <?php
 function PrintPermiso($permiso,$level=0)

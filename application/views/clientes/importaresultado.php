@@ -2,8 +2,7 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Clientes <small class="text-muted">Resultado</small></h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>No. Excel</th>
@@ -56,7 +55,6 @@
 				?>
 			</tbody>
 		</table>
-	</div>
 	<button type="button" class="btn btn-outline-primary" onclick="location.href='<?= base_url("clientes/index/$idempresa/$idsucursal"); ?>'">Regresar</button>
 </div>
 <!-- Vista cliente/importaresultado End -->

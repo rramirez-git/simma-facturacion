@@ -30,22 +30,19 @@
 			<label for="frm_generador_razonsocial">Razón Social</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRazonsocial(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_nombrecorto">Nombre Corto</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombrecorto(); ?>" />
-			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_identificador">Número de Generador</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
-			</div>
 			<div class="form-group col">
 			<label for="frm_generador_rfc">Registro Federal de Contribuyentes</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRfc(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
+			<label for="frm_generador_nombrecorto">Nombre Corto</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getNombrecorto(); ?>" />
+			</div>
+			<div class="form-group col">
+			<label for="frm_generador_identificador">Número de Generador</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getIdentificador(); ?>" />
+			</div><div class="form-group col">
 			<label for="frm_generador_numregamb">Número de Registro Ambiental</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNumregamb(); ?>" />
 			</div>
@@ -129,20 +126,19 @@
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_horarioinicio">Hora Inicio</label>
+			<label for="frm_generador_horarioinicio">Hora Inicio (Mat.)</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorarioinicio(); ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_generador_horariofin">Hora Fin</label>
+			<label for="frm_generador_horariofin">Hora Fin (Mat.)</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorariofin(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
-			<label for="frm_generador_horarioinicio2">Hora Inicio</label>
+			<div class="form-group col">
+			<label for="frm_generador_horarioinicio2">Hora Inicio (Vesp.)</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorarioinicio2(); ?>" />
 			</div>
 			<div class="form-group col">
-			<label for="frm_generador_horariofin2">Hora Fin</label>
+			<label for="frm_generador_horariofin2">Hora Fin (Vesp.)</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getHorariofin2(); ?>" />
 			</div>
 		</div>
@@ -150,6 +146,10 @@
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_generador_calle">Calle</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCalle(); ?>" />
+			</div>
+			<div class="form-group col">
+		    <label for="frm_generador_cp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
 			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
@@ -161,16 +161,12 @@
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getNuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_generador_cp">Código Postal</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCp(); ?>" />
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_generador_colonia">Colonia</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getColonia(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_municipio">Delegación o Municipio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getMunicipio(); ?>" />
 			</div>
@@ -189,8 +185,7 @@
 			<label for="frm_generador_representante">Representante</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentante(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_representantecargo">Cargo</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantecargo(); ?>" />
 			</div>
@@ -207,8 +202,7 @@
 			<label for="frm_generador_representanextension">Extensión</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentanteextension(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_representantetelefono2">Teléfono 2</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getRepresentantetelefono2(); ?>" />
 			</div>
@@ -248,8 +242,7 @@
 			<label for="frm_generador_cobranzacontacto">Contacto</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacontacto(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_cobranzaemail">Corro Electrónico</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaemail(); ?>" />
 			</div>
@@ -262,8 +255,7 @@
 			<label for="frm_generador_cobranzaextension">Extensión</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzaextension(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_cobranzatelefono2">Teléfono 2</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzatelefono2(); ?>" />
 			</div>
@@ -281,6 +273,10 @@
 			<label for="frm_generador_cobranzacalle">Calle</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacalle(); ?>" />
 			</div>
+			<div class="form-group col">
+		    <label for="frm_generador_cobranzacp">Código Postal</label>
+				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?>" />
+			</div>
 		</div>
 		<div class="form-row"><div class="form-group col">
 			<label for="frm_generador_cobranzanumexterior">Número Exterior</label>
@@ -291,16 +287,12 @@
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzanuminterior(); ?>" />
 			</div>
 		</div>
-		<div class="form-row"><div class="form-group col">
-		    <label for="frm_generador_cobranzacp">Código Postal</label>
-				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacp(); ?>" />
-			</div>
+		<div class="form-row">
 			<div class="form-group col">
 			<label for="frm_generador_cobranzacolonia">Colonia</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzacolonia(); ?>" />
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_generador_cobranzamunicipio">Delegación o Municipio</label>
 				<input class="form-control" disabled="disabled" value="<?= $objeto->getCobranzamunicipio(); ?>" />
 			</div>

@@ -21,8 +21,7 @@ $generador=new Modgenerador();
 		<label for="frm_validacion_ruta">Ruta</label>
 			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 	</div>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th>Cliente</th>
@@ -67,7 +66,6 @@ $generador=new Modgenerador();
 				?>
 			</tbody>
 		</table>
-	</div>
 	<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.CrearManifiestoRutaBruto_Exec()" >Crear</button>&nbsp;
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("manifiestos/index/$idempresa/$idsucursal"); ?>'">Cancelar</button>
 </form>

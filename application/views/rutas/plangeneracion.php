@@ -1,3 +1,4 @@
+<!-- Vista rutas/plangeneracion -->
 <?= $menumain; ?>
 <div class="container">
 	<h3>Plan de Recolección <small class="text-muted"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
@@ -10,9 +11,10 @@
 			</div>
 			<div class="form-group col">
 				<button type="button" class="btn btn-outline-primary" onclick="Ruta.VerPlanRecoleccion()">Mostar</button>
-				<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Cancelar</button>
+				<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Regresar</button>
 			</div>
 		</div>
 	</form>
 	<div id="prevalidacion"></div>
 </div>
+<!-- Vista rutas/plangeneracion End -->

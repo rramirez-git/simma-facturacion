@@ -20,8 +20,7 @@
 					<?php endforeach; ?>
 				</select>
 			</div>
-		</div>
-		<div class="form-row"><div class="form-group col">
+			<div class="form-group col">
 			<label for="frm_prefer_empresa">Sucursal</label>
 				<select class="form-control" id="frm_prefer_sucursal" name="frm_prefer_sucursal" onchange="location.href=baseURL+'vehiculos/index/'+$('#frm_prefer_empresa').val()+'/'+$('#frm_prefer_sucursal').val();">
 					<?php foreach($sucursales as $sucursal): ?>
@@ -31,14 +30,13 @@
 			</div>
 		</div>
 	</form>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
-					<th>Placa</th>
-					<th>Número de Autorizacion SCT</th>
-					<th>Número de Autorizacion SEMARNAT</th>
-					<th>Tipo de Vehículo</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Placa</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 2, 'asc' )">Número de Autorizacion SCT</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 3, 'asc' )">Número de Autorizacion SEMARNAT</th>
+					<th class="sortable" onclick="TableSortByColumn( 'data-table', 4, 'asc' )">Tipo de Vehículo</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -49,7 +47,7 @@
 					<th>Tipo de Vehículo</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="data-table">
 				<?php if($vehiculos!==false) foreach($vehiculos as $vehiculo): ?>
 					<tr>
 						<td>
@@ -68,6 +66,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>
 <!-- Vista vehiculos/index End -->

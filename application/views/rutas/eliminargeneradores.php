@@ -1,8 +1,7 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Desasociar Generadores <small class="text-muted"><?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?></small></h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-hover table-sm table-responsive">
 			<thead>
 				<tr>
 					<th></th>
@@ -43,7 +42,6 @@
 				?>
 			</tbody>
 		</table>
-	</div>
 	<input type="hidden" id="idruta" name="idruta" value="<?= $ruta->getIdruta(); ?>" />
 	<button type="button" class="btn btn-outline-primary" onclick="Ruta.DelGeneradores()" >Desasociar</button>
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='<?= base_url("rutas/ver/".$ruta->getIdruta()); ?>'">Cancelar</button>
