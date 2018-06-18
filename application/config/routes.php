@@ -42,5 +42,40 @@ $route['default_controller'] = "inicio";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route[ 'cfdi_parte_informacionaduanera/(:any)/(:any)/(:any)' ] = 'parteinformacionaduanera/$1/$2/$3';
+$route[ 'cfdi_parte_informacionaduanera/(:any)/(:any)' ] = 'parteinformacionaduanera/$1/$2';
+$route[ 'cfdi_parte_informacionaduanera/(:any)' ] = 'parteinformacionaduanera/$1';
+$route[ 'cfdi_parte_informacionaduanera' ] = 'parteinformacionaduanera';
+
+$route[ 'cfdi_parte/(:any)/(:any)/(:any)' ] = 'parte/$1/$2/$3';
+$route[ 'cfdi_parte/(:any)/(:any)' ] = 'parte/$1/$2';
+$route[ 'cfdi_parte/(:any)' ] = 'parte/$1';
+$route[ 'cfdi_parte' ] = 'parte';
+
+$route[ 'cfdi_doctorelacionado/(:any)/(:any)/(:any)' ] = 'doctorelacionado/$1/$2/$3';
+$route[ 'cfdi_doctorelacionado/(:any)/(:any)' ] = 'doctorelacionado/$1/$2';
+$route[ 'cfdi_doctorelacionado/(:any)' ] = 'doctorelacionado/$1';
+$route[ 'cfdi_doctorelacionado' ] = 'doctorelacionado';
+
+$route[ 'cfdi_pago/(:any)/(:any)/(:any)' ] = 'pago/$1/$2/$3';
+$route[ 'cfdi_pago/(:any)/(:any)' ] = 'pago/$1/$2';
+$route[ 'cfdi_pago/(:any)' ] = 'pago/$1';
+$route[ 'cfdi_pago' ] = 'pago';
+
+$route[ 'cfdi_concepto_impuestos/(:any)/(:any)/(:any)' ] = 'impuestos/$1/$2/$3';
+$route[ 'cfdi_concepto_impuestos/(:any)/(:any)' ] = 'impuestos/$1/$2';
+$route[ 'cfdi_concepto_impuestos/(:any)' ] = 'impuestos/$1';
+$route[ 'cfdi_concepto_impuestos' ] = 'impuestos';
+
+$route[ 'cfdi_concepto_informacionaduanera/(:any)/(:any)/(:any)' ] = 'informacionaduanera/$1/$2/$3';
+$route[ 'cfdi_concepto_informacionaduanera/(:any)/(:any)' ] = 'informacionaduanera/$1/$2';
+$route[ 'cfdi_concepto_informacionaduanera/(:any)' ] = 'informacionaduanera/$1';
+$route[ 'cfdi_concepto_informacionaduanera' ] = 'informacionaduanera';
+
+$route[ 'cfdi_concepto/(:any)/(:any)/(:any)' ] = 'concepto/$1/$2/$3';
+$route[ 'cfdi_concepto/(:any)/(:any)' ] = 'concepto/$1/$2';
+$route[ 'cfdi_concepto/(:any)' ] = 'concepto/$1';
+$route[ 'cfdi_concepto' ] = 'concepto';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

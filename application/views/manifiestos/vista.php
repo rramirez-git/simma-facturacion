@@ -160,7 +160,7 @@ $total=0.0;
 		<?php if($motivo!="" && $motivo>0) foreach($motivos as $cat) foreach($cat["opciones"] as $opc) if($motivo==$opc["idcatalogodet"]): ?>
 			<?= $opc["descripcion"]; ?> (<?= $cat["descripcion"]; ?>)
 		<?php endif; ?>
-			<table class="table table-hover table-sm table-responsive">
+			<table class="table table-hover table-sm table-responsive-sm">
 				<thead>
 					<tr>
 						<th>Residuo</th>

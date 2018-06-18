@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<h3>Grupos</h3>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th>Nombre</th>

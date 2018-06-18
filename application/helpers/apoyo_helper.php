@@ -95,4 +95,16 @@ function OrdenaResiduosCaptura( $r1, $r2 ) {
 		return ( $r1[ 'residuo' ][ 'opcion' ] < $r2[ 'residuo' ][ 'opcion' ] ? -1 : 1 );
 	}
 }
+function CreatePassword() {
+	$largo = 8;
+	$value = "";
+	for( $aux = 0; $aux < $largo; $aux++ ) {
+		$type = rand( 1, 3);
+		if( 1 == $type ) { $value .= chr( rand( 42, 57 ) ); }
+		else if( 2 == $type ) { $value .= chr( rand( 65, 90 ) ); }
+		else { $value .= chr( rand( 97, 122 ) ); }
+	}
+	return $value;
+}
+function EncryptPassword( $value ) { return base64_encode( sha1( $value ) ); }
 ?>

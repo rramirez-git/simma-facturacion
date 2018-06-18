@@ -394,7 +394,7 @@
 			</div>
 		</div>
 		<h4>Generadores</h4>
-			<table class="table table-hover table-sm table-responsive">
+			<table class="table table-hover table-sm table-responsive-sm">
 				<thead>
 					<tr>
 						<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Número de Generador</th>

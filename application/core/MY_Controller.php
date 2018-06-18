@@ -2,6 +2,7 @@
 class MY_Controller extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
+		//var_dump("space","space","space");
 		$this->load->model( $this->base_model );
 	}
 	public function index() {
@@ -52,8 +53,9 @@ class MY_Controller extends CI_Controller {
 		    "records"		=> $regs,
 		    "filters"		=> $filters
 		), true );
+		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body = $this->load->view( 'html/body', array(
-			"body" => $autoview
+			"body" => $menumain . $autoview
 		), true );
 		$head = $this->load->view( 'html/head', array(), true );
 		$this->load->view( 'html/html', array(
@@ -69,6 +71,23 @@ class MY_Controller extends CI_Controller {
 		$fields_definition = $this->{$this->base_model}->get_definitions();
 		$fields = $this->{$this->base_model}->get_fields();
 		$fields_key = array_keys( $fields_definition );
+		if( "primary_key" == $this->{$this->base_model}->get_pk() ) {
+			$fields[ $this->{$this->base_model}->get_pk() ] = $pk;
+			$fields_definition[ $this->{$this->base_model}->get_pk() ] = array(
+				'ispk'			=> true,
+				'type'			=> "string",
+				'default'		=> "",
+				'isdirect'		=> true,
+				'ismandatory'	=> true,
+				'control'		=> array(
+					'label'		=> $this->{$this->base_model}->get_pk(),
+					'type'		=> "input",
+					'subtype'	=> "hidden",
+					'cols'		=> 0,
+					'readonly'	=> true
+				)
+			);
+		}
 		$autoview = $this->load->view( 'html/autoform', array(
 		    "title"			=> $this->controler_name,
 		    "subtitle"		=> ( 0 == $pk ? $this->lang->line( "auto_new" ) : $this->lang->line( "auto_update" ) ),
@@ -81,8 +100,9 @@ class MY_Controller extends CI_Controller {
 		    "btn_submit"	=> '<i class="far fa-save"></i> ' . $this->lang->line( "auto_save" ),
 		    "extra"			=> $this->auto_update_scripts( $fields_definition, $pk )
 			), true );
+		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body = $this->load->view( 'html/body', array(
-			"body" => $autoview
+			"body" => $menumain . $autoview
 		), true );
 		$head = $this->load->view( 'html/head', array(), true );
 		$this->load->view( 'html/html', array(
@@ -107,8 +127,9 @@ class MY_Controller extends CI_Controller {
 		    "controler"		=> strtolower( get_class( $this ) ),
 		    "pk"			=> $pk
 			), true );
+		$menumain=$this->load->view('menu/menumain',array(),true);
 		$body = $this->load->view( 'html/body', array(
-			"body" => $autoview
+			"body" => $menumain . $autoview
 		), true );
 		$head = $this->load->view( 'html/head', array(), true );
 		$this->load->view( 'html/html', array(
@@ -126,11 +147,15 @@ class MY_Controller extends CI_Controller {
 	}
 	private function auto_do_update() {
 		$this->{$this->base_model}->get_from_input();
-		$this->{$this->base_model}->update_to_database();
+		$pk = 0;
+		if( "primary_key" == $this->{$this->base_model}->get_pk() ) {
+			$pk = urldecode( $this->input->post( $this->base_model . "_primary_key" ) );
+		}
+		$this->{$this->base_model}->update_to_database( $pk );
 		header( "location: " . base_url( strtolower( get_class( $this ) ) . '/ver/' . $this->{$this->base_model}->get_field( $this->{$this->base_model}->get_pk() ) ) );
 	}
 	private function auto_do_delete( $pk ) {
-		$this->{$this->base_model}->delete( $pk );
+		$this->{$this->base_model}->delete( urldecode( $pk ) );
 		header( "location: " . base_url( strtolower( get_class( $this ) ) ) );
 	}
 	private function auto_update_toolbars( $definitions ) {

@@ -21,7 +21,7 @@ $generador=new Modgenerador();
 		<label for="frm_validacion_ruta">Ruta</label>
 			<input class="form-control" disabled="disabled" value="<?= $ruta->getIdentificador()." - ".$ruta->getNombre(); ?>" />
 	</div>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th>Cliente</th>

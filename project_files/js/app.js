@@ -324,7 +324,7 @@ function TableSortByColumn( idtable, column, type ) {
 	data_cels.each( function() { 
 		var text = $( this ).text().trim();
 		var num = parseFloat( text );
-		if( isNaN( num ) || text.length != ( "" + num ).length ) {
+		if( isNaN( num ) || num != text ) {
 			if( -1 == data.indexOf( text ) ) {
 				data.push( text );
 			}

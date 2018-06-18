@@ -21,7 +21,7 @@
 	<button type="button" class="btn btn-outline-primary" id="btnBuscarCP">Buscar</button>
 	<button type="button" class="btn btn-outline-secondary" id="btnCancelarCP">Cancelar</button>
 </form>
-	<table class="table table-hover table-sm table-responsive">
+	<table class="table table-hover table-sm table-responsive-sm">
 		<thead>
 			<tr>
 				<th>CP</th>

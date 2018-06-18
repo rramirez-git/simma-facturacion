@@ -2,12 +2,12 @@
 <?php print_r( pretty_backtrace() ); ?>
 <?php endif; ?> -->
 <?php if( isset( $title ) ): ?>
-	<h1>
+	<h3>
 		<?php echo $title; ?>
 		<?php if( isset( $subtitle ) ): ?>
 			<small class="text-muted"><?php echo $subtitle; ?></small>
 		<?php endif; ?>
-	</h1>
+	</h3>
 <?php endif; ?>
 <form autocomplete="off"
 	id="<?php echo ( isset( $id_form ) ? $id_form : '' ); ?>" 

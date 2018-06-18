@@ -31,4 +31,18 @@ update recoleccion set unidad = 156 where unidad = 'kg';
 update recoleccion set cantidad_unidad = cantidad;
 delete from relpermperf where idpermiso in (select idpermiso from permiso where nombre like '%import%');
 
+update reporte set plantilla = concat( substr( plantilla, 1, length( plantilla ) - 4 ), 'csv' );
+
+ALTER TABLE `cfdi_comprobante` DROP FOREIGN KEY fk_cfdi_comprobante_manifiesto1;
+ALTER TABLE `cfdi_comprobante` DROP INDEX `fk_cfdi_comprobante_manifiesto1_idx`;
+ALTER TABLE `cfdi_comprobante` CHANGE `idmanifiesto` `idcliente` BIGINT UNSIGNED NOT NULL;
+ALTER TABLE `cfdi_comprobante` ADD INDEX `idx_cte_cfdi_1` (`idcliente`);
+DELETE FROM cfdi_comprobante;
+ALTER TABLE `cfdi_comprobante` ADD FOREIGN KEY `fk_cte_cfdi_1`( idcliente ) REFERENCES cliente( idcliente ) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+create or replace view opciones_gv as select idopcion as idopciones, idcatalogo, opcion, catalogo as lbl_catalogo from v_catalogo;
+create or replace view catalogo_gv as select idcatalogo, descripcion as nombre from catalogo;
+
+ALTER TABLE `cfdi_concepto_impuestos` ADD `tasaocuota` DECIMAL(7,3) NOT NULL ;
+
 

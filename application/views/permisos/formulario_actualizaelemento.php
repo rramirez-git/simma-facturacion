@@ -1,7 +1,7 @@
 <h3>(<?= $permiso->getIdpermiso(); ?>) <?= $permiso->getNombre(); ?> <small class="text-muted"><?= $permiso->getDescripcion(); ?></small></h3>
 <form autocomplete="off" id="elementosMenu">
 	<input type="hidden" name="idpermiso" id="idpermiso" value="<?= $permiso->getIdpermiso(); ?>" />
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th>Nombre</th>

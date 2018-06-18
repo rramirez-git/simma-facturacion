@@ -26,12 +26,12 @@
 	</div>
 </div>
 <?php if( isset( $title ) ): ?>
-	<h1>
+	<h3>
 		<?php echo $title; ?>
 		<?php if( isset( $subtitle ) ): ?>
 			<small class="text-muted"><?php echo $subtitle; ?></small>
 		<?php endif; ?>
-	</h1>
+	</h3>
 <?php endif; ?>
 <div class="clearfix"></div>
 <form autocomplete="off"

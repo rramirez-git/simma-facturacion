@@ -1,0 +1,59 @@
+{
+	"idcatalogo" 		: {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Id Catálogo",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0
+		}
+	},
+	"nombre" 		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label" 	: "Catálogo",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 12
+		}
+	},
+	"opciones" 		: {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "opciones",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Opciones",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 3
+		}
+	}
+}

@@ -1,0 +1,385 @@
+{
+	"idcfdi_concepto"	: {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Id Concepto",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	
+	"idcfdi_comprobante": {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_comprobante",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Comprobante",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"claveprodserv"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 16,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Clave del Producto",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"noidentificacion"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 100 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Núm. de  Identificación",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"cantidad"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cantidad",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"claveunidad"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 17,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave de la Unidad",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"unidad"			: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 20 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Unidad",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"descripcion"		: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Descripción",
+			"type"		: "textarea",
+			"subtype"	: "",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	},
+	"valorunitario"		: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Valor Unitario",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"importe"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Importe",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: true
+		}
+	},
+	"descuento"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Descuento",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"cuentapredial_numero": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 150 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Número de Cuenta Predial",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	},
+	
+	"claveprodserv_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave del Producto (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"claveprodserv_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave del Producto (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"claveunidad_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave de Unidad (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"claveunidad_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave de Unidad (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	
+	"impuestos" : {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "cfdi_concepto_impuestos",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Impuestos",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	},
+	"informacionaduanera" : {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "cfdi_concepto_informacionaduanera",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Información Aduanera",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	},
+	"partes" : {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "cfdi_parte",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Partes",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	}
+}

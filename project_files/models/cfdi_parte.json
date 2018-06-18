@@ -1,0 +1,242 @@
+{
+	"idcfdi_parte"		: {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Id Parte",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"idcfdi_concepto"	: {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_concepto",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Concepto",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"claveprodserv"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 16,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Clave del Producto",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"claveprodserv_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave del Producto (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"claveprodserv_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Clave del Producto (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"noidentificacion"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 100 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Núm. de Identificación",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"cantidad"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cantidad",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 2,
+			"readonly"	: false
+		}
+	},
+	"unidad"			: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 20 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Unidad",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"descripcion"		: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Descripción",
+			"type"		: "textarea",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"valorunitario"		: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Valor Unitario",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 2,
+			"readonly"	: false
+		}
+	},
+	"importe"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Importe",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 2,
+			"readonly"	: true
+		}
+	},
+	"informacionaduanera" : {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "cfdi_parte_informacionaduanera",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Información Aduanera",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	}
+}

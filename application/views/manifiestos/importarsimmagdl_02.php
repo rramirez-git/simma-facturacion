@@ -6,7 +6,7 @@
 <div class="container">
 	<h3>Importar Manifiestos <small class="text-muted">Preimportación</small></h3>
 	<form autocomplete="off" method="post" id="frm_importado" action="<?= base_url("manifiestos/importado_final/$idempresa/$idsucursal")?>">
-			<table class="table table-hover table-sm table-responsive">
+			<table class="table table-hover table-sm table-responsive-sm">
 				<thead>
 					<tr>
 						<th>Fila</th>

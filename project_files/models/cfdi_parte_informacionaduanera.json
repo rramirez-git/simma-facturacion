@@ -1,0 +1,42 @@
+{
+	"idcfdi_parte"		: {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_parte",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Parte",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"numeropedimento"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 21 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Numero de Pedimento",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	}
+}

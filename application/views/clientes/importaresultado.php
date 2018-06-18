@@ -2,7 +2,7 @@
 <?= $menumain; ?>
 <div class="container">
 	<h3>Importar Clientes <small class="text-muted">Resultado</small></h3>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th>No. Excel</th>

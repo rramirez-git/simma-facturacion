@@ -91,7 +91,7 @@
 		</div>
 		<button type="button" class="btn btn-outline-primary" onclick="Cliente.Buscar()" >Buscar</button>
 	</form>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">Empresa</th>
@@ -183,7 +183,7 @@
 			</tbody>
 		</table>
 	<h4>Generadores</h4>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th class="sortable" onclick="TableSortByColumn( 'data-table-gen', 1, 'asc' )">No. Cte.</th>

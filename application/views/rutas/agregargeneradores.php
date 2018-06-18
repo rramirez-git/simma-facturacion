@@ -17,7 +17,7 @@
         	</div>
 		</div>
 	</form>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th></th>

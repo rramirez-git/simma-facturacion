@@ -5,12 +5,12 @@
 $fields_to_show = array();
 ?>
 <?php if( isset( $title ) ): ?>
-	<h1>
+	<h3>
 		<?php echo $title; ?>
 		<?php if( isset( $subtitle ) ): ?>
 			<small class="text-muted"><?php echo $subtitle; ?></small>
 		<?php endif; ?>
-	</h1>
+	</h3>
 <?php endif; ?>
 <div class="clearfix"></div>
 <form autocomplete="off" method="post">
@@ -49,9 +49,26 @@ $fields_to_show = array();
 		</div>
 	</div>
 </form>
-<p>&nbsp;</p>
+<div class="float-right">
+	<div class="btn-toolbar" role="toolbar" aria-label="Acciones">
+		<div class="btn-group mr-2" role="group" aria-label="Acciones por Elemento">
+			<a title="<?php echo $this->lang->line( "auto_new" )?>" href="<?php echo base_url( $controler . '/nuevo' ); ?>" class="btn btn-outline-primary">
+				<i class="far fa-file"></i>
+				<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
+					<?php echo $this->lang->line( "auto_new" ); ?>
+				<?php endif; ?>
+			</a>
+			<a title="<?php echo $this->lang->line( "auto_delete" )?>" href="" onclick="do_delete_selected(); return false;" class="btn btn-outline-primary">
+				<i class="far fa-trash-alt"></i>
+				<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
+					<?php echo $this->lang->line( "auto_delete" ); ?>
+				<?php endif; ?>
+			</a>
+		</div>
+	</div>
+</div>
 <?php if( isset( $fields ) && isset( $records ) && count( $records ) > 0 ): ?>
-	<table class="table table-hover table-sm table-responsive-sm">
+	<table class="table table-hover table-sm table-responsive-xl">
 		<thead>
 			<tr>
 				<th></th>
@@ -60,43 +77,13 @@ $fields_to_show = array();
 					<?php if( $info[ "showgeneral" ] ): 
 						array_push( $fields_to_show, $field );
 						?>
-						<th class="sort-column-header">
-							<div class="sort-column-bar">
-								<div class="btn-toolbar" role="toolbar" aria-label="Ordenación">
-									<div class="btn-group mr-2" role="group" aria-label="Acciones de Ordenación">
-										<button onclick="sort_asc( <?php echo $col_number; ?> )" type="button" title="<?php echo $this->lang->line( "auto_sort_down" ); ?>" class="btn btn-outline-secondary btn-sm">
-											<i class="fas fa-sort-alpha-down"></i>
-										</button>
-										<button onclick="sort_desc( <?php echo $col_number; ?> )" type="button" title="<?php echo $this->lang->line( "auto_sort_up" ); ?>" class="btn btn-outline-secondary btn-sm">
-											<i class="fas fa-sort-alpha-up"></i>
-										</button>
-									</div>
-								</div>
-							</div>
+						<th class="sortable" onclick="TableSortByColumn( 'data-table', <?php echo $col_number; ?>, 'asc' )" ondblclick="TableSortByColumn( 'data-table', <?php echo $col_number; ?>, 'desc' )">
 							<?php echo $info[ "control" ][ "label" ];?>
 						</th>
 						<?php $col_number++; ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 				<th colspan="3">
-					<div class="float-right">
-						<div class="btn-toolbar" role="toolbar" aria-label="Acciones">
-							<div class="btn-group mr-2" role="group" aria-label="Acciones por Elemento">
-								<a title="<?php echo $this->lang->line( "auto_new" )?>" href="<?php echo base_url( $controler . '/nuevo' ); ?>" class="btn btn-outline-primary">
-									<i class="far fa-file"></i>
-									<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
-										<?php echo $this->lang->line( "auto_new" ); ?>
-									<?php endif; ?>
-								</a>
-								<a title="<?php echo $this->lang->line( "auto_delete" )?>" href="" onclick="do_delete_selected(); return false;" class="btn btn-outline-primary">
-									<i class="far fa-trash-alt"></i>
-									<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
-										<?php echo $this->lang->line( "auto_delete" ); ?>
-									<?php endif; ?>
-								</a>
-							</div>
-						</div>
-					</div>
 				</th>
 			</tr>
 		</thead>
@@ -143,7 +130,7 @@ $fields_to_show = array();
 						</a>
 					</td>
 					<td>
-						<a title="<?php echo $this->lang->line( "auto_delete" ); ?>" href="" onclick="do_delete( <?php echo $record[ $pk ]; ?> );return false;" class="btn btn-outline-primary">
+						<a title="<?php echo $this->lang->line( "auto_delete" ); ?>" href="" onclick="do_delete( '<?php echo $record[ $pk ]; ?>' );return false;" class="btn btn-outline-primary">
 							<i class="far fa-trash-alt"></i>
 							<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
 								<?php echo $this->lang->line( "auto_delete" ); ?>
@@ -154,25 +141,6 @@ $fields_to_show = array();
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-<?php else: ?>
-	<div class="float-right">
-		<div class="btn-toolbar" role="toolbar" aria-label="Acciones">
-			<div class="btn-group mr-2" role="group" aria-label="Acciones por Elemento">
-				<a title="<?php echo $this->lang->line( "auto_new" )?>" href="<?php echo base_url( $controler . '/nuevo' ); ?>" class="btn btn-outline-primary">
-					<i class="far fa-file"></i>
-					<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
-						<?php echo $this->lang->line( "auto_new" ); ?>
-					<?php endif; ?>
-				</a>
-				<a title="<?php echo $this->lang->line( "auto_delete" )?>" href="" onclick="do_delete_selected(); return false;" class="btn btn-outline-primary">
-					<i class="far fa-trash-alt"></i>
-					<?php if( $this->config->item( 'display_default_btn_labels' ) ): ?>
-						<?php echo $this->lang->line( "auto_delete" ); ?>
-					<?php endif; ?>
-				</a>
-			</div>
-		</div>
-	</div>
 <?php endif; ?>
 <script type="text/javascript">
 	function do_delete( id ) {
@@ -182,6 +150,7 @@ $fields_to_show = array();
 			function() { location.reload(); } 
 		).fail( function( jqXHR, textStatus, errorThrown ) {
 			console.log( "Error: ", arguments );
+			closeModal();
 			openModal( jqXHR.responseText, textStatus + ": " + errorThrown );
 		} );
 	}
@@ -198,62 +167,12 @@ $fields_to_show = array();
 					function() { actions_number--; }
 				).fail( function( jqXHR, textStatus, errorThrown ) {
 					console.log( "Error: ", arguments );
+					closeModal();
+					openModal( jqXHR.responseText, textStatus + ": " + errorThrown );
 				} );
 			}
 		} );
 		do_reload();
-	}
-	function sort_asc( column ) {
-		var data_cels = $( "#data-table tr td:nth-child(" + column + ")" );
-		var data = [];
-		data_cels.each( function() { 
-			var text = $( this ).text().trim();
-			var num = parseFloat( text );
-			if( isNaN( num ) || text.length != ( "" + num ).length ) {
-				if( -1 == data.indexOf( text ) ) {
-					data.push( text );
-				}
-			} else {
-				if( -1 == data.indexOf( num ) ) {
-					data.push( num );
-				}
-			}
-		} );
-		data.sort( data_sort );
-		sort_column( column, data );
-	}
-	function sort_desc( column ) {
-		var data_cels = $( "#data-table tr td:nth-child(" + column + ")" );
-		var data = [];
-		data_cels.each( function() { 
-			var text = $( this ).text().trim();
-			var num = parseFloat( text );
-			if( isNaN( num ) || text.length != ( "" + num ).length ) {
-				if( -1 == data.indexOf( text ) ) {
-					data.push( text );
-				}
-			} else {
-				if( -1 == data.indexOf( num ) ) {
-					data.push( num );
-				}
-			}
-		} );
-		data.sort( data_sort );
-		data.reverse();
-		sort_column( column, data );
-	}
-	function sort_column( column, data ) {
-		console.log( column );
-		var tmp_tbl = $( '<table></table>' );
-		for( idx in data ) {
-			var trs = $( "#data-table tr" );
-			for( var i = 0; i < trs.length; i++ ) {
-				if( $( trs[ i ] ).find( "td:nth-child(" + column + ")" ).text().trim() == data[ idx ] ) {
-					tmp_tbl.append( $( trs[ i ] ) );
-				}
-			}
-		}
-		$( "#data-table" ).html( tmp_tbl.html() );
 	}
 </script>
 <!-- html/autoindex ends -->

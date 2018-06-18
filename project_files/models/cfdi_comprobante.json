@@ -1,0 +1,944 @@
+{
+	"idcfdi_comprobante": {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Id Comprobante",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"version"			: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "3.3",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 5 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Versión",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"sello"				: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Sello",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"nocertificado"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 20 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "No de Certificado",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"certificado"		: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Certificado",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"condicionesdelpago": {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Condiciones del Pago",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"descuento"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Descuento",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"moneda"			: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 131,
+		"idcatalogo"	: 21,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tipocambio"		: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 1.0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 7, 3 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Cambio",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"confirmacion"		: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Confirmación",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"receptor_residenciafiscal": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 5 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Residencia Fiscal",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"receptor_numregidtrib": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Núm. Reg. Ident. Fisc.",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"uuid"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 40 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "UUID",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: true
+		}
+	},
+	"xml"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "XML",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"pdf"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "PDF",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	
+	"serie"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 25 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Serie",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"folio"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 40 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Folio",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"fecha"				: {
+		"ispk"			: false,
+		"type"			: "datetime",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Fecha",
+			"type"		: "input",
+			"subtype"	: "datetime",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"lugarexpedicion"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "11560",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 5 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Lugar de Expedición",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"tipodecomprobante"	: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 105,
+		"idcatalogo"	: 15,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Comprobante",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 2,
+			"readonly"	: false
+		}
+	},
+	"metodopago"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 130,
+		"idcatalogo"	: 20,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Método de Pago",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"formapago"			: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 126,
+		"idcatalogo"	: 18,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"subtotal"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Subtotal",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 2,
+			"readonly"	: true
+		}
+	},
+	"total"				: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Total",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 2,
+			"readonly"	: true
+		}
+	},
+	"emisor_rfc"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "SIM140625EW1",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 13 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "RFC (Emisor)",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"emisor_nombre"		: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Servicios Ind. para el Manejo del Medio Ambiente, S.A. de C.V.",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Emisor",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"emisor_regimenfiscal": {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 133,
+		"idcatalogo"	: 23,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Régimen Fiscal",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"receptor_rfc"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 13 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "RFC (Receptor)",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"receptor_nombre"	: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Receptor",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"receptor_usocfdi"	: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 139,
+		"idcatalogo"	: 27,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Uso de CFDi",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"impuestos_totalimpuestosretenidos": {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Impuestos Retenidos",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"impuestos_totalimpuestostrasladados": {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Impuestos Trasladados",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"estadofactura"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 149,
+		"idcatalogo"	: 30,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Estado del CFDi",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"fechacancelacion"	: {
+		"ispk"			: false,
+		"type"			: "datetime",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Fecha de Cancelación",
+			"type"		: "input",
+			"subtype"	: "datetime",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	},
+	"idcliente"			: {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cliente",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cliente",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	},
+	
+	"formapago_sat_id"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "03",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"formapago_sat_txt"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Transferencia electrónica de fondos",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"moneda_sat_id"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "MXN",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"moneda_sat_txt"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Peso Mexicano",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tipodecomprobante_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "I",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Comprobante (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tipodecomprobante_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Ingreso",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Comprobante (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"metodopago_sat_id"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "PPD",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Método de Pago (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"metodopago_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Pago en parcialidades o diferido",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Método de Pago (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"emisor_regimenfiscal_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "601",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Régimen Fiscal (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"emisor_regimenfiscal_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "General de Ley Personas Morales",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Régimen Fiscal (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"receptor_usocfdi_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "P01",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Uso del CFDi (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"receptor_usocfdi_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Por definir",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Uso del CFDi (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	}
+}

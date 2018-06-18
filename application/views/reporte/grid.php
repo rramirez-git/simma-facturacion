@@ -1,7 +1,7 @@
 <?php
 $enc="";
 ?>
-	<table class="table table-hover table-sm table-responsive Reporte" id="reporttable">
+	<table class="table table-hover table-sm table-responsive-sm Reporte" id="reporttable">
 		<tbody id="reporttablebody">
 			<?php if($registros!==false) foreach($registros as $k=>$reg):
 				?>

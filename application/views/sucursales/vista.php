@@ -158,7 +158,7 @@ $objempresa=new Modempresa();
 		</div>-->
 		<?php if($this->modsesion->hasPermisoHijo(8) && count($operadores)>0): ?>
 			<h5>Operadores</h5>
-				<table class="table table-hover table-sm table-responsive">
+				<table class="table table-hover table-sm table-responsive-sm">
 					<thead>
 						<tr>
 							<th class="sortable" onclick="TableSortByColumn( 'data-table-ope', 1, 'asc' )">Nombre</th>
@@ -195,7 +195,7 @@ $objempresa=new Modempresa();
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(9) && count($vehiculos)>0): ?>
 			<h5>Vehiculos</h5>
-				<table class="table table-hover table-sm table-responsive">
+				<table class="table table-hover table-sm table-responsive-sm">
 					<thead>
 						<tr>
 							<th class="sortable" onclick="TableSortByColumn( 'data-table-veh', 1, 'asc' )">Placa</th>
@@ -230,7 +230,7 @@ $objempresa=new Modempresa();
 		<?php endif; 
 		if($this->modsesion->hasPermisoHijo(52) && count($rutas)>0):?>
 			<h5>Rutas</h5>
-				<table class="table table-hover table-sm table-responsive">
+				<table class="table table-hover table-sm table-responsive-sm">
 					<thead>
 						<tr>
 							<th class="sortable" onclick="TableSortByColumn( 'data-table-rut', 1, 'asc' )">Número de Ruta</th>

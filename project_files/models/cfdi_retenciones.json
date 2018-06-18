@@ -1,0 +1,102 @@
+{
+	"idcfdi_comprobante": {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_comprobante",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Comprobante",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"impuesto"			: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 128,
+		"idcatalogo"	: 19,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Impuesto",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"impuesto_sat_id"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "002",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Impuesto (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"impuesto_sat_txt"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "IVA",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Impuesto (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"importe"			: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Retenciones",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: true
+		}
+	}
+}

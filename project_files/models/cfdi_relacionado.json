@@ -1,0 +1,122 @@
+{
+	"idcfdi_comprobante": {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_comprobante",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Comprobante",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"tiporelacion"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 26,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Tipo de Relación",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"tiporelacion_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Relación (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tiporelacion_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Relación (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"idcfdi_comprobante_relacionado": {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_comprobante",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Comprobante Relacionado",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 3,
+			"readonly"	: false
+		}
+	},
+	"uuid"				: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 40 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "UUID",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 3,
+			"readonly"	: true
+		}
+	}
+}

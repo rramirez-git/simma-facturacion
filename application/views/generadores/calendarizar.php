@@ -196,7 +196,7 @@
 	</div>
 	<div id="fechascalendario_space" style="display: none;">
 		<form autocomplete="off" id="frm_fechas">
-				<table class="table table-hover table-sm table-responsive">
+				<table class="table table-hover table-sm table-responsive-sm">
 					<thead>
 						<tr>
 							<th>Fecha</th>

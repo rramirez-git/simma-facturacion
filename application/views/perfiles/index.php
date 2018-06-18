@@ -10,8 +10,7 @@
 		</div>
 	</div>
 	<h3>Perfiles</h3>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover table-responsive-sm">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -41,5 +40,4 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-	</div>
 </div>

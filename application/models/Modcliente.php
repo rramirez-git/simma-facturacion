@@ -397,6 +397,9 @@ class Modcliente extends CI_Model
 		}
         return true;
 	}
+	public function get_from_database( $id = 0 ) {
+		return $this->getFromDatabase( $id );
+	}
 	public function getFromInput()
 	{
 		$this->setIdcliente($this->input->post("frm_cliente_idcliente"));
@@ -656,9 +659,9 @@ class Modcliente extends CI_Model
 		}
 		return true;
 	}
-	public function getAll($idsucursal,$filtros)
+	public function getAll($idsucursal,$filtros, $whr = "")
 	{
-		$whr="";
+		//$whr="";
 		$takePrefs=false;
 		if($idsucursal>0)
 			$whr.="idcliente in (select idcliente from relsuccli where idsucursal=$idsucursal)";
@@ -797,6 +800,19 @@ class Modcliente extends CI_Model
 		foreach($this as $k=>$v)
 			$data[$k]=$v;
 		return json_encode($data);
+	}
+	public function get_options_combo( $where = "" ) {
+		if( "" == $where ) {
+			$where = " 1 = 1 ";
+		}
+		$regs = $this->getAll( 0, null, $where );
+		$res = array();
+		if( false != $regs ) {
+			foreach( $regs as $reg ) {
+				$res[ $reg[ "idcliente" ] ] = $reg[ "identificador" ] . " - " . $reg[ "razonsocial" ];
+			}
+		}
+		return $res;
 	}
 }
 ?>

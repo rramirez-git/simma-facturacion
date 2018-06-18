@@ -160,7 +160,7 @@
 		<input type="hidden" name="action" id="action" value="" />
 		<button type="button" class="btn btn-outline-primary" onclick="Manifiesto.Buscar()">Buscar</button>
 	</form>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th class="sortable" onclick="TableSortByColumn( 'data-table', 1, 'asc' )">No. Manifiesto</th>

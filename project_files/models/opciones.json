@@ -1,0 +1,78 @@
+{
+	"idopciones" 		: {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Id Opción",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0
+		}
+	},
+	"idcatalogo" 		: {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "catalogo",
+		"relation"		: "linked",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Catálogo",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 6
+		}
+	},
+	"opcion" 			: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label" 	: "Opción",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6
+		}
+	},
+	"lbl_catalogo" 		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Catálogo",
+			"type"		: "input",
+			"subtype"	: "",
+			"cols"		: 6
+		}
+	}
+}

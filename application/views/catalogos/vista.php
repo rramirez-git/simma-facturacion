@@ -26,7 +26,7 @@
 	</div>
 	<h3>Catalogos <small class="text-muted"><?= $catalogo["descripcion"]; ?></small></h3>
 	<input type="hidden" name="idcatalogo" id="idcatalogo" value="<?= $catalogo["idcatalogo"]; ?>" />
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<td></td>

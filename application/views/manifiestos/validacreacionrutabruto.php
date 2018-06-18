@@ -17,7 +17,7 @@ $generador=new Modgenerador();
 			<input class="form-control" disabled="disabled" value="<?= $bitacora; ?>" />
 		</div>
 	</div>
-		<table class="table table-hover table-sm table-responsive">
+		<table class="table table-hover table-sm table-responsive-sm">
 			<thead>
 				<tr>
 					<th>Cliente</th>

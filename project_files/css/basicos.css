@@ -185,9 +185,9 @@ form {
 body {
 	padding-bottom: 20px;
 }
-table.table.table-hover.table-sm.table-responsive thead th.sortable {
+table.table.table-hover.table-sm thead th.sortable {
 	cursor: pointer;
 }
-table.table.table-hover.table-sm.table-responsive thead th.sortable:hover {
+table.table.table-hover.table-sm thead th.sortable:hover {
 	text-decoration: underline;
 }

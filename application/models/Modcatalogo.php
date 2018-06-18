@@ -1,6 +1,12 @@
 <?php
-class Modcatalogo extends CI_Model
+class Modcatalogo extends MY_Model
 {
+	protected $base_table			= "catalogo_gv";
+	protected $general_view			= "catalogo_gv";
+	protected $particular_view		= "catalogo_gv";
+	protected $definition_file		= 'catalogo.json';
+	protected $order_by				= "nombre";
+	protected $reload_constructor	= true;
 	public function getCatalogo($idCatalogo)
 	{
 		$this->db->where('idcatalogo',$idCatalogo);

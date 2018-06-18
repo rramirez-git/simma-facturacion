@@ -84,6 +84,19 @@ if(!isset($justCloseWindow)) $justCloseWindow=false
 						</div>
 					</li>
 				<?php endif; ?>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbar_item_4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Facturación
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbar_item_4">
+						<a class="dropdown-item" href="<?= base_url( 'prefacturas' ); ?>">Pre-facturación</a>
+						<a class="dropdown-item" href="<?= base_url( 'facturas' ); ?>">Facturación</a>
+						<a class="dropdown-item" href="<?= base_url( 'notascredito' ); ?>">Notas de Crédito</a>
+						<a class="dropdown-item" href="<?= base_url( 'pagos' ); ?>">Pagos</a>
+						<a class="dropdown-item" href="<?= base_url( 'cxc' ); ?>">Cuentas por Cobrar</a>
+						<a class="dropdown-item" href="<?= base_url( 'estadocuenta' ); ?>">Estados de Cuenta</a>
+					</div>
+				</li>
 				<?php if( $this->modsesion->hasPermisoHijo( 3 ) ): ?>
   					<li class="nav-item dropdown">
   						<a class="nav-link dropdown-toggle" href="#" id="navbar_item_3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

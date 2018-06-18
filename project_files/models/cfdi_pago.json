@@ -1,0 +1,482 @@
+{
+	"idcfdi_pago"		: {
+		"ispk"			: true,
+		"type"			: "integer",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Id Pago",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"idcfdi_comprobante": {
+		"ispk"			: false,
+		"type"			: "entity",
+		"entity"		: "cfdi_comprobante",
+		"relation"		: "linked",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Comprobante",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"fechapago"			: {
+		"ispk"			: false,
+		"type"			: "datetime",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Fecha",
+			"type"		: "input",
+			"subtype"	: "datetime",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"formadepagop"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 126,
+		"idcatalogo"	: 18,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"formadepagop_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "03",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"formadepagop_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Transferencia electrónica de fondos",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Forma de Pago (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"monedap"			: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 131,
+		"idcatalogo"	: 21,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"monedap_sat_id"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "MXN",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"monedap_sat_txt"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "Peso Mexicano",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: true,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Moneda (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tipocambiop"		: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 7, 3 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo de Cambio",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"monto"				: {
+		"ispk"			: false,
+		"type"			: "decimal",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 0,
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 14, 6 ],
+		"ismandatory"	: true,
+		"showgeneral"	: true,
+		"showincombo"	: true,
+		"control"		: {
+			"label"		: "Monto",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"numoperacion"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 100 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Referencia Operación",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"rfcemisorctaord"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 13 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "RFC Emisor Cuenta Origen (Banco)",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"nombancoordext"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 300 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Banco Ordenante",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"ctaordenante"		: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 50 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cuenta Ordenante",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 4,
+			"readonly"	: false
+		}
+	},
+	"rfcemisorctaben"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 13 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "RFC Cuenta Destino (Beneficiario)",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"ctabeneficiario"	: {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 50 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cuenta Beneficiario",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"tipocadpago"		: {
+		"ispk"			: false,
+		"type"			: "catalogo",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: 159,
+		"idcatalogo"	: 31,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: true,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo Cadena de Pago",
+			"type"		: "select",
+			"subtype"	: "",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"tipocadpago_sat_id": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "01",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo Cadena de Pago (SAT-ID)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"tipocadpago_sat_txt": {
+		"ispk"			: false,
+		"type"			: "string",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "SPEI",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [ 250 ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Tipo Cadena de Pago (SAT-TXT)",
+			"type"		: "input",
+			"subtype"	: "hidden",
+			"cols"		: 0,
+			"readonly"	: false
+		}
+	},
+	"certpago"			: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Certificado",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"cadpago"			: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Cadena Original",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"sellopago"			: {
+		"ispk"			: false,
+		"type"			: "text",
+		"entity"		: "",
+		"relation"		: "",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: true,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label"		: "Sello",
+			"type"		: "input",
+			"subtype"	: "text",
+			"cols"		: 6,
+			"readonly"	: false
+		}
+	},
+	"documentos" : {
+		"ispk"			: false,
+		"type"			: "array",
+		"entity"		: "cfdi_doctorelacionado",
+		"relation"		: "part-of",
+		"default"		: "",
+		"idcatalogo"	: 0,
+		"isdirect"		: false,
+		"dimension"		: [  ],
+		"ismandatory"	: false,
+		"showgeneral"	: false,
+		"showincombo"	: false,
+		"control"		: {
+			"label" 	: "Documentos Relacionados",
+			"type"		: "input",
+			"subtype"	: "checkbox",
+			"cols"		: 12,
+			"readonly"	: false
+		}
+	}
+}

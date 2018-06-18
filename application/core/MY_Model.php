@@ -3,9 +3,11 @@ class MY_Model extends CI_Model {
 	protected $fields 				= array();
 	protected $fields_definition 	= array();
 	protected $pk 					= null;
+	public $has_child_fields		= false;
 	public $load_subentities		= true;
 	public function __construct() {
 		parent::__construct();
+		//var_dump("","","");
 		$this->load_fields();
 	}
 	private function load_fields() {
@@ -33,9 +35,10 @@ class MY_Model extends CI_Model {
 				$this->load->model( 'modopciones' );
 				$this->fields_definition[ $field ][ "choices" ] = $this->modopciones->get_options_combo( "idcatalogo = " . $definition[ "idcatalogo" ] );
 			}
+			$this->has_child_fields = ( $this->has_child_fields || ( ( "array" == $definition[ "type" ] || "entity" === $definition[ "type" ] ) && "part-of" == $definition[ "relation" ] ) );
 		}
 	}
-	private function create_data_for_database() {
+	protected function create_data_for_database() {
 		$data = array();
 		foreach( $this->fields as $field => $value ) {
 			if( isset( $this->fields_definition[ $field ] ) && true === $this->fields_definition[ $field ][ "isdirect" ] ) {
@@ -83,6 +86,9 @@ class MY_Model extends CI_Model {
 							array_push( $this->fields[ $field ], $value );
 						}
 						break;
+					case 'datetime':
+						$this->fields[ $field ] = str_replace( "T", " ", $value );
+						break;
 					default :
 						throw new Exception( "Tipo de campo no definido $field en tipo {$this->fields_definition[ $field ][ "type" ]}" );
 						return false;
@@ -101,8 +107,14 @@ class MY_Model extends CI_Model {
 	public function set_pk( $value ) {
 		return $this->set_field( $this->pk, $value );
 	}
+	public function set_fields_2_null() {
+		foreach( $this->fields as $f=>$v ) {
+			$this->fields[ $f ] = null;
+		}
+		return true;
+	}
 	public function get_pk() { 
-		return $this->pk; 
+		return ( null !== $this->pk && "" !== $this->pk ? $this->pk : 'primary_key' ); 
 	}
 	public function get_field( $field ) {
 		if( ! array_key_exists( $field, $this->fields ) ) {
@@ -194,14 +206,32 @@ class MY_Model extends CI_Model {
 		$this->db->insert( $this->base_table, $this->create_data_for_database() );
 		if( null != $this->pk ) {
 			$this->set_field( $this->pk, $this->db->insert_id() );
+			foreach( $this->fields as $field => $items ) {
+				if( isset( $this->fields_definition[ $field ] ) && "array" == $this->fields_definition[ $field ][ "type" ] && "part-of" == $this->fields_definition[ $field ][ "relation" ] ) {
+					foreach( $items as $item ) {
+						$item->set_field( $this->get_pk(), $this->get_field( $this->get_pk() ) );
+						$item->add_to_database();
+					}
+				}
+			}
 		}
 		$this->db->reset_query();
 		return true;
 	}
 	public function update_to_database( $pk_value = 0 ) {
-		if( "" == $this->fields[ $this->pk ] || 0  == $this->fields[ $this->pk ] ) {
+		$pk = null;
+		if( "primary_key" != $this->get_pk() ) {
+			if( "" == $this->fields[ $this->pk ] || 0  == $this->fields[ $this->pk ] ) {
+				if( $pk_value > 0 ) {
+					$this->set_field( $this->pk, $pk_value );
+				} else {
+					return false;
+				}
+			}
+			$pk = $this->get_field( $this->get_pk() );
+		} else {
 			if( $pk_value > 0 ) {
-				$this->set_field( $this->pk, $pk_value );
+				$pk = $pk_value;
 			} else {
 				return false;
 			}
@@ -212,7 +242,7 @@ class MY_Model extends CI_Model {
 				$obj->update_to_database();
 			}
 		}
-		$this->db->where( $this->pk, $this->get_field( $this->pk ) );
+		$this->db->where( $this->get_pk(), $pk );
 		$this->db->update( $this->base_table, $this->create_data_for_database() );
 		$this->db->reset_query();
 		return true;
@@ -231,9 +261,19 @@ class MY_Model extends CI_Model {
 		return ( 0 === $regs->num_rows() ? array() : $regs->result_array() );
 	}
 	public function delete( $pk_value = 0 ) {
-		if( "" == $this->fields[ $this->pk ] || 0  == $this->fields[ $this->pk ] ) {
+		$pk = null;
+		if( "primary_key" != $this->get_pk() ) {
+			if( "" == $this->fields[ $this->pk ] || 0  == $this->fields[ $this->pk ] ) {
+				if( $pk_value > 0 ) {
+					$this->set_field( $this->pk, $pk_value );
+				} else {
+					return false;
+				}
+			}
+			$pk = $this->get_field( $this->get_pk() );
+		} else {
 			if( $pk_value > 0 ) {
-				$this->set_field( $this->pk, $pk_value );
+				$pk = $pk_value;
 			} else {
 				return false;
 			}
@@ -241,17 +281,23 @@ class MY_Model extends CI_Model {
 		$this->load_subentities = true;
 		$this->get_from_database();
 		log_message( 'info', 'Deleting ' . get_class( $this ) . ' ' . $this->get_field( $this->pk ) . '.' );
+		$tables = array();
 		foreach( $this->fields_definition as $field => $definition ) {
 			if( "array" == $definition[ "type" ] && "part-of" == $definition[ "relation"] ) {
 				$objs = $this->get_field( $field );
 				foreach( $objs as $obj ) {
 					log_message( 'info', '(1) To delete ' . get_class( $obj ) . ' ' . $obj->get_field( $obj->get_pk() ) . '.' );
-					$obj->delete();
+					if( ! $obj->has_child_fields ) {
+						array_push( $tables, $definition[ "entity" ] );
+						break;
+					}
+					$obj->delete( $obj->get_field( $obj->get_pk() ) );
 				}
 			}
 		}
-		$this->db->where( $this->pk, $this->get_field( $this->pk ) );
-		$this->db->delete( array( $this->base_table ) );
+		array_push( $tables, $this->base_table );
+		$this->db->where( $this->get_pk(), $pk );
+		$this->db->delete( $tables );
 		$this->db->reset_query();
 		foreach( $this->fields_definition as $field => $definition ) {
 			if( "entity" == $definition[ "type" ] && "part-of" == $definition[ "relation" ] ) {

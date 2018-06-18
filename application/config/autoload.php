@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('session','database','encrypt');
+$autoload['libraries'] = array( 'session', 'database', 'encrypt' );
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('session','database','encrypt');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','apoyo');
+$autoload['helper'] = array( 'url', 'apoyo', 'html_form', 'auto' );
 
 
 /*
@@ -80,7 +80,7 @@ $autoload['helper'] = array('url','apoyo');
 |
 */
 
-$autoload['config'] = array('appconfig');
+$autoload['config'] = array( 'appconfig' );
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array('appconfig');
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array( 'action_lang' );
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('modsesion','modlog');
+$autoload['model'] = array( 'modsesion', 'modlog' );
 
 
 /* End of file autoload.php */

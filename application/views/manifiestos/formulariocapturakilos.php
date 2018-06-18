@@ -15,7 +15,7 @@ $res2show = array();
 			<input type="date" class="form-control" id="frm_fechaembarque" name="frm_fechaembarque" value="<?= $fecha_embarque; ?>" />
 		</div>
 	</div>
-	<table class="table table-hover table-sm table-responsive">
+	<table class="table table-hover table-sm table-responsive-sm">
 		<thead>
 			<tr>
 				<th>Residuo</th>
