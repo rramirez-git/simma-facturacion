@@ -18,10 +18,12 @@ class Modcfdi_comprobante extends MY_Model {
 			return false;
 		}
 		if( in_array( $field, array( "formapago", "moneda", "tipodecomprobante", "metodopago", "emisor_regimenfiscal", "receptor_usocfdi" ) ) ) {
-			$opcion = $this->modopciones->get_options_combo( "idcatalogo = " . $this->fields_definition[ $field ][ "idcatalogo" ] )[ $value ];
-			list( $id, $txt ) = explode( "|", $opcion );
-			parent::set_field( $field . "_sat_id", trim( $id ) );
-			parent::set_field( $field . "_sat_txt", trim( $txt ) );
+			if( "" != $value ) {
+				$opcion = $this->modopciones->get_options_combo( "idcatalogo = " . $this->fields_definition[ $field ][ "idcatalogo" ] )[ $value ];
+				list( $id, $txt ) = explode( "|", $opcion );
+				parent::set_field( $field . "_sat_id", trim( $id ) );
+				parent::set_field( $field . "_sat_txt", trim( $txt ) );
+			}
 		}
 		return parent::set_field( $field, $value );
 	}
@@ -29,6 +31,9 @@ class Modcfdi_comprobante extends MY_Model {
 		$this->set_field( "estadofactura", 149 );
 		$this->set_field( "fechacancelacion", "0000-00-00 00:00" );
 		return parent::add_to_database();
+	}
+	public function is_prefactura() {
+		return '' == $this->get_field( 'sello' ) or '' == $this->get_field( 'uuid' ) or '' == $this->get_field( 'xml' ) or '' == $this->get_field( 'pdf' );
 	}
 }
 ?>

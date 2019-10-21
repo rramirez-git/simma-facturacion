@@ -650,7 +650,7 @@
 		"isdirect"		: true,
 		"dimension"		: [  ],
 		"ismandatory"	: false,
-		"showgeneral"	: true,
+		"showgeneral"	: false,
 		"showincombo"	: false,
 		"control"		: {
 			"label"		: "Estado del CFDi",

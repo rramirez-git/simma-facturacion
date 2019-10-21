@@ -181,6 +181,7 @@ class MY_Model extends CI_Model {
 		foreach( $this->fields as $field => $value ) {
 			if( isset( $this->fields_definition[ $field ] ) && true === $this->fields_definition[ $field ][ "isdirect" ] ) {
 				$this->set_field( $field, $this->input->post( strtolower( get_class( $this ) ) . "_$field" ) );
+				//var_dump(strtolower( get_class( $this ) ) . "_$field" );
 			}
 			if( isset( $this->fields_definition[ $field ] ) && "entity" === $this->fields_definition[ $field ][ "type" ] && "part-of" === $this->fields_definition[ $field ][ "relation" ] ) {
 				eval( '$data = new Mod' . $this->fields_definition[ $field ][ "entity" ] . '();' );
